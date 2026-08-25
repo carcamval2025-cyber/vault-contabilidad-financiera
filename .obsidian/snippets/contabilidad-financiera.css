@@ -1,0 +1,71 @@
+/*
+  Paleta del curso Contabilidad Financiera (ESEN, Sección 2, Trimestre 3/2026)
+  Misma paleta que usan los entregables HTML/Excel del proyecto — para que el Vault
+  se sienta parte del mismo sistema visual.
+
+  Para activarlo: Configuración → Apariencia → Fragmentos de CSS → activa
+  "contabilidad-financiera".
+*/
+
+.theme-light,
+.theme-dark {
+  --cf-navy: #1e2d5a;
+  --cf-navy2: #2C3E6B;
+  --cf-navy3: #3d5491;
+  --cf-rose: #E8A0B4;
+  --cf-rose2: #d4718e;
+  --cf-rose3: #f5c8d6;
+  --cf-green: #7CB342;
+  --cf-green2: #5a8a2e;
+}
+
+/* Encabezados con el navy del curso */
+.markdown-source-view.mod-cm6 .cm-header,
+.markdown-preview-view h1,
+.markdown-preview-view h2 {
+  color: var(--cf-navy);
+}
+
+.markdown-preview-view h3,
+.markdown-preview-view h4 {
+  color: var(--cf-navy2);
+}
+
+/* Enlaces internos en tono rose, como los acentos del sistema de diseño */
+.markdown-preview-view a.internal-link,
+.cm-s-obsidian .cm-hmd-internal-link {
+  color: var(--cf-rose2);
+}
+
+/* Callouts alineados a las cajas especiales del sistema de diseño HTML */
+
+/* ⚖️ Marco Legal → callout [!info] */
+.callout[data-callout="info"] {
+  --callout-color: 44, 62, 107; /* navy2 en rgb */
+  background-color: rgba(44, 62, 107, 0.08);
+}
+
+/* ⚠️ Error / advertencia → callout [!warning] */
+.callout[data-callout="warning"] {
+  --callout-color: 229, 57, 53; /* rojo, igual al sistema de diseño */
+  background-color: rgba(253, 236, 234, 0.6);
+}
+
+/* ✅ OK / recordatorio → callout [!tip] */
+.callout[data-callout="tip"] {
+  --callout-color: 124, 179, 66; /* green */
+  background-color: rgba(232, 245, 233, 0.6);
+}
+
+/* Tablas con encabezado navy, igual que las tablas de los entregables */
+.markdown-preview-view table thead tr {
+  background: linear-gradient(90deg, var(--cf-navy), var(--cf-navy3));
+}
+.markdown-preview-view table thead tr th {
+  color: #ffffff;
+}
+
+/* Checkboxes marcados en verde del curso */
+.markdown-preview-view input[type="checkbox"]:checked {
+  accent-color: var(--cf-green);
+}

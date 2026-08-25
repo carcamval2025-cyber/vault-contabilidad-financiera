@@ -1,0 +1,123 @@
+{
+  "settings": {
+    "migrated": 6,
+    "iconPacksPath": ".obsidian/icons",
+    "fontSize": 16,
+    "emojiStyle": "native",
+    "iconColor": null,
+    "recentlyUsedIcons": [
+      "LiBookTemplate",
+      "LiHammer",
+      "LiShelvingUnit",
+      "LiCalendarHeart",
+      "LiChartColumnStacked"
+    ],
+    "recentlyUsedIconsSize": 5,
+    "rules": [],
+    "extraMargin": {
+      "top": 0,
+      "right": 4,
+      "bottom": 0,
+      "left": 0
+    },
+    "iconInTabsEnabled": false,
+    "iconInTitleEnabled": false,
+    "iconInTitlePosition": "above",
+    "iconInFrontmatterEnabled": true,
+    "iconInFrontmatterFieldName": "icon",
+    "iconColorInFrontmatterFieldName": "iconColor",
+    "iconsBackgroundCheckEnabled": false,
+    "iconsInNotesEnabled": true,
+    "iconsInLinksEnabled": true,
+    "iconIdentifier": ":",
+    "lucideIconPackType": "native",
+    "debugMode": false,
+    "useInternalPlugins": false
+  },
+  "00 Curso/Reglas de Precisión Legal y Pedagógica.md": {
+    "iconName": "⚖️"
+  },
+  "00 Curso/Sistema de Diseño Excel.md": {
+    "iconName": "📊"
+  },
+  "00 Curso/Sistema de Diseño HTML.md": {
+    "iconName": "🎨"
+  },
+  "01 Bitácora/Aprendizajes Acumulados.md": {
+    "iconName": "🧠"
+  },
+  "01 Bitácora/Bitácora General.md": {
+    "iconName": "📒"
+  },
+  "03 Marco Legal/Código de Trabajo.md": {
+    "iconName": "👷"
+  },
+  "03 Marco Legal/Ley Integral del Sistema de Pensiones (AFP).md": {
+    "iconName": "🏦"
+  },
+  "03 Marco Legal/Ley de Renuncia Voluntaria.md": {
+    "iconName": "🚪"
+  },
+  "03 Marco Legal/Ley del INCAF.md": {
+    "iconName": "🎓"
+  },
+  "03 Marco Legal/Ley del ISR y su Reglamento.md": {
+    "iconName": "💰"
+  },
+  "03 Marco Legal/Ley del Seguro Social (ISSS).md": {
+    "iconName": "🏥"
+  },
+  "04 Glosario.md": {
+    "iconName": "📖"
+  },
+  "Inicio.md": {
+    "iconName": "📍"
+  },
+  "Plantillas/Plantilla - Entrada de Bitácora.md": {
+    "iconName": "🧩"
+  },
+  "Plantillas/Plantilla - Unidad Nueva.md": {
+    "iconName": "🧩"
+  },
+  "README.md": {
+    "iconName": "📘"
+  },
+  "00 Curso/00 Curso.md": {
+    "iconName": "🗂️"
+  },
+  "01 Bitácora/01 Bitácora.md": {
+    "iconName": "🗂️"
+  },
+  "02 Unidades/02 Unidades.md": {
+    "iconName": "🗂️"
+  },
+  "03 Marco Legal/03 Marco Legal.md": {
+    "iconName": "🗂️"
+  },
+  "Plantillas/Plantillas.md": {
+    "iconName": "🗂️"
+  },
+  "01 Bitácora/Entradas/2026-08-25 - Creación del Vault.md": {
+    "iconName": "🗂️"
+  },
+  "00 Curso": {
+    "iconName": "LiChartColumnStacked",
+    "iconColor": "#efff14"
+  },
+  "01 Bitácora": {
+    "iconName": "LiCalendarHeart",
+    "iconColor": "#ff248e"
+  },
+  "02 Unidades": {
+    "iconName": "LiShelvingUnit",
+    "iconColor": "#38c3ff"
+  },
+  "03 Marco Legal": {
+    "iconName": "LiHammer",
+    "iconColor": "#2eff51"
+  },
+  "Plantillas": {
+    "iconName": "LiBookTemplate",
+    "iconColor": "#ffad1f"
+  }
+}
