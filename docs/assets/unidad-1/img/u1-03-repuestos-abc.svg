@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 280" width="100%" height="auto" role="img" aria-label="Interior de la autopartería Repuestos ABC, con la vendedora Ana y el gerente Juan revisando la planilla de mayo.">
+  <!-- Fondo estructurado -->
+  <rect width="760" height="280" rx="10" fill="#14171C" stroke="#262B33" stroke-width="1.5"/>
+  
+  <!-- Letrero superior de la empresa -->
+  <g transform="translate(30, 16)">
+    <rect width="700" height="32" rx="6" fill="#1C2027" stroke="#262B33" stroke-width="1.2"/>
+    <circle cx="18" cy="16" r="5" fill="#FFB020"/>
+    <text x="32" y="21" font-family="Bricolage Grotesque" font-size="12" font-weight="800" fill="#EDEEF0" letter-spacing="1">REPUESTOS ABC, S.A. DE C.V.</text>
+    <text x="320" y="20.5" font-family="IBM Plex Mono" font-size="8.5" fill="#9098A6">VENTA DE AUTOPARTES · SAN SALVADOR</text>
+    <rect x="580" y="6" width="108" height="20" rx="4" fill="#FFB020" fill-opacity="0.15" stroke="#FFB020" stroke-width="1"/>
+    <text x="634" y="19.5" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#FFD873">PLANILLA 31 MAYO</text>
+  </g>
+
+  <!-- ================= LADO IZQUIERDO: ESTANTERÍA Y ÁREA DE VENTAS (ANA) ================= -->
+  <!-- Estantería con repuestos -->
+  <g transform="translate(30, 60)">
+    <rect width="100" height="150" rx="4" fill="#1C2027" stroke="#262B33" stroke-width="1.2"/>
+    <!-- Estantes -->
+    <line x1="0" y1="50" x2="100" y2="50" stroke="#262B33" stroke-width="1.2"/>
+    <line x1="0" y1="100" x2="100" y2="100" stroke="#262B33" stroke-width="1.2"/>
+    
+    <!-- Llantas en estante superior -->
+    <circle cx="28" cy="26" r="16" fill="none" stroke="#5AC8FA" stroke-width="3"/>
+    <circle cx="28" cy="26" r="8" fill="none" stroke="#262B33" stroke-width="1.5"/>
+    <circle cx="72" cy="26" r="16" fill="none" stroke="#5AC8FA" stroke-width="3"/>
+    <circle cx="72" cy="26" r="8" fill="none" stroke="#262B33" stroke-width="1.5"/>
+    
+    <!-- Cajas de filtros en estante medio -->
+    <rect x="10" y="62" width="35" height="28" rx="2" fill="#14171C" stroke="#FFB020" stroke-width="1"/>
+    <text x="27.5" y="79" text-anchor="middle" font-family="IBM Plex Mono" font-size="6.5" fill="#FFD873">FILTROS</text>
+    <rect x="55" y="62" width="35" height="28" rx="2" fill="#14171C" stroke="#3ECF8E" stroke-width="1"/>
+    <text x="72.5" y="79" text-anchor="middle" font-family="IBM Plex Mono" font-size="6.5" fill="#3ECF8E">BUJÍAS</text>
+
+    <!-- Baterías / frenos en estante inferior -->
+    <rect x="12" y="112" width="76" height="28" rx="3" fill="#14171C" stroke="#5AC8FA" stroke-width="1"/>
+    <text x="50" y="129" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" fill="#5AC8FA">BATERÍAS 12V</text>
+  </g>
+
+  <!-- Puesto de Ana Martínez (Vendedora) -->
+  <g transform="translate(145, 60)">
+    <!-- Ficha / Perfil de Ana -->
+    <rect width="165" height="200" rx="8" fill="#1C2027" stroke="#5AC8FA" stroke-width="1.2"/>
+    <rect x="12" y="12" width="141" height="24" rx="4" fill="#5AC8FA" fill-opacity="0.15"/>
+    <circle cx="24" cy="24" r="6" fill="#5AC8FA"/>
+    <text x="36" y="27.5" font-family="Bricolage Grotesque" font-size="10.5" font-weight="700" fill="#EDEEF0">Ana Martínez</text>
+    <text x="145" y="27" text-anchor="end" font-family="IBM Plex Mono" font-size="7" fill="#5AC8FA">VENDEDORA</text>
+
+    <!-- Datos del sueldo de Ana -->
+    <rect x="12" y="44" width="141" height="42" rx="4" fill="#14171C" stroke="#262B33" stroke-width="1"/>
+    <text x="20" y="58" font-family="IBM Plex Sans" font-size="7.5" fill="#9098A6">Sueldo mensual base:</text>
+    <text x="145" y="58" text-anchor="end" font-family="IBM Plex Mono" font-size="8.5" font-weight="600" fill="#EDEEF0">$590.00</text>
+    <text x="20" y="74" font-family="IBM Plex Sans" font-size="7.5" fill="#9098A6">Horas extra (mayo):</text>
+    <text x="145" y="74" text-anchor="end" font-family="IBM Plex Mono" font-size="8.5" font-weight="600" fill="#FFB020">$10.00</text>
+    
+    <rect x="12" y="94" width="141" height="22" rx="4" fill="#FFB020" fill-opacity="0.12"/>
+    <text x="20" y="108.5" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#FFD873">TOTAL SALARIO: $600.00</text>
+
+    <!-- Deducciones aplicadas -->
+    <text x="14" y="132" font-family="IBM Plex Mono" font-size="7" fill="#9098A6">ISSS 3% (s/ $600):</text>
+    <text x="145" y="132" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" fill="#EDEEF0">-$18.00</text>
+
+    <text x="14" y="146" font-family="IBM Plex Mono" font-size="7" fill="#9098A6">AFP 7.25% (s/ $600):</text>
+    <text x="145" y="146" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" fill="#EDEEF0">-$43.50</text>
+
+    <text x="14" y="160" font-family="IBM Plex Mono" font-size="7" fill="#9098A6">ISR (Tramo I):</text>
+    <text x="145" y="160" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" fill="#3ECF8E">$0.00</text>
+
+    <rect x="12" y="168" width="141" height="24" rx="4" fill="#3ECF8E" fill-opacity="0.15" stroke="#3ECF8E" stroke-width="1"/>
+    <text x="20" y="183.5" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#3ECF8E">LÍQUIDO: $538.50</text>
+  </g>
+
+  <!-- ================= LADO DERECHO: PUESTO GERENCIAL (JUAN LÓPEZ) ================= -->
+  <g transform="translate(325, 60)">
+    <!-- Ficha / Perfil de Juan -->
+    <rect width="165" height="200" rx="8" fill="#1C2027" stroke="#FFB020" stroke-width="1.2"/>
+    <rect x="12" y="12" width="141" height="24" rx="4" fill="#FFB020" fill-opacity="0.15"/>
+    <circle cx="24" cy="24" r="6" fill="#FFB020"/>
+    <text x="36" y="27.5" font-family="Bricolage Grotesque" font-size="10.5" font-weight="700" fill="#EDEEF0">Juan López</text>
+    <text x="145" y="27" text-anchor="end" font-family="IBM Plex Mono" font-size="7" fill="#FFD873">GERENTE</text>
+
+    <!-- Datos del sueldo de Juan -->
+    <rect x="12" y="44" width="141" height="42" rx="4" fill="#14171C" stroke="#262B33" stroke-width="1"/>
+    <text x="20" y="58" font-family="IBM Plex Sans" font-size="7.5" fill="#9098A6">Sueldo mensual base:</text>
+    <text x="145" y="58" text-anchor="end" font-family="IBM Plex Mono" font-size="8.5" font-weight="600" fill="#EDEEF0">$2,500.00</text>
+    <text x="20" y="74" font-family="IBM Plex Sans" font-size="7.5" fill="#9098A6">Horas extra:</text>
+    <text x="145" y="74" text-anchor="end" font-family="IBM Plex Mono" font-size="8.5" fill="#9098A6">—</text>
+    
+    <rect x="12" y="94" width="141" height="22" rx="4" fill="#FFB020" fill-opacity="0.12"/>
+    <text x="20" y="108.5" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#FFD873">TOTAL SALARIO: $2,500.00</text>
+
+    <!-- Deducciones aplicadas con tope -->
+    <text x="14" y="132" font-family="IBM Plex Mono" font-size="7" fill="#FF5C5C">ISSS (TOPE $1,000):</text>
+    <text x="145" y="132" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" fill="#EDEEF0">-$30.00</text>
+
+    <text x="14" y="146" font-family="IBM Plex Mono" font-size="7" fill="#9098A6">AFP 7.25% (s/ $2,500):</text>
+    <text x="145" y="146" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" fill="#EDEEF0">-$181.25</text>
+
+    <text x="14" y="160" font-family="IBM Plex Mono" font-size="7" fill="#9098A6">ISR (Tramo IV):</text>
+    <text x="145" y="160" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" fill="#EDEEF0">-$363.77</text>
+
+    <rect x="12" y="168" width="141" height="24" rx="4" fill="#3ECF8E" fill-opacity="0.15" stroke="#3ECF8E" stroke-width="1"/>
+    <text x="20" y="183.5" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#3ECF8E">LÍQUIDO: $1,924.98</text>
+  </g>
+
+  <!-- ================= CONSOLIDADO TOTAL DE LA EMPRESA (COLUMNA DERECHA) ================= -->
+  <g transform="translate(505, 60)">
+    <rect width="225" height="200" rx="8" fill="#1C2027" stroke="#3ECF8E" stroke-width="1.2"/>
+    
+    <rect x="12" y="12" width="201" height="24" rx="4" fill="#3ECF8E" fill-opacity="0.15"/>
+    <text x="20" y="27.5" font-family="IBM Plex Mono" font-size="8.5" font-weight="700" fill="#3ECF8E">RESUMEN GENERAL MAYO</text>
+
+    <g transform="translate(12, 44)">
+      <rect width="201" height="136" rx="6" fill="#14171C" stroke="#262B33" stroke-width="1"/>
+      
+      <text x="10" y="20" font-family="IBM Plex Sans" font-size="8" fill="#9098A6">Planilla Bruta Total:</text>
+      <text x="190" y="20" text-anchor="end" font-family="IBM Plex Mono" font-size="8.5" font-weight="700" fill="#EDEEF0">$3,100.00</text>
+      
+      <text x="10" y="38" font-family="IBM Plex Sans" font-size="8" fill="#9098A6">Total Retenciones ISSS:</text>
+      <text x="190" y="38" text-anchor="end" font-family="IBM Plex Mono" font-size="8" fill="#EDEEF0">$48.00</text>
+
+      <text x="10" y="54" font-family="IBM Plex Sans" font-size="8" fill="#9098A6">Total Retenciones AFP:</text>
+      <text x="190" y="54" text-anchor="end" font-family="IBM Plex Mono" font-size="8" fill="#EDEEF0">$224.75</text>
+
+      <text x="10" y="70" font-family="IBM Plex Sans" font-size="8" fill="#9098A6">Total Retenciones ISR:</text>
+      <text x="190" y="70" text-anchor="end" font-family="IBM Plex Mono" font-size="8" fill="#EDEEF0">$363.77</text>
+
+      <line x1="10" y1="80" x2="190" y2="80" stroke="#262B33" stroke-width="1"/>
+
+      <text x="10" y="96" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#3ECF8E">LÍQUIDO A PAGAR:</text>
+      <text x="190" y="96" text-anchor="end" font-family="IBM Plex Mono" font-size="9" font-weight="700" fill="#3ECF8E">$2,463.48</text>
+
+      <text x="10" y="115" font-family="IBM Plex Sans" font-size="7.5" fill="#5AC8FA">+ Carga Patronal (17.25%):</text>
+      <text x="190" y="115" text-anchor="end" font-family="IBM Plex Mono" font-size="8" font-weight="600" fill="#5AC8FA">$422.25</text>
+
+      <text x="10" y="128" font-family="IBM Plex Mono" font-size="7" font-weight="600" fill="#FFB020">COSTO EMPRESA: $3,522.25</text>
+    </g>
+  </g>
+</svg>

@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Unidad 1 — Pasivo Corriente: Planillas | Contabilidad Financiera</title>
-<link rel="icon" type="image/png" href="../favicon-v8.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -41,8 +40,7 @@ code{font-family:'IBM Plex Mono',monospace; background:var(--bg-elev2); padding:
   color:var(--text-dim); font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase;
   padding:0 20px 18px; border-bottom:1px solid var(--border); margin-bottom:10px;
 }
-.sidebar .brand-logo{display:block; width:100%; max-width:160px; height:auto; margin-bottom:10px;}
-.sidebar .brand b{color:var(--accent); display:block; font-size:0.72rem; margin-top:2px;}
+.sidebar .brand b{color:var(--accent); display:block; font-size:0.72rem;}
 .tab{
   display:flex; align-items:center; gap:12px; padding:14px 20px;
   color:var(--text-dim); cursor:pointer; border-left:3px solid transparent;
@@ -74,37 +72,6 @@ code{font-family:'IBM Plex Mono',monospace; background:var(--bg-elev2); padding:
 .panel.active{display:block;}
 @keyframes fadeIn{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
 .content{padding:32px 40px 60px; max-width:1100px;}
-
-/* ---------- EXPLANATORY PANEL VISUALS ---------- */
-.panel-visual{
-  margin:0 0 28px 0;
-  border:1px solid var(--border);
-  border-radius:12px;
-  overflow:hidden;
-  background:var(--bg-elev);
-  position:relative;
-  box-shadow:0 10px 30px rgba(0,0,0,0.35);
-}
-.panel-visual img{
-  width:100%;
-  height:auto;
-  aspect-ratio:16/9;
-  display:block;
-  object-fit:cover;
-  border-bottom:1px solid var(--border);
-}
-.panel-visual figcaption{
-  padding:12px 18px;
-  background:var(--bg-elev2);
-  color:var(--text-dim);
-  font-family:'IBM Plex Mono',monospace;
-  font-size:0.75rem;
-  letter-spacing:0.02em;
-  line-height:1.5;
-}
-.panel-visual figcaption strong{
-  color:var(--accent);
-}
 
 /* ---------- HERO ---------- */
 .hero{
@@ -252,6 +219,22 @@ section.block > h2 .tagnum{
 
 .svg-wrap{background:var(--bg-elev); border-radius:10px; padding:18px; border:1px solid var(--border); margin:18px 0;}
 
+/* ---------- IMAGE REQUEST PLACEHOLDER (pedido de imagen para Antigravity/Codex) ---------- */
+.img-request{
+  border:1px dashed var(--accent); border-radius:10px; padding:20px 22px; margin:22px 0;
+  background:repeating-linear-gradient(135deg, rgba(255,176,32,0.05) 0 10px, transparent 10px 22px), var(--bg-elev);
+  display:flex; gap:16px; align-items:flex-start;
+}
+.img-request .ic{width:38px; height:38px; flex-shrink:0; color:var(--accent);}
+.img-request .meta{flex:1; min-width:0;}
+.img-request .tag{
+  font-family:'IBM Plex Mono',monospace; font-size:0.68rem; color:var(--accent); text-transform:uppercase; letter-spacing:0.05em;
+  border:1px solid var(--accent); padding:2px 9px; border-radius:4px; display:inline-block; margin-bottom:8px; font-weight:600;
+}
+.img-request h5{font-size:0.95rem; margin-bottom:5px; font-family:'IBM Plex Sans',sans-serif; font-weight:700; color:var(--text);}
+.img-request p{font-size:0.83rem; color:var(--text-dim);}
+.img-request .file{font-family:'IBM Plex Mono',monospace; font-size:0.78rem; color:var(--accent-2); margin-top:6px; display:block;}
+
 @media (max-width: 880px){
   .app{flex-direction:column;}
   .sidebar{width:100%; height:auto; position:relative; display:flex; overflow-x:auto;}
@@ -271,34 +254,14 @@ section.block > h2 .tagnum{
     transition-duration:0.01ms !important; scroll-behavior:auto !important;
   }
 }
-.site-topbar{
-  display:flex; align-items:center; justify-content:space-between; gap:12px;
-  background:#000; color:var(--text-dim); font-family:'IBM Plex Mono',monospace;
-  font-size:0.72rem; padding:8px 20px; border-bottom:1px solid var(--border);
-  letter-spacing:0.03em;
-}
-.site-topbar a{color:var(--accent-2); text-decoration:none;}
-.site-topbar a:hover{text-decoration:underline;}
 </style>
 </head>
 <body>
-<div class="site-topbar">
-  <a href="../" style="display:inline-flex; align-items:center; gap:8px;">
-    <img src="../assets/contabilidad-financiera-logo-light-v8.webp" alt="Logo" style="height:18px; width:auto; vertical-align:middle;">
-    <span>← Índice del curso</span>
-  </a>
-  <a href="U1_Planillas_ContFinanciera.xlsx">Descargar Excel (8 hojas) ↓</a>
-</div>
 <div class="app">
 
   <!-- ================= SIDEBAR ================= -->
   <nav class="sidebar">
-    <div class="brand">
-      <a href="../" style="display:block; text-decoration:none;">
-        <img class="brand-logo" src="../assets/contabilidad-financiera-logo-light-v8.webp" alt="Contabilidad Financiera">
-      </a>
-      ESEN / CONT—FIN<b>SECCIÓN 2 · 3T—2026</b>
-    </div>
+    <div class="brand">ESEN / CONT—FIN<b>SECCIÓN 2 · 3T—2026</b></div>
     <div class="tab active" data-panel="p1" role="tab" tabindex="0" aria-selected="true">
       <span class="ghost">01</span>
       <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg></span>
@@ -355,11 +318,6 @@ section.block > h2 .tagnum{
       <!-- ======================================================= -->
       <section class="panel active" id="p1">
 
-        <figure class="panel-visual">
-          <img src="../assets/unidad-1/u1-panel-1-resumen-flujo.png" alt="Flujo visual de retenciones laborales sobre el salario en El Salvador" loading="lazy">
-          <figcaption><strong>FIG. 1.1 · FLUJO DE NÓMINA:</strong> Deducción encadenada de ISSS (3%), AFP (7.25%) e ISR según tramo legal para obtener el salario líquido.</figcaption>
-        </figure>
-
         <section class="block">
           <h2><span class="tagnum">1</span>¿Qué es una planilla?</h2>
           <p><strong>Definición simple:</strong> la planilla es el listado periódico de lo que una empresa le debe a cada empleado (salario) y a terceros (ISSS, AFP, ISR, INCAF) por el trabajo de un mes. Mientras no se paga, es un <span class="badge pasivo">Pasivo</span> corriente.</p>
@@ -401,6 +359,161 @@ section.block > h2 .tagnum{
               <text x="682" y="113" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#9098A6">(neto a pagar)</text>
             </svg>
           </div>
+
+          <div class="box">
+            <h4>📚 Profundización teórica — ¿por qué la planilla ya es un pasivo antes de que se mueva el efectivo?</h4>
+            <p>La contabilidad financiera no reconoce el gasto de sueldos cuando se paga el efectivo, sino cuando el empleado <strong>ya prestó el servicio</strong> — esto es el <strong>principio de devengo (acumulación)</strong>: los gastos se registran en el período en que ayudan a generar el ingreso de la empresa, no cuando sale el dinero. Por eso, al 31 de mayo, aunque Repuestos ABC todavía no le ha entregado un dólar a Ana ni a Juan, la obligación ya existe en sus libros.</p>
+            <p style="margin-top:8px;">Este pasivo es <strong>corriente</strong> (de corto plazo) porque la empresa espera liquidarlo dentro de su ciclo normal de operación — en la práctica, días después del cierre del mes, no años. Así se conecta con la ecuación contable fundamental: <span class="mono">Activo = Pasivo + Patrimonio</span>. Al reconocer el gasto de sueldos, el Patrimonio disminuye (vía el resultado del período) exactamente en la misma medida en que crecen los pasivos por pagar — la ecuación nunca se desbalancea, ni siquiera un segundo antes de que se pague el neto.</p>
+          </div>
+
+          <div class="svg-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 260" width="100%" height="auto" role="img" aria-label="Escena de una pequeña empresa salvadoreña al cierre de la planilla de fin de mes.">
+  <!-- Fondo estructurado -->
+  <rect width="760" height="260" rx="10" fill="#14171C" stroke="#262B33" stroke-width="1.5"/>
+  
+  <!-- Patrón sutil de fondo -->
+  <line x1="0" y1="200" x2="760" y2="200" stroke="#262B33" stroke-width="1" stroke-dasharray="4 8"/>
+  <line x1="280" y1="0" x2="280" y2="200" stroke="#262B33" stroke-width="1" stroke-dasharray="2 6"/>
+  <line x1="490" y1="0" x2="490" y2="200" stroke="#262B33" stroke-width="1" stroke-dasharray="2 6"/>
+
+  <!-- ================= SECCIÓN IZQUIERDA: OFICINA Y CALENDARIO DE FIN DE MES ================= -->
+  <!-- Estante superior con carpetas de contabilidad -->
+  <rect x="30" y="24" width="220" height="8" rx="2" fill="#1C2027" stroke="#262B33"/>
+  <rect x="42" y="10" width="14" height="14" rx="2" fill="#1C2027" stroke="#5AC8FA" stroke-width="1.4"/>
+  <rect x="60" y="8" width="16" height="16" rx="2" fill="#1C2027" stroke="#FFB020" stroke-width="1.4"/>
+  <rect x="80" y="10" width="14" height="14" rx="2" fill="#1C2027" stroke="#3ECF8E" stroke-width="1.4"/>
+  <text x="106" y="20" font-family="IBM Plex Mono" font-size="8.5" fill="#9098A6">REGISTROS 2026</text>
+
+  <!-- Calendario 31 de Mayo -->
+  <g transform="translate(30, 48)">
+    <rect width="105" height="120" rx="6" fill="#1C2027" stroke="#262B33" stroke-width="1.5"/>
+    <path d="M0 6 Q0 0 6 0 L99 0 Q105 0 105 6 L105 28 L0 28 Z" fill="#FF5C5C" opacity="0.9"/>
+    <circle cx="24" cy="14" r="3" fill="#14171C"/>
+    <circle cx="81" cy="14" r="3" fill="#14171C"/>
+    <text x="52.5" y="19" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" font-weight="700" fill="#14171C" letter-spacing="1">MAYO</text>
+    <text x="52.5" y="74" text-anchor="middle" font-family="Bricolage Grotesque" font-size="38" font-weight="800" fill="#EDEEF0">31</text>
+    <rect x="15" y="88" width="75" height="20" rx="4" fill="#FFB020" fill-opacity="0.12" stroke="#FFB020" stroke-width="1"/>
+    <text x="52.5" y="101" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" font-weight="600" fill="#FFB020">FIN DE MES</text>
+  </g>
+
+  <!-- Reloj de pared 5:00 PM (cierre de jornada) -->
+  <g transform="translate(160, 48)">
+    <circle cx="45" cy="45" r="42" fill="#1C2027" stroke="#262B33" stroke-width="1.5"/>
+    <circle cx="45" cy="45" r="3" fill="#FFB020"/>
+    <line x1="45" y1="45" x2="45" y2="20" stroke="#EDEEF0" stroke-width="2" stroke-linecap="round"/>
+    <line x1="45" y1="45" x2="65" y2="45" stroke="#FFB020" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="45" cy="8" r="1.5" fill="#9098A6"/>
+    <circle cx="82" cy="45" r="1.5" fill="#9098A6"/>
+    <circle cx="45" cy="82" r="1.5" fill="#9098A6"/>
+    <circle cx="8" cy="45" r="1.5" fill="#9098A6"/>
+    <text x="45" y="106" text-anchor="middle" font-family="IBM Plex Mono" font-size="8.5" fill="#9098A6">CIERRE LABORAL</text>
+  </g>
+
+  <!-- ================= SECCIÓN CENTRAL: ESCRITORIO DE CONTABILIDAD ================= -->
+  <!-- Laptop con software de planilla -->
+  <g transform="translate(305, 52)">
+    <!-- Pantalla -->
+    <rect x="10" y="0" width="160" height="105" rx="5" fill="#0B0D10" stroke="#262B33" stroke-width="1.5"/>
+    <rect x="16" y="6" width="148" height="93" rx="3" fill="#14171C"/>
+    
+    <!-- Barra superior de la app -->
+    <rect x="16" y="6" width="148" height="14" fill="#1C2027"/>
+    <circle cx="24" cy="13" r="2.5" fill="#FF5C5C"/>
+    <circle cx="32" cy="13" r="2.5" fill="#FFB020"/>
+    <circle cx="40" cy="13" r="2.5" fill="#3ECF8E"/>
+    <text x="82" y="16" text-anchor="middle" font-family="IBM Plex Mono" font-size="6.5" fill="#9098A6">PLANILLA_MAY2026.XLSX</text>
+    
+    <!-- Tabla en pantalla -->
+    <rect x="22" y="26" width="136" height="12" fill="#1C2027" stroke="#262B33" stroke-width="0.8"/>
+    <text x="26" y="34.5" font-family="IBM Plex Mono" font-size="6" font-weight="600" fill="#5AC8FA">EMP</text>
+    <text x="56" y="34.5" font-family="IBM Plex Mono" font-size="6" font-weight="600" fill="#5AC8FA">BRUTO</text>
+    <text x="88" y="34.5" font-family="IBM Plex Mono" font-size="6" font-weight="600" fill="#FFB020">ISSS+AFP</text>
+    <text x="126" y="34.5" font-family="IBM Plex Mono" font-size="6" font-weight="600" fill="#3ECF8E">NETO</text>
+    
+    <!-- Filas -->
+    <rect x="22" y="40" width="136" height="10" fill="#181B20"/>
+    <text x="26" y="47.5" font-family="IBM Plex Sans" font-size="6" fill="#EDEEF0">Ana M.</text>
+    <text x="56" y="47.5" font-family="IBM Plex Mono" font-size="6" fill="#EDEEF0">$600</text>
+    <text x="88" y="47.5" font-family="IBM Plex Mono" font-size="6" fill="#FFB020">$61.50</text>
+    <text x="126" y="47.5" font-family="IBM Plex Mono" font-size="6" fill="#3ECF8E">$538.50</text>
+
+    <rect x="22" y="52" width="136" height="10" fill="#14171C"/>
+    <text x="26" y="59.5" font-family="IBM Plex Sans" font-size="6" fill="#EDEEF0">Juan L.</text>
+    <text x="56" y="59.5" font-family="IBM Plex Mono" font-size="6" fill="#EDEEF0">$2500</text>
+    <text x="88" y="59.5" font-family="IBM Plex Mono" font-size="6" fill="#FFB020">$211.25</text>
+    <text x="126" y="59.5" font-family="IBM Plex Mono" font-size="6" fill="#3ECF8E">$1924.98</text>
+
+    <rect x="22" y="65" width="136" height="12" fill="#1C2027" stroke="#FFB020" stroke-width="0.8"/>
+    <text x="26" y="73.5" font-family="IBM Plex Mono" font-size="6.5" font-weight="700" fill="#FFB020">TOTAL</text>
+    <text x="56" y="73.5" font-family="IBM Plex Mono" font-size="6.5" font-weight="700" fill="#FFB020">$3,100</text>
+    <text x="126" y="73.5" font-family="IBM Plex Mono" font-size="6.5" font-weight="700" fill="#3ECF8E">$2,463.48</text>
+
+    <!-- Base / Teclado laptop -->
+    <path d="M0 105 L180 105 L170 114 L10 114 Z" fill="#1C2027" stroke="#262B33" stroke-width="1.2"/>
+    <rect x="70" y="108" width="40" height="3" rx="1" fill="#262B33"/>
+  </g>
+
+  <!-- Calculadora de escritorio -->
+  <g transform="translate(315, 178)">
+    <rect width="65" height="60" rx="5" fill="#1C2027" stroke="#262B33" stroke-width="1.2"/>
+    <rect x="8" y="8" width="49" height="14" rx="2" fill="#0B0D10" stroke="#262B33"/>
+    <text x="52" y="19" text-anchor="end" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#3ECF8E">3,100.00</text>
+    <!-- Teclas -->
+    <circle cx="16" cy="30" r="3.5" fill="#262B33"/>
+    <circle cx="28" cy="30" r="3.5" fill="#262B33"/>
+    <circle cx="40" cy="30" r="3.5" fill="#262B33"/>
+    <circle cx="52" cy="30" r="3.5" fill="#FFB020"/>
+    <circle cx="16" cy="42" r="3.5" fill="#262B33"/>
+    <circle cx="28" cy="42" r="3.5" fill="#262B33"/>
+    <circle cx="40" cy="42" r="3.5" fill="#262B33"/>
+    <circle cx="52" cy="42" r="3.5" fill="#3ECF8E"/>
+    <circle cx="16" cy="52" r="3.5" fill="#262B33"/>
+    <circle cx="28" cy="52" r="3.5" fill="#262B33"/>
+    <circle cx="40" cy="52" r="3.5" fill="#262B33"/>
+    <circle cx="52" cy="52" r="3.5" fill="#FF5C5C"/>
+  </g>
+
+  <!-- Sello de Devengo / Pasivo -->
+  <g transform="translate(395, 178)">
+    <rect width="80" height="60" rx="5" fill="#1C2027" stroke="#5AC8FA" stroke-width="1" stroke-dasharray="3 3"/>
+    <circle cx="40" cy="24" r="12" fill="#5AC8FA" fill-opacity="0.15" stroke="#5AC8FA" stroke-width="1.2"/>
+    <path d="M34 24 L38 28 L46 20" fill="none" stroke="#5AC8FA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="45" text-anchor="middle" font-family="IBM Plex Mono" font-size="7.5" font-weight="700" fill="#5AC8FA">DEVENGADO</text>
+    <text x="40" y="54" text-anchor="middle" font-family="IBM Plex Sans" font-size="6.5" fill="#9098A6">31/05/2026</text>
+  </g>
+
+  <!-- ================= SECCIÓN DERECHA: TARJETA CONCEPTUAL DEL DEVENGO ================= -->
+  <g transform="translate(505, 24)">
+    <rect width="225" height="212" rx="8" fill="#1C2027" stroke="#FFB020" stroke-width="1.2"/>
+    
+    <rect x="14" y="14" width="197" height="24" rx="4" fill="#FFB020" fill-opacity="0.15"/>
+    <text x="22" y="30" font-family="IBM Plex Mono" font-size="8.5" font-weight="700" fill="#FFD873" letter-spacing="0.5">EL PRINCIPIO DE DEVENGO</text>
+    
+    <text x="16" y="58" font-family="IBM Plex Sans" font-size="9.5" fill="#EDEEF0" font-weight="600">Al 31 de mayo ocurre el hecho:</text>
+    <text x="16" y="74" font-family="IBM Plex Sans" font-size="8.5" fill="#9098A6">1. El trabajo ya fue recibido por la pyme.</text>
+    <text x="16" y="89" font-family="IBM Plex Sans" font-size="8.5" fill="#9098A6">2. Nace la obligación legal de pagar.</text>
+    
+    <!-- Caja de asientos simultáneos -->
+    <rect x="14" y="102" width="197" height="96" rx="6" fill="#14171C" stroke="#262B33" stroke-width="1"/>
+    
+    <rect x="22" y="112" width="6" height="6" rx="1" fill="#5AC8FA"/>
+    <text x="34" y="118" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#5AC8FA">GASTO RECONOCIDO</text>
+    <text x="34" y="130" font-family="IBM Plex Mono" font-size="7.5" fill="#9098A6">Gasto Sueldos: $3,100.00 (Debe)</text>
+
+    <line x1="22" y1="140" x2="200" y2="140" stroke="#262B33" stroke-width="1"/>
+
+    <rect x="22" y="150" width="6" height="6" rx="1" fill="#FFB020"/>
+    <text x="34" y="156" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#FFB020">PASIVO EXIGIBLE (HABER)</text>
+    <text x="34" y="168" font-family="IBM Plex Mono" font-size="7.5" fill="#9098A6">Sueldos por pagar: $2,463.48</text>
+    <text x="34" y="180" font-family="IBM Plex Mono" font-size="7.5" fill="#9098A6">Retenciones (ISSS/AFP/ISR): $636.52</text>
+    <text x="34" y="191" font-family="IBM Plex Mono" font-size="7" font-weight="600" fill="#3ECF8E">→ Aunque el dinero no haya salido aún</text>
+  </g>
+
+  <!-- Borde decorativo inferior -->
+  <rect x="0" y="256" width="760" height="4" fill="#FFB020"/>
+</svg>
+
+</div>
         </section>
 
         <section class="block">
@@ -438,10 +551,175 @@ section.block > h2 .tagnum{
           <p style="font-size:0.85rem; color:var(--text-dim);">Ejemplo salvadoreño: en <em>Repuestos ABC</em>, por cada <span class="fig">$600</span> de sueldo devengado, la empresa desembolsa además <span class="fig">$45</span> de ISSS patronal, <span class="fig">$52.50</span> de AFP patronal y <span class="fig">$6</span> de INCAF — el costo real del empleado para la empresa es mayor al salario bruto.</p>
         </section>
 
-        <figure class="panel-visual">
-          <img src="../assets/unidad-1/u1-guia-costo-total-empresa.png" alt="Guía visual: Retenciones al empleado vs Carga patronal del 17.25%" loading="lazy">
-          <figcaption><strong>GUÍA VISUAL · COSTO REAL DE NÓMINA:</strong> Comparativa entre retenciones deducidas al trabajador (ISSS 3%, AFP 7.25%, ISR) y la carga patronal adicional (17.25%) que asume la empresa.</figcaption>
-        </figure>
+        <section class="block">
+          <h2><span class="tagnum">4</span>El sistema de protección social salvadoreño — panorama teórico</h2>
+          <p>Las tres deducciones de la planilla no son arbitrarias ni intercambiables: cada una corresponde a un <strong>pilar distinto de protección social</strong>, con su propia ley, su propia institución administradora y su propia pregunta de fondo.</p>
+
+          <div class="svg-wrap">
+            <svg viewBox="0 0 740 210" width="100%" height="auto" role="img" aria-label="Tres pilares de protección social en El Salvador: salud, pensiones y capacitación">
+              <rect x="10" y="20" width="225" height="175" rx="8" fill="#1C2027" stroke="#5AC8FA" stroke-width="1.4"/>
+              <circle cx="122" cy="55" r="18" fill="none" stroke="#5AC8FA" stroke-width="1.6"/>
+              <path d="M122 46v18M113 55h18" stroke="#5AC8FA" stroke-width="2" stroke-linecap="round"/>
+              <text x="122" y="92" text-anchor="middle" font-family="IBM Plex Sans" font-size="13" font-weight="700" fill="#EDEEF0">Salud</text>
+              <text x="122" y="109" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#5AC8FA">ISSS</text>
+              <line x1="30" y1="118" x2="215" y2="118" stroke="#262B33"/>
+              <text x="122" y="136" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#9098A6">Retención: 3.00%</text>
+              <text x="122" y="152" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#9098A6">Patronal: 7.50%</text>
+              <text x="122" y="177" text-anchor="middle" font-family="IBM Plex Sans" font-size="9.5" fill="#9098A6" font-style="italic">¿Qué pasa si me</text>
+              <text x="122" y="190" text-anchor="middle" font-family="IBM Plex Sans" font-size="9.5" fill="#9098A6" font-style="italic">enfermo o soy madre?</text>
+
+              <rect x="257" y="20" width="225" height="175" rx="8" fill="#1C2027" stroke="#FFB020" stroke-width="1.4"/>
+              <circle cx="369" cy="55" r="18" fill="none" stroke="#FFB020" stroke-width="1.6"/>
+              <path d="M361 60c0-8 16-8 16 0M369 60v6" stroke="#FFB020" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <text x="369" y="92" text-anchor="middle" font-family="IBM Plex Sans" font-size="13" font-weight="700" fill="#EDEEF0">Pensiones</text>
+              <text x="369" y="109" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#FFB020">AFP</text>
+              <line x1="277" y1="118" x2="462" y2="118" stroke="#262B33"/>
+              <text x="369" y="136" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#9098A6">Retención: 7.25%</text>
+              <text x="369" y="152" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#9098A6">Patronal: 8.75% · sin tope</text>
+              <text x="369" y="177" text-anchor="middle" font-family="IBM Plex Sans" font-size="9.5" fill="#9098A6" font-style="italic">¿Con qué voy a vivir</text>
+              <text x="369" y="190" text-anchor="middle" font-family="IBM Plex Sans" font-size="9.5" fill="#9098A6" font-style="italic">cuando me jubile?</text>
+
+              <rect x="504" y="20" width="225" height="175" rx="8" fill="#1C2027" stroke="#3ECF8E" stroke-width="1.4"/>
+              <circle cx="616" cy="55" r="18" fill="none" stroke="#3ECF8E" stroke-width="1.6"/>
+              <path d="M607 62l9-14 9 14" stroke="#3ECF8E" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <text x="616" y="92" text-anchor="middle" font-family="IBM Plex Sans" font-size="13" font-weight="700" fill="#EDEEF0">Capacitación</text>
+              <text x="616" y="109" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#3ECF8E">INCAF</text>
+              <line x1="524" y1="118" x2="709" y2="118" stroke="#262B33"/>
+              <text x="616" y="136" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#9098A6">Retención: —</text>
+              <text x="616" y="152" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#9098A6">Patronal: 1.00%</text>
+              <text x="616" y="177" text-anchor="middle" font-family="IBM Plex Sans" font-size="9.5" fill="#9098A6" font-style="italic">¿Quién financia la</text>
+              <text x="616" y="190" text-anchor="middle" font-family="IBM Plex Sans" font-size="9.5" fill="#9098A6" font-style="italic">formación técnica del país?</text>
+            </svg>
+          </div>
+          <p style="font-size:0.85rem; color:var(--text-dim);">Los tres pilares conviven en la misma planilla, pero no se pueden mezclar entre sí: nunca se cotiza AFP a nombre de ISSS, ni INCAF se descuenta al empleado. Confundir el pilar es, en la práctica, tan grave como confundir la cifra.</p>
+        </section>
+
+        <section class="block">
+          <h2><span class="tagnum">5</span>¿Por qué el ISR se calcula por tramos y no con una sola tasa?</h2>
+          <p>El Impuesto sobre la Renta salvadoreño usa un esquema de <strong>tasa marginal progresiva</strong>: a mayor remuneración gravada, mayor es el porcentaje que se aplica — pero ese porcentaje más alto <strong>solo se cobra sobre el exceso</strong> que cae dentro de ese tramo, nunca sobre el total del ingreso. Por eso la tabla no dice "30% de todo", sino "30% del exceso de $2,038.10, más una cuota fija".</p>
+          <p style="margin-top:8px;">La <strong>cuota fija</strong> es simplemente el impuesto que ya se generó en los tramos anteriores, previamente calculado para no tener que rehacer la suma tramo por tramo cada vez. Por ejemplo, la cuota fija de $60.00 del Tramo III es el resultado exacto de aplicar el Tramo II completo (10% × (895.24−550.00) + $17.67 ≈ $60.00): es un atajo aritmético, no un cargo adicional.</p>
+
+          <div class="svg-wrap">
+            <svg viewBox="0 0 760 220" width="100%" height="auto" role="img" aria-label="Tramos progresivos de retención mensual de ISR">
+              <line x1="40" y1="180" x2="740" y2="180" stroke="#262B33" stroke-width="1.5"/>
+              <!-- Tramo I -->
+              <rect x="55" y="176" width="150" height="4" fill="#262B33"/>
+              <text x="130" y="163" text-anchor="middle" font-family="IBM Plex Mono" font-size="12" font-weight="700" fill="#9098A6">0%</text>
+              <text x="130" y="198" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#9098A6">$0.01–550.00</text>
+              <text x="130" y="212" text-anchor="middle" font-family="IBM Plex Sans" font-size="8.5" fill="#5A6480" font-style="italic">cuota fija $0.00</text>
+              <!-- Tramo II -->
+              <rect x="215" y="150" width="150" height="30" fill="rgba(255,176,32,0.18)" stroke="#FFB020"/>
+              <text x="290" y="137" text-anchor="middle" font-family="IBM Plex Mono" font-size="12" font-weight="700" fill="#FFB020">10%</text>
+              <text x="290" y="198" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#9098A6">550.01–895.24</text>
+              <text x="290" y="212" text-anchor="middle" font-family="IBM Plex Sans" font-size="8.5" fill="#5A6480" font-style="italic">cuota fija $17.67</text>
+              <!-- Tramo III -->
+              <rect x="375" y="120" width="150" height="60" fill="rgba(255,176,32,0.35)" stroke="#FFB020"/>
+              <text x="450" y="107" text-anchor="middle" font-family="IBM Plex Mono" font-size="12" font-weight="700" fill="#FFB020">20%</text>
+              <text x="450" y="198" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#9098A6">895.25–2,038.10</text>
+              <text x="450" y="212" text-anchor="middle" font-family="IBM Plex Sans" font-size="8.5" fill="#5A6480" font-style="italic">cuota fija $60.00</text>
+              <!-- Tramo IV -->
+              <rect x="535" y="90" width="150" height="90" fill="rgba(255,92,92,0.22)" stroke="#FF5C5C"/>
+              <text x="610" y="77" text-anchor="middle" font-family="IBM Plex Mono" font-size="12" font-weight="700" fill="#FF5C5C">30%</text>
+              <text x="610" y="198" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#9098A6">2,038.11 en adelante</text>
+              <text x="610" y="212" text-anchor="middle" font-family="IBM Plex Sans" font-size="8.5" fill="#5A6480" font-style="italic">cuota fija $288.57</text>
+              <text x="40" y="35" font-family="IBM Plex Sans" font-size="10.5" fill="#9098A6">Tabla mensual verificada — Ley del ISR y su Reglamento (vault, confirmada 2026-08-26)</text>
+            </svg>
+          </div>
+
+          <div class="svg-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 320" width="100%" height="auto" role="img" aria-label="Escalera de cuatro escalones representando los tramos progresivos de retención de ISR, donde solo la porción que excede cada escalón se grava al porcentaje superior.">
+  <!-- Fondo estructurado -->
+  <rect width="500" height="320" rx="10" fill="#14171C" stroke="#262B33" stroke-width="1.5"/>
+  
+  <!-- Encabezado de la ilustración -->
+  <g transform="translate(24, 20)">
+    <rect width="180" height="18" rx="3" fill="#FFB020" fill-opacity="0.12"/>
+    <text x="8" y="13" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#FFD873" letter-spacing="0.5">METÁFORA DE LOS TRAMOS</text>
+    <text x="0" y="32" font-family="Bricolage Grotesque" font-size="14" font-weight="700" fill="#EDEEF0">La Escalera Progresiva de ISR</text>
+  </g>
+
+  <!-- Leyenda / Alerta Pedagógica Superior Derecha -->
+  <g transform="translate(260, 20)">
+    <rect width="216" height="38" rx="6" fill="#1C2027" stroke="#FF5C5C" stroke-width="1"/>
+    <circle cx="16" cy="19" r="6" fill="#FF5C5C" fill-opacity="0.2"/>
+    <path d="M16 16 L16 20 M16 22 L16 23" stroke="#FF5C5C" stroke-width="1.5" stroke-linecap="round"/>
+    <text x="30" y="16" font-family="IBM Plex Sans" font-size="7.5" font-weight="700" fill="#FF5C5C">REGLA DE ORO DEL ISR:</text>
+    <text x="30" y="27" font-family="IBM Plex Sans" font-size="7" fill="#EDEEF0">El % superior grava <tspan fill="#FFB020" font-weight="700">solo el exceso</tspan>, no el total.</text>
+  </g>
+
+  <!-- ================= ESCALERA DE 4 TRAMOS ================= -->
+  <!-- Línea de base -->
+  <line x1="24" y1="270" x2="476" y2="270" stroke="#262B33" stroke-width="1.5"/>
+
+  <!-- ESCALÓN 1: Tramo I (Exento 0%) -->
+  <!-- Rango: Hasta $472.00 (o $550 según tabla) -->
+  <g transform="translate(35, 0)">
+    <!-- Bloque base -->
+    <rect x="0" y="225" width="90" height="45" rx="4" fill="#1C2027" stroke="#9098A6" stroke-width="1.2"/>
+    <text x="45" y="244" text-anchor="middle" font-family="Bricolage Grotesque" font-size="13" font-weight="800" fill="#3ECF8E">0%</text>
+    <text x="45" y="258" text-anchor="middle" font-family="IBM Plex Mono" font-size="7.5" fill="#9098A6">EXENTO</text>
+    <text x="45" y="286" text-anchor="middle" font-family="IBM Plex Mono" font-size="7.5" fill="#5AC8FA">TRAMO I</text>
+    <text x="45" y="298" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" fill="#9098A6">Base inicial</text>
+  </g>
+
+  <!-- ESCALÓN 2: Tramo II (10%) -->
+  <g transform="translate(140, 0)">
+    <!-- Base previa -->
+    <rect x="0" y="225" width="90" height="45" fill="#1C2027" stroke="#262B33"/>
+    <!-- Porción excedente 10% -->
+    <rect x="0" y="175" width="90" height="50" rx="4" fill="#FFB020" fill-opacity="0.2" stroke="#FFB020" stroke-width="1.2"/>
+    <text x="45" y="200" text-anchor="middle" font-family="Bricolage Grotesque" font-size="14" font-weight="800" fill="#FFB020">10%</text>
+    <text x="45" y="214" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" fill="#FFD873">+ cuota fija</text>
+    <text x="45" y="286" text-anchor="middle" font-family="IBM Plex Mono" font-size="7.5" fill="#5AC8FA">TRAMO II</text>
+    <text x="45" y="298" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" fill="#9098A6">Exceso s/ T.I</text>
+  </g>
+
+  <!-- ESCALÓN 3: Tramo III (20%) -->
+  <g transform="translate(245, 0)">
+    <!-- Bases previas -->
+    <rect x="0" y="175" width="90" height="95" fill="#1C2027" stroke="#262B33"/>
+    <!-- Porción excedente 20% -->
+    <rect x="0" y="120" width="90" height="55" rx="4" fill="#FFB020" fill-opacity="0.45" stroke="#FFB020" stroke-width="1.4"/>
+    <text x="45" y="148" text-anchor="middle" font-family="Bricolage Grotesque" font-size="15" font-weight="800" fill="#FFD873">20%</text>
+    <text x="45" y="162" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" fill="#EDEEF0">+ cuota fija</text>
+    <text x="45" y="286" text-anchor="middle" font-family="IBM Plex Mono" font-size="7.5" fill="#5AC8FA">TRAMO III</text>
+    <text x="45" y="298" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" fill="#9098A6">Exceso s/ T.II</text>
+  </g>
+
+  <!-- ESCALÓN 4: Tramo IV (30%) -->
+  <g transform="translate(350, 0)">
+    <!-- Bases previas -->
+    <rect x="0" y="120" width="95" height="150" fill="#1C2027" stroke="#262B33"/>
+    <!-- Porción excedente 30% -->
+    <rect x="0" y="65" width="95" height="55" rx="4" fill="#FF5C5C" fill-opacity="0.3" stroke="#FF5C5C" stroke-width="1.6"/>
+    <text x="47.5" y="93" text-anchor="middle" font-family="Bricolage Grotesque" font-size="16" font-weight="800" fill="#FF5C5C">30%</text>
+    <text x="47.5" y="108" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" font-weight="600" fill="#FF5C5C">+ $288.57</text>
+    <text x="47.5" y="286" text-anchor="middle" font-family="IBM Plex Mono" font-size="7.5" fill="#FF5C5C">TRAMO IV</text>
+    <text x="47.5" y="298" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" fill="#9098A6">Exceso s/ $2,038</text>
+  </g>
+
+  <!-- ================= SILUETA HUMANA SUBIENDO (ESTILO OUTLINE) ================= -->
+  <g transform="translate(195, 115)">
+    <!-- Cabeza -->
+    <circle cx="20" cy="10" r="5.5" fill="none" stroke="#EDEEF0" stroke-width="1.5"/>
+    <!-- Torso -->
+    <line x1="20" y1="16" x2="20" y2="34" stroke="#EDEEF0" stroke-width="1.6" stroke-linecap="round"/>
+    <!-- Brazo señalando hacia arriba -->
+    <line x1="20" y1="20" x2="34" y2="12" stroke="#FFB020" stroke-width="1.6" stroke-linecap="round"/>
+    <line x1="20" y1="20" x2="10" y2="28" stroke="#EDEEF0" stroke-width="1.5" stroke-linecap="round"/>
+    <!-- Piernas en movimiento de subida -->
+    <line x1="20" y1="34" x2="32" y2="48" stroke="#EDEEF0" stroke-width="1.6" stroke-linecap="round"/>
+    <line x1="20" y1="34" x2="12" y2="52" stroke="#EDEEF0" stroke-width="1.6" stroke-linecap="round"/>
+  </g>
+
+  <!-- Flechas y llamadas que conectan los excesos -->
+  <path d="M125 210 L135 210" stroke="#FFB020" stroke-width="1.5" stroke-dasharray="2 2"/>
+  <path d="M230 155 L240 155" stroke="#FFB020" stroke-width="1.5" stroke-dasharray="2 2"/>
+  <path d="M335 98 L345 98" stroke="#FF5C5C" stroke-width="1.5" stroke-dasharray="2 2"/>
+</svg>
+
+</div>
+        </section>
 
         <div class="box legal">
           <h4>⚖️ Marco Legal</h4>
@@ -468,6 +746,10 @@ section.block > h2 .tagnum{
             <dt>Remuneración gravada</dt><dd>Base sobre la cual se calcula la retención de ISR: remuneración del período menos remuneraciones no gravadas menos cotizaciones al ISSS.</dd>
             <dt>Aporte patronal</dt><dd>Gasto adicional que paga la empresa (no se descuenta al empleado) a ISSS, AFP e INCAF.</dd>
             <dt>Tope de base</dt><dd>Monto máximo del salario sobre el cual se calcula una cotización; el ISSS lo tiene ($1,000), la AFP no.</dd>
+            <dt>Principio de devengo (acumulación)</dt><dd>Los gastos e ingresos se reconocen en el período en que ocurren, no cuando se cobra o paga el efectivo — por eso el gasto de sueldos existe antes del pago del neto.</dd>
+            <dt>Pasivo corriente</dt><dd>Obligación que la empresa espera liquidar dentro de su ciclo normal de operación, típicamente en menos de 12 meses.</dd>
+            <dt>Tasa marginal progresiva</dt><dd>Esquema en el que la tasa más alta de un impuesto se aplica solo al exceso de ingreso que cae dentro de ese tramo, nunca al ingreso total.</dd>
+            <dt>Cuota fija</dt><dd>Atajo aritmético que resume el impuesto ya generado por los tramos anteriores, para no tener que sumarlo tramo por tramo en cada cálculo.</dd>
           </dl>
         </div>
       </section>
@@ -476,12 +758,6 @@ section.block > h2 .tagnum{
       <!-- PANEL 2 — EJERCICIO RESUELTO -->
       <!-- ======================================================= -->
       <section class="panel" id="p2">
-
-        <figure class="panel-visual">
-          <img src="../assets/unidad-1/u1-panel-2-ejercicio-resuelto.png" alt="Proceso de cálculo y liquidación de planilla de empleados" loading="lazy">
-          <figcaption><strong>FIG. 1.2 · EJERCICIO RESUELTO:</strong> Fichas de empleados, aplicación de topes cotizables (ISSS $1,000 / AFP sin tope) y consolidación de nómina.</figcaption>
-        </figure>
-
         <section class="block">
           <h2><span class="tagnum">2</span>Ejercicio 1 de la guía — Planilla de Repuestos ABC</h2>
           <p>Enunciado exacto del material de la Profesora Caballero: <em>"En el cuadro se presentan los datos de los salarios de la empresa ABC. Al 31 de mayo: calcule la planilla con las retenciones y el salario líquido, calcule las aportaciones patronales correspondientes, y realice los asientos en el libro diario del pago de los salarios al final de mes."</em></p>
@@ -493,6 +769,154 @@ section.block > h2 .tagnum{
               <tr><td>Juan López</td><td>Gerente</td><td class="num-cell">$2,500.00</td><td class="num-cell">—</td><td class="num-cell">$2,500.00</td></tr>
             </tbody>
           </table>
+
+          <div class="svg-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 280" width="100%" height="auto" role="img" aria-label="Interior de la autopartería Repuestos ABC, con la vendedora Ana y el gerente Juan revisando la planilla de mayo.">
+  <!-- Fondo estructurado -->
+  <rect width="760" height="280" rx="10" fill="#14171C" stroke="#262B33" stroke-width="1.5"/>
+  
+  <!-- Letrero superior de la empresa -->
+  <g transform="translate(30, 16)">
+    <rect width="700" height="32" rx="6" fill="#1C2027" stroke="#262B33" stroke-width="1.2"/>
+    <circle cx="18" cy="16" r="5" fill="#FFB020"/>
+    <text x="32" y="21" font-family="Bricolage Grotesque" font-size="12" font-weight="800" fill="#EDEEF0" letter-spacing="1">REPUESTOS ABC, S.A. DE C.V.</text>
+    <text x="320" y="20.5" font-family="IBM Plex Mono" font-size="8.5" fill="#9098A6">VENTA DE AUTOPARTES · SAN SALVADOR</text>
+    <rect x="580" y="6" width="108" height="20" rx="4" fill="#FFB020" fill-opacity="0.15" stroke="#FFB020" stroke-width="1"/>
+    <text x="634" y="19.5" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#FFD873">PLANILLA 31 MAYO</text>
+  </g>
+
+  <!-- ================= LADO IZQUIERDO: ESTANTERÍA Y ÁREA DE VENTAS (ANA) ================= -->
+  <!-- Estantería con repuestos -->
+  <g transform="translate(30, 60)">
+    <rect width="100" height="150" rx="4" fill="#1C2027" stroke="#262B33" stroke-width="1.2"/>
+    <!-- Estantes -->
+    <line x1="0" y1="50" x2="100" y2="50" stroke="#262B33" stroke-width="1.2"/>
+    <line x1="0" y1="100" x2="100" y2="100" stroke="#262B33" stroke-width="1.2"/>
+    
+    <!-- Llantas en estante superior -->
+    <circle cx="28" cy="26" r="16" fill="none" stroke="#5AC8FA" stroke-width="3"/>
+    <circle cx="28" cy="26" r="8" fill="none" stroke="#262B33" stroke-width="1.5"/>
+    <circle cx="72" cy="26" r="16" fill="none" stroke="#5AC8FA" stroke-width="3"/>
+    <circle cx="72" cy="26" r="8" fill="none" stroke="#262B33" stroke-width="1.5"/>
+    
+    <!-- Cajas de filtros en estante medio -->
+    <rect x="10" y="62" width="35" height="28" rx="2" fill="#14171C" stroke="#FFB020" stroke-width="1"/>
+    <text x="27.5" y="79" text-anchor="middle" font-family="IBM Plex Mono" font-size="6.5" fill="#FFD873">FILTROS</text>
+    <rect x="55" y="62" width="35" height="28" rx="2" fill="#14171C" stroke="#3ECF8E" stroke-width="1"/>
+    <text x="72.5" y="79" text-anchor="middle" font-family="IBM Plex Mono" font-size="6.5" fill="#3ECF8E">BUJÍAS</text>
+
+    <!-- Baterías / frenos en estante inferior -->
+    <rect x="12" y="112" width="76" height="28" rx="3" fill="#14171C" stroke="#5AC8FA" stroke-width="1"/>
+    <text x="50" y="129" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" fill="#5AC8FA">BATERÍAS 12V</text>
+  </g>
+
+  <!-- Puesto de Ana Martínez (Vendedora) -->
+  <g transform="translate(145, 60)">
+    <!-- Ficha / Perfil de Ana -->
+    <rect width="165" height="200" rx="8" fill="#1C2027" stroke="#5AC8FA" stroke-width="1.2"/>
+    <rect x="12" y="12" width="141" height="24" rx="4" fill="#5AC8FA" fill-opacity="0.15"/>
+    <circle cx="24" cy="24" r="6" fill="#5AC8FA"/>
+    <text x="36" y="27.5" font-family="Bricolage Grotesque" font-size="10.5" font-weight="700" fill="#EDEEF0">Ana Martínez</text>
+    <text x="145" y="27" text-anchor="end" font-family="IBM Plex Mono" font-size="7" fill="#5AC8FA">VENDEDORA</text>
+
+    <!-- Datos del sueldo de Ana -->
+    <rect x="12" y="44" width="141" height="42" rx="4" fill="#14171C" stroke="#262B33" stroke-width="1"/>
+    <text x="20" y="58" font-family="IBM Plex Sans" font-size="7.5" fill="#9098A6">Sueldo mensual base:</text>
+    <text x="145" y="58" text-anchor="end" font-family="IBM Plex Mono" font-size="8.5" font-weight="600" fill="#EDEEF0">$590.00</text>
+    <text x="20" y="74" font-family="IBM Plex Sans" font-size="7.5" fill="#9098A6">Horas extra (mayo):</text>
+    <text x="145" y="74" text-anchor="end" font-family="IBM Plex Mono" font-size="8.5" font-weight="600" fill="#FFB020">$10.00</text>
+    
+    <rect x="12" y="94" width="141" height="22" rx="4" fill="#FFB020" fill-opacity="0.12"/>
+    <text x="20" y="108.5" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#FFD873">TOTAL SALARIO: $600.00</text>
+
+    <!-- Deducciones aplicadas -->
+    <text x="14" y="132" font-family="IBM Plex Mono" font-size="7" fill="#9098A6">ISSS 3% (s/ $600):</text>
+    <text x="145" y="132" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" fill="#EDEEF0">-$18.00</text>
+
+    <text x="14" y="146" font-family="IBM Plex Mono" font-size="7" fill="#9098A6">AFP 7.25% (s/ $600):</text>
+    <text x="145" y="146" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" fill="#EDEEF0">-$43.50</text>
+
+    <text x="14" y="160" font-family="IBM Plex Mono" font-size="7" fill="#9098A6">ISR (Tramo I):</text>
+    <text x="145" y="160" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" fill="#3ECF8E">$0.00</text>
+
+    <rect x="12" y="168" width="141" height="24" rx="4" fill="#3ECF8E" fill-opacity="0.15" stroke="#3ECF8E" stroke-width="1"/>
+    <text x="20" y="183.5" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#3ECF8E">LÍQUIDO: $538.50</text>
+  </g>
+
+  <!-- ================= LADO DERECHO: PUESTO GERENCIAL (JUAN LÓPEZ) ================= -->
+  <g transform="translate(325, 60)">
+    <!-- Ficha / Perfil de Juan -->
+    <rect width="165" height="200" rx="8" fill="#1C2027" stroke="#FFB020" stroke-width="1.2"/>
+    <rect x="12" y="12" width="141" height="24" rx="4" fill="#FFB020" fill-opacity="0.15"/>
+    <circle cx="24" cy="24" r="6" fill="#FFB020"/>
+    <text x="36" y="27.5" font-family="Bricolage Grotesque" font-size="10.5" font-weight="700" fill="#EDEEF0">Juan López</text>
+    <text x="145" y="27" text-anchor="end" font-family="IBM Plex Mono" font-size="7" fill="#FFD873">GERENTE</text>
+
+    <!-- Datos del sueldo de Juan -->
+    <rect x="12" y="44" width="141" height="42" rx="4" fill="#14171C" stroke="#262B33" stroke-width="1"/>
+    <text x="20" y="58" font-family="IBM Plex Sans" font-size="7.5" fill="#9098A6">Sueldo mensual base:</text>
+    <text x="145" y="58" text-anchor="end" font-family="IBM Plex Mono" font-size="8.5" font-weight="600" fill="#EDEEF0">$2,500.00</text>
+    <text x="20" y="74" font-family="IBM Plex Sans" font-size="7.5" fill="#9098A6">Horas extra:</text>
+    <text x="145" y="74" text-anchor="end" font-family="IBM Plex Mono" font-size="8.5" fill="#9098A6">—</text>
+    
+    <rect x="12" y="94" width="141" height="22" rx="4" fill="#FFB020" fill-opacity="0.12"/>
+    <text x="20" y="108.5" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#FFD873">TOTAL SALARIO: $2,500.00</text>
+
+    <!-- Deducciones aplicadas con tope -->
+    <text x="14" y="132" font-family="IBM Plex Mono" font-size="7" fill="#FF5C5C">ISSS (TOPE $1,000):</text>
+    <text x="145" y="132" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" fill="#EDEEF0">-$30.00</text>
+
+    <text x="14" y="146" font-family="IBM Plex Mono" font-size="7" fill="#9098A6">AFP 7.25% (s/ $2,500):</text>
+    <text x="145" y="146" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" fill="#EDEEF0">-$181.25</text>
+
+    <text x="14" y="160" font-family="IBM Plex Mono" font-size="7" fill="#9098A6">ISR (Tramo IV):</text>
+    <text x="145" y="160" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" fill="#EDEEF0">-$363.77</text>
+
+    <rect x="12" y="168" width="141" height="24" rx="4" fill="#3ECF8E" fill-opacity="0.15" stroke="#3ECF8E" stroke-width="1"/>
+    <text x="20" y="183.5" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#3ECF8E">LÍQUIDO: $1,924.98</text>
+  </g>
+
+  <!-- ================= CONSOLIDADO TOTAL DE LA EMPRESA (COLUMNA DERECHA) ================= -->
+  <g transform="translate(505, 60)">
+    <rect width="225" height="200" rx="8" fill="#1C2027" stroke="#3ECF8E" stroke-width="1.2"/>
+    
+    <rect x="12" y="12" width="201" height="24" rx="4" fill="#3ECF8E" fill-opacity="0.15"/>
+    <text x="20" y="27.5" font-family="IBM Plex Mono" font-size="8.5" font-weight="700" fill="#3ECF8E">RESUMEN GENERAL MAYO</text>
+
+    <g transform="translate(12, 44)">
+      <rect width="201" height="136" rx="6" fill="#14171C" stroke="#262B33" stroke-width="1"/>
+      
+      <text x="10" y="20" font-family="IBM Plex Sans" font-size="8" fill="#9098A6">Planilla Bruta Total:</text>
+      <text x="190" y="20" text-anchor="end" font-family="IBM Plex Mono" font-size="8.5" font-weight="700" fill="#EDEEF0">$3,100.00</text>
+      
+      <text x="10" y="38" font-family="IBM Plex Sans" font-size="8" fill="#9098A6">Total Retenciones ISSS:</text>
+      <text x="190" y="38" text-anchor="end" font-family="IBM Plex Mono" font-size="8" fill="#EDEEF0">$48.00</text>
+
+      <text x="10" y="54" font-family="IBM Plex Sans" font-size="8" fill="#9098A6">Total Retenciones AFP:</text>
+      <text x="190" y="54" text-anchor="end" font-family="IBM Plex Mono" font-size="8" fill="#EDEEF0">$224.75</text>
+
+      <text x="10" y="70" font-family="IBM Plex Sans" font-size="8" fill="#9098A6">Total Retenciones ISR:</text>
+      <text x="190" y="70" text-anchor="end" font-family="IBM Plex Mono" font-size="8" fill="#EDEEF0">$363.77</text>
+
+      <line x1="10" y1="80" x2="190" y2="80" stroke="#262B33" stroke-width="1"/>
+
+      <text x="10" y="96" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#3ECF8E">LÍQUIDO A PAGAR:</text>
+      <text x="190" y="96" text-anchor="end" font-family="IBM Plex Mono" font-size="9" font-weight="700" fill="#3ECF8E">$2,463.48</text>
+
+      <text x="10" y="115" font-family="IBM Plex Sans" font-size="7.5" fill="#5AC8FA">+ Carga Patronal (17.25%):</text>
+      <text x="190" y="115" text-anchor="end" font-family="IBM Plex Mono" font-size="8" font-weight="600" fill="#5AC8FA">$422.25</text>
+
+      <text x="10" y="128" font-family="IBM Plex Mono" font-size="7" font-weight="600" fill="#FFB020">COSTO EMPRESA: $3,522.25</text>
+    </g>
+  </g>
+</svg>
+
+</div>
+
+          <div class="box">
+            <h4>📚 Profundización teórica — por qué son tres partidas y no una sola</h4>
+            <p>Cada partida del libro diario corresponde a un <strong>hecho económico distinto</strong>, aunque todos ocurran el mismo día de cierre: (1) se <em>devenga</em> el gasto y nacen los pasivos frente al empleado y frente al Estado; (2) nace un <em>segundo</em> gasto —el costo patronal— que es independiente del salario del trabajador; (3) se <em>liquida en efectivo</em> solo la porción que le corresponde al empleado, mientras las retenciones y aportes siguen como pasivo hasta que se enteran a ISSS, AFP e INCAF en fechas posteriores. Separarlas en partidas distintas es lo que permite que el Balance General muestre, en cualquier momento entre el cierre y el pago a las instituciones, exactamente cuánto se le debe a cada una.</p>
+          </div>
         </section>
 
         <div class="steps">
@@ -514,11 +938,6 @@ section.block > h2 .tagnum{
               <p>Ana: 7.25% × $600.00 = <strong>$43.50</strong>. Juan: 7.25% × $2,500.00 = <strong>$181.25</strong> (sin límite máximo).</p>
               <p class="why">¿Por qué? A diferencia del ISSS, la Ley Integral del Sistema de Pensiones no fija un tope de base — se cotiza sobre el 100% del salario devengado.</p>
               <p class="legal-ref">Base legal: Ley Integral del Sistema de Pensiones (AFP).</p>
-
-              <figure class="panel-visual" style="margin-top:16px;">
-                <img src="../assets/unidad-1/u1-guia-tope-isss.png" alt="Guía visual: Regla de oro del tope de ISSS ($1,000) vs AFP sin tope" loading="lazy">
-                <figcaption><strong>GUÍA PEDAGÓGICA · TOPE COTIZABLE:</strong> En salarios &lt; $1,000 (Ana $600) se cotiza el 100%. En salarios &gt; $1,000 (Juan $2,500) el ISSS topa en $1,000 ($30.00 máx), mientras la AFP no tiene límite.</figcaption>
-              </figure>
             </div>
           </div>
           <div class="step">
@@ -569,12 +988,6 @@ section.block > h2 .tagnum{
             <div class="step-circ">7</div>
             <div class="step-body">
               <h4>Registrar los asientos en el libro diario</h4>
-
-              <figure class="panel-visual" style="margin-top:12px; margin-bottom:16px;">
-                <img src="../assets/unidad-1/u1-guia-partidas-contables.png" alt="Guía visual: Las 3 partidas contables de nómina en el libro diario" loading="lazy">
-                <figcaption><strong>GUÍA PEDAGÓGICA · ASIENTOS EN LIBRO DIARIO:</strong> Secuencia de las 3 partidas contables: (1) Devengamiento de sueldos y pasivos, (2) Carga patronal del período y (3) Pago bancario del líquido.</figcaption>
-              </figure>
-
               <table style="margin-top:10px;">
                 <thead><tr><th>Cuenta</th><th class="num-cell">Debe</th><th class="num-cell">Haber</th></tr></thead>
                 <tbody>
@@ -635,12 +1048,6 @@ section.block > h2 .tagnum{
       <!-- PANEL 3 — GUÍA EXCEL -->
       <!-- ======================================================= -->
       <section class="panel" id="p3">
-
-        <figure class="panel-visual">
-          <img src="../assets/unidad-1/u1-panel-3-guia-excel.png" alt="Estructura del modelo financiero y fórmulas de Excel para planillas" loading="lazy">
-          <figcaption><strong>FIG. 1.3 · MODELADO EN EXCEL:</strong> Diseño modular de plantillas, fórmulas anidadas para retenciones y separación clara de datos y cálculos.</figcaption>
-        </figure>
-
         <section class="block">
           <h2><span class="tagnum">3</span>Cómo usar el Excel de esta unidad</h2>
           <p>El archivo <code>U1_Planillas_ContFinanciera.xlsx</code> trae 8 hojas: portada, marco normativo, cálculo de planilla (resuelto y práctica), asientos de libro diario (resuelto y práctica), y la cédula de prestaciones laborales (resuelto y práctica).</p>
@@ -729,12 +1136,6 @@ section.block > h2 .tagnum{
       <!-- PANEL 4 — QUIZ -->
       <!-- ======================================================= -->
       <section class="panel" id="p4">
-
-        <figure class="panel-visual">
-          <img src="../assets/unidad-1/u1-panel-4-quiz-practica.png" alt="Quiz interactivo de práctica para autoevaluación" loading="lazy">
-          <figcaption><strong>FIG. 1.4 · AUTOEVALUACIÓN INTERACTIVA:</strong> Reactivos con retroalimentación instantánea, verificación de conceptos legales y seguimiento del progreso.</figcaption>
-        </figure>
-
         <section class="block">
           <h2><span class="tagnum">4</span>Quiz de práctica — Unidad 1</h2>
           <div class="quiz-head">
@@ -767,12 +1168,6 @@ section.block > h2 .tagnum{
       <!-- PANEL 5 — EJERCICIO VARIANTE -->
       <!-- ======================================================= -->
       <section class="panel" id="p5">
-
-        <figure class="panel-visual">
-          <img src="../assets/unidad-1/u1-panel-5-ejercicio-variante.png" alt="Caso práctico variante y registro contable en Libro Diario" loading="lazy">
-          <figcaption><strong>FIG. 1.5 · CASO PRÁCTICO Y ASIENTOS:</strong> Resolución independiente de nómina con tope e ingreso gravado, solución revelable y registro en Libro Diario (Debe y Haber en balance).</figcaption>
-        </figure>
-
         <section class="block">
           <h2><span class="tagnum">5</span>Ejercicio variante — Café Aroma de Ahuachapán, S.A. de C.V.</h2>
           <p>Misma estructura del Ejercicio 1 de la Profesora Caballero, con una empresa distinta. Al 30 de junio, <em>Café Aroma de Ahuachapán</em> presenta la siguiente planilla:</p>
@@ -784,6 +1179,144 @@ section.block > h2 .tagnum{
             </tbody>
           </table>
           <p><strong>Se pide:</strong> (1) calcule la planilla con las retenciones y el salario líquido de cada empleado, (2) calcule las aportaciones patronales correspondientes, (3) realice los asientos en el libro diario del pago de los salarios a fin de mes.</p>
+
+          <div class="svg-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 280" width="100%" height="auto" role="img" aria-label="Interior de una caficultora artesanal en Ahuachapán, con la cajera Marta y el supervisor Ricardo.">
+  <!-- Fondo estructurado -->
+  <rect width="760" height="280" rx="10" fill="#14171C" stroke="#262B33" stroke-width="1.5"/>
+  
+  <!-- Silueta montañosa de fondo (Ahuachapán / Cordillera) -->
+  <path d="M0 110 Q120 70 240 100 T480 80 T760 110 L760 280 L0 280 Z" fill="#181B20" opacity="0.4"/>
+  <path d="M30 110 L90 50 L150 110 Z" fill="none" stroke="#262B33" stroke-width="1"/>
+  <path d="M120 110 L190 40 L260 110 Z" fill="none" stroke="#262B33" stroke-width="1"/>
+
+  <!-- Letrero superior de la empresa -->
+  <g transform="translate(30, 16)">
+    <rect width="700" height="32" rx="6" fill="#1C2027" stroke="#262B33" stroke-width="1.2"/>
+    <circle cx="18" cy="16" r="5" fill="#3ECF8E"/>
+    <text x="32" y="21" font-family="Bricolage Grotesque" font-size="12" font-weight="800" fill="#EDEEF0" letter-spacing="1">CAFÉ AROMA DE AHUACHAPÁN, S.A. DE C.V.</text>
+    <text x="380" y="20.5" font-family="IBM Plex Mono" font-size="8.5" fill="#9098A6">PLANTA BENEFICIO · AHUACHAPÁN</text>
+    <rect x="585" y="6" width="102" height="20" rx="4" fill="#3ECF8E" fill-opacity="0.15" stroke="#3ECF8E" stroke-width="1"/>
+    <text x="636" y="19.5" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#3ECF8E">30 DE JUNIO</text>
+  </g>
+
+  <!-- ================= LADO IZQUIERDO: SACOS DE CAFÉ Y FICHA DE MARTA ================= -->
+  <!-- Sacos de café artesanal -->
+  <g transform="translate(30, 60)">
+    <rect width="95" height="135" rx="4" fill="#1C2027" stroke="#262B33" stroke-width="1.2"/>
+    <!-- Saco 1 -->
+    <path d="M15 45 C15 25 80 25 80 45 L75 125 C75 130 20 130 20 125 Z" fill="#14171C" stroke="#3ECF8E" stroke-width="1.2"/>
+    <circle cx="47.5" cy="65" r="12" fill="#3ECF8E" fill-opacity="0.15" stroke="#3ECF8E" stroke-width="1"/>
+    <path d="M47.5 58 C43 62 43 68 47.5 72 C52 68 52 62 47.5 58 Z" fill="#3ECF8E"/>
+    <text x="47.5" y="90" text-anchor="middle" font-family="IBM Plex Mono" font-size="6.5" font-weight="700" fill="#EDEEF0">CAFÉ ORO</text>
+    <text x="47.5" y="100" text-anchor="middle" font-family="IBM Plex Mono" font-size="6" fill="#9098A6">1,400 MSNM</text>
+    <text x="47.5" y="112" text-anchor="middle" font-family="IBM Plex Mono" font-size="6" fill="#FFB020">AHUACHAPÁN</text>
+  </g>
+
+  <!-- Ficha de Marta Hernández (Cajera) -->
+  <g transform="translate(140, 60)">
+    <rect width="170" height="200" rx="8" fill="#1C2027" stroke="#3ECF8E" stroke-width="1.2"/>
+    <rect x="12" y="12" width="146" height="24" rx="4" fill="#3ECF8E" fill-opacity="0.15"/>
+    <circle cx="24" cy="24" r="6" fill="#3ECF8E"/>
+    <text x="36" y="27.5" font-family="Bricolage Grotesque" font-size="10.5" font-weight="700" fill="#EDEEF0">Marta Hernández</text>
+    <text x="150" y="27" text-anchor="end" font-family="IBM Plex Mono" font-size="7" fill="#3ECF8E">CAJERA</text>
+
+    <!-- Datos de sueldo -->
+    <rect x="12" y="44" width="146" height="42" rx="4" fill="#14171C" stroke="#262B33" stroke-width="1"/>
+    <text x="20" y="58" font-family="IBM Plex Sans" font-size="7.5" fill="#9098A6">Sueldo mensual:</text>
+    <text x="150" y="58" text-anchor="end" font-family="IBM Plex Mono" font-size="8.5" font-weight="600" fill="#EDEEF0">$450.00</text>
+    <text x="20" y="74" font-family="IBM Plex Sans" font-size="7.5" fill="#9098A6">Horas extra:</text>
+    <text x="150" y="74" text-anchor="end" font-family="IBM Plex Mono" font-size="8.5" font-weight="600" fill="#FFB020">$25.00</text>
+
+    <rect x="12" y="94" width="146" height="22" rx="4" fill="#3ECF8E" fill-opacity="0.12"/>
+    <text x="20" y="108.5" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#3ECF8E">TOTAL SALARIO: $475.00</text>
+
+    <!-- Deducciones -->
+    <text x="14" y="132" font-family="IBM Plex Mono" font-size="7" fill="#9098A6">ISSS 3% (s/ $475):</text>
+    <text x="150" y="132" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" fill="#EDEEF0">-$14.25</text>
+
+    <text x="14" y="146" font-family="IBM Plex Mono" font-size="7" fill="#9098A6">AFP 7.25% (s/ $475):</text>
+    <text x="150" y="146" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" fill="#EDEEF0">-$34.44</text>
+
+    <text x="14" y="160" font-family="IBM Plex Mono" font-size="7" fill="#9098A6">ISR (Tramo I):</text>
+    <text x="150" y="160" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" fill="#3ECF8E">$0.00</text>
+
+    <rect x="12" y="168" width="146" height="24" rx="4" fill="#3ECF8E" fill-opacity="0.15" stroke="#3ECF8E" stroke-width="1"/>
+    <text x="20" y="183.5" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#3ECF8E">LÍQUIDO: $426.31</text>
+  </g>
+
+  <!-- ================= LADO CENTRAL-DERECHO: RICARDO PEÑA ================= -->
+  <g transform="translate(325, 60)">
+    <rect width="170" height="200" rx="8" fill="#1C2027" stroke="#FFB020" stroke-width="1.2"/>
+    <rect x="12" y="12" width="146" height="24" rx="4" fill="#FFB020" fill-opacity="0.15"/>
+    <circle cx="24" cy="24" r="6" fill="#FFB020"/>
+    <text x="36" y="27.5" font-family="Bricolage Grotesque" font-size="10" font-weight="700" fill="#EDEEF0">Ricardo Peña</text>
+    <text x="150" y="27" text-anchor="end" font-family="IBM Plex Mono" font-size="6.5" fill="#FFD873">SUPERVISOR</text>
+
+    <!-- Datos de sueldo -->
+    <rect x="12" y="44" width="146" height="42" rx="4" fill="#14171C" stroke="#262B33" stroke-width="1"/>
+    <text x="20" y="58" font-family="IBM Plex Sans" font-size="7.5" fill="#9098A6">Sueldo mensual:</text>
+    <text x="150" y="58" text-anchor="end" font-family="IBM Plex Mono" font-size="8.5" font-weight="600" fill="#EDEEF0">$1,300.00</text>
+    <text x="20" y="74" font-family="IBM Plex Sans" font-size="7.5" fill="#9098A6">Horas extra:</text>
+    <text x="150" y="74" text-anchor="end" font-family="IBM Plex Mono" font-size="8.5" fill="#9098A6">—</text>
+
+    <rect x="12" y="94" width="146" height="22" rx="4" fill="#FFB020" fill-opacity="0.12"/>
+    <text x="20" y="108.5" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#FFD873">TOTAL SALARIO: $1,300.00</text>
+
+    <!-- Deducciones con tope y tramo III -->
+    <text x="14" y="132" font-family="IBM Plex Mono" font-size="7" fill="#FF5C5C">ISSS (TOPE $1,000):</text>
+    <text x="150" y="132" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" fill="#EDEEF0">-$30.00</text>
+
+    <text x="14" y="146" font-family="IBM Plex Mono" font-size="7" fill="#9098A6">AFP 7.25% (s/ $1,300):</text>
+    <text x="150" y="146" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" fill="#EDEEF0">-$94.25</text>
+
+    <text x="14" y="160" font-family="IBM Plex Mono" font-size="7" fill="#9098A6">ISR (Tramo III 20%):</text>
+    <text x="150" y="160" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" fill="#FFB020">-$116.10</text>
+
+    <rect x="12" y="168" width="146" height="24" rx="4" fill="#3ECF8E" fill-opacity="0.15" stroke="#3ECF8E" stroke-width="1"/>
+    <text x="20" y="183.5" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#3ECF8E">LÍQUIDO: $1,059.65</text>
+  </g>
+
+  <!-- ================= LADO DERECHO: LIBRO DIARIO CONSOLIDADO ================= -->
+  <g transform="translate(510, 60)">
+    <rect width="220" height="200" rx="8" fill="#1C2027" stroke="#5AC8FA" stroke-width="1.2"/>
+    <rect x="12" y="12" width="196" height="24" rx="4" fill="#5AC8FA" fill-opacity="0.15"/>
+    <text x="20" y="27.5" font-family="IBM Plex Mono" font-size="8.5" font-weight="700" fill="#5AC8FA">PARTIDA DE DEVENGAMIENTO</text>
+
+    <g transform="translate(12, 44)">
+      <rect width="196" height="136" rx="6" fill="#14171C" stroke="#262B33" stroke-width="1"/>
+
+      <!-- Debe -->
+      <text x="10" y="18" font-family="IBM Plex Sans" font-size="7.5" font-weight="700" fill="#5AC8FA">DEBE:</text>
+      <text x="10" y="32" font-family="IBM Plex Sans" font-size="7" fill="#EDEEF0">Gasto de Sueldos:</text>
+      <text x="186" y="32" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" font-weight="700" fill="#5AC8FA">$1,775.00</text>
+
+      <line x1="10" y1="40" x2="186" y2="40" stroke="#262B33" stroke-width="1"/>
+
+      <!-- Haber -->
+      <text x="10" y="54" font-family="IBM Plex Sans" font-size="7.5" font-weight="700" fill="#FFB020">HABER:</text>
+      
+      <text x="10" y="68" font-family="IBM Plex Sans" font-size="7" fill="#9098A6">ISSS Retenido:</text>
+      <text x="186" y="68" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" fill="#EDEEF0">$44.25</text>
+
+      <text x="10" y="80" font-family="IBM Plex Sans" font-size="7" fill="#9098A6">AFP Retenida:</text>
+      <text x="186" y="80" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" fill="#EDEEF0">$128.69</text>
+
+      <text x="10" y="92" font-family="IBM Plex Sans" font-size="7" fill="#9098A6">ISR Retenido:</text>
+      <text x="186" y="92" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" fill="#EDEEF0">$116.10</text>
+
+      <text x="10" y="104" font-family="IBM Plex Sans" font-size="7" fill="#9098A6">Sueldos x Pagar:</text>
+      <text x="186" y="104" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" font-weight="700" fill="#3ECF8E">$1,485.96</text>
+
+      <line x1="10" y1="112" x2="186" y2="112" stroke="#262B33" stroke-width="1"/>
+
+      <text x="10" y="126" font-family="IBM Plex Mono" font-size="7.5" font-weight="700" fill="#3ECF8E">TOTAL BALANCEADO:</text>
+      <text x="186" y="126" text-anchor="end" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#3ECF8E">$1,775.00</text>
+    </g>
+  </g>
+</svg>
+
+</div>
 
           <button class="reveal-btn" onclick="document.getElementById('variantSol').classList.toggle('show')">Ver solución →</button>
 

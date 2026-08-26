@@ -22,3 +22,42 @@ El estudiante conectó su carpeta local `~/Documents/claude-skills` (biblioteca 
 - Contraste de la paleta Fintech Oscuro verificado numéricamente (WCAG AA) — todo pasa sin ajustes, no fue necesario tocar ningún color.
 
 Detalle completo y checklist reutilizable para futuras unidades en [[Sistema de Diseño HTML]] § "Checklist de curación".
+
+## Pase de enriquecimiento — teoría + visuales + pedidos de imagen (mismo día, 2026-08-26)
+
+El estudiante pidió que el HTML fuera "más rico de teoría" para facilitar entender las clases, más
+visual, y que se generaran pedidos de imagen para que Antigravity o Codex construyan ilustraciones de
+apoyo (esos agentes no generan imágenes rasterizadas, así que el formato pedido es SVG de código, no
+PNG/JPG — se mantiene la regla del sistema de diseño de "todo visual en SVG inline, nunca imágenes
+externas").
+
+Cambios al HTML (todos verificados contra las tablas ya capturadas en [[Ley del ISR y su Reglamento]]
+y [[Código de Trabajo]] — ninguna cifra nueva de memoria):
+
+- Panel 1: nuevo cuadro teórico sobre el principio de devengo/acumulación y por qué el pasivo nace
+  antes de que se mueva el efectivo (conectado a la ecuación contable Activo = Pasivo + Patrimonio).
+- Panel 1: nueva sección "El sistema de protección social salvadoreño" con un diagrama SVG de los
+  tres pilares (Salud/ISSS, Pensiones/AFP, Capacitación/INCAF).
+- Panel 1: nueva sección sobre por qué el ISR es progresivo por tramos (tasa marginal, qué es
+  realmente la cuota fija) con un gráfico de barras SVG de los 4 tramos mensuales verificados.
+- Panel 2: nuevo cuadro teórico sobre por qué el asiento se separa en 3 partidas (devengo, costo
+  patronal, liquidación en efectivo) en vez de una sola.
+- Glosario del Panel 1 ampliado con: devengo, pasivo corriente, tasa marginal progresiva, cuota fija.
+- 4 nuevos términos de glosario y 3 nuevas cajas teóricas, sin tocar ninguna cifra de los ejercicios
+  ya verificados (363.77, 1,924.98, 2,463.48, 116.10, 1,059.65, 1,485.96 se comprobaron intactos).
+
+Se agregaron 4 tarjetas "Pedido de imagen" (estilo borde punteado ámbar, integradas al sistema de
+diseño) en los puntos donde una ilustración editorial aporta más que un diagrama de datos:
+img-u1-01 (escena de planilla en una pyme salvadoreña, Panel 1), img-u1-02 (metáfora de "la escalera
+de los tramos de ISR", Panel 1), img-u1-03 (escena de Repuestos ABC, Panel 2), img-u1-04 (escena de
+Café Aroma de Ahuachapán, Panel 5). El brief completo de cada una (contenido, paleta exacta,
+dimensiones, alt text, reglas de "no inventar cifras") está en el nuevo archivo
+`Entregables/Unidad 1/Pedidos de Imagen - Unidad 1.md`.
+
+**Aprendizaje para unidades futuras:** cuando se pida "más teoría", el criterio que funcionó fue
+conectar cada concepto ya calculado en el ejercicio con la teoría contable general que lo explica
+(devengo, partida doble, tasa marginal) en vez de agregar teoría genérica de libro de texto sin
+conexión al caso salvadoreño ya construido. Cuando se pidan "pedidos de imagen" para otro agente,
+default a SVG de código (no raster) porque Antigravity/Codex son agentes de código y porque el
+sistema de diseño del curso ya prohíbe imágenes externas — documentar esa decisión explícitamente en
+el brief para que no se pierda en una sesión futura.

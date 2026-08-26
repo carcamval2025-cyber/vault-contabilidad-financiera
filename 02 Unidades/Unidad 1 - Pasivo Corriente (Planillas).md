@@ -70,6 +70,9 @@ Generados el 2026-08-26 y guardados en `Entregables/Unidad 1/` dentro de este va
 - [x] Entregable 1 — HTML (5 paneles): `U1_Planillas_ContFinanciera.html`
 - [x] Entregable 2 — Excel (8 hojas): `U1_Planillas_ContFinanciera.xlsx`
 - [ ] Entregable 3 — Simulacro de Control (no aplica esta semana según el calendario)
+- [x] Pase de enriquecimiento (2026-08-26): más teoría (devengo, tres pilares de protección social,
+  ISR progresivo) y 4 pedidos de imagen para Antigravity/Codex — ver
+  `Entregables/Unidad 1/Pedidos de Imagen - Unidad 1.md` y el detalle en [[Bitácora General]].
 
 Ambos usan el Ejercicio 1 (planilla ABC: Ana Martínez y Juan López) y el Ejercicio 2 (recálculo de ISR) verificados en esta nota, más las tablas de ISR y salario mínimo ya capturadas en [[Ley del ISR y su Reglamento]] y [[Código de Trabajo]]. La Hoja 7 del Excel (Cédula de Prestaciones) usa años de servicio ilustrativos (4 y 12 años) que **no vienen del PDF** — son un supuesto pedagógico marcado explícitamente en la hoja para completar el ejemplo de vacaciones/aguinaldo/indemnización/renuncia voluntaria.
 

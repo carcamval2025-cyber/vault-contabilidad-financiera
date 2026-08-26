@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 280" width="100%" height="auto" role="img" aria-label="Interior de una caficultora artesanal en Ahuachapán, con la cajera Marta y el supervisor Ricardo.">
+  <!-- Fondo estructurado -->
+  <rect width="760" height="280" rx="10" fill="#14171C" stroke="#262B33" stroke-width="1.5"/>
+  
+  <!-- Silueta montañosa de fondo (Ahuachapán / Cordillera) -->
+  <path d="M0 110 Q120 70 240 100 T480 80 T760 110 L760 280 L0 280 Z" fill="#181B20" opacity="0.4"/>
+  <path d="M30 110 L90 50 L150 110 Z" fill="none" stroke="#262B33" stroke-width="1"/>
+  <path d="M120 110 L190 40 L260 110 Z" fill="none" stroke="#262B33" stroke-width="1"/>
+
+  <!-- Letrero superior de la empresa -->
+  <g transform="translate(30, 16)">
+    <rect width="700" height="32" rx="6" fill="#1C2027" stroke="#262B33" stroke-width="1.2"/>
+    <circle cx="18" cy="16" r="5" fill="#3ECF8E"/>
+    <text x="32" y="21" font-family="Bricolage Grotesque" font-size="12" font-weight="800" fill="#EDEEF0" letter-spacing="1">CAFÉ AROMA DE AHUACHAPÁN, S.A. DE C.V.</text>
+    <text x="380" y="20.5" font-family="IBM Plex Mono" font-size="8.5" fill="#9098A6">PLANTA BENEFICIO · AHUACHAPÁN</text>
+    <rect x="585" y="6" width="102" height="20" rx="4" fill="#3ECF8E" fill-opacity="0.15" stroke="#3ECF8E" stroke-width="1"/>
+    <text x="636" y="19.5" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#3ECF8E">30 DE JUNIO</text>
+  </g>
+
+  <!-- ================= LADO IZQUIERDO: SACOS DE CAFÉ Y FICHA DE MARTA ================= -->
+  <!-- Sacos de café artesanal -->
+  <g transform="translate(30, 60)">
+    <rect width="95" height="135" rx="4" fill="#1C2027" stroke="#262B33" stroke-width="1.2"/>
+    <!-- Saco 1 -->
+    <path d="M15 45 C15 25 80 25 80 45 L75 125 C75 130 20 130 20 125 Z" fill="#14171C" stroke="#3ECF8E" stroke-width="1.2"/>
+    <circle cx="47.5" cy="65" r="12" fill="#3ECF8E" fill-opacity="0.15" stroke="#3ECF8E" stroke-width="1"/>
+    <path d="M47.5 58 C43 62 43 68 47.5 72 C52 68 52 62 47.5 58 Z" fill="#3ECF8E"/>
+    <text x="47.5" y="90" text-anchor="middle" font-family="IBM Plex Mono" font-size="6.5" font-weight="700" fill="#EDEEF0">CAFÉ ORO</text>
+    <text x="47.5" y="100" text-anchor="middle" font-family="IBM Plex Mono" font-size="6" fill="#9098A6">1,400 MSNM</text>
+    <text x="47.5" y="112" text-anchor="middle" font-family="IBM Plex Mono" font-size="6" fill="#FFB020">AHUACHAPÁN</text>
+  </g>
+
+  <!-- Ficha de Marta Hernández (Cajera) -->
+  <g transform="translate(140, 60)">
+    <rect width="170" height="200" rx="8" fill="#1C2027" stroke="#3ECF8E" stroke-width="1.2"/>
+    <rect x="12" y="12" width="146" height="24" rx="4" fill="#3ECF8E" fill-opacity="0.15"/>
+    <circle cx="24" cy="24" r="6" fill="#3ECF8E"/>
+    <text x="36" y="27.5" font-family="Bricolage Grotesque" font-size="10.5" font-weight="700" fill="#EDEEF0">Marta Hernández</text>
+    <text x="150" y="27" text-anchor="end" font-family="IBM Plex Mono" font-size="7" fill="#3ECF8E">CAJERA</text>
+
+    <!-- Datos de sueldo -->
+    <rect x="12" y="44" width="146" height="42" rx="4" fill="#14171C" stroke="#262B33" stroke-width="1"/>
+    <text x="20" y="58" font-family="IBM Plex Sans" font-size="7.5" fill="#9098A6">Sueldo mensual:</text>
+    <text x="150" y="58" text-anchor="end" font-family="IBM Plex Mono" font-size="8.5" font-weight="600" fill="#EDEEF0">$450.00</text>
+    <text x="20" y="74" font-family="IBM Plex Sans" font-size="7.5" fill="#9098A6">Horas extra:</text>
+    <text x="150" y="74" text-anchor="end" font-family="IBM Plex Mono" font-size="8.5" font-weight="600" fill="#FFB020">$25.00</text>
+
+    <rect x="12" y="94" width="146" height="22" rx="4" fill="#3ECF8E" fill-opacity="0.12"/>
+    <text x="20" y="108.5" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#3ECF8E">TOTAL SALARIO: $475.00</text>
+
+    <!-- Deducciones -->
+    <text x="14" y="132" font-family="IBM Plex Mono" font-size="7" fill="#9098A6">ISSS 3% (s/ $475):</text>
+    <text x="150" y="132" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" fill="#EDEEF0">-$14.25</text>
+
+    <text x="14" y="146" font-family="IBM Plex Mono" font-size="7" fill="#9098A6">AFP 7.25% (s/ $475):</text>
+    <text x="150" y="146" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" fill="#EDEEF0">-$34.44</text>
+
+    <text x="14" y="160" font-family="IBM Plex Mono" font-size="7" fill="#9098A6">ISR (Tramo I):</text>
+    <text x="150" y="160" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" fill="#3ECF8E">$0.00</text>
+
+    <rect x="12" y="168" width="146" height="24" rx="4" fill="#3ECF8E" fill-opacity="0.15" stroke="#3ECF8E" stroke-width="1"/>
+    <text x="20" y="183.5" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#3ECF8E">LÍQUIDO: $426.31</text>
+  </g>
+
+  <!-- ================= LADO CENTRAL-DERECHO: RICARDO PEÑA ================= -->
+  <g transform="translate(325, 60)">
+    <rect width="170" height="200" rx="8" fill="#1C2027" stroke="#FFB020" stroke-width="1.2"/>
+    <rect x="12" y="12" width="146" height="24" rx="4" fill="#FFB020" fill-opacity="0.15"/>
+    <circle cx="24" cy="24" r="6" fill="#FFB020"/>
+    <text x="36" y="27.5" font-family="Bricolage Grotesque" font-size="10" font-weight="700" fill="#EDEEF0">Ricardo Peña</text>
+    <text x="150" y="27" text-anchor="end" font-family="IBM Plex Mono" font-size="6.5" fill="#FFD873">SUPERVISOR</text>
+
+    <!-- Datos de sueldo -->
+    <rect x="12" y="44" width="146" height="42" rx="4" fill="#14171C" stroke="#262B33" stroke-width="1"/>
+    <text x="20" y="58" font-family="IBM Plex Sans" font-size="7.5" fill="#9098A6">Sueldo mensual:</text>
+    <text x="150" y="58" text-anchor="end" font-family="IBM Plex Mono" font-size="8.5" font-weight="600" fill="#EDEEF0">$1,300.00</text>
+    <text x="20" y="74" font-family="IBM Plex Sans" font-size="7.5" fill="#9098A6">Horas extra:</text>
+    <text x="150" y="74" text-anchor="end" font-family="IBM Plex Mono" font-size="8.5" fill="#9098A6">—</text>
+
+    <rect x="12" y="94" width="146" height="22" rx="4" fill="#FFB020" fill-opacity="0.12"/>
+    <text x="20" y="108.5" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#FFD873">TOTAL SALARIO: $1,300.00</text>
+
+    <!-- Deducciones con tope y tramo III -->
+    <text x="14" y="132" font-family="IBM Plex Mono" font-size="7" fill="#FF5C5C">ISSS (TOPE $1,000):</text>
+    <text x="150" y="132" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" fill="#EDEEF0">-$30.00</text>
+
+    <text x="14" y="146" font-family="IBM Plex Mono" font-size="7" fill="#9098A6">AFP 7.25% (s/ $1,300):</text>
+    <text x="150" y="146" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" fill="#EDEEF0">-$94.25</text>
+
+    <text x="14" y="160" font-family="IBM Plex Mono" font-size="7" fill="#9098A6">ISR (Tramo III 20%):</text>
+    <text x="150" y="160" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" fill="#FFB020">-$116.10</text>
+
+    <rect x="12" y="168" width="146" height="24" rx="4" fill="#3ECF8E" fill-opacity="0.15" stroke="#3ECF8E" stroke-width="1"/>
+    <text x="20" y="183.5" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#3ECF8E">LÍQUIDO: $1,059.65</text>
+  </g>
+
+  <!-- ================= LADO DERECHO: LIBRO DIARIO CONSOLIDADO ================= -->
+  <g transform="translate(510, 60)">
+    <rect width="220" height="200" rx="8" fill="#1C2027" stroke="#5AC8FA" stroke-width="1.2"/>
+    <rect x="12" y="12" width="196" height="24" rx="4" fill="#5AC8FA" fill-opacity="0.15"/>
+    <text x="20" y="27.5" font-family="IBM Plex Mono" font-size="8.5" font-weight="700" fill="#5AC8FA">PARTIDA DE DEVENGAMIENTO</text>
+
+    <g transform="translate(12, 44)">
+      <rect width="196" height="136" rx="6" fill="#14171C" stroke="#262B33" stroke-width="1"/>
+
+      <!-- Debe -->
+      <text x="10" y="18" font-family="IBM Plex Sans" font-size="7.5" font-weight="700" fill="#5AC8FA">DEBE:</text>
+      <text x="10" y="32" font-family="IBM Plex Sans" font-size="7" fill="#EDEEF0">Gasto de Sueldos:</text>
+      <text x="186" y="32" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" font-weight="700" fill="#5AC8FA">$1,775.00</text>
+
+      <line x1="10" y1="40" x2="186" y2="40" stroke="#262B33" stroke-width="1"/>
+
+      <!-- Haber -->
+      <text x="10" y="54" font-family="IBM Plex Sans" font-size="7.5" font-weight="700" fill="#FFB020">HABER:</text>
+      
+      <text x="10" y="68" font-family="IBM Plex Sans" font-size="7" fill="#9098A6">ISSS Retenido:</text>
+      <text x="186" y="68" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" fill="#EDEEF0">$44.25</text>
+
+      <text x="10" y="80" font-family="IBM Plex Sans" font-size="7" fill="#9098A6">AFP Retenida:</text>
+      <text x="186" y="80" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" fill="#EDEEF0">$128.69</text>
+
+      <text x="10" y="92" font-family="IBM Plex Sans" font-size="7" fill="#9098A6">ISR Retenido:</text>
+      <text x="186" y="92" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" fill="#EDEEF0">$116.10</text>
+
+      <text x="10" y="104" font-family="IBM Plex Sans" font-size="7" fill="#9098A6">Sueldos x Pagar:</text>
+      <text x="186" y="104" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" font-weight="700" fill="#3ECF8E">$1,485.96</text>
+
+      <line x1="10" y1="112" x2="186" y2="112" stroke="#262B33" stroke-width="1"/>
+
+      <text x="10" y="126" font-family="IBM Plex Mono" font-size="7.5" font-weight="700" fill="#3ECF8E">TOTAL BALANCEADO:</text>
+      <text x="186" y="126" text-anchor="end" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#3ECF8E">$1,775.00</text>
+    </g>
+  </g>
+</svg>
