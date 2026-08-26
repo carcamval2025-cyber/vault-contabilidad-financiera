@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Unidad 1 — Pasivo Corriente: Planillas | Contabilidad Financiera</title>
+<link rel="icon" type="image/png" href="../favicon-v8.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -40,7 +41,8 @@ code{font-family:'IBM Plex Mono',monospace; background:var(--bg-elev2); padding:
   color:var(--text-dim); font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase;
   padding:0 20px 18px; border-bottom:1px solid var(--border); margin-bottom:10px;
 }
-.sidebar .brand b{color:var(--accent); display:block; font-size:0.72rem;}
+.sidebar .brand-logo{display:block; width:100%; max-width:160px; height:auto; margin-bottom:10px;}
+.sidebar .brand b{color:var(--accent); display:block; font-size:0.72rem; margin-top:2px;}
 .tab{
   display:flex; align-items:center; gap:12px; padding:14px 20px;
   color:var(--text-dim); cursor:pointer; border-left:3px solid transparent;
@@ -72,6 +74,37 @@ code{font-family:'IBM Plex Mono',monospace; background:var(--bg-elev2); padding:
 .panel.active{display:block;}
 @keyframes fadeIn{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
 .content{padding:32px 40px 60px; max-width:1100px;}
+
+/* ---------- EXPLANATORY PANEL VISUALS ---------- */
+.panel-visual{
+  margin:0 0 28px 0;
+  border:1px solid var(--border);
+  border-radius:12px;
+  overflow:hidden;
+  background:var(--bg-elev);
+  position:relative;
+  box-shadow:0 10px 30px rgba(0,0,0,0.35);
+}
+.panel-visual img{
+  width:100%;
+  height:auto;
+  aspect-ratio:16/9;
+  display:block;
+  object-fit:cover;
+  border-bottom:1px solid var(--border);
+}
+.panel-visual figcaption{
+  padding:12px 18px;
+  background:var(--bg-elev2);
+  color:var(--text-dim);
+  font-family:'IBM Plex Mono',monospace;
+  font-size:0.75rem;
+  letter-spacing:0.02em;
+  line-height:1.5;
+}
+.panel-visual figcaption strong{
+  color:var(--accent);
+}
 
 /* ---------- HERO ---------- */
 .hero{
@@ -238,14 +271,34 @@ section.block > h2 .tagnum{
     transition-duration:0.01ms !important; scroll-behavior:auto !important;
   }
 }
+.site-topbar{
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  background:#000; color:var(--text-dim); font-family:'IBM Plex Mono',monospace;
+  font-size:0.72rem; padding:8px 20px; border-bottom:1px solid var(--border);
+  letter-spacing:0.03em;
+}
+.site-topbar a{color:var(--accent-2); text-decoration:none;}
+.site-topbar a:hover{text-decoration:underline;}
 </style>
 </head>
 <body>
+<div class="site-topbar">
+  <a href="../" style="display:inline-flex; align-items:center; gap:8px;">
+    <img src="../assets/contabilidad-financiera-logo-light-v8.webp" alt="Logo" style="height:18px; width:auto; vertical-align:middle;">
+    <span>← Índice del curso</span>
+  </a>
+  <a href="U1_Planillas_ContFinanciera.xlsx">Descargar Excel (8 hojas) ↓</a>
+</div>
 <div class="app">
 
   <!-- ================= SIDEBAR ================= -->
   <nav class="sidebar">
-    <div class="brand">ESEN / CONT—FIN<b>SECCIÓN 2 · 3T—2026</b></div>
+    <div class="brand">
+      <a href="../" style="display:block; text-decoration:none;">
+        <img class="brand-logo" src="../assets/contabilidad-financiera-logo-light-v8.webp" alt="Contabilidad Financiera">
+      </a>
+      ESEN / CONT—FIN<b>SECCIÓN 2 · 3T—2026</b>
+    </div>
     <div class="tab active" data-panel="p1" role="tab" tabindex="0" aria-selected="true">
       <span class="ghost">01</span>
       <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg></span>
@@ -301,6 +354,11 @@ section.block > h2 .tagnum{
       <!-- PANEL 1 — RESUMEN VISUAL -->
       <!-- ======================================================= -->
       <section class="panel active" id="p1">
+
+        <figure class="panel-visual">
+          <img src="../assets/unidad-1/u1-panel-1-resumen-flujo.png" alt="Flujo visual de retenciones laborales sobre el salario en El Salvador" loading="lazy">
+          <figcaption><strong>FIG. 1.1 · FLUJO DE NÓMINA:</strong> Deducción encadenada de ISSS (3%), AFP (7.25%) e ISR según tramo legal para obtener el salario líquido.</figcaption>
+        </figure>
 
         <section class="block">
           <h2><span class="tagnum">1</span>¿Qué es una planilla?</h2>
@@ -413,6 +471,12 @@ section.block > h2 .tagnum{
       <!-- PANEL 2 — EJERCICIO RESUELTO -->
       <!-- ======================================================= -->
       <section class="panel" id="p2">
+
+        <figure class="panel-visual">
+          <img src="../assets/unidad-1/u1-panel-2-ejercicio-resuelto.png" alt="Proceso de cálculo y liquidación de planilla de empleados" loading="lazy">
+          <figcaption><strong>FIG. 1.2 · EJERCICIO RESUELTO:</strong> Fichas de empleados, aplicación de topes cotizables (ISSS $1,000 / AFP sin tope) y consolidación de nómina.</figcaption>
+        </figure>
+
         <section class="block">
           <h2><span class="tagnum">2</span>Ejercicio 1 de la guía — Planilla de Repuestos ABC</h2>
           <p>Enunciado exacto del material de la Profesora Caballero: <em>"En el cuadro se presentan los datos de los salarios de la empresa ABC. Al 31 de mayo: calcule la planilla con las retenciones y el salario líquido, calcule las aportaciones patronales correspondientes, y realice los asientos en el libro diario del pago de los salarios al final de mes."</em></p>
@@ -555,6 +619,12 @@ section.block > h2 .tagnum{
       <!-- PANEL 3 — GUÍA EXCEL -->
       <!-- ======================================================= -->
       <section class="panel" id="p3">
+
+        <figure class="panel-visual">
+          <img src="../assets/unidad-1/u1-panel-3-guia-excel.png" alt="Estructura del modelo financiero y fórmulas de Excel para planillas" loading="lazy">
+          <figcaption><strong>FIG. 1.3 · MODELADO EN EXCEL:</strong> Diseño modular de plantillas, fórmulas anidadas para retenciones y separación clara de datos y cálculos.</figcaption>
+        </figure>
+
         <section class="block">
           <h2><span class="tagnum">3</span>Cómo usar el Excel de esta unidad</h2>
           <p>El archivo <code>U1_Planillas_ContFinanciera.xlsx</code> trae 8 hojas: portada, marco normativo, cálculo de planilla (resuelto y práctica), asientos de libro diario (resuelto y práctica), y la cédula de prestaciones laborales (resuelto y práctica).</p>
@@ -643,6 +713,12 @@ section.block > h2 .tagnum{
       <!-- PANEL 4 — QUIZ -->
       <!-- ======================================================= -->
       <section class="panel" id="p4">
+
+        <figure class="panel-visual">
+          <img src="../assets/unidad-1/u1-panel-4-quiz-practica.png" alt="Quiz interactivo de práctica para autoevaluación" loading="lazy">
+          <figcaption><strong>FIG. 1.4 · AUTOEVALUACIÓN INTERACTIVA:</strong> Reactivos con retroalimentación instantánea, verificación de conceptos legales y seguimiento del progreso.</figcaption>
+        </figure>
+
         <section class="block">
           <h2><span class="tagnum">4</span>Quiz de práctica — Unidad 1</h2>
           <div class="quiz-head">
@@ -675,6 +751,12 @@ section.block > h2 .tagnum{
       <!-- PANEL 5 — EJERCICIO VARIANTE -->
       <!-- ======================================================= -->
       <section class="panel" id="p5">
+
+        <figure class="panel-visual">
+          <img src="../assets/unidad-1/u1-panel-5-ejercicio-variante.png" alt="Caso práctico variante y registro contable en Libro Diario" loading="lazy">
+          <figcaption><strong>FIG. 1.5 · CASO PRÁCTICO Y ASIENTOS:</strong> Resolución independiente de nómina con tope e ingreso gravado, solución revelable y registro en Libro Diario (Debe y Haber en balance).</figcaption>
+        </figure>
+
         <section class="block">
           <h2><span class="tagnum">5</span>Ejercicio variante — Café Aroma de Ahuachapán, S.A. de C.V.</h2>
           <p>Misma estructura del Ejercicio 1 de la Profesora Caballero, con una empresa distinta. Al 30 de junio, <em>Café Aroma de Ahuachapán</em> presenta la siguiente planilla:</p>
