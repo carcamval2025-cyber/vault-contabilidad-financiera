@@ -1,0 +1,43 @@
+{
+	"nodes":[
+		{"id":"g-23","type":"group","x":75,"y":960,"width":1170,"height":404,"color":"#7CB342","label":"🗂️ 02 Unidades"},
+		{"id":"g-15","type":"group","x":215,"y":500,"width":890,"height":404,"color":"#8E5FB0","label":"⚖️ 03 Marco Legal"},
+		{"id":"g-8","type":"group","x":75,"y":160,"width":1170,"height":280,"color":"#2C3E6B","label":"📚 00 Curso"},
+		{"id":"g-31","type":"group","x":215,"y":-360,"width":890,"height":290,"color":"#2E9CA6","label":"📎 Referencia y Plantillas"},
+		{"id":"g-27","type":"group","x":215,"y":1440,"width":890,"height":280,"color":"#d4718e","label":"📒 01 Bitácora"},
+		{"id":"n-1","type":"text","text":"📘 README\n(cómo usar y mantener el vault)","x":255,"y":0,"width":250,"height":100,"color":"#F9A825"},
+		{"id":"n-9","type":"file","file":"03 Marco Legal/Código de Trabajo.md","x":255,"y":580,"width":250,"height":100,"color":"#8E5FB0"},
+		{"id":"n-10","type":"file","file":"03 Marco Legal/Ley del ISR y su Reglamento.md","x":535,"y":580,"width":250,"height":100,"color":"#8E5FB0"},
+		{"id":"n-11","type":"file","file":"03 Marco Legal/Ley del Seguro Social (ISSS).md","x":815,"y":580,"width":250,"height":100,"color":"#8E5FB0"},
+		{"id":"n-12","type":"file","file":"03 Marco Legal/Ley Integral del Sistema de Pensiones (AFP).md","x":255,"y":704,"width":250,"height":100,"color":"#8E5FB0"},
+		{"id":"n-13","type":"file","file":"03 Marco Legal/Ley del INCAF.md","x":535,"y":704,"width":250,"height":100,"color":"#8E5FB0"},
+		{"id":"n-14","type":"file","file":"03 Marco Legal/Ley de Renuncia Voluntaria.md","x":815,"y":704,"width":250,"height":100,"color":"#8E5FB0"},
+		{"id":"n-2","type":"file","file":"Inicio.md","x":535,"y":0,"width":270,"height":115,"color":"#F9A825"},
+		{"id":"n-3","type":"text","text":"🗺️ Organigrama\n(estás aquí)","x":815,"y":0,"width":250,"height":100,"color":"#F9A825"},
+		{"id":"n-28","type":"file","file":"04 Glosario.md","x":255,"y":-270,"width":250,"height":100,"color":"#2E9CA6"},
+		{"id":"n-29","type":"file","file":"Plantillas/Plantilla - Unidad Nueva.md","x":535,"y":-270,"width":250,"height":100,"color":"#2E9CA6"},
+		{"id":"n-30","type":"file","file":"Plantillas/Plantilla - Entrada de Bitácora.md","x":815,"y":-270,"width":250,"height":100,"color":"#2E9CA6"},
+		{"id":"n-5","type":"file","file":"00 Curso/Sistema de Diseño HTML.md","x":395,"y":240,"width":250,"height":100,"color":"#2C3E6B"},
+		{"id":"n-6","type":"file","file":"00 Curso/Sistema de Diseño Excel.md","x":675,"y":240,"width":250,"height":100,"color":"#2C3E6B"},
+		{"id":"n-7","type":"file","file":"00 Curso/Reglas de Precisión Legal y Pedagógica.md","x":955,"y":240,"width":250,"height":100,"color":"#2C3E6B"},
+		{"id":"n-4","type":"file","file":"00 Curso/Programa y Calendario.md","x":115,"y":240,"width":250,"height":100,"color":"#2C3E6B"},
+		{"id":"n-24","type":"file","file":"01 Bitácora/Bitácora General.md","x":255,"y":1520,"width":250,"height":100,"color":"#d4718e"},
+		{"id":"n-25","type":"file","file":"01 Bitácora/Aprendizajes Acumulados.md","x":535,"y":1520,"width":250,"height":100,"color":"#d4718e"},
+		{"id":"n-26","type":"text","text":"🗂️ Entradas/\n(una nota por entrega)","x":815,"y":1520,"width":250,"height":100,"color":"#d4718e"},
+		{"id":"n-16","type":"file","file":"02 Unidades/Unidad 1 - Pasivo Corriente (Planillas).md","x":115,"y":1040,"width":250,"height":100,"color":"#7CB342"},
+		{"id":"n-17","type":"file","file":"02 Unidades/Unidad 2 - Transacciones de Capital.md","x":395,"y":1040,"width":250,"height":100,"color":"#7CB342"},
+		{"id":"n-18","type":"file","file":"02 Unidades/Unidad 3 - Impuesto sobre la Renta.md","x":675,"y":1040,"width":250,"height":100,"color":"#7CB342"},
+		{"id":"n-19","type":"file","file":"02 Unidades/Unidad 4 - Conciliación Bancaria.md","x":955,"y":1040,"width":250,"height":100,"color":"#7CB342"},
+		{"id":"n-20","type":"file","file":"02 Unidades/Unidad 5 - Estado de Flujo de Efectivo.md","x":255,"y":1214,"width":250,"height":100,"color":"#7CB342"},
+		{"id":"n-21","type":"file","file":"02 Unidades/Unidad 6 - Bonos por Pagar e Inversiones en Bonos.md","x":535,"y":1214,"width":250,"height":100,"color":"#7CB342"},
+		{"id":"n-22","type":"file","file":"02 Unidades/Unidad 7 - Análisis de Estados Financieros.md","x":815,"y":1214,"width":250,"height":100,"color":"#7CB342"}
+	],
+	"edges":[
+		{"id":"e-32","fromNode":"n-2","fromSide":"bottom","toNode":"g-8","toSide":"top","color":"#2C3E6B"},
+		{"id":"e-34","fromNode":"g-8","fromSide":"bottom","toNode":"g-15","toSide":"top","color":"#8E5FB0","label":"marco legal por unidad"},
+		{"id":"e-35","fromNode":"g-15","fromSide":"bottom","toNode":"g-23","toSide":"top","color":"#7CB342","label":"rige el cálculo de"},
+		{"id":"e-36","fromNode":"g-23","fromSide":"bottom","toNode":"g-27","toSide":"top","color":"#d4718e","label":"entregables → feedback"},
+		{"id":"e-37","fromNode":"g-27","fromSide":"left","toNode":"g-23","toSide":"left","color":"#d4718e","label":"mejora la próxima entrega"},
+		{"id":"ed8af29d0498a483","fromNode":"n-3","fromSide":"top","toNode":"g-31","toSide":"bottom","color":"5"}
+	]
+}

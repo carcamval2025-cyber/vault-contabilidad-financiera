@@ -6,11 +6,11 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "🗺️",
       "LiBookTemplate",
       "LiHammer",
       "LiShelvingUnit",
-      "LiCalendarHeart",
-      "LiChartColumnStacked"
+      "LiCalendarHeart"
     ],
     "recentlyUsedIconsSize": 5,
     "rules": [],
@@ -119,5 +119,8 @@
   "Plantillas": {
     "iconName": "LiBookTemplate",
     "iconColor": "#ffad1f"
+  },
+  "Organigrama.md": {
+    "iconName": "🗺️"
   }
 }

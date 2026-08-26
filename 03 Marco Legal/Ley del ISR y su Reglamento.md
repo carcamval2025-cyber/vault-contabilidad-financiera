@@ -7,7 +7,52 @@ sources: "Unidad I e Introducción.pdf (verificado — no completar de memoria)"
 
 # Ley del Impuesto sobre la Renta (ISR) y su Reglamento
 
-> [!warning] Contenido verificado desde el PDF de la Unidad 1. Las **tablas de retención de ISR por tramo** (montos exactos) no se capturaron todavía en esta nota — deben tomarse directamente del PDF de la clase correspondiente cuando se generen los entregables, nunca de memoria ni de un trimestre anterior.
+> [!warning] Tablas de retención verificadas y confirmadas por el estudiante el 2026-08-26 (captura del material de la Profesora Caballero, Unidad 1). Vigentes para este trimestre — no reutilizar en trimestres futuros sin volver a verificar contra el PDF correspondiente.
+
+## Tabla de retención de ISR — remuneraciones gravadas pagaderas MENSUALMENTE
+
+| Tramo | Desde | Hasta | % a aplicar | Sobre el exceso de | Más cuota fija de |
+|---|---|---|---|---|---|
+| I | 0.01 | 550.00 | Sin retención | — | — |
+| II | 550.01 | 895.24 | 10% | 550.00 | 17.67 |
+| III | 895.25 | 2,038.10 | 20% | 895.24 | 60.00 |
+| IV | 2,038.11 | En adelante | 30% | 2,038.10 | 288.57 |
+
+## Tabla de retención de ISR — remuneraciones gravadas pagaderas QUINCENALMENTE
+
+| Tramo | Desde | Hasta | % a aplicar | Sobre el exceso de | Más cuota fija de |
+|---|---|---|---|---|---|
+| I | 0.01 | 275.00 | Sin retención | — | — |
+| II | 275.01 | 447.62 | 10% | 275.00 | 8.83 |
+| III | 447.63 | 1,019.05 | 20% | 447.62 | 30.00 |
+| IV | 1,019.06 | En adelante | 30% | 1,019.05 | 144.28 |
+
+## Tabla de retención de ISR — remuneraciones gravadas pagaderas SEMANALMENTE
+
+| Tramo | Desde | Hasta | % a aplicar | Sobre el exceso de | Más cuota fija de |
+|---|---|---|---|---|---|
+| I | 0.01 | 137.50 | Sin retención | — | — |
+| II | 137.51 | 223.81 | 10% | 137.50 | 4.42 |
+| III | 223.82 | 509.52 | 20% | 223.81 | 15.00 |
+| IV | 509.53 | En adelante | 30% | 509.52 | 72.14 |
+
+## Tabla de recálculo de ISR — para el mes de JUNIO (primer recálculo, acumulado enero-junio)
+
+| Tramo | Desde | Hasta | % a aplicar | Sobre el exceso de | Más cuota fija de |
+|---|---|---|---|---|---|
+| I | 0.01 | 3,300.00 | Sin retención | — | — |
+| II | 3,300.01 | 5,371.44 | 10% | 3,300.00 | 106.20 |
+| III | 5,371.45 | 12,228.60 | 20% | 5,371.44 | 360.00 |
+| IV | 12,228.61 | En adelante | 30% | 12,228.60 | 1,731.42 |
+
+## Tabla de recálculo de ISR — para el mes de DICIEMBRE (segundo recálculo, acumulado enero-diciembre)
+
+| Tramo | Desde | Hasta | % a aplicar | Sobre el exceso de | Más cuota fija de |
+|---|---|---|---|---|---|
+| I | 0.01 | 6,600.00 | Sin retención | — | — |
+| II | 6,600.01 | 10,742.86 | 10% | 6,600.00 | 212.12 |
+| III | 10,742.87 | 24,457.14 | 20% | 10,742.86 | 720.00 |
+| IV | 24,457.15 | En adelante | 30% | 24,457.14 | 3,462.86 |
 
 ## Alcance de la retención
 
@@ -45,7 +90,6 @@ El aguinaldo, hasta 2 salarios mínimos mensuales del sector comercio y servicio
 
 ## Pendiente de completar (solo con el PDF correspondiente)
 
-- Tabla de tramos de retención de ISR vigente (mensual y para recálculo).
 - Reglas específicas de la Unidad 3 para personas naturales con rentas diversas y personas jurídicas.
 
 ## Ver también

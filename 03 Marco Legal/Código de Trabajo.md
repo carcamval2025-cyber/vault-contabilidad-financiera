@@ -47,6 +47,20 @@ sources: "Unidad I e Introducción.pdf (verificado — no completar de memoria)"
 - **Art. 50, Código de Trabajo** — causales de terminación sin responsabilidad para el empleador.
 - **Art. 53, Código de Trabajo** — causales de terminación con responsabilidad para el patrono.
 
+## Salario mínimo vigente (tarifas desde el 1 de junio de 2025 — Ministerio de Trabajo, verificado 2026-08-26)
+
+| Sector económico | Salario mínimo mensual |
+|---|---|
+| Industria | $408.80 |
+| Comercio y servicios | $408.80 |
+| Maquila textil y confección | $402.32 |
+| Agrícola — recolección de caña de azúcar | $305.23 |
+| Agrícola — beneficio de café | $305.23 |
+| Agrícola — recolección de café | $272.53 |
+| Agrícola — sector agropecuario, pesca y otras actividades agrícolas | $272.53 |
+
+Esta tarifa es la base para calcular el tope de 2 salarios mínimos exentos de ISR en el aguinaldo (ver arriba) y el tope de 2 salarios mínimos diarios en la [[Ley de Renuncia Voluntaria]]. El PDF de la clase no especifica el número de artículo exacto del Código de Trabajo que fija el salario mínimo por decreto — se referencia de forma general como "según el Código de Trabajo y el decreto del Ministerio de Trabajo vigente".
+
 ## Tratamiento tributario/previsional de cada remuneración (tabla comparativa del material)
 
 | Concepto | Tratamiento |

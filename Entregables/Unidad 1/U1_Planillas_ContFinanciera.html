@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unidad 1 — Pasivo Corriente: Planillas | Contabilidad Financiera</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B0D10; --bg-elev:#14171C; --bg-elev2:#1C2027;
+  --border:#262B33;
+  --text:#EDEEF0; --text-dim:#9098A6;
+  --accent:#FFB020; --accent-2:#FFD873; --accent-dim:rgba(255,176,32,.12);
+  --success:#3ECF8E; --danger:#FF5C5C; --legal:#5AC8FA; --patrimonio:#FF6EC7;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{background:var(--bg);}
+body{
+  font-family:'IBM Plex Sans',sans-serif; background:var(--bg); color:var(--text); font-weight:400; line-height:1.65;
+  background-image:radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size:22px 22px;
+}
+h1,h2,h3,h4{font-family:'Bricolage Grotesque',sans-serif; font-weight:700; color:var(--text); letter-spacing:-0.01em;}
+em, .accent{font-style:normal; color:var(--accent);}
+a{color:var(--accent-2);}
+code{font-family:'IBM Plex Mono',monospace; background:var(--bg-elev2); padding:1px 6px; border-radius:4px; font-size:0.85em; color:var(--accent-2);}
+.mono, .num-cell, .fig{font-family:'IBM Plex Mono',monospace; font-variant-numeric:tabular-nums;}
+
+/* ---------- LAYOUT ---------- */
+.app{display:flex; min-height:100vh;}
+.sidebar{
+  width:220px; flex-shrink:0;
+  background:var(--bg-elev); border-right:1px solid var(--border);
+  padding:24px 0; position:sticky; top:0; height:100vh; overflow-y:auto; overflow-x:hidden;
+}
+.sidebar .brand{
+  color:var(--text-dim); font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase;
+  padding:0 20px 18px; border-bottom:1px solid var(--border); margin-bottom:10px;
+}
+.sidebar .brand b{color:var(--accent); display:block; font-size:0.72rem;}
+.tab{
+  display:flex; align-items:center; gap:12px; padding:14px 20px;
+  color:var(--text-dim); cursor:pointer; border-left:3px solid transparent;
+  transition:all 0.3s var(--ease); font-size:0.87rem; font-weight:500; position:relative; overflow:hidden;
+}
+.tab .ghost{
+  position:absolute; right:6px; top:50%; transform:translateY(-50%);
+  font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:2.6rem;
+  color:rgba(255,176,32,0.06); pointer-events:none; line-height:1;
+}
+.tab:hover{background:rgba(255,255,255,0.03); color:var(--text);}
+.tab.active{
+  border-left:3px solid var(--accent);
+  background:linear-gradient(90deg, rgba(255,176,32,0.10), transparent 70%);
+  color:var(--text);
+}
+.tab.active .ghost{color:rgba(255,176,32,0.14);}
+.tab .ic{width:20px; height:20px; flex-shrink:0; display:flex; align-items:center; justify-content:center; position:relative; z-index:1;}
+.tab span:not(.ic):not(.ghost){position:relative; z-index:1;}
+.tab .num{
+  margin-left:auto; width:20px; height:20px; border-radius:4px;
+  background:rgba(255,255,255,0.06); font-size:0.68rem; display:flex; align-items:center; justify-content:center;
+  font-family:'IBM Plex Mono',monospace; position:relative; z-index:1;
+}
+.tab.active .num{background:var(--accent); color:#0B0D10; font-weight:700;}
+
+.main{flex:1; min-width:0;}
+.panel{display:none; animation:fadeIn 0.25s ease;}
+.panel.active{display:block;}
+@keyframes fadeIn{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
+.content{padding:32px 40px 60px; max-width:1100px;}
+
+/* ---------- HERO ---------- */
+.hero{
+  background:var(--bg-elev); position:relative; overflow:hidden; color:var(--text);
+  border-bottom:1px solid var(--accent); border-top:1px solid var(--accent);
+  padding:40px 40px 34px;
+}
+.hero-decor{position:absolute; right:-40px; top:-60px; opacity:1; pointer-events:none;}
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase;
+  color:var(--accent); font-weight:600; margin-bottom:14px; position:relative; display:inline-block;
+  border:1px solid var(--border); padding:4px 10px; border-radius:4px; background:var(--bg);
+}
+.hero h1{color:var(--text); font-size:2.3rem; position:relative; margin-bottom:8px; max-width:680px;}
+.hero h1 em{color:var(--accent); font-style:normal;}
+.hero p.sub{color:var(--text-dim); max-width:600px; position:relative; font-size:0.95rem;}
+.chips{display:flex; gap:10px; flex-wrap:wrap; margin-top:20px; position:relative;}
+.chip{
+  font-family:'IBM Plex Mono',monospace; font-size:0.74rem; padding:6px 12px; border-radius:6px; font-weight:500;
+  background:transparent; color:var(--text-dim); border:1px solid var(--border);
+}
+.chip.warn{border-color:var(--accent); color:var(--accent);}
+.chip.ok{border-color:var(--success); color:var(--success);}
+
+/* ---------- CARDS / TABLES ---------- */
+.grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin:20px 0;}
+.card{
+  background:var(--bg-elev); border:1px solid var(--border); border-radius:10px; padding:20px;
+  transition:transform 0.3s var(--ease), border-color 0.3s var(--ease); position:relative;
+}
+.card::before{content:""; position:absolute; top:0; left:14px; right:14px; height:1px; background:rgba(255,255,255,0.08);}
+.card:hover{transform:translateY(-3px); border-color:var(--accent);}
+.card .ic{width:36px; height:36px; margin-bottom:12px;}
+.card h4{font-size:1rem; margin-bottom:6px; font-weight:600;}
+.card p{font-size:0.87rem; color:var(--text-dim);}
+
+table{width:100%; border-collapse:collapse; margin:18px 0; font-size:0.87rem; background:var(--bg-elev); border-radius:10px; overflow:hidden; border:1px solid var(--border);}
+thead tr{background:var(--bg-elev2); border-bottom:2px solid var(--accent);}
+th{color:var(--text); text-align:left; padding:11px 14px; font-weight:600; font-size:0.78rem; font-family:'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:0.03em;}
+td{padding:10px 14px; border-bottom:1px solid var(--border); color:var(--text);}
+tbody tr:nth-child(even){background:rgba(255,255,255,0.015);}
+tbody tr:hover{background:rgba(255,176,32,0.04);}
+tbody tr:last-child td{border-bottom:none;}
+.num-cell{text-align:right;}
+
+.badge{display:inline-block; padding:3px 10px; border-radius:5px; font-size:0.72rem; font-weight:600; font-family:'IBM Plex Mono',monospace; border:1px solid transparent;}
+.badge.activo{background:rgba(90,200,250,0.1); color:var(--legal); border-color:rgba(90,200,250,0.3);}
+.badge.pasivo{background:rgba(255,176,32,0.1); color:var(--accent); border-color:rgba(255,176,32,0.3);}
+.badge.patrimonio{background:rgba(255,110,199,0.12); color:var(--patrimonio); border-color:rgba(255,110,199,0.3);}
+.badge.ingreso{background:rgba(62,207,142,0.1); color:var(--success); border-color:rgba(62,207,142,0.3);}
+.badge.gasto{background:rgba(255,92,92,0.1); color:var(--danger); border-color:rgba(255,92,92,0.3);}
+
+.box{border-radius:10px; padding:18px 20px; margin:20px 0; font-size:0.88rem; background:var(--bg-elev); border:1px solid var(--border); color:var(--text);}
+.box h4{font-size:0.92rem; margin-bottom:8px; font-family:'IBM Plex Sans',sans-serif; font-weight:700;}
+.box.eval{border-color:rgba(255,176,32,0.35); background:rgba(255,176,32,0.05);}
+.box.eval h4{color:var(--accent);}
+.box.error{border-color:rgba(255,92,92,0.35); background:rgba(255,92,92,0.05);}
+.box.error h4{color:var(--danger);}
+.box.ok{border-color:rgba(62,207,142,0.35); background:rgba(62,207,142,0.05);}
+.box.ok h4{color:var(--success);}
+.box.legal{border-color:rgba(90,200,250,0.35); background:rgba(90,200,250,0.05);}
+.box.legal h4{color:var(--legal);}
+.box ul{margin:8px 0 0 18px;}
+.box li{margin-bottom:4px;}
+
+.glossary{margin-top:30px; padding-top:20px; border-top:1px dashed var(--border);}
+.glossary dt{font-weight:700; color:var(--accent-2); margin-top:10px; font-family:'IBM Plex Mono',monospace; font-size:0.85rem;}
+.glossary dd{color:var(--text-dim); font-size:0.87rem; margin-left:0;}
+
+section.block{margin-bottom:34px;}
+section.block > h2{font-size:1.5rem; margin-bottom:14px; display:flex; align-items:center; gap:12px;}
+section.block > h2 .tagnum{
+  width:32px; height:32px; border-radius:6px; background:var(--bg-elev2); color:var(--accent); border:1px solid var(--border);
+  font-family:'IBM Plex Mono',monospace; font-size:0.9rem; display:flex; align-items:center; justify-content:center;
+}
+
+/* ---------- STEPS (Panel 2) ---------- */
+.steps{position:relative; margin:24px 0;}
+.step{display:flex; gap:18px; position:relative; padding-bottom:28px;}
+.step:last-child{padding-bottom:0;}
+.step-line{position:absolute; left:19px; top:42px; bottom:0; width:2px; background-image:linear-gradient(var(--border) 60%, transparent 40%); background-size:2px 8px;}
+.step:last-child .step-line{display:none;}
+.step-circ{
+  width:40px; height:40px; border-radius:50%; flex-shrink:0; z-index:1;
+  background:var(--bg-elev2); color:var(--accent); border:2px solid var(--accent);
+  box-shadow:0 0 14px rgba(255,176,32,0.35);
+  display:flex; align-items:center; justify-content:center; font-weight:700; font-family:'IBM Plex Mono',monospace;
+}
+.step-body{flex:1; background:var(--bg-elev); border:1px solid var(--border); border-radius:10px; padding:16px 18px;}
+.step-body h4{font-size:1rem; margin-bottom:6px; font-weight:600;}
+.step-body .why{color:var(--text-dim); font-size:0.85rem; margin-top:6px;}
+.step-body .legal-ref{font-size:0.78rem; color:var(--legal); font-weight:600; margin-top:6px; font-family:'IBM Plex Mono',monospace;}
+.step-body strong{color:var(--accent-2); font-family:'IBM Plex Mono',monospace; font-weight:600;}
+
+/* ---------- EXCEL PREVIEW (Panel 3) ---------- */
+.excel-instructions{counter-reset:step; list-style:none; margin:18px 0;}
+.excel-instructions li{counter-increment:step; position:relative; padding:10px 0 10px 42px; border-bottom:1px solid var(--border); font-size:0.9rem;}
+.excel-instructions li::before{
+  content:counter(step); position:absolute; left:0; top:8px; width:26px; height:26px; border-radius:6px;
+  background:var(--bg-elev2); color:var(--accent); border:1px solid var(--accent); font-weight:700; font-size:0.8rem;
+  font-family:'IBM Plex Mono',monospace; display:flex; align-items:center; justify-content:center;
+}
+
+/* ---------- QUIZ (Panel 4) ---------- */
+.quiz-head{display:flex; align-items:center; gap:24px; margin-bottom:24px; flex-wrap:wrap;}
+.score-wrap{position:relative; width:92px; height:92px;}
+.score-wrap svg{transform:rotate(-90deg);}
+.score-wrap .bgc{stroke:var(--bg-elev2);}
+.score-wrap .fgc{stroke:var(--accent); stroke-linecap:round; transition:stroke-dashoffset 0.5s ease; filter:drop-shadow(0 0 6px rgba(255,176,32,0.6));}
+.score-txt{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-weight:700; font-family:'IBM Plex Mono',monospace; color:var(--text);}
+.level-badge{padding:6px 16px; border-radius:6px; font-weight:700; font-size:0.82rem; font-family:'IBM Plex Mono',monospace; border:1px solid; display:inline-block;}
+.level-badge.verde{background:rgba(62,207,142,0.1); color:var(--success); border-color:var(--success);}
+.level-badge.amarillo{background:rgba(255,176,32,0.1); color:var(--accent); border-color:var(--accent);}
+.level-badge.rojo{background:rgba(255,92,92,0.1); color:var(--danger); border-color:var(--danger);}
+.q-item{background:var(--bg-elev); border:1px solid var(--border); border-radius:10px; padding:18px 20px; margin-bottom:16px;}
+.q-diff{font-size:0.68rem; text-transform:uppercase; letter-spacing:0.06em; font-weight:700; padding:2px 9px; border-radius:5px; margin-right:8px; font-family:'IBM Plex Mono',monospace; border:1px solid;}
+.q-diff.facil{background:rgba(62,207,142,0.1); color:var(--success); border-color:var(--success);}
+.q-diff.media{background:rgba(255,176,32,0.1); color:var(--accent); border-color:var(--accent);}
+.q-diff.dificil{background:rgba(255,92,92,0.1); color:var(--danger); border-color:var(--danger);}
+.q-text{font-weight:600; margin:8px 0 12px; font-size:0.95rem; color:var(--text);}
+.q-opts{display:flex; flex-direction:column; gap:8px;}
+.q-opt{
+  text-align:left; padding:11px 14px; border-radius:8px; border:1px solid var(--border);
+  background:var(--bg); cursor:pointer; font-family:'IBM Plex Sans',sans-serif; font-size:0.88rem; transition:all 0.2s var(--ease); color:var(--text);
+}
+.q-opt:hover:not(:disabled){border-color:var(--accent); background:rgba(255,176,32,0.05);}
+.q-opt:disabled{cursor:default;}
+.q-opt.correct{background:rgba(62,207,142,0.1); border-color:var(--success); color:var(--success); font-weight:600;}
+.q-opt.incorrect{background:rgba(255,92,92,0.1); border-color:var(--danger); color:var(--danger); font-weight:600;}
+.q-feedback{margin-top:10px; font-size:0.85rem; padding:10px 12px; border-radius:8px; display:none; border:1px solid;}
+.q-feedback.show{display:block;}
+.q-feedback.ok{background:rgba(62,207,142,0.06); color:var(--success); border-color:rgba(62,207,142,0.4);}
+.q-feedback.bad{background:rgba(255,92,92,0.06); color:var(--danger); border-color:rgba(255,92,92,0.4);}
+
+/* ---------- VARIANT (Panel 5) ---------- */
+.reveal-btn{
+  background:var(--accent); color:#0B0D10; border:none; padding:12px 26px;
+  border-radius:8px; font-weight:700; font-family:'IBM Plex Mono',monospace; cursor:pointer; font-size:0.88rem;
+  box-shadow:0 0 20px rgba(255,176,32,0.4); transition:transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+  text-transform:uppercase; letter-spacing:0.04em;
+}
+.reveal-btn:hover{transform:translateY(-2px); box-shadow:0 0 28px rgba(255,176,32,0.6);}
+.hidden-sol{display:none; margin-top:20px;}
+.hidden-sol.show{display:block; animation:fadeIn 0.3s ease;}
+
+.svg-wrap{background:var(--bg-elev); border-radius:10px; padding:18px; border:1px solid var(--border); margin:18px 0;}
+
+@media (max-width: 880px){
+  .app{flex-direction:column;}
+  .sidebar{width:100%; height:auto; position:relative; display:flex; overflow-x:auto;}
+  .tab{flex-direction:column; gap:4px; text-align:center; white-space:nowrap;}
+  .tab .ghost{display:none;}
+  .grid3{grid-template-columns:1fr;}
+  .content{padding:24px 18px 50px;}
+}
+
+/* ---------- ACCESSIBILITY: focus states + reduced motion ---------- */
+.tab:focus-visible, .q-opt:focus-visible, .reveal-btn:focus-visible, a:focus-visible{
+  outline:2px solid var(--accent-2); outline-offset:2px; border-radius:4px;
+}
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{
+    animation-duration:0.01ms !important; animation-iteration-count:1 !important;
+    transition-duration:0.01ms !important; scroll-behavior:auto !important;
+  }
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- ================= SIDEBAR ================= -->
+  <nav class="sidebar">
+    <div class="brand">ESEN / CONT—FIN<b>SECCIÓN 2 · 3T—2026</b></div>
+    <div class="tab active" data-panel="p1" role="tab" tabindex="0" aria-selected="true">
+      <span class="ghost">01</span>
+      <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg></span>
+      <span>Resumen Visual</span> <span class="num">1</span>
+    </div>
+    <div class="tab" data-panel="p2" role="tab" tabindex="0" aria-selected="false">
+      <span class="ghost">02</span>
+      <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg></span>
+      <span>Ejercicio Resuelto</span> <span class="num">2</span>
+    </div>
+    <div class="tab" data-panel="p3" role="tab" tabindex="0" aria-selected="false">
+      <span class="ghost">03</span>
+      <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 9v12M15 9v12"/></svg></span>
+      <span>Guía Excel</span> <span class="num">3</span>
+    </div>
+    <div class="tab" data-panel="p4" role="tab" tabindex="0" aria-selected="false">
+      <span class="ghost">04</span>
+      <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.2 2.4c-.8.3-1.2.9-1.2 1.8" stroke-linecap="round"/><circle cx="12" cy="17" r=".6" fill="currentColor"/></svg></span>
+      <span>Quiz de Práctica</span> <span class="num">4</span>
+    </div>
+    <div class="tab" data-panel="p5" role="tab" tabindex="0" aria-selected="false">
+      <span class="ghost">05</span>
+      <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3v5.6L4.5 17a2 2 0 0 0 1.8 2.9h11.4a2 2 0 0 0 1.8-2.9L15 8.6V3M9 3h6"/></svg></span>
+      <span>Ejercicio Variante</span> <span class="num">5</span>
+    </div>
+  </nav>
+
+  <!-- ================= MAIN ================= -->
+  <main class="main">
+
+    <div class="hero">
+      <svg class="hero-decor" width="420" height="340" viewBox="0 0 420 340">
+        <circle cx="330" cy="90" r="150" fill="none" stroke="#262B33" stroke-width="1.5"/>
+        <path d="M180 90 A150 150 0 0 1 465 90" fill="none" stroke="#FFB020" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+        <circle cx="330" cy="90" r="105" fill="none" stroke="#262B33" stroke-width="1.5"/>
+        <path d="M225 90 A105 105 0 0 1 420 90" fill="none" stroke="#FFB020" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+        <line x1="0" y1="230" x2="420" y2="230" stroke="#262B33" stroke-width="1" stroke-dasharray="3 6"/>
+        <text x="330" y="96" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" fill="#9098A6">U—01</text>
+      </svg>
+      <div class="eyebrow">UNIDAD—01 / PLANILLAS.SV</div>
+      <h1>Pasivo Corriente: <em>Planillas</em></h1>
+      <p class="sub">Obligaciones patronales, prestaciones laborales, retiro voluntario y retenciones de ISR — la base legal y contable de la nómina en El Salvador.</p>
+      <div class="chips">
+        <span class="chip">📅 SEMANA—01 · 25–27 AGO 2026</span>
+        <span class="chip ok">🎯 CUBIERTO EN PARCIAL 1</span>
+        <span class="chip">SIN CONTROL NI CASO ESTA SEMANA</span>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- ======================================================= -->
+      <!-- PANEL 1 — RESUMEN VISUAL -->
+      <!-- ======================================================= -->
+      <section class="panel active" id="p1">
+
+        <section class="block">
+          <h2><span class="tagnum">1</span>¿Qué es una planilla?</h2>
+          <p><strong>Definición simple:</strong> la planilla es el listado periódico de lo que una empresa le debe a cada empleado (salario) y a terceros (ISSS, AFP, ISR, INCAF) por el trabajo de un mes. Mientras no se paga, es un <span class="badge pasivo">Pasivo</span> corriente.</p>
+          <p style="margin-top:8px;"><strong>Ejemplo salvadoreño:</strong> la tienda <em>Repuestos ABC</em> paga a su vendedora Ana <span class="fig">$600</span> brutos al mes; antes de dárselos, la empresa ya sabe que <span class="fig">$18</span> son para el ISSS, <span class="fig">$43.50</span> para la AFP y <span class="fig">$0</span> para Hacienda — ese dinero retenido, mientras no se entera a cada institución, también es un pasivo.</p>
+          <p style="margin-top:8px;"><strong>Concepto formal:</strong> la nómina o planilla genera simultáneamente (a) un gasto de sueldos para el período devengado y (b) varios pasivos corrientes de corto plazo: sueldos por pagar (neto), y retenciones/aportes por pagar a ISSS, AFP, INCAF y Ministerio de Hacienda.</p>
+
+          <div class="svg-wrap">
+            <svg viewBox="0 0 760 190" width="100%" height="auto" role="img" aria-label="Flujo de la planilla">
+              <defs>
+                <marker id="arrow1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#FFB020"/></marker>
+              </defs>
+              <rect x="10" y="70" width="150" height="60" rx="6" fill="#1C2027" stroke="#5AC8FA"/>
+              <text x="85" y="95" text-anchor="middle" font-family="IBM Plex Sans" font-size="13" font-weight="700" fill="#EDEEF0">Salario bruto</text>
+              <text x="85" y="113" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#9098A6">(sueldo + horas extra)</text>
+
+              <line x1="160" y1="100" x2="205" y2="100" stroke="#FFB020" stroke-width="2" marker-end="url(#arrow1)"/>
+
+              <rect x="210" y="20" width="150" height="50" rx="6" fill="#1C2027" stroke="#FFB020"/>
+              <text x="285" y="40" text-anchor="middle" font-family="IBM Plex Sans" font-size="12" font-weight="700" fill="#FFB020">− ISSS (3%)</text>
+              <text x="285" y="57" text-anchor="middle" font-family="IBM Plex Mono" font-size="9.5" fill="#9098A6">tope base $1,000</text>
+
+              <rect x="210" y="80" width="150" height="50" rx="6" fill="#1C2027" stroke="#FFB020"/>
+              <text x="285" y="100" text-anchor="middle" font-family="IBM Plex Sans" font-size="12" font-weight="700" fill="#FFB020">− AFP (7.25%)</text>
+              <text x="285" y="117" text-anchor="middle" font-family="IBM Plex Mono" font-size="9.5" fill="#9098A6">sin límite máximo</text>
+
+              <rect x="210" y="140" width="150" height="45" rx="6" fill="#1C2027" stroke="#FF5C5C"/>
+              <text x="285" y="167" text-anchor="middle" font-family="IBM Plex Sans" font-size="12" font-weight="700" fill="#FF5C5C">= Remuneración gravada</text>
+
+              <line x1="360" y1="100" x2="405" y2="100" stroke="#FFB020" stroke-width="2" marker-end="url(#arrow1)"/>
+
+              <rect x="410" y="75" width="150" height="50" rx="6" fill="#1C2027" stroke="#FF5C5C"/>
+              <text x="485" y="95" text-anchor="middle" font-family="IBM Plex Sans" font-size="12" font-weight="700" fill="#FF5C5C">− ISR (tabla)</text>
+              <text x="485" y="112" text-anchor="middle" font-family="IBM Plex Mono" font-size="9.5" fill="#9098A6">según tramo mensual</text>
+
+              <line x1="560" y1="100" x2="605" y2="100" stroke="#FFB020" stroke-width="2" marker-end="url(#arrow1)"/>
+
+              <rect x="610" y="70" width="145" height="60" rx="6" fill="#1C2027" stroke="#3ECF8E"/>
+              <text x="682" y="95" text-anchor="middle" font-family="IBM Plex Sans" font-size="13" font-weight="700" fill="#3ECF8E">Salario líquido</text>
+              <text x="682" y="113" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#9098A6">(neto a pagar)</text>
+            </svg>
+          </div>
+        </section>
+
+        <section class="block">
+          <h2><span class="tagnum">2</span>Tres conceptos clave</h2>
+          <div class="grid3">
+            <div class="card">
+              <div class="ic"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#5AC8FA" stroke-width="1.6"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+              <h4>Pago bruto vs. neto</h4>
+              <p>Bruto = todo lo ganado antes de deducciones. Neto (líquido) = lo que realmente recibe el empleado, después de ISSS, AFP e ISR.</p>
+            </div>
+            <div class="card">
+              <div class="ic"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#FFB020" stroke-width="1.6"><path d="M3 21h18M5 21V10l7-6 7 6v11M9 21v-6h6v6"/></svg></div>
+              <h4>Retención vs. aporte patronal</h4>
+              <p>La retención sale del bolsillo del empleado (se descuenta de su salario). El aporte patronal es un gasto adicional que paga la empresa, no se descuenta a nadie.</p>
+            </div>
+            <div class="card">
+              <div class="ic"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#FF6EC7" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+              <h4>Tope de $1,000 en ISSS</h4>
+              <p>El ISSS solo cotiza sobre los primeros $1,000 del salario, sin importar cuánto gane el empleado. La AFP, en cambio, no tiene tope.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="block">
+          <h2><span class="tagnum">3</span>Tasas y aportes vigentes — Unidad 1</h2>
+          <table>
+            <thead><tr><th>Concepto</th><th>Clasificación</th><th>Retención empleado</th><th>Aporte patronal</th></tr></thead>
+            <tbody>
+              <tr><td>Seguro Social (ISSS) — base máx. $1,000</td><td><span class="badge pasivo">Pasivo</span></td><td class="num-cell">3.00%</td><td class="num-cell">7.50%</td></tr>
+              <tr><td>Pensiones (AFP) — sin límite máximo</td><td><span class="badge pasivo">Pasivo</span></td><td class="num-cell">7.25%</td><td class="num-cell">8.75%</td></tr>
+              <tr><td>INCAF (capacitación)</td><td><span class="badge pasivo">Pasivo</span></td><td class="num-cell">—</td><td class="num-cell">1.00%</td></tr>
+              <tr><td>ISR (Impuesto sobre la Renta)</td><td><span class="badge pasivo">Pasivo</span></td><td class="num-cell">Según tabla de tramos</td><td class="num-cell">—</td></tr>
+            </tbody>
+          </table>
+          <p style="font-size:0.85rem; color:var(--text-dim);">Ejemplo salvadoreño: en <em>Repuestos ABC</em>, por cada <span class="fig">$600</span> de sueldo devengado, la empresa desembolsa además <span class="fig">$45</span> de ISSS patronal, <span class="fig">$52.50</span> de AFP patronal y <span class="fig">$6</span> de INCAF — el costo real del empleado para la empresa es mayor al salario bruto.</p>
+        </section>
+
+        <div class="box legal">
+          <h4>⚖️ Marco Legal</h4>
+          <ul>
+            <li><strong>Art. 177 y 179, Código de Trabajo</strong> — vacaciones (15 días + 30%) y cómputo del año de servicio.</li>
+            <li><strong>Art. 169, Código de Trabajo</strong> — recargo del 100% por horas extra.</li>
+            <li><strong>Art. 29 num. 7 y Art. 33, Ley del ISR</strong> — deducción de $1,600 incorporada en las tablas de retención de personas naturales asalariadas.</li>
+            <li><strong>Ley del Seguro Social</strong> — tasas de cotización ISSS y tope de base de $1,000.</li>
+            <li><strong>Ley Integral del Sistema de Pensiones</strong> — tasas de cotización AFP, sin tope.</li>
+            <li><strong>Ley del INCAF</strong> — aporte patronal del 1%.</li>
+          </ul>
+        </div>
+
+        <div class="box eval">
+          <h4>🎯 Cobertura en evaluaciones</h4>
+          <p>Esta unidad se evalúa en el <strong>Parcial 1</strong> (semana 6). No tiene Control ni Caso propio en su semana (el Caso 1 corresponde a la Unidad 2, y se entrega el sábado 6 de septiembre). Aun así, sus conceptos —remuneración gravada, tope de ISSS, recálculo de ISR— reaparecen en la Unidad 3 y en los Controles 1 y 2.</p>
+        </div>
+
+        <div class="glossary">
+          <h3 style="font-size:1.05rem; margin-bottom:10px; font-family:'Bricolage Grotesque',sans-serif;">Glosario — Panel 1</h3>
+          <dl>
+            <dt>Pago bruto</dt><dd>Monto total devengado antes de cualquier deducción.</dd>
+            <dt>Pago neto (líquido)</dt><dd>Lo que el empleado recibe después de restar todas las retenciones.</dd>
+            <dt>Remuneración gravada</dt><dd>Base sobre la cual se calcula la retención de ISR: remuneración del período menos remuneraciones no gravadas menos cotizaciones al ISSS.</dd>
+            <dt>Aporte patronal</dt><dd>Gasto adicional que paga la empresa (no se descuenta al empleado) a ISSS, AFP e INCAF.</dd>
+            <dt>Tope de base</dt><dd>Monto máximo del salario sobre el cual se calcula una cotización; el ISSS lo tiene ($1,000), la AFP no.</dd>
+          </dl>
+        </div>
+      </section>
+
+      <!-- ======================================================= -->
+      <!-- PANEL 2 — EJERCICIO RESUELTO -->
+      <!-- ======================================================= -->
+      <section class="panel" id="p2">
+        <section class="block">
+          <h2><span class="tagnum">2</span>Ejercicio 1 de la guía — Planilla de Repuestos ABC</h2>
+          <p>Enunciado exacto del material de la Profesora Caballero: <em>"En el cuadro se presentan los datos de los salarios de la empresa ABC. Al 31 de mayo: calcule la planilla con las retenciones y el salario líquido, calcule las aportaciones patronales correspondientes, y realice los asientos en el libro diario del pago de los salarios al final de mes."</em></p>
+
+          <table>
+            <thead><tr><th>Empleado</th><th>Puesto</th><th class="num-cell">Sueldo mensual</th><th class="num-cell">Horas extra</th><th class="num-cell">Total salario</th></tr></thead>
+            <tbody>
+              <tr><td>Ana Martínez</td><td>Vendedora</td><td class="num-cell">$590.00</td><td class="num-cell">$10.00</td><td class="num-cell">$600.00</td></tr>
+              <tr><td>Juan López</td><td>Gerente</td><td class="num-cell">$2,500.00</td><td class="num-cell">—</td><td class="num-cell">$2,500.00</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-line"></div>
+            <div class="step-circ">1</div>
+            <div class="step-body">
+              <h4>Calcular la retención de ISSS (empleado) — tope de $1,000</h4>
+              <p>Ana: 3% × $600.00 = <strong>$18.00</strong>. Juan: como su salario ($2,500) supera el tope, se cotiza solo sobre $1,000 → 3% × $1,000 = <strong>$30.00</strong>.</p>
+              <p class="why">¿Por qué? La base de cotización del ISSS nunca puede exceder $1,000, sin importar cuánto gane el empleado — es el error más común de esta unidad.</p>
+              <p class="legal-ref">Base legal: Ley del Seguro Social — tope de base $1,000.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-line"></div>
+            <div class="step-circ">2</div>
+            <div class="step-body">
+              <h4>Calcular la retención de AFP (empleado) — sin tope</h4>
+              <p>Ana: 7.25% × $600.00 = <strong>$43.50</strong>. Juan: 7.25% × $2,500.00 = <strong>$181.25</strong> (sin límite máximo).</p>
+              <p class="why">¿Por qué? A diferencia del ISSS, la Ley Integral del Sistema de Pensiones no fija un tope de base — se cotiza sobre el 100% del salario devengado.</p>
+              <p class="legal-ref">Base legal: Ley Integral del Sistema de Pensiones (AFP).</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-line"></div>
+            <div class="step-circ">3</div>
+            <div class="step-body">
+              <h4>Obtener la remuneración gravada</h4>
+              <p>Remuneración gravada = Total salario − ISSS empleado − AFP empleado.<br>
+              Ana: 600.00 − 18.00 − 43.50 = <strong>$538.50</strong>. Juan: 2,500.00 − 30.00 − 181.25 = <strong>$2,288.75</strong>.</p>
+              <p class="why">¿Por qué? El ISR no se calcula sobre el salario bruto, sino sobre lo que queda después de las cotizaciones previsionales laborales — confundir estos dos montos es el segundo error más común.</p>
+              <p class="legal-ref">Base legal: Art. 29 num. 7 y Art. 33, Ley del ISR.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-line"></div>
+            <div class="step-circ">4</div>
+            <div class="step-body">
+              <h4>Aplicar la tabla de retención de ISR (mensual)</h4>
+              <p>Ana: $538.50 cae en el <strong>Tramo I (0.01–550.00)</strong> → sin retención → ISR = <strong>$0.00</strong>.<br>
+              Juan: $2,288.75 cae en el <strong>Tramo IV (2,038.11 en adelante)</strong> → 30% sobre el exceso de $2,038.10, más cuota fija de $288.57:<br>
+              (2,288.75 − 2,038.10) × 30% + 288.57 = 250.65 × 0.30 + 288.57 = 75.20 + 288.57 = <strong>$363.77</strong>.</p>
+              <p class="why">¿Por qué la cuota fija? La tabla ya acumula la retención de los tramos anteriores, así que solo se aplica el porcentaje del tramo al exceso, y se suma lo que ya "traía" la cuota fija del tramo.</p>
+              <p class="legal-ref">Tabla verificada en <em>Ley del ISR y su Reglamento</em> del vault (confirmada por el estudiante, 2026-08-26).</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-line"></div>
+            <div class="step-circ">5</div>
+            <div class="step-body">
+              <h4>Calcular el salario líquido (neto)</h4>
+              <p>Ana: 600.00 − 18.00 − 43.50 − 0.00 = <strong>$538.50</strong>.<br>
+              Juan: 2,500.00 − 30.00 − 181.25 − 363.77 = <strong>$1,924.98</strong>.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-line"></div>
+            <div class="step-circ">6</div>
+            <div class="step-body">
+              <h4>Calcular las aportaciones patronales</h4>
+              <p>ISSS patronal (7.5%, mismo tope $1,000): Ana $45.00, Juan $75.00.<br>
+              AFP patronal (8.75%, sin tope): Ana $52.50, Juan $218.75.<br>
+              INCAF (1%, sobre el total del salario): Ana $6.00, Juan $25.00.<br>
+              Total aportes patronales: <strong>$422.25</strong>.</p>
+              <p class="why">¿Por qué separarlos? Los aportes patronales no salen del salario del empleado — son un gasto adicional para la empresa, y se contabilizan en una cuenta de gasto distinta a "Sueldos y Salarios".</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-circ">7</div>
+            <div class="step-body">
+              <h4>Registrar los asientos en el libro diario</h4>
+              <table style="margin-top:10px;">
+                <thead><tr><th>Cuenta</th><th class="num-cell">Debe</th><th class="num-cell">Haber</th></tr></thead>
+                <tbody>
+                  <tr><td><strong style="font-family:'IBM Plex Sans',sans-serif; color:var(--text);">Partida 1 — Gasto de sueldos y pasivos por retención</strong></td><td></td><td></td></tr>
+                  <tr><td style="padding-left:24px;">Gasto de Sueldos y Salarios <span class="badge gasto">Gasto</span></td><td class="num-cell">3,100.00</td><td></td></tr>
+                  <tr><td style="padding-left:24px;">ISSS por Pagar (retención) <span class="badge pasivo">Pasivo</span></td><td></td><td class="num-cell">48.00</td></tr>
+                  <tr><td style="padding-left:24px;">AFP por Pagar (retención) <span class="badge pasivo">Pasivo</span></td><td></td><td class="num-cell">224.75</td></tr>
+                  <tr><td style="padding-left:24px;">ISR Retenido por Pagar <span class="badge pasivo">Pasivo</span></td><td></td><td class="num-cell">363.77</td></tr>
+                  <tr><td style="padding-left:24px;">Sueldos y Salarios por Pagar <span class="badge pasivo">Pasivo</span></td><td></td><td class="num-cell">2,463.48</td></tr>
+                  <tr><td><strong style="font-family:'IBM Plex Sans',sans-serif; color:var(--text);">Partida 2 — Gasto de aportaciones patronales</strong></td><td></td><td></td></tr>
+                  <tr><td style="padding-left:24px;">Gasto de Aportaciones Patronales <span class="badge gasto">Gasto</span></td><td class="num-cell">422.25</td><td></td></tr>
+                  <tr><td style="padding-left:24px;">ISSS por Pagar (patronal) <span class="badge pasivo">Pasivo</span></td><td></td><td class="num-cell">120.00</td></tr>
+                  <tr><td style="padding-left:24px;">AFP por Pagar (patronal) <span class="badge pasivo">Pasivo</span></td><td></td><td class="num-cell">271.25</td></tr>
+                  <tr><td style="padding-left:24px;">INCAF por Pagar <span class="badge pasivo">Pasivo</span></td><td></td><td class="num-cell">31.00</td></tr>
+                  <tr><td><strong style="font-family:'IBM Plex Sans',sans-serif; color:var(--text);">Partida 3 — Pago del neto a los empleados</strong></td><td></td><td></td></tr>
+                  <tr><td style="padding-left:24px;">Sueldos y Salarios por Pagar <span class="badge pasivo">Pasivo</span></td><td class="num-cell">2,463.48</td><td></td></tr>
+                  <tr><td style="padding-left:24px;">Efectivo y Equivalentes <span class="badge activo">Activo</span></td><td></td><td class="num-cell">2,463.48</td></tr>
+                </tbody>
+              </table>
+              <p class="why">¿Por qué tres partidas? La Partida 1 reconoce el gasto y las obligaciones en el momento en que se devenga el salario. La Partida 2 reconoce el costo patronal, que es independiente del salario del empleado. La Partida 3 es la salida real de efectivo cuando se paga el neto — las retenciones y aportes se pagan después, en fechas distintas, a cada institución.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="box legal">
+          <h4>⚖️ Marco Legal aplicado en este ejercicio</h4>
+          <ul>
+            <li><strong>Ley del Seguro Social</strong> — tope de base de $1,000 para la cotización del ISSS (empleado 3%, patronal 7.5%).</li>
+            <li><strong>Ley Integral del Sistema de Pensiones</strong> — cotización de AFP sin tope (empleado 7.25%, patronal 8.75%).</li>
+            <li><strong>Ley del INCAF</strong> — aporte patronal del 1%, sin contraparte de retención al empleado.</li>
+            <li><strong>Art. 29 num. 7 y Art. 33, Ley del ISR</strong> — la tabla de retención mensual usada en el Paso 4 ya incorpora la deducción de $1,600 para personas naturales asalariadas.</li>
+          </ul>
+        </div>
+
+        <div class="box error">
+          <h4>⚠️ Errores más comunes en esta unidad</h4>
+          <ul>
+            <li>Aplicar el 3% y el 7.5% de ISSS sobre el salario completo de Juan ($2,500) en vez de sobre el tope de $1,000.</li>
+            <li>Confundir remuneración gravada con salario bruto — olvidar restar ISSS y AFP antes de aplicar la tabla de ISR.</li>
+            <li>Usar la tabla quincenal o semanal cuando la planilla se paga mensualmente (o viceversa).</li>
+            <li>Olvidar que el INCAF es <em>solo</em> aporte patronal — no existe una versión de INCAF que se le retenga al empleado.</li>
+            <li>Registrar el pago del neto (salida de efectivo) en la misma partida que el reconocimiento del gasto, en vez de como un asiento separado.</li>
+          </ul>
+        </div>
+
+        <div class="glossary">
+          <h3 style="font-size:1.05rem; margin-bottom:10px; font-family:'Bricolage Grotesque',sans-serif;">Glosario — Panel 2</h3>
+          <dl>
+            <dt>Tramo</dt><dd>Cada rango de ingreso gravado en la tabla de retención de ISR, con su propio porcentaje y cuota fija.</dd>
+            <dt>Cuota fija</dt><dd>Monto acumulado de la retención de los tramos anteriores, que se suma al resultado del tramo actual.</dd>
+            <dt>Sueldos por pagar</dt><dd>Pasivo corriente que representa el salario neto devengado y aún no pagado en efectivo.</dd>
+            <dt>Retenido por pagar</dt><dd>Pasivo que representa el dinero descontado al empleado que la empresa aún debe enterar a la institución correspondiente (ISSS, AFP, Hacienda).</dd>
+          </dl>
+        </div>
+      </section>
+
+      <!-- ======================================================= -->
+      <!-- PANEL 3 — GUÍA EXCEL -->
+      <!-- ======================================================= -->
+      <section class="panel" id="p3">
+        <section class="block">
+          <h2><span class="tagnum">3</span>Cómo usar el Excel de esta unidad</h2>
+          <p>El archivo <code>U1_Planillas_ContFinanciera.xlsx</code> trae 8 hojas: portada, marco normativo, cálculo de planilla (resuelto y práctica), asientos de libro diario (resuelto y práctica), y la cédula de prestaciones laborales (resuelto y práctica).</p>
+
+          <div class="svg-wrap">
+            <svg viewBox="0 0 640 220" width="100%" height="auto" role="img" aria-label="Vista previa de la hoja de cálculo">
+              <rect x="0" y="0" width="640" height="220" fill="#14171C" stroke="#262B33"/>
+              <rect x="0" y="0" width="640" height="26" fill="#1C2027"/>
+              <rect x="0" y="24" width="640" height="2" fill="#FFB020"/>
+              <text x="10" y="18" font-family="IBM Plex Mono" font-size="11" fill="#FFB020" font-weight="700">🧮 CALCULO_PLANILLAS — HOJA 3</text>
+              <!-- header row -->
+              <rect x="0" y="26" width="640" height="24" fill="#1C2027"/>
+              <text x="10" y="42" font-family="IBM Plex Mono" font-size="9.5" fill="#9098A6">EMPLEADO</text>
+              <text x="150" y="42" font-family="IBM Plex Mono" font-size="9.5" fill="#9098A6">SUELDO</text>
+              <text x="230" y="42" font-family="IBM Plex Mono" font-size="9.5" fill="#9098A6">ISSS 3%</text>
+              <text x="320" y="42" font-family="IBM Plex Mono" font-size="9.5" fill="#9098A6">AFP 7.25%</text>
+              <text x="420" y="42" font-family="IBM Plex Mono" font-size="9.5" fill="#9098A6">GRAVADA</text>
+              <text x="500" y="42" font-family="IBM Plex Mono" font-size="9.5" fill="#9098A6">ISR</text>
+              <text x="570" y="42" font-family="IBM Plex Mono" font-size="9.5" fill="#9098A6">NETO</text>
+              <!-- row 1 -->
+              <rect x="0" y="50" width="640" height="24" fill="#181B20"/>
+              <text x="10" y="66" font-family="IBM Plex Sans" font-size="9.5" fill="#EDEEF0">Ana Martínez</text>
+              <text x="150" y="66" font-family="IBM Plex Mono" font-size="9.5" fill="#5AC8FA">600.00</text>
+              <text x="230" y="66" font-family="IBM Plex Mono" font-size="9.5" fill="#EDEEF0">18.00</text>
+              <text x="320" y="66" font-family="IBM Plex Mono" font-size="9.5" fill="#EDEEF0">43.50</text>
+              <text x="420" y="66" font-family="IBM Plex Mono" font-size="9.5" fill="#EDEEF0">538.50</text>
+              <text x="500" y="66" font-family="IBM Plex Mono" font-size="9.5" fill="#EDEEF0">0.00</text>
+              <text x="570" y="66" font-family="IBM Plex Mono" font-size="9.5" fill="#3ECF8E">538.50</text>
+              <!-- row 2 -->
+              <rect x="0" y="74" width="640" height="24" fill="#14171C"/>
+              <text x="10" y="90" font-family="IBM Plex Sans" font-size="9.5" fill="#EDEEF0">Juan López</text>
+              <text x="150" y="90" font-family="IBM Plex Mono" font-size="9.5" fill="#5AC8FA">2,500.00</text>
+              <text x="230" y="90" font-family="IBM Plex Mono" font-size="9.5" fill="#EDEEF0">30.00</text>
+              <text x="320" y="90" font-family="IBM Plex Mono" font-size="9.5" fill="#EDEEF0">181.25</text>
+              <text x="420" y="90" font-family="IBM Plex Mono" font-size="9.5" fill="#EDEEF0">2,288.75</text>
+              <text x="500" y="90" font-family="IBM Plex Mono" font-size="9.5" fill="#EDEEF0">363.77</text>
+              <text x="570" y="90" font-family="IBM Plex Mono" font-size="9.5" fill="#3ECF8E">1,924.98</text>
+              <!-- total row -->
+              <rect x="0" y="98" width="640" height="24" fill="#1C2027"/>
+              <rect x="0" y="98" width="640" height="1" fill="#FFB020"/>
+              <text x="10" y="114" font-family="IBM Plex Mono" font-size="9.5" font-weight="700" fill="#FFB020">TOTAL</text>
+              <text x="150" y="114" font-family="IBM Plex Mono" font-size="9.5" font-weight="700" fill="#FFB020">3,100.00</text>
+              <text x="230" y="114" font-family="IBM Plex Mono" font-size="9.5" font-weight="700" fill="#FFB020">48.00</text>
+              <text x="320" y="114" font-family="IBM Plex Mono" font-size="9.5" font-weight="700" fill="#FFB020">224.75</text>
+              <text x="420" y="114" font-family="IBM Plex Mono" font-size="9.5" font-weight="700" fill="#FFB020">2,827.25</text>
+              <text x="500" y="114" font-family="IBM Plex Mono" font-size="9.5" font-weight="700" fill="#FFB020">363.77</text>
+              <text x="570" y="114" font-family="IBM Plex Mono" font-size="9.5" font-weight="700" fill="#FFB020">2,463.48</text>
+              <text x="10" y="145" font-family="IBM Plex Sans" font-size="9.5" fill="#9098A6" font-style="italic">Cian = dato de entrada (editable) · Blanco = fórmula (no tocar)</text>
+              <text x="10" y="163" font-family="IBM Plex Sans" font-size="9.5" fill="#9098A6" font-style="italic">Fila de encabezados congelada (freeze panes) para no perderla al bajar</text>
+              <text x="10" y="181" font-family="IBM Plex Sans" font-size="9.5" fill="#9098A6" font-style="italic">Ámbar = totales calculados con =SUM()</text>
+            </svg>
+          </div>
+        </section>
+
+        <section class="block">
+          <h2><span class="tagnum">·</span>Paso a paso</h2>
+          <ol class="excel-instructions">
+            <li><strong>Hoja 1 — Inicio:</strong> completa tu nombre y carnet en las celdas rosadas, y lee el Código de Honor antes de empezar.</li>
+            <li><strong>Hoja 2 — Marco Normativo:</strong> revisa las tasas y tablas ya cargadas (ISSS, AFP, INCAF, tramos de ISR, salario mínimo) — no las edites, son la fuente de las fórmulas de las demás hojas.</li>
+            <li><strong>Hoja 3 — Cálculo Planillas (resuelto):</strong> observa cómo cada celda de ISSS, AFP, gravada, ISR y neto usa una fórmula que jala las tasas de la Hoja 2 con <code>=VLOOKUP()</code> y <code>=SUMIF()</code> para los tramos de ISR, en vez de escribir el número directamente.</li>
+            <li><strong>Hoja 4 — Cálculo Práctica:</strong> completa las celdas rosadas (<code>#FFF0F5</code>) con un tercer empleado de tu invención; las fórmulas ya están listas, solo cambia el sueldo base (celda azul).</li>
+            <li><strong>Hoja 5 — Asientos Resueltos:</strong> el libro diario está enlazado por fórmula a los totales de la Hoja 3 — si cambias un sueldo en la Hoja 3, los asientos se recalculan solos.</li>
+            <li><strong>Hoja 6 — Asientos Práctica:</strong> registra tú mismo las tres partidas del ejercicio que armaste en la Hoja 4, usando la lista desplegable de "Tipo de movimiento".</li>
+            <li><strong>Hoja 7 — Producto Final (Cédula de Prestaciones):</strong> revisa cómo se calculan vacaciones, aguinaldo, indemnización y renuncia voluntaria a partir del sueldo y los años de servicio.</li>
+            <li><strong>Hoja 8 — Producto Final Práctica:</strong> repite la cédula con tus propios datos de años de servicio.</li>
+          </ol>
+        </section>
+
+        <div class="box ok">
+          <h4>✅ Código de Honor</h4>
+          <p>"Por mi honor y ante mis compañeros, me comprometo a que esta actividad académica refleje mi verdadero nivel de conocimientos, evitando realizar cualquier forma de deshonestidad académica (por ejemplo, copiar o plagiar)."</p>
+        </div>
+
+        <div class="glossary">
+          <h3 style="font-size:1.05rem; margin-bottom:10px; font-family:'Bricolage Grotesque',sans-serif;">Glosario de funciones Excel usadas</h3>
+          <dl>
+            <dt>=SUM()</dt><dd>Suma un rango de celdas — usada para los totales de cada columna.</dd>
+            <dt>=SUMIF()</dt><dd>Suma condicionalmente — usada para acumular el total patronal por tipo de aporte.</dd>
+            <dt>=VLOOKUP()</dt><dd>Busca un valor en una tabla y devuelve un dato de esa fila — usada para traer la tasa correcta de ISSS/AFP/INCAF desde la Hoja 2 y para ubicar el tramo de ISR correspondiente.</dd>
+            <dt>Freeze panes (Inmovilizar paneles)</dt><dd>Fija la fila de encabezados para que no se pierda al desplazarse hacia abajo en una tabla larga.</dd>
+          </dl>
+        </div>
+      </section>
+
+      <!-- ======================================================= -->
+      <!-- PANEL 4 — QUIZ -->
+      <!-- ======================================================= -->
+      <section class="panel" id="p4">
+        <section class="block">
+          <h2><span class="tagnum">4</span>Quiz de práctica — Unidad 1</h2>
+          <div class="quiz-head">
+            <div class="score-wrap">
+              <svg width="92" height="92" viewBox="0 0 92 92">
+                <circle class="bgc" cx="46" cy="46" r="40" fill="none" stroke-width="8"/>
+                <circle id="scoreCircle" class="fgc" cx="46" cy="46" r="40" fill="none" stroke-width="8" stroke-dasharray="251.2" stroke-dashoffset="251.2"/>
+              </svg>
+              <div class="score-txt"><span id="scoreTxt">0/10</span></div>
+            </div>
+            <div>
+              <div id="levelBadge" class="level-badge amarillo">Sin empezar</div>
+              <p style="font-size:0.82rem; color:var(--text-dim); margin-top:6px;">3 fáciles · 4 medias · 3 difíciles — retroalimentación inmediata en cada pregunta.</p>
+            </div>
+          </div>
+          <div id="quizList"></div>
+        </section>
+
+        <div class="glossary">
+          <h3 style="font-size:1.05rem; margin-bottom:10px; font-family:'Bricolage Grotesque',sans-serif;">Glosario — Panel 4</h3>
+          <dl>
+            <dt>Remuneración no gravada</dt><dd>Cotizaciones previsionales a AFP, INPEP e IPSFA — se restan antes de calcular el ISR.</dd>
+            <dt>Recargo por hora extra</dt><dd>100% adicional sobre el salario básico por hora, según Art. 169 del Código de Trabajo.</dd>
+            <dt>Bonificación ocasional</dt><dd>Pago único (ej. por productividad) que no forma parte del salario y no cotiza a ISSS, AFP ni ISR.</dd>
+          </dl>
+        </div>
+      </section>
+
+      <!-- ======================================================= -->
+      <!-- PANEL 5 — EJERCICIO VARIANTE -->
+      <!-- ======================================================= -->
+      <section class="panel" id="p5">
+        <section class="block">
+          <h2><span class="tagnum">5</span>Ejercicio variante — Café Aroma de Ahuachapán, S.A. de C.V.</h2>
+          <p>Misma estructura del Ejercicio 1 de la Profesora Caballero, con una empresa distinta. Al 30 de junio, <em>Café Aroma de Ahuachapán</em> presenta la siguiente planilla:</p>
+          <table>
+            <thead><tr><th>Empleado</th><th>Puesto</th><th class="num-cell">Sueldo mensual</th><th class="num-cell">Horas extra</th><th class="num-cell">Total salario</th></tr></thead>
+            <tbody>
+              <tr><td>Marta Hernández</td><td>Cajera</td><td class="num-cell">$450.00</td><td class="num-cell">$25.00</td><td class="num-cell">$475.00</td></tr>
+              <tr><td>Ricardo Peña</td><td>Supervisor de planta</td><td class="num-cell">$1,300.00</td><td class="num-cell">—</td><td class="num-cell">$1,300.00</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Se pide:</strong> (1) calcule la planilla con las retenciones y el salario líquido de cada empleado, (2) calcule las aportaciones patronales correspondientes, (3) realice los asientos en el libro diario del pago de los salarios a fin de mes.</p>
+
+          <button class="reveal-btn" onclick="document.getElementById('variantSol').classList.toggle('show')">Ver solución →</button>
+
+          <div id="variantSol" class="hidden-sol">
+            <table style="margin-top:20px;">
+              <thead><tr><th>Empleado</th><th class="num-cell">Bruto</th><th class="num-cell">ISSS 3%</th><th class="num-cell">AFP 7.25%</th><th class="num-cell">Gravada</th><th class="num-cell">ISR</th><th class="num-cell">Neto</th></tr></thead>
+              <tbody>
+                <tr><td>Marta Hernández</td><td class="num-cell">475.00</td><td class="num-cell">14.25</td><td class="num-cell">34.44</td><td class="num-cell">426.31</td><td class="num-cell">0.00</td><td class="num-cell">426.31</td></tr>
+                <tr><td>Ricardo Peña</td><td class="num-cell">1,300.00</td><td class="num-cell">30.00</td><td class="num-cell">94.25</td><td class="num-cell">1,175.75</td><td class="num-cell">116.10</td><td class="num-cell">1,059.65</td></tr>
+              </tbody>
+            </table>
+            <p style="font-size:0.85rem; color:var(--text-dim); margin-top:10px;">
+              Marta: $475.00 está por debajo de $1,000, así que el ISSS (3%×475=$14.25) se calcula sobre el total. Gravada = 475−14.25−34.44=$426.31, cae en Tramo I (sin retención).<br>
+              Ricardo: como $1,300 supera el tope, el ISSS se calcula sobre $1,000 (3%×1,000=$30.00). AFP sí es sobre el total (7.25%×1,300=$94.25). Gravada = 1,300−30−94.25=$1,175.75, cae en Tramo III (895.25–2,038.10): (1,175.75−895.24)×20%+60.00 = 280.51×0.20+60.00 = 56.10+60.00=<strong>$116.10</strong>.
+            </p>
+            <table style="margin-top:16px;">
+              <thead><tr><th>Cuenta</th><th class="num-cell">Debe</th><th class="num-cell">Haber</th></tr></thead>
+              <tbody>
+                <tr><td>Gasto de Sueldos y Salarios <span class="badge gasto">Gasto</span></td><td class="num-cell">1,775.00</td><td></td></tr>
+                <tr><td style="padding-left:20px;">ISSS por Pagar (retención) <span class="badge pasivo">Pasivo</span></td><td></td><td class="num-cell">44.25</td></tr>
+                <tr><td style="padding-left:20px;">AFP por Pagar (retención) <span class="badge pasivo">Pasivo</span></td><td></td><td class="num-cell">128.69</td></tr>
+                <tr><td style="padding-left:20px;">ISR Retenido por Pagar <span class="badge pasivo">Pasivo</span></td><td></td><td class="num-cell">116.10</td></tr>
+                <tr><td style="padding-left:20px;">Sueldos y Salarios por Pagar <span class="badge pasivo">Pasivo</span></td><td></td><td class="num-cell">1,485.96</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <div class="glossary">
+          <h3 style="font-size:1.05rem; margin-bottom:10px; font-family:'Bricolage Grotesque',sans-serif;">Glosario — Panel 5</h3>
+          <dl>
+            <dt>Sueldo base</dt><dd>Salario fijo mensual antes de horas extra, comisiones o bonos.</dd>
+            <dt>Redondeo intermedio</dt><dd>Redondear a 2 decimales en cada paso del cálculo (no solo al final) — puede producir diferencias de un centavo frente a calcular todo de una vez.</dd>
+          </dl>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<script>
+// -------- Tab switching --------
+document.querySelectorAll('.tab').forEach(tab=>{
+  const activateTab = ()=>{
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.panel).classList.add('active');
+    document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected', t===tab ? 'true':'false'));
+    window.scrollTo({top:0, behavior:'smooth'});
+  };
+  tab.addEventListener('click', activateTab);
+  tab.addEventListener('keydown', (e)=>{
+    if(e.key==='Enter' || e.key===' '){ e.preventDefault(); activateTab(); }
+  });
+});
+
+// -------- Quiz --------
+const QUESTIONS = [
+  {d:'facil', q:'¿Qué tipo de cuenta es "Sueldos y Salarios por Pagar"?', opts:['Activo','Pasivo','Ingreso','Gasto'], correct:1, exp:'Es un pasivo corriente: la empresa debe ese dinero al empleado mientras no lo pague en efectivo.'},
+  {d:'facil', q:'¿Cuál es el tope de base para calcular la cotización al ISSS?', opts:['$700','$1,000','$1,600','No tiene tope'], correct:1, exp:'El ISSS cotiza como máximo sobre $1,000 de salario, sin importar cuánto gane el empleado.'},
+  {d:'facil', q:'¿La AFP tiene un tope de base para la cotización?', opts:['Sí, igual que el ISSS ($1,000)','Sí, pero de $1,600','No, se cotiza sobre el 100% del salario','Solo para gerentes'], correct:2, exp:'A diferencia del ISSS, la AFP no tiene límite máximo de base de cotización.'},
+  {d:'media', q:'Un empleado gana $2,500 mensuales. ¿Sobre qué monto se calcula su ISSS del 3%?', opts:['$2,500','$1,000','$1,600','$1,750'], correct:1, exp:'Aunque gane $2,500, el ISSS solo cotiza sobre el tope de $1,000 → 3% × 1,000 = $30.00.'},
+  {d:'media', q:'¿Cómo se calcula la "remuneración gravada" para efectos de ISR?', opts:['Salario bruto sin ningún ajuste','Salario bruto menos ISSS y AFP del empleado','Salario bruto menos aportes patronales','Salario neto más horas extra'], correct:1, exp:'Remuneración gravada = remuneraciones del período − remuneraciones no gravadas − cotizaciones laborales al ISSS (en la práctica: bruto − ISSS empleado − AFP empleado).'},
+  {d:'media', q:'Según el Art. 169 del Código de Trabajo, ¿con qué recargo se paga la hora extra ordinaria?', opts:['25%','50%','100%','No lleva recargo'], correct:2, exp:'Todo trabajo en exceso de la jornada ordinaria se remunera con un recargo del 100% del salario básico por hora, salvo fuerza mayor.'},
+  {d:'media', q:'¿El INCAF (1%) se descuenta al empleado o lo paga la empresa?', opts:['Se descuenta al empleado','Lo paga solo la empresa (aporte patronal)','Se divide 50/50','Depende del salario'], correct:1, exp:'El INCAF es exclusivamente un aporte patronal del 1% — no existe una versión retenida al empleado.'},
+  {d:'dificil', q:'Un empleado tiene remuneración gravada mensual de $2,288.75. Usando la tabla de retención mensual (Tramo IV: exceso de $2,038.10, 30%, cuota fija $288.57), ¿cuál es su ISR?', opts:['$363.77','$288.57','$75.20','$686.63'], correct:0, exp:'(2,288.75 − 2,038.10) × 30% + 288.57 = 250.65 × 0.30 + 288.57 = 75.20 + 288.57 = $363.77.'},
+  {d:'dificil', q:'Para el recálculo de ISR de junio, ¿qué remuneraciones se acumulan y qué se resta al final?', opts:['Se acumulan enero-diciembre y no se resta nada','Se acumulan enero-junio y se resta lo ya retenido de enero a la 1ª quincena de junio','Se acumula solo el mes de junio','Se acumulan enero-junio y se resta el salario mínimo'], correct:1, exp:'El primer recálculo acumula las remuneraciones gravadas de enero a junio; al resultado de la tabla de recálculo se le resta la suma de lo ya retenido en enero–mayo (más la 1ª quincena de junio).'},
+  {d:'dificil', q:'Si el resultado de un recálculo de ISR (tabla menos retenciones previas) es negativo, ¿qué se hace?', opts:['Se retiene el valor absoluto','No se retiene nada ese mes','Se retiene la mitad','Se acumula para diciembre'], correct:1, exp:'Si el resultado de la resta es negativo, no se retiene ningún valor en el mes de junio o diciembre — solo se retiene cuando el resultado es positivo.'}
+];
+
+let current = 0, correctCount = 0;
+const quizList = document.getElementById('quizList');
+
+function renderQuiz(){
+  QUESTIONS.forEach((item, idx)=>{
+    const div = document.createElement('div');
+    div.className = 'q-item';
+    const diffLabel = item.d==='facil' ? 'Fácil' : item.d==='media' ? 'Media' : 'Difícil';
+    div.innerHTML = `
+      <span class="q-diff ${item.d}">${diffLabel}</span>
+      <div class="q-text">${idx+1}. ${item.q}</div>
+      <div class="q-opts">
+        ${item.opts.map((o,i)=>`<button class="q-opt" data-i="${i}">${o}</button>`).join('')}
+      </div>
+      <div class="q-feedback"></div>
+    `;
+    quizList.appendChild(div);
+    const buttons = div.querySelectorAll('.q-opt');
+    buttons.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const chosen = parseInt(btn.dataset.i);
+        buttons.forEach(b=>b.disabled = true);
+        const fb = div.querySelector('.q-feedback');
+        if(chosen === item.correct){
+          btn.classList.add('correct');
+          fb.className = 'q-feedback show ok';
+          fb.textContent = '✅ Correcto — ' + item.exp;
+          correctCount++;
+        } else {
+          btn.classList.add('incorrect');
+          buttons[item.correct].classList.add('correct');
+          fb.className = 'q-feedback show bad';
+          fb.textContent = '❌ Incorrecto — ' + item.exp;
+        }
+        updateScore();
+      });
+    });
+  });
+}
+
+function updateScore(){
+  const totalAnswered = [...document.querySelectorAll('.q-item')].filter(d=>d.querySelector('.q-opt:disabled')).length;
+  document.getElementById('scoreTxt').textContent = correctCount + '/10';
+  const pct = correctCount/10;
+  const circumference = 251.2;
+  document.getElementById('scoreCircle').style.strokeDashoffset = circumference - (circumference*pct);
+  const badge = document.getElementById('levelBadge');
+  if(totalAnswered < 10){
+    badge.textContent = `En progreso (${totalAnswered}/10 respondidas)`;
+    badge.className = 'level-badge amarillo';
+  } else if(pct >= 0.8){
+    badge.textContent = 'Nivel alto ✔';
+    badge.className = 'level-badge verde';
+  } else if(pct >= 0.5){
+    badge.textContent = 'Nivel medio';
+    badge.className = 'level-badge amarillo';
+  } else {
+    badge.textContent = 'Reforzar tema';
+    badge.className = 'level-badge rojo';
+  }
+}
+
+renderQuiz();
+</script>
+</body>
+</html>

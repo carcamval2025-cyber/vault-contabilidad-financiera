@@ -14,6 +14,8 @@ Vault de conocimiento persistente para el curso con la Profesora **Antonia Cabal
 > [!tip] Cómo usarlo con Claude
 > Al empezar una sesión nueva en el proyecto "Contabilidad Financiera", puedes decirle a Claude: *"Antes de generar el material, revisa el Vault — en particular [[Bitácora General]] y [[Aprendizajes Acumulados]]"*. Así Claude arranca sabiendo qué errores no debe repetir.
 
+📍 **¿Primera vez aquí?** Empieza por el [[Organigrama]] — el mapa visual de cómo está organizado todo el vault y cómo fluye el trabajo del curso.
+
 ## 🗂️ Mapa del vault
 
 - [[Programa y Calendario]] — calendario oficial, ponderación de notas, fechas de Controles y Parciales
@@ -30,7 +32,7 @@ Vault de conocimiento persistente para el curso con la Profesora **Antonia Cabal
 
 | Unidad | Estado | Última actualización |
 |---|---|---|
-| 1. Pasivo Corriente: Planillas | 🟡 En curso (semana 1) | 2026-08-25 — Vault creado, contenido legal precargado desde el PDF |
+| 1. Pasivo Corriente: Planillas | 🟢 Entregables generados | 2026-08-26 — HTML y Excel generados y verificados (ver [[Unidad 1 - Pasivo Corriente (Planillas)]]) |
 | 2. Transacciones de Capital | ⚪ Pendiente | — |
 | 3. Impuesto sobre la Renta | ⚪ Pendiente | — |
 | 4. Conciliación Bancaria | ⚪ Pendiente | — |

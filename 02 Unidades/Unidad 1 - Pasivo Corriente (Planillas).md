@@ -38,8 +38,19 @@ sources: "Unidad I e Introducción.pdf (verificado)"
 - Vacaciones: 15 días + 30% (Art. 177 CT).
 - Aguinaldo por antigüedad: 1–3 años → 15 días · 3–10 años → 19 días · 10+ años → 21 días. Se paga entre el 12 y 20 de diciembre. Exento de ISR hasta 2 salarios mínimos mensuales del sector comercio y servicios.
 - Renuncia voluntaria: 15 días por año de servicio, mínimo 2 años de antigüedad, tope de 2 salarios mínimos diarios.
+- **Tabla de retención de ISR (mensual/quincenal/semanal) y de recálculo (junio/diciembre):** verificada y capturada completa en [[Ley del ISR y su Reglamento]] (confirmada por el estudiante el 2026-08-26).
+- **Salario mínimo vigente** (desde 1 jun. 2025, por sector): verificado y capturado en [[Código de Trabajo]].
 
-## Ejercicio base del material (Ejercicio 2 — recálculo de ISR)
+## Ejercicio 1 del material — Planilla empresa ABC (al 31 de mayo)
+
+| Empleado | Puesto | Sueldo mensual | Horas extra | Total salarios |
+|---|---|---|---|---|
+| Ana Martínez | Vendedora | $590.00 | $10.00 | $600.00 |
+| Juan López | Gerente | $2,500.00 | — | $2,500.00 |
+
+Pide: (1) planilla con retenciones y salario líquido, (2) aportaciones patronales, (3) asientos de libro diario del pago de salarios a fin de mes. Confirmado por el estudiante que esta tabla de 2 empleados es la información completa disponible (el enunciado original remite a un Excel de la profesora que no está en el proyecto).
+
+## Ejercicio 2 del material (recálculo de ISR)
 
 > "Colaborador que devenga $700 mensuales, de enero a junio 2025 no se le pagó ni horas extras ni vacaciones, y la suma del ISR retenido entre enero/2025 y la 1.ª quincena de junio/2025 asciende a $140.11. Se paga planilla de forma quincenal. Calcule la retención del ISR de este colaborador al 30 de junio de 2025."
 
@@ -54,11 +65,15 @@ Ver la lógica de recálculo en [[Ley del ISR y su Reglamento]].
 
 ## Entregables generados en esta sesión
 
-*Aún no se ha generado el HTML ni el Excel de esta unidad en esta sesión del vault. Cuando se generen, enlázalos aquí y registra la entrega en [[Bitácora General]].*
+Generados el 2026-08-26 y guardados en `Entregables/Unidad 1/` dentro de este vault:
 
-- [ ] Entregable 1 — HTML (5 paneles)
-- [ ] Entregable 2 — Excel (8 hojas)
+- [x] Entregable 1 — HTML (5 paneles): `U1_Planillas_ContFinanciera.html`
+- [x] Entregable 2 — Excel (8 hojas): `U1_Planillas_ContFinanciera.xlsx`
 - [ ] Entregable 3 — Simulacro de Control (no aplica esta semana según el calendario)
+
+Ambos usan el Ejercicio 1 (planilla ABC: Ana Martínez y Juan López) y el Ejercicio 2 (recálculo de ISR) verificados en esta nota, más las tablas de ISR y salario mínimo ya capturadas en [[Ley del ISR y su Reglamento]] y [[Código de Trabajo]]. La Hoja 7 del Excel (Cédula de Prestaciones) usa años de servicio ilustrativos (4 y 12 años) que **no vienen del PDF** — son un supuesto pedagógico marcado explícitamente en la hoja para completar el ejemplo de vacaciones/aguinaldo/indemnización/renuncia voluntaria.
+
+Ver la entrada correspondiente en [[Bitácora General]].
 
 ## Ver también
 

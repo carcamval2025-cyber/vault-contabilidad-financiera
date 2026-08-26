@@ -41,6 +41,7 @@ Un Vault de Obsidian pensado para vivir junto a los materiales del curso de Cont
 ```
 Vault Contabilidad Financiera/
 ├── Inicio.md                      → panel principal / mapa de contenido
+├── Organigrama.md                 → mapa visual (diagramas) de la estructura y el flujo de trabajo
 ├── 00 Curso/                      → programa, calendario, sistema de diseño, reglas de precisión
 ├── 01 Bitácora/                   → registro de aprendizaje sesión a sesión
 ├── 02 Unidades/                   → una nota por unidad temática (1 a 7)
