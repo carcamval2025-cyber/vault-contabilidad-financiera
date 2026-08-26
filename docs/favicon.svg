@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">CF</title>
+  <rect width="64" height="64" rx="14" fill="#0B0D10"/>
+  <g fill="none" stroke="#FFB020" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="9" y="9" width="46" height="46" rx="9" stroke-width="3"/>
+    <path d="M32 18v29M17 29h30M17 38h30M17 47h12M35 47h12" stroke-width="3"/>
+  </g>
+  <circle cx="32" cy="18" r="3" fill="#FFB020"/>
+</svg>

@@ -16,6 +16,9 @@ Vault de conocimiento persistente para el curso con la Profesora **Antonia Cabal
 
 📍 **¿Primera vez aquí?** Empieza por el [[Organigrama]] — el mapa visual de cómo está organizado todo el vault y cómo fluye el trabajo del curso.
 
+> [!info] ¿Usas Antigravity, Codex u otro agente que no sea Claude?
+> Este vault también tiene [`AGENTS.md`](AGENTS.md) en la raíz — la misma orientación que esta nota, pero en markdown plano sin wikilinks ni Dataview, para que cualquier agente de IA la lea sin depender de plugins de Obsidian.
+
 ## 🗂️ Mapa del vault
 
 - [[Programa y Calendario]] — calendario oficial, ponderación de notas, fechas de Controles y Parciales

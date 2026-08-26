@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 240" role="img" aria-labelledby="logo-title logo-desc">
+  <title id="logo-title">Contabilidad Financiera</title>
+  <desc id="logo-desc">Logotipo de un libro mayor abierto con el nombre del curso.</desc>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M28 56c35-23 69-23 102 3v124c-33-26-67-26-102-3z" stroke="#FFB020" stroke-width="8"/>
+    <path d="M130 59c33-26 67-26 102-3v124c-35-23-69-23-102 3z" stroke="#FFB020" stroke-width="8"/>
+    <path d="M130 59v124M54 91h49M54 119h49M54 147h34M157 91h49M157 119h49M157 147h34" stroke="#FFD873" stroke-width="7"/>
+  </g>
+  <path d="M286 66h76" stroke="#FFB020" stroke-width="5"/>
+  <text x="282" y="136" fill="#EDEEF0" font-family="Bricolage Grotesque, Avenir Next, sans-serif" font-size="67" font-weight="700" letter-spacing="-2.4">Contabilidad</text>
+  <text x="286" y="190" fill="#FFB020" font-family="IBM Plex Mono, Menlo, monospace" font-size="27" font-weight="600" letter-spacing="5">FINANCIERA</text>
+</svg>
