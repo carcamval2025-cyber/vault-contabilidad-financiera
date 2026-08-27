@@ -102,9 +102,66 @@ Fuente: biblioteca personal del estudiante en `~/Documents/claude-skills` (skill
 4. Las transiciones clave usan `var(--ease)`, no `ease`/`linear` por defecto.
 5. Contraste de `--text-dim` y de cada color semántico sobre su fondo sigue ≥ 4.5:1 (no cambiar los tokens sin volver a verificar).
 
+## Protocolo — pedir ilustraciones a otro agente (Antigravity/Codex)
+
+Establecido y verificado por primera vez en la Unidad 1 (2026-08-26, 4 imágenes: `img-u1-01`…`04`).
+Funcionó bien — este es el procedimiento a repetir y mejorar en toda unidad futura, no un caso único.
+
+**Cuándo pedir una ilustración en vez de construir el SVG directamente en la sesión de Claude:**
+un diagrama de datos (gráfico de tramos, flujo de un cálculo, comparación de tasas) lo sigue
+construyendo la sesión de Claude, directo en el HTML. Se delega a otro agente cuando el panel se
+beneficia de una **escena editorial o una metáfora conceptual** — anclar un ejercicio en un lugar y
+personas concretas (ej. el mostrador de una empresa salvadoreña con los empleados del enunciado), o
+ilustrar una idea abstracta con una imagen memorable (ej. una escalera para tramos progresivos de
+impuesto) — algo que se beneficia de más tiempo/detalle artístico del que vale la pena invertir
+dentro del flujo principal de generación del HTML.
+
+**Cómo estructurar el pedido:**
+1. En el HTML, dejar una tarjeta placeholder con la clase `.img-request` (borde punteado ámbar,
+   integrada visualmente al sistema de diseño — no un hueco roto) en el lugar exacto donde irá la
+   imagen, con un `ID` único con el patrón `img-u[N]-0[X]` (N = número de unidad).
+2. Crear un archivo `Pedidos de Imagen - Unidad [N].md` dentro de `Entregables/Unidad [N]/`, con: las
+   reglas no negociables (ver abajo) una sola vez al inicio, y un brief por imagen — ubicación exacta
+   en el HTML, propósito pedagógico, contenido sugerido, estilo, `viewBox` recomendado, alt text, y
+   nombre de archivo destino (`assets/img/u[N]-0[X]-descripcion.svg`).
+
+**Reglas no negociables del brief (repetirlas siempre, un agente nuevo no las hereda por defecto):**
+- Formato: **SVG de código completo, nunca PNG/JPG** — es la única forma de que la ilustración
+  cumpla "todo visual en SVG inline, nunca imágenes externas" y a la vez tenga sentido pedírsela a un
+  agente de código (Antigravity/Codex no son generadores de imágenes rasterizadas).
+- Paleta: únicamente los valores hexadecimales de la sección "Paleta — Fintech Oscuro" de arriba.
+- Tipografía: únicamente Bricolage Grotesque / IBM Plex Sans / IBM Plex Mono si el SVG lleva texto.
+- Sin emoji como ícono estructural — construir íconos con `<path>`/`<circle>`/`<rect>`, estilo outline.
+- Contexto salvadoreño o centroamericano siempre; nunca inventar una cifra que no esté ya verificada
+  en el HTML o el vault.
+- Cada SVG debe llevar `viewBox` responsive y `role="img"` + `aria-label` descriptivo.
+
+**Cómo verificar el resultado sin usar `git`** (el estudiante integra los cambios en su propia
+máquina; esta sesión de Cowork nunca ejecuta `git` vía el puente de archivos — deja `.git/index.lock`
+que el puente no puede borrar y bloquea el plugin de Obsidian Git del estudiante):
+1. `device_stage_files` de los HTML modificados (el entregable y su espejo en `docs/`, si existe) y
+   de los `.svg` nuevos.
+2. Un script Python de verificación (no visual, estructural) que confirme: cero tarjetas
+   `img-request` restantes, el conteo de `svg-wrap` subió exactamente en el número de imágenes
+   pedidas, tags balanceados (`div`, `svg`), los HTML del entregable y de `docs/` siguen idénticos
+   entre sí, las cifras clave del ejercicio no cambiaron, y cada `.svg` nuevo usa `viewBox`,
+   `role="img"`+`aria-label`, las tipografías correctas, cero `<image>`/`xlink:href http`/`url(http…)`,
+   y solo colores de la paleta (una excepción legítima: tonos de elevación ya usados en el archivo
+   original, como `#181B20`, que no son "nuevos" aunque no estén en la tabla de tokens).
+3. Registrar el resultado de la verificación en la entrada de bitácora del día — qué se pidió, qué se
+   entregó, qué pasó y qué no en la verificación.
+
+**Ideas de mejora para la próxima vez** (pendientes de probar, no reglas todavía): pedir que cada SVG
+entregado incluya un comentario `<!-- generado por Antigravity/Codex · brief img-uN-0X -->` para
+trazabilidad; si una unidad futura pide más de 4-5 imágenes, considerar agrupar el brief por panel en
+vez de un archivo plano; si el agente introduce texto sobre un fondo o color nuevo dentro del SVG,
+añadir a la verificación un chequeo de contraste WCAG igual al que ya se hace para la paleta del HTML.
+
 ## Reglas que no se rompen
 
-- Todo visual en SVG inline, nunca imágenes externas.
+- Todo visual en SVG inline, nunca imágenes externas — incluidas las ilustraciones que construya
+  otro agente (Antigravity/Codex): se piden y se verifican como SVG de código, nunca como PNG/JPG
+  (ver protocolo arriba).
 - Nunca omitir ninguno de los 5 paneles ni el glosario de cada uno.
 - Nunca usar ejemplos genéricos — siempre contexto salvadoreño o centroamericano.
 - Quiz siempre con retroalimentación inmediata pregunta por pregunta (a diferencia del Simulacro de Control, que es modo examen).

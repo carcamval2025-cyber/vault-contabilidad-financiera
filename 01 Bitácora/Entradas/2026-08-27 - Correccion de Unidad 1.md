@@ -46,6 +46,22 @@ El estudiante notó que, tras quitar los emojis, varios de los bloques agregados
 
 Todas las cifras se tomaron de las tablas ya verificadas contra el PDF en la primera corrección de este mismo día — no se agregó ningún dato nuevo, solo la representación visual. Verificado igual que los cambios anteriores (balance de etiquetas, render en Playwright, capturas de pantalla de los tres diagramas).
 
+## Cuarto cambio — botón de descarga del Excel + Ejercicios 3, 4 y 5 de la guía (mismo día)
+
+El estudiante señaló dos cosas: (1) el HTML describe las 8 hojas del Excel pero nunca ofrece un enlace para descargarlo, y (2) en la carpeta de la materia hay más ejercicios de la guía de la profesora (un PDF y su solución en Excel) que no se habían revisado.
+
+**Botón de descarga:** se agregó un botón estilizado (`.dl-btn`, mismo patrón visual que `.reveal-btn`) al inicio del Panel 3 — Guía Excel, con enlace directo a `U1_Planillas_ContFinanciera.xlsx` y un ícono SVG de descarga.
+
+**Ejercicios adicionales encontrados:** al revisar "Ejercicios clase planillas.pdf" y su solución en Excel, se confirmó que el Panel 2 solo cubría el Ejercicio 1 (Repuestos ABC) de la guía, dejando sin resolver el Ejercicio 3 (liquidación por despido incausado), el Ejercicio 4 (aguinaldo con menos de 1 año de servicio) y el Ejercicio 5 completo (planilla con horas extra, planilla de aguinaldos, y un adelanto del recálculo de ISR). El estudiante pidió agregar los tres al Panel 2, con el mismo nivel de detalle paso a paso que ya tenía el Ejercicio 1. Se agregaron como bloques nuevos, después de la caja de Marco Legal y Errores del Ejercicio 1, y antes del glosario del panel (que se amplió con 5 términos nuevos: Liquidación, Indemnización, Recargo por hora extra, Ingreso base de cotización y Recálculo de ISR).
+
+**Tres hallazgos en la hoja de solución de la profesora — para confirmar con ella:**
+
+1. **Fórmula de INCAF en el Ejercicio 3:** la hoja de la profesora calcula el INCAF patronal de ABC, S.A. de C.V. como si tuviera el mismo tope de $1,000 que el ISSS (resultado: $10.00), pero el material teórico de la Unidad 1 indica que el INCAF se calcula sobre el monto total de planillas, sin tope, para empresas con 10 o más empleados. Con 14 empleados y sin tope, el valor correcto es $27.30. Todo indica que fue un error de copiar la fórmula del ISSS. El HTML presenta el valor correcto ($27.30) con una nota transparente explicando la diferencia.
+2. **Tabla de ISR desactualizada en la pestaña "Ejercicio 5":** esa pestaña específica usa una tabla de ISR mensual con el Tramo I hasta $472.00, mientras que la tabla vigente (ya confirmada en el Marco Normativo propio y en la propia pestaña "CALCULO" de la profesora, en el mismo archivo) tiene el Tramo I hasta $550.00. Esto afecta el ISR de María Leonor y de Lucía en la planilla de horas extra (Ejercicio 5.1) y el de José Rigoberto en la planilla de aguinaldos (Ejercicio 5.2). El HTML usa la tabla vigente y marca la diferencia en una caja de advertencia.
+3. **Recálculo de ISR (Ejercicio 5.3):** las cifras mes a mes de esta pestaña no coinciden ni con la tabla de $472 ni con la de $550 — parecen venir de una tercera versión de la tabla. Por eso este ejercicio no se resolvió con números en el HTML; se dejó solo el enunciado y una explicación conceptual del recálculo, indicando que se resolverá a fondo en la Unidad 3, que es donde el programa del curso trata este tema en detalle.
+
+Verificado igual que los cambios anteriores: balance de etiquetas HTML, render en Playwright sin errores de consola nuevos, y capturas de pantalla de los 5 bloques nuevos, incluyendo las dos cajas de discrepancia y el glosario ampliado. Además, se reordenó el contenido para que la caja "Marco Legal aplicado en este ejercicio" y "Errores más comunes" del Ejercicio 1 queden inmediatamente después de ese ejercicio (y no después de los 4 ejercicios nuevos, donde habían quedado tras la primera inserción).
+
 ## Ver también
 
 [[Unidad 1 - Pasivo Corriente (Planillas)]] · [[2026-08-26 - Unidad 1 Entregables]] · `02 Curso/Sistema de Diseño HTML.md` (si el estudiante quiere revisar el mismo tipo de auditoría de completitud para futuras unidades)

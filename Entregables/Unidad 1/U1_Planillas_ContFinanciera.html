@@ -214,6 +214,10 @@ section.block > h2 .tagnum{
   text-transform:uppercase; letter-spacing:0.04em;
 }
 .reveal-btn:hover{transform:translateY(-2px); box-shadow:0 0 28px rgba(255,176,32,0.6);}
+.dl-btn{display:inline-flex; align-items:center; gap:9px; background:var(--accent); color:#0B0D10; padding:11px 22px;
+  border-radius:8px; font-weight:700; font-family:'IBM Plex Mono',monospace; font-size:0.85rem; text-decoration:none;
+  box-shadow:0 0 20px rgba(255,176,32,0.35); transition:transform 0.25s var(--ease), box-shadow 0.25s var(--ease); margin:6px 0 18px;}
+.dl-btn:hover{transform:translateY(-2px); box-shadow:0 0 26px rgba(255,176,32,0.55);}
 .hidden-sol{display:none; margin-top:20px;}
 .hidden-sol.show{display:block; animation:fadeIn 0.3s ease;}
 
@@ -1307,6 +1311,309 @@ section.block > h2 .tagnum{
           </ul>
         </div>
 
+        
+      <section class="block">
+          <h2><span class="tagnum">2</span>Ejercicio 3 de la guía — Liquidación por despido incausado</h2>
+          <p>Enunciado (Ejercicio 3 de la guía de la Profesora Caballero): <em>la empleada Ana López labora en el área de ventas de ABC, S.A. de C.V. (14 empleados). Ingresó el 1 de abril de 2009. Salario mensual nominal $2,700, pagos quincenales. Ya tomó y le pagaron las vacaciones del período 1 abril 2024 – 31 marzo 2025. En la segunda quincena de septiembre tiene pendiente $500 de comisiones. La política de la empresa es pagar el 100% de un salario mensual como aguinaldo. Tiene una orden irrevocable de descuento de $350 por un crédito vehicular, aplicable en la segunda quincena. El 30 de septiembre de 2025 fue despedida sin causa justificada.</em> No confundir a esta Ana López con la del Ejercicio 1 — son empresas y personajes distintos de la misma guía.</p>
+
+          <div class="steps">
+            <div class="step">
+              <div class="step-line"></div>
+              <div class="step-circ">1</div>
+              <div class="step-body">
+                <h4>A) Ingreso devengado pendiente al 30 de septiembre</h4>
+                <table style="margin-top:8px;">
+                  <thead><tr><th>Concepto</th><th class="num-cell">Monto</th></tr></thead>
+                  <tbody>
+                    <tr><td>Salario quincenal pendiente (2ª quincena)</td><td class="num-cell">$1,350.00</td></tr>
+                    <tr><td>Vacación proporcional (ver razonamiento)</td><td class="num-cell">$879.90</td></tr>
+                    <tr><td>Comisiones pendientes</td><td class="num-cell">$500.00</td></tr>
+                    <tr><td>Aguinaldo proporcional (ver razonamiento)</td><td class="num-cell">$2,160.00</td></tr>
+                    <tr><td><strong>Total ingreso devengado</strong></td><td class="num-cell"><strong>$4,889.90</strong></td></tr>
+                  </tbody>
+                </table>
+                <p class="why">¿Por qué? Vacación: como ya cobró el período abril/2024–marzo/2025, lo pendiente es el proporcional del nuevo período (1 abril–30 sept/2025 = 183 días de 365). Vacación anual completa = ($2,700/30 × 15 días) × 1.30 = $1,755.00; proporcional = $1,755.00 × 183/365 = <strong>$879.90</strong>. Aguinaldo: la política de la empresa (100% de un salario = $2,700) es más favorable que el mínimo legal para 16 años (21 días = $1,890.00), así que aplica la política de la empresa — prorrateada por los 292 días transcurridos del período de acumulación (13 dic/2024–30 sept/2025) sobre 365: $2,700 × 292/365 = <strong>$2,160.00</strong>.</p>
+                <p class="legal-ref">Base legal: Art. 177 y 179 CT (vacaciones); política interna de la empresa para aguinaldo, siempre que no sea menor al mínimo legal.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-line"></div>
+              <div class="step-circ">2</div>
+              <div class="step-body">
+                <h4>B) Indemnización por despido incausado — con el tope del Art. 58</h4>
+                <p>Salario mínimo mensual (comercio y servicios) = $408.80 → tope de 4 salarios mínimos = <strong>$1,635.20</strong>. Como el salario real ($2,700) supera el tope, la indemnización se calcula sobre $1,635.20, no sobre $2,700.<br>
+                16 años completos × $1,635.20 = $26,163.20.<br>
+                Proporcional por la fracción del año 17 (183 días): $1,635.20 × 183/365 = $819.84.<br>
+                <strong>Indemnización total = $26,983.04.</strong></p>
+                <p class="why">¿Por qué importa el tope? Sin él, la indemnización se calcularía sobre $2,700 y daría $31,872.94 solo por este concepto — casi $5,000 de más. Este es el mismo tope que se corrigió en la fórmula del Excel de esta unidad (columna de Indemnización, Hoja 7).</p>
+                <p class="legal-ref">Base legal: Art. 58, Código de Trabajo.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-line"></div>
+              <div class="step-circ">3</div>
+              <div class="step-body">
+                <h4>C) Ingreso base de cotización para ISSS, AFP e INCAF</h4>
+                <p>Solo entran el salario, las vacaciones y las comisiones — el aguinaldo y la indemnización <strong>no</strong> forman parte del ingreso base de cotización.<br>
+                $1,350.00 + $879.90 + $500.00 = <strong>$2,729.90</strong>.</p>
+                <p class="legal-ref">Base legal: Ley Integral del Sistema de Pensiones — no forman parte del ingreso base de cotización el aguinaldo ni las prestaciones sociales establecidas por ley.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-line"></div>
+              <div class="step-circ">4</div>
+              <div class="step-body">
+                <h4>D) Retenciones al empleado</h4>
+                <table style="margin-top:8px;">
+                  <thead><tr><th>Concepto</th><th class="num-cell">Monto</th></tr></thead>
+                  <tbody>
+                    <tr><td>ISSS 3% (base topada a $1,000)</td><td class="num-cell">$30.00</td></tr>
+                    <tr><td>AFP 7.25% (sobre $2,729.90, sin tope)</td><td class="num-cell">$197.92</td></tr>
+                    <tr><td>ISR (ver razonamiento)</td><td class="num-cell">$991.88</td></tr>
+                    <tr><td>Descuento por crédito vehicular</td><td class="num-cell">$350.00</td></tr>
+                    <tr><td><strong>Total retenido y descontado</strong></td><td class="num-cell"><strong>$1,569.79</strong></td></tr>
+                  </tbody>
+                </table>
+                <p class="why">¿Por qué la tabla quincenal? Porque Ana recibe pagos quincenales, no mensuales. Aguinaldo gravable = $2,160 − $817.60 (2 salarios mínimos exentos) = $1,342.40. Renta gravable total = $2,729.90 (base cotización) + $1,342.40 (aguinaldo gravable) − $30.00 (ISSS) − $197.92 (AFP) = $3,844.39. Cae en el Tramo IV de la tabla <strong>quincenal</strong> (desde $1,019.06): ($3,844.39 − $1,019.05) × 30% + $144.28 = $847.60 + $144.28 = <strong>$991.88</strong>.</p>
+                <p class="legal-ref">Base legal: tabla de retención de ISR quincenal vigente (Hoja 2 del Excel); Art. 4, Ley del ISR (exención de indemnización).</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-line"></div>
+              <div class="step-circ">5</div>
+              <div class="step-body">
+                <h4>E) Aportaciones patronales</h4>
+                <table style="margin-top:8px;">
+                  <thead><tr><th>Concepto</th><th class="num-cell">Monto</th></tr></thead>
+                  <tbody>
+                    <tr><td>ISSS 7.5% (base topada a $1,000)</td><td class="num-cell">$75.00</td></tr>
+                    <tr><td>AFP 8.75% (sobre $2,729.90, sin tope)</td><td class="num-cell">$238.87</td></tr>
+                    <tr><td>INCAF 1% (sobre $2,729.90 — empresa con 14 empleados, sí aplica)</td><td class="num-cell">$27.30</td></tr>
+                    <tr><td><strong>Total aportaciones patronales</strong></td><td class="num-cell"><strong>$341.17</strong></td></tr>
+                  </tbody>
+                </table>
+                <div class="box error" style="margin-top:12px;">
+                  <h4><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="vertical-align:-3px;margin-right:6px"><path d="M12 3.5 21.5 20h-19L12 3.5z" stroke-linejoin="round"/><path d="M12 9.5v5" stroke-linecap="round"/><circle cx="12" cy="17.2" r=".9" fill="currentColor" stroke="none"/></svg>Ojo: discrepancia con el Excel de la guía de la profesora</h4>
+                  <p>La hoja de solución de la profesora ("Ejercicios clase planillas.xlsx") calcula el INCAF de este ejercicio como $10.00 (usando la misma fórmula de tope de $1,000 que el ISSS). Pero el material teórico de la Unidad 1 dice que el INCAF se calcula "sobre el monto total de las planillas... de sueldos y salarios" — <strong>sin tope</strong> — cuando la empresa tiene 10 o más empleados (aquí ABC, S.A. de C.V. tiene 14). Todo indica que fue un error de fórmula al copiar la columna del ISSS. Aquí se presenta el valor correcto según la teoría ($27.30); vale la pena confirmarlo con la profesora si esto se calificará contra su hoja de cálculo.</p>
+                </div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-line"></div>
+              <div class="step-circ">6</div>
+              <div class="step-body">
+                <h4>F) Efectivo que recibirá la empleada</h4>
+                <p>Total devengado (incluyendo indemnización): $4,889.90 + $26,983.04 = <strong>$31,872.94</strong>.<br>
+                Menos total retenido y descontado: $1,569.79.<br>
+                <strong>Efectivo a pagar = $30,303.15.</strong></p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-circ">7</div>
+              <div class="step-body">
+                <h4>G) Partidas de registro de la liquidación</h4>
+                <table style="margin-top:10px;">
+                  <thead><tr><th>Cuenta</th><th class="num-cell">Debe</th><th class="num-cell">Haber</th></tr></thead>
+                  <tbody>
+                    <tr><td><strong style="font-family:'IBM Plex Sans',sans-serif; color:var(--text);">Partida 1 — Liquidación de la empleada</strong></td><td></td><td></td></tr>
+                    <tr><td style="padding-left:24px;">Gastos de venta <span class="badge gasto">Gasto</span></td><td class="num-cell">31,872.94</td><td></td></tr>
+                    <tr><td style="padding-left:24px;">Efectivo y Equivalentes <span class="badge activo">Activo</span></td><td></td><td class="num-cell">30,303.15</td></tr>
+                    <tr><td style="padding-left:24px;">Retenciones por Pagar (ISSS+AFP+ISR) <span class="badge pasivo">Pasivo</span></td><td></td><td class="num-cell">1,219.79</td></tr>
+                    <tr><td style="padding-left:24px;">Descuentos por Pagar (crédito) <span class="badge pasivo">Pasivo</span></td><td></td><td class="num-cell">350.00</td></tr>
+                    <tr><td><strong style="font-family:'IBM Plex Sans',sans-serif; color:var(--text);">Partida 2 — Prestaciones patronales</strong></td><td></td><td></td></tr>
+                    <tr><td style="padding-left:24px;">Gastos de venta (prestaciones) <span class="badge gasto">Gasto</span></td><td class="num-cell">341.17</td><td></td></tr>
+                    <tr><td style="padding-left:24px;">Prestaciones por Pagar (ISSS+AFP+INCAF) <span class="badge pasivo">Pasivo</span></td><td></td><td class="num-cell">341.17</td></tr>
+                  </tbody>
+                </table>
+                <p class="why">¿Por qué dos partidas otra vez? Igual que en el Ejercicio 1: la Partida 1 reconoce el gasto total (incluida la indemnización) y su liquidación en efectivo; la Partida 2 reconoce el costo patronal, independiente del salario de la empleada.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="block">
+          <h2><span class="tagnum">2</span>Ejercicio 4 de la guía — Aguinaldo con menos de 1 año de servicio</h2>
+          <p>Enunciado: <em>Juan Pérez inició a laborar en BUON CAPO, S.A. DE C.V. el 16 de mayo de 2025, devengando $2,000 mensuales. Hoy es 10 de diciembre de 2025 y quiere saber si tiene derecho a aguinaldo y de cuánto sería.</em></p>
+          <div class="steps">
+            <div class="step">
+              <div class="step-line"></div>
+              <div class="step-circ">1</div>
+              <div class="step-body">
+                <h4>¿Tiene derecho a aguinaldo?</h4>
+                <p>Sí. Aunque no ha cumplido 1 año, la ley da derecho a un aguinaldo <strong>proporcional</strong> a cualquier trabajador con menos de un año de servicio, siempre que haya trabajado al menos parte del período que va del 13 de diciembre del año anterior al 12 de diciembre del año en curso.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-line"></div>
+              <div class="step-circ">2</div>
+              <div class="step-body">
+                <h4>Calcular el aguinaldo proporcional</h4>
+                <p>Días trabajados hasta el corte (16 mayo–12 dic/2025) = 211 días.<br>
+                Aguinaldo completo, usando el tramo de "1 a menos de 3 años" (15 días, el que le correspondería en su próximo aniversario): $2,000/30 × 15 = $1,000.00.<br>
+                Proporcional: $1,000.00 × 211/365 = <strong>$578.08</strong>.</p>
+                <p class="why">¿Por qué el tramo de 15 días y no otro? Para el trabajador con menos de 1 año, la proporción se calcula sobre la tasa que le correspondería en su primer tramo de antigüedad (1–3 años = 15 días), prorrateada por los días realmente trabajados del período.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-circ">3</div>
+              <div class="step-body">
+                <h4>¿Se le hacen deducciones?</h4>
+                <p>Ninguna. El aguinaldo nunca lleva retención de ISSS ni AFP. Y como $578.08 está por debajo del límite exento de ISR (2 salarios mínimos mensuales = $817.60), tampoco se retiene ISR.<br>
+                <strong>Juan recibe $578.08</strong>, a más tardar el 20 de diciembre.</p>
+                <p class="legal-ref">Base legal: exención de ISSS/AFP para el aguinaldo (Ley Integral del Sistema de Pensiones); exención de ISR hasta 2 salarios mínimos mensuales.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="block">
+          <h2><span class="tagnum">2</span>Ejercicio 5.1 de la guía — Planilla con horas extra (LABORATORI, S.A. DE C.V.)</h2>
+          <p>Enunciado: LABORATORI, S.A. DE C.V. (empresa industrial, <strong>7 empleados</strong>) paga los salarios de marzo/2025. Lucía Martínez Larín (Operario 1, $480) tiene 12 horas extra <strong>nocturnas</strong>; María Elena Pérez Cruz (Operario 2, $420) tiene 11 horas extra <strong>diurnas</strong>. Al gerente de ventas se le descuentan $250 de un préstamo con BANCO XYZ; al gerente de producción, $300 de procuraduría.</p>
+          <div class="steps">
+            <div class="step">
+              <div class="step-line"></div>
+              <div class="step-circ">1</div>
+              <div class="step-body">
+                <h4>Costo de las horas extra nocturnas de Lucía</h4>
+                <p>Costo hora = $480/30/8 = $2.00. 12 horas × $2.00 = $24.00. Más 100% de recargo (Art. 169 CT) = $24.00 adicional → $48.00. Más 25% adicional por ser horas <strong>nocturnas</strong> (según el criterio de la guía): $48.00 × 25% = $12.00.<br>
+                <strong>Total horas extra Lucía = $60.00.</strong></p>
+                <p class="why">¿Por qué un recargo adicional? Además del 100% que aplica a toda hora extra, trabajar de noche tiene su propio recargo por nocturnidad — por eso una hora extra nocturna cuesta más que una diurna.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-line"></div>
+              <div class="step-circ">2</div>
+              <div class="step-body">
+                <h4>Costo de las horas extra diurnas de María Elena</h4>
+                <p>Costo hora = $420/30/8 = $1.75. 11 horas × $1.75 = $19.25. Más 100% de recargo = $19.25 adicional.<br>
+                <strong>Total horas extra María Elena = $38.50.</strong></p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-line"></div>
+              <div class="step-circ">3</div>
+              <div class="step-body">
+                <h4>Elaborar la planilla completa</h4>
+                <div style="overflow-x:auto;">
+                <table style="margin-top:8px; font-size:0.82rem;">
+                  <thead><tr><th>Empleado</th><th class="num-cell">Sueldo</th><th class="num-cell">H. extra</th><th class="num-cell">Total</th><th class="num-cell">ISSS 3%</th><th class="num-cell">AFP 7.25%</th><th class="num-cell">Gravable</th><th class="num-cell">ISR</th><th class="num-cell">Otros desc.</th><th class="num-cell">Neto</th></tr></thead>
+                  <tbody>
+                    <tr><td>José Rigoberto Rosales (Gerente venta)</td><td class="num-cell">2,500.00</td><td class="num-cell">—</td><td class="num-cell">2,500.00</td><td class="num-cell">30.00</td><td class="num-cell">181.25</td><td class="num-cell">2,288.75</td><td class="num-cell">363.77</td><td class="num-cell">250.00</td><td class="num-cell">1,674.98</td></tr>
+                    <tr><td>Raúl Eugenio Pineda (Contador Gral.)</td><td class="num-cell">1,750.00</td><td class="num-cell">—</td><td class="num-cell">1,750.00</td><td class="num-cell">30.00</td><td class="num-cell">126.88</td><td class="num-cell">1,593.13</td><td class="num-cell">199.58</td><td class="num-cell">—</td><td class="num-cell">1,393.55</td></tr>
+                    <tr><td>Ricardo Peña (Gerente admin.)</td><td class="num-cell">1,900.00</td><td class="num-cell">—</td><td class="num-cell">1,900.00</td><td class="num-cell">30.00</td><td class="num-cell">137.75</td><td class="num-cell">1,732.25</td><td class="num-cell">227.40</td><td class="num-cell">—</td><td class="num-cell">1,504.85</td></tr>
+                    <tr><td>Manuel Bonilla (Gerente prod.)</td><td class="num-cell">2,100.00</td><td class="num-cell">—</td><td class="num-cell">2,100.00</td><td class="num-cell">30.00</td><td class="num-cell">152.25</td><td class="num-cell">1,917.75</td><td class="num-cell">264.50</td><td class="num-cell">300.00</td><td class="num-cell">1,353.25</td></tr>
+                    <tr><td>María Leonor Mejía (Supervisor prod.)</td><td class="num-cell">750.00</td><td class="num-cell">—</td><td class="num-cell">750.00</td><td class="num-cell">22.50</td><td class="num-cell">54.38</td><td class="num-cell">673.12</td><td class="num-cell">29.98</td><td class="num-cell">—</td><td class="num-cell">643.14</td></tr>
+                    <tr><td>Lucía Martínez (Operario 1)</td><td class="num-cell">480.00</td><td class="num-cell">60.00</td><td class="num-cell">540.00</td><td class="num-cell">16.20</td><td class="num-cell">39.15</td><td class="num-cell">484.65</td><td class="num-cell">0.00</td><td class="num-cell">—</td><td class="num-cell">484.65</td></tr>
+                    <tr><td>María Elena Pérez (Operario 2)</td><td class="num-cell">420.00</td><td class="num-cell">38.50</td><td class="num-cell">458.50</td><td class="num-cell">13.76</td><td class="num-cell">33.24</td><td class="num-cell">411.50</td><td class="num-cell">0.00</td><td class="num-cell">—</td><td class="num-cell">411.50</td></tr>
+                    <tr><td><strong>TOTAL</strong></td><td class="num-cell"><strong>9,900.00</strong></td><td class="num-cell"><strong>98.50</strong></td><td class="num-cell"><strong>9,998.50</strong></td><td class="num-cell"><strong>172.46</strong></td><td class="num-cell"><strong>724.89</strong></td><td class="num-cell"><strong>9,101.15</strong></td><td class="num-cell"><strong>1,085.23</strong></td><td class="num-cell"><strong>550.00</strong></td><td class="num-cell"><strong>7,465.93</strong></td></tr>
+                  </tbody>
+                </table>
+                </div>
+                <div class="box error" style="margin-top:12px;">
+                  <h4><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="vertical-align:-3px;margin-right:6px"><path d="M12 3.5 21.5 20h-19L12 3.5z" stroke-linejoin="round"/><path d="M12 9.5v5" stroke-linecap="round"/><circle cx="12" cy="17.2" r=".9" fill="currentColor" stroke="none"/></svg>Ojo: la hoja de la profesora usa una tabla de ISR desactualizada aquí</h4>
+                  <p>En "Ejercicios clase planillas.xlsx", la pestaña de este ejercicio calcula el ISR con una tabla mensual donde el Tramo I llega hasta $472.00 (en vez de $550.00, que es la tabla vigente ya verificada en el Marco Normativo de esta unidad — la misma profesora la actualizó en su pestaña "CALCULO" pero no en la de este ejercicio). Esto afecta a María Leonor (ella calcula $37.78, aquí sale <strong>$29.98</strong>) y sobre todo a Lucía (ella calcula $18.94, pero con la tabla vigente Lucía cae en el Tramo I y <strong>no se le retiene ISR</strong>). Los valores de esta tabla usan la tabla vigente; confírmalo con la profesora si tu nota depende de su hoja.</p>
+                </div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-line"></div>
+              <div class="step-circ">4</div>
+              <div class="step-body">
+                <h4>Aportaciones patronales</h4>
+                <p>ISSS 7.5% (topado a $1,000 por empleado que lo supere): $431.14 total.<br>
+                AFP 8.75% (sin tope): $874.87 total.<br>
+                INCAF 1%: <strong>$0.00</strong> — LABORATORI tiene solo <strong>7 empleados</strong>, por debajo del mínimo de 10 que exige la Ley del INCAF para estar obligado a cotizar.<br>
+                <strong>Total aportaciones patronales = $1,306.01.</strong></p>
+                <p class="legal-ref">Base legal: Ley del INCAF — cotización obligatoria solo para patronos con 10 o más trabajadores.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-circ">5</div>
+              <div class="step-body">
+                <h4>Registrar el libro diario</h4>
+                <table style="margin-top:10px; font-size:0.85rem;">
+                  <thead><tr><th>Cuenta</th><th class="num-cell">Debe</th><th class="num-cell">Haber</th></tr></thead>
+                  <tbody>
+                    <tr><td><strong style="font-family:'IBM Plex Sans',sans-serif; color:var(--text);">Partida 1 — Pago de sueldos de marzo</strong></td><td></td><td></td></tr>
+                    <tr><td style="padding-left:24px;">Gastos de Producción <span class="badge gasto">Gasto</span></td><td class="num-cell">3,848.50</td><td></td></tr>
+                    <tr><td style="padding-left:24px;">Gastos de Administración <span class="badge gasto">Gasto</span></td><td class="num-cell">3,650.00</td><td></td></tr>
+                    <tr><td style="padding-left:24px;">Gastos de Venta <span class="badge gasto">Gasto</span></td><td class="num-cell">2,500.00</td><td></td></tr>
+                    <tr><td style="padding-left:24px;">Retenciones por Pagar (ISSS+AFP+ISR) <span class="badge pasivo">Pasivo</span></td><td></td><td class="num-cell">982.68</td></tr>
+                    <tr><td style="padding-left:24px;">Descuentos por Pagar (BANCO XYZ + Procuraduría) <span class="badge pasivo">Pasivo</span></td><td></td><td class="num-cell">550.00</td></tr>
+                    <tr><td style="padding-left:24px;">Efectivo y Equivalentes <span class="badge activo">Activo</span></td><td></td><td class="num-cell">8,465.82</td></tr>
+                    <tr><td><strong style="font-family:'IBM Plex Sans',sans-serif; color:var(--text);">Partida 2 — Prestaciones patronales</strong></td><td></td><td></td></tr>
+                    <tr><td style="padding-left:24px;">Gastos de Producción, Administración y Venta <span class="badge gasto">Gasto</span></td><td class="num-cell">1,306.01</td><td></td></tr>
+                    <tr><td style="padding-left:24px;">Prestaciones por Pagar (ISSS+AFP) <span class="badge pasivo">Pasivo</span></td><td></td><td class="num-cell">1,306.01</td></tr>
+                  </tbody>
+                </table>
+                <p class="why">Los gastos se distribuyen por departamento (producción, administración, venta) según el puesto de cada empleado — esto conecta con el concepto de "gasto de venta" vs. "gasto de administración" que se usa en el Estado de Resultados.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="block">
+          <h2><span class="tagnum">2</span>Ejercicio 5.2 de la guía — Planilla de aguinaldos (LABORATORI, S.A. DE C.V.)</h2>
+          <p>Enunciado: LABORATORI pagará aguinaldos el 13 de diciembre de 2025. María Leonor Mejía Sánchez ingresó el 1 de marzo de 2025 (menos de 1 año); el resto ya tiene la antigüedad indicada en la tabla.</p>
+          <div class="steps">
+            <div class="step">
+              <div class="step-line"></div>
+              <div class="step-circ">1</div>
+              <div class="step-body">
+                <h4>Determinar los días de aguinaldo por antigüedad</h4>
+                <table style="margin-top:8px; font-size:0.85rem;">
+                  <thead><tr><th>Empleado</th><th class="num-cell">Años</th><th class="num-cell">Días</th><th class="num-cell">Aguinaldo</th><th class="num-cell">Gravable</th><th class="num-cell">ISR</th><th class="num-cell">Líquido</th></tr></thead>
+                  <tbody>
+                    <tr><td>José Rigoberto Rosales</td><td class="num-cell">5</td><td class="num-cell">19</td><td class="num-cell">1,583.33</td><td class="num-cell">765.73</td><td class="num-cell">39.24</td><td class="num-cell">1,544.09</td></tr>
+                    <tr><td>Raúl Eugenio Pineda</td><td class="num-cell">11</td><td class="num-cell">21</td><td class="num-cell">1,225.00</td><td class="num-cell">407.40</td><td class="num-cell">0.00</td><td class="num-cell">1,225.00</td></tr>
+                    <tr><td>Ricardo Peña</td><td class="num-cell">3.1</td><td class="num-cell">19</td><td class="num-cell">1,203.33</td><td class="num-cell">385.73</td><td class="num-cell">0.00</td><td class="num-cell">1,203.33</td></tr>
+                    <tr><td>Manuel Bonilla</td><td class="num-cell">1.05</td><td class="num-cell">15</td><td class="num-cell">1,050.00</td><td class="num-cell">232.40</td><td class="num-cell">0.00</td><td class="num-cell">1,050.00</td></tr>
+                    <tr><td>María Leonor Mejía</td><td class="num-cell">&lt;1</td><td class="num-cell">Proporcional</td><td class="num-cell">294.86</td><td class="num-cell">0.00</td><td class="num-cell">0.00</td><td class="num-cell">294.86</td></tr>
+                    <tr><td>Lucía Martínez</td><td class="num-cell">4</td><td class="num-cell">19</td><td class="num-cell">304.00</td><td class="num-cell">0.00</td><td class="num-cell">0.00</td><td class="num-cell">304.00</td></tr>
+                    <tr><td>María Elena Pérez</td><td class="num-cell">2</td><td class="num-cell">15</td><td class="num-cell">210.00</td><td class="num-cell">0.00</td><td class="num-cell">0.00</td><td class="num-cell">210.00</td></tr>
+                    <tr><td><strong>TOTAL</strong></td><td></td><td></td><td class="num-cell"><strong>5,870.53</strong></td><td class="num-cell"><strong>1,791.27</strong></td><td class="num-cell"><strong>39.24</strong></td><td class="num-cell"><strong>5,831.29</strong></td></tr>
+                  </tbody>
+                </table>
+                <p class="why">Solo Rigoberto excede el tope exento de $817.60 (2 salarios mínimos mensuales), así que solo a él se le retiene ISR — sobre el exceso ($765.73), no sobre todo el aguinaldo.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-line"></div>
+              <div class="step-circ">2</div>
+              <div class="step-body">
+                <h4>Caso especial: María Leonor (menos de 1 año)</h4>
+                <p>Ingresó el 1 de marzo de 2025; el corte de aguinaldo es el 12 de diciembre. Días trabajados = 287 (marzo 31 + abril 30 + mayo 31 + junio 30 + julio 31 + agosto 31 + septiembre 30 + octubre 31 + noviembre 30 + diciembre 12).<br>
+                Aguinaldo completo (tramo de 15 días, su primer tramo): $750/30 × 15 = $375.00.<br>
+                Proporcional: $375.00 × 287/365 = <strong>$294.86</strong>.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-circ">3</div>
+              <div class="step-body">
+                <h4>Registrar el pago de aguinaldos</h4>
+                <table style="margin-top:10px; font-size:0.85rem;">
+                  <thead><tr><th>Cuenta</th><th class="num-cell">Debe</th><th class="num-cell">Haber</th></tr></thead>
+                  <tbody>
+                    <tr><td style="padding-left:0;">Gastos de Producción, Administración y Venta (aguinaldos) <span class="badge gasto">Gasto</span></td><td class="num-cell">5,870.53</td><td></td></tr>
+                    <tr><td style="padding-left:24px;">Efectivo y Equivalentes <span class="badge activo">Activo</span></td><td></td><td class="num-cell">5,831.29</td></tr>
+                    <tr><td style="padding-left:24px;">ISR Retenido por Pagar <span class="badge pasivo">Pasivo</span></td><td></td><td class="num-cell">39.24</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="block">
+          <h2><span class="tagnum">2</span>Ejercicio 5.3 de la guía — Adelanto: recálculo de ISR (Unidad 3)</h2>
+          <div class="box legal">
+            <h4><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="vertical-align:-3px;margin-right:6px"><path d="M12 6c-1.5-1.2-4-2-7-2v14c3 0 5.5.8 7 2 1.5-1.2 4-2 7-2V4c-3 0-5.5.8-7 2z"/><path d="M12 6v14"/></svg>Este ejercicio se resuelve a fondo en la Unidad 3</h4>
+            <p>El enunciado: <em>en diciembre de 2025, recalcule la retención de ISR de Ana López ($3,500 mensual + $525 de vacaciones pagadas en julio) y de Mariano Martínez ($365 mensual + $225 de comisiones + $88.50 de vacaciones en septiembre), considerando que ambos ya recibieron su aguinaldo de diciembre.</em></p>
+            <p>El "recálculo" es un ajuste que la ley exige hacer en <strong>junio y diciembre</strong>: en vez de aplicar la tabla mensual mes a mes, se anualiza (o semestraliza) el ingreso gravado acumulado y se compara contra lo ya retenido, para corregir cualquier diferencia de una sola vez. Esto depende de las tablas de recálculo (distintas a la tabla mensual normal) que se estudian con detalle en la <strong>Unidad 3 — Impuesto sobre la Renta</strong>, junto con el resto de la mecánica de retenciones. Se deja aquí registrado el enunciado completo para que no se pierda, pero resolverlo bien requiere el contenido que todavía no se ha visto formalmente.</p>
+            <p style="font-size:0.82rem; color:var(--text-dim);">Nota: al revisar la hoja de solución de la profesora para este ejercicio, se encontraron tres tablas de ISR mensual distintas usadas en distintas pestañas del mismo archivo (con distintos umbrales de tramo), lo que hace que sus cifras mes a mes no sean del todo consistentes entre sí. Por eso este panel no reproduce una tabla mes a mes con números que podrían no coincidir con la tabla vigente — mejor esperar a la Unidad 3, donde se fijará la tabla de recálculo correcta antes de resolver.</p>
+          </div>
+        </section>
+
         <div class="glossary">
           <h3 style="font-size:1.05rem; margin-bottom:10px; font-family:'Bricolage Grotesque',sans-serif;">Glosario — Panel 2</h3>
           <dl>
@@ -1314,6 +1621,11 @@ section.block > h2 .tagnum{
             <dt>Cuota fija</dt><dd>Monto acumulado de la retención de los tramos anteriores, que se suma al resultado del tramo actual.</dd>
             <dt>Sueldos por pagar</dt><dd>Pasivo corriente que representa el salario neto devengado y aún no pagado en efectivo.</dd>
             <dt>Retenido por pagar</dt><dd>Pasivo que representa el dinero descontado al empleado que la empresa aún debe enterar a la institución correspondiente (ISSS, AFP, Hacienda).</dd>
+                      <dt>Liquidación</dt><dd>Conjunto de valores que la empresa debe pagar a un empleado al finalizar la relación laboral: salario pendiente, vacación y aguinaldo proporcionales, más indemnización cuando corresponde.</dd>
+            <dt>Indemnización</dt><dd>Prestación que compensa al empleado despedido sin causa justificada (Art. 58 CT); se calcula sobre el salario mensual con un tope de 4 salarios mínimos.</dd>
+            <dt>Recargo por hora extra</dt><dd>Aumento del 100% sobre el valor de la hora normal (Art. 169 CT) que se paga por cada hora trabajada fuera de la jornada ordinaria; si la hora extra es nocturna, se añade un 25% adicional.</dd>
+            <dt>Ingreso base de cotización</dt><dd>Monto sobre el cual se calculan los aportes y retenciones de ISSS y AFP; normalmente el salario ordinario, sin incluir prestaciones ocasionales como el aguinaldo.</dd>
+            <dt>Recálculo de ISR</dt><dd>Ajuste que la Ley del ISR exige en junio y diciembre para verificar que la retención acumulada del año corresponda al impuesto real, tomando en cuenta ingresos variables como comisiones o aguinaldo.</dd>
           </dl>
         </div>
       </section>
@@ -1325,6 +1637,11 @@ section.block > h2 .tagnum{
         <section class="block">
           <h2><span class="tagnum">3</span>Cómo usar el Excel de esta unidad</h2>
           <p>El archivo <code>U1_Planillas_ContFinanciera.xlsx</code> trae 8 hojas: portada, marco normativo, cálculo de planilla (resuelto y práctica), asientos de libro diario (resuelto y práctica), y la cédula de prestaciones laborales (resuelto y práctica).</p>
+
+          <a class="dl-btn" href="U1_Planillas_ContFinanciera.xlsx" download="U1_Planillas_ContFinanciera.xlsx">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3v13M6 11l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 21h16" stroke-linecap="round"/></svg>
+            Descargar U1_Planillas_ContFinanciera.xlsx
+          </a>
 
           <div class="svg-wrap">
             <svg viewBox="0 0 640 220" width="100%" height="auto" role="img" aria-label="Vista previa de la hoja de cálculo">

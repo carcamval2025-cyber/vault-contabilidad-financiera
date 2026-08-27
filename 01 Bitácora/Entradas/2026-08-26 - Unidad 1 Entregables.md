@@ -61,3 +61,37 @@ conexión al caso salvadoreño ya construido. Cuando se pidan "pedidos de imagen
 default a SVG de código (no raster) porque Antigravity/Codex son agentes de código y porque el
 sistema de diseño del curso ya prohíbe imágenes externas — documentar esa decisión explícitamente en
 el brief para que no se pierda en una sesión futura.
+
+## Cierre del pedido de imagen — Antigravity entregó los 4 SVG (mismo día, 2026-08-26)
+
+El estudiante reportó que Antigravity generó las 4 ilustraciones siguiendo el brief de
+`Pedidos de Imagen - Unidad 1.md` y las integró directamente en su máquina (reemplazando las 4
+tarjetas `<div class="img-request">` por `<div class="svg-wrap"><svg>...</svg></div>`), tanto en
+`Entregables/Unidad 1/U1_Planillas_ContFinanciera.html` como en el espejo de GitHub Pages
+`docs/unidad-1/index.html`. Se verificó desde esta sesión (staging + inspección con Python, sin usar
+`git`):
+
+- Los dos HTML son byte-idénticos entre sí (el espejo de `docs/` no quedó desincronizado).
+- Las 4 tarjetas de pedido ya no existen (0 `img-request` restantes) y el conteo de `svg-wrap` subió
+  de 4 a 8 — los 4 nuevos se sumaron, ninguno pisó un diagrama existente.
+- Tags balanceados (`div`, `svg`), cero referencias a imágenes externas o rasterizadas dentro del
+  HTML, los 5 paneles y los 5 glosarios siguen intactos, y todas las cifras verificadas del ejercicio
+  (363.77, 1,924.98, 2,463.48, 116.10, 1,059.65, 1,485.96, 600.00, 2,500.00) se mantienen sin cambios.
+- Los 4 archivos `.svg` (`assets/img/u1-01…04`) usan `viewBox`, `role="img"` + `aria-label`
+  descriptivo, las tres tipografías correctas (Bricolage Grotesque / IBM Plex Sans / IBM Plex Mono),
+  cero referencias externas (`<image>`, `xlink:href` http, `url(http…)`) y prácticamente solo colores
+  de la paleta Fintech Oscuro (única excepción: `#181B20`, un tono de fila alterna que ya existía en
+  el archivo original, no un color nuevo).
+
+**No se ejecutó ningún comando `git`** desde esta sesión de Cowork — sigue vigente la restricción de
+esta sesión de nunca correr `git` vía el puente de archivos (deja `.git/index.lock` que el puente no
+puede borrar y bloquea el plugin de Obsidian Git del estudiante). El estudiante debe hacer el
+`commit`/`push` él mismo desde Obsidian Git o su Terminal.
+
+**Nota aparte, fuera del alcance de este pedido:** al listar `docs/`, aparecieron además varias
+versiones de favicon (`favicon-v2.png` … `favicon-v8.png`), logotipos en `.webp`/`.png`/`.svg`, y
+capturas `.png` de cada panel (`assets/unidad-1/u1-panel-*.png`, hasta ~975 KB cada una) — trabajo de
+pulido del sitio de GitHub Pages que no pidió esta sesión y que no se auditó. Vale la pena que el
+estudiante confirme si esas capturas .png son intencionales (p. ej. como imagen de vista previa para
+compartir el enlace) o si conviene limpiarlas, ya que el sistema de diseño del curso es "todo SVG
+inline" — las capturas de panel como PNG podrían no estar destinadas a permanecer en el repo final.

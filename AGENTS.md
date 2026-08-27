@@ -38,6 +38,15 @@ preguntar al usuario que inventar una estructura nueva.
    sesión.
 5. Antes de generar cualquier entregable, preguntar si hay ambigüedad — es una
    instrucción explícita y repetida del usuario, no solo una buena práctica genérica.
+6. **Si a este agente le piden ilustrar un HTML de unidad** (típicamente Antigravity o
+   Codex, a partir de un archivo `Entregables/Unidad N/Pedidos de Imagen - Unidad N.md`
+   dejado por Claude): entregar siempre **SVG de código completo, nunca PNG/JPG**,
+   usando únicamente la paleta y tipografías de `00 Curso/Sistema de Diseño HTML.md`,
+   sin inventar cifras nuevas, con `viewBox` responsive y `role="img"` + `aria-label`.
+   El protocolo completo (cuándo se pide, cómo se estructura el brief, cómo se verifica
+   sin usar `git`) está en la sección "Protocolo — pedir ilustraciones a otro agente"
+   de ese mismo archivo — seguirlo y, si algo se puede mejorar, anotarlo ahí mismo o en
+   la bitácora del día para la próxima unidad.
 
 ## Estructura de carpetas
 
