@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Unidad 1 — Pasivo Corriente: Planillas | Contabilidad Financiera</title>
+<link rel="icon" type="image/png" href="../favicon-v8.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -34,8 +35,19 @@ code{font-family:'IBM Plex Mono',monospace; background:var(--bg-elev2); padding:
 .sidebar{
   width:220px; flex-shrink:0;
   background:var(--bg-elev); border-right:1px solid var(--border);
-  padding:24px 0; position:sticky; top:0; height:100vh; overflow-y:auto; overflow-x:hidden;
+  padding:20px 0 24px; position:sticky; top:0; height:100vh; overflow-y:auto; overflow-x:hidden;
 }
+.nav-back-btn{
+  display:flex; align-items:center; gap:8px;
+  padding:8px 12px; margin:0 16px 14px;
+  color:var(--text-dim); text-decoration:none;
+  font-family:'IBM Plex Mono',monospace; font-size:0.72rem; letter-spacing:0.04em; text-transform:uppercase; font-weight:600;
+  background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:6px;
+  transition:all 0.25s var(--ease);
+}
+.nav-back-btn svg{color:var(--accent); transition:transform 0.2s var(--ease); flex-shrink:0;}
+.nav-back-btn:hover{background:var(--bg-elev2); color:var(--text); border-color:var(--accent);}
+.nav-back-btn:hover svg{transform:translateX(-3px);}
 .sidebar .brand{
   color:var(--text-dim); font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase;
   padding:0 20px 18px; border-bottom:1px solid var(--border); margin-bottom:10px;
@@ -80,6 +92,18 @@ code{font-family:'IBM Plex Mono',monospace; background:var(--bg-elev2); padding:
   padding:40px 40px 34px;
 }
 .hero-decor{position:absolute; right:-40px; top:-60px; opacity:1; pointer-events:none;}
+.hero-top{display:flex; align-items:center; gap:10px; margin-bottom:14px; flex-wrap:wrap; position:relative; z-index:1;}
+.hero-top .eyebrow{margin-bottom:0;}
+.hero-back-link{
+  display:inline-flex; align-items:center; gap:6px;
+  font-family:'IBM Plex Mono',monospace; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; font-weight:600;
+  color:var(--text-dim); text-decoration:none;
+  padding:4px 10px; border-radius:4px; border:1px solid var(--border); background:var(--bg);
+  transition:all 0.25s var(--ease);
+}
+.hero-back-link svg{color:var(--accent); transition:transform 0.2s var(--ease); flex-shrink:0;}
+.hero-back-link:hover{color:var(--text); border-color:var(--accent); background:var(--bg-elev2);}
+.hero-back-link:hover svg{transform:translateX(-2px);}
 .eyebrow{
   font-family:'IBM Plex Mono',monospace; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase;
   color:var(--accent); font-weight:600; margin-bottom:14px; position:relative; display:inline-block;
@@ -241,8 +265,10 @@ section.block > h2 .tagnum{
 
 @media (max-width: 880px){
   .app{flex-direction:column;}
-  .sidebar{width:100%; height:auto; position:relative; display:flex; overflow-x:auto;}
-  .tab{flex-direction:column; gap:4px; text-align:center; white-space:nowrap;}
+  .sidebar{width:100%; height:auto; position:relative; display:flex; align-items:center; overflow-x:auto; padding:10px 14px; gap:8px;}
+  .sidebar .brand{padding:0 12px; border-bottom:none; margin-bottom:0; border-right:1px solid var(--border); white-space:nowrap; flex-shrink:0;}
+  .nav-back-btn{margin:0; padding:7px 12px; flex-shrink:0;}
+  .tab{flex-direction:column; gap:4px; text-align:center; white-space:nowrap; padding:10px 14px; flex-shrink:0;}
   .tab .ghost{display:none;}
   .grid3{grid-template-columns:1fr;}
   .content{padding:24px 18px 50px;}
@@ -265,6 +291,10 @@ section.block > h2 .tagnum{
 
   <!-- ================= SIDEBAR ================= -->
   <nav class="sidebar">
+    <a href="../index.html" class="nav-back-btn" title="Volver al menú principal">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      <span>Principal</span>
+    </a>
     <div class="brand">ESEN / CONT—FIN<b>SECCIÓN 2 · 3T—2026</b></div>
     <div class="tab active" data-panel="p1" role="tab" tabindex="0" aria-selected="true">
       <span class="ghost">01</span>
@@ -305,7 +335,13 @@ section.block > h2 .tagnum{
         <line x1="0" y1="230" x2="420" y2="230" stroke="#262B33" stroke-width="1" stroke-dasharray="3 6"/>
         <text x="330" y="96" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" fill="#9098A6">U—01</text>
       </svg>
-      <div class="eyebrow">UNIDAD—01 / PLANILLAS.SV</div>
+      <div class="hero-top">
+        <a href="../index.html" class="hero-back-link" title="Volver al menú principal">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Menú principal</span>
+        </a>
+        <div class="eyebrow">UNIDAD—01 / PLANILLAS.SV</div>
+      </div>
       <h1>Pasivo Corriente: <em>Planillas</em></h1>
       <p class="sub">Obligaciones patronales, prestaciones laborales, retiro voluntario y retenciones de ISR — la base legal y contable de la nómina en El Salvador.</p>
       <div class="chips">
