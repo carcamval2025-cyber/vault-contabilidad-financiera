@@ -305,8 +305,8 @@ section.block > h2 .tagnum{
       <h1>Pasivo Corriente: <em>Planillas</em></h1>
       <p class="sub">Obligaciones patronales, prestaciones laborales, retiro voluntario y retenciones de ISR — la base legal y contable de la nómina en El Salvador.</p>
       <div class="chips">
-        <span class="chip">📅 SEMANA—01 · 25–27 AGO 2026</span>
-        <span class="chip ok">🎯 CUBIERTO EN PARCIAL 1</span>
+        <span class="chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>SEMANA—01 · 25–27 AGO 2026</span>
+        <span class="chip ok"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".6" fill="currentColor"/></svg>CUBIERTO EN PARCIAL 1</span>
         <span class="chip">SIN CONTROL NI CASO ESTA SEMANA</span>
       </div>
     </div>
@@ -361,7 +361,7 @@ section.block > h2 .tagnum{
           </div>
 
           <div class="box">
-            <h4>📚 Profundización teórica — ¿por qué la planilla ya es un pasivo antes de que se mueva el efectivo?</h4>
+            <h4><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="vertical-align:-3px;margin-right:6px"><path d="M12 6c-1.5-1.2-4-2-7-2v14c3 0 5.5.8 7 2 1.5-1.2 4-2 7-2V4c-3 0-5.5.8-7 2z"/><path d="M12 6v14"/></svg>Profundización teórica — ¿por qué la planilla ya es un pasivo antes de que se mueva el efectivo?</h4>
             <p>La contabilidad financiera no reconoce el gasto de sueldos cuando se paga el efectivo, sino cuando el empleado <strong>ya prestó el servicio</strong> — esto es el <strong>principio de devengo (acumulación)</strong>: los gastos se registran en el período en que ayudan a generar el ingreso de la empresa, no cuando sale el dinero. Por eso, al 31 de mayo, aunque Repuestos ABC todavía no le ha entregado un dólar a Ana ni a Juan, la obligación ya existe en sus libros.</p>
             <p style="margin-top:8px;">Este pasivo es <strong>corriente</strong> (de corto plazo) porque la empresa espera liquidarlo dentro de su ciclo normal de operación — en la práctica, días después del cierre del mes, no años. Así se conecta con la ecuación contable fundamental: <span class="mono">Activo = Pasivo + Patrimonio</span>. Al reconocer el gasto de sueldos, el Patrimonio disminuye (vía el resultado del período) exactamente en la misma medida en que crecen los pasivos por pagar — la ecuación nunca se desbalancea, ni siquiera un segundo antes de que se pague el neto.</p>
           </div>
@@ -721,11 +721,278 @@ section.block > h2 .tagnum{
 </div>
         </section>
 
+        <section class="block">
+          <h2><span class="tagnum">6</span>Jornadas de trabajo y horas extra</h2>
+          <p>Antes de calcular cualquier prestación, hay que fijar cuánto tiempo puede trabajar una persona sin que ese tiempo deje de ser "ordinario". El Código de Trabajo separa las horas del día en dos tipos y les pone un límite distinto a cada una.</p>
+          <table>
+            <thead><tr><th>Tipo de jornada</th><th>Horario</th><th>Límite diario</th><th>Límite semanal</th></tr></thead>
+            <tbody>
+              <tr><td>Diurna</td><td>6:00 a.m. – 7:00 p.m.</td><td class="num-cell">8 horas</td><td class="num-cell">44 horas</td></tr>
+              <tr><td>Nocturna</td><td>7:00 p.m. – 6:00 a.m.</td><td class="num-cell">7 horas</td><td class="num-cell">39 horas</td></tr>
+            </tbody>
+          </table>
+          <p style="font-size:0.85rem; color:var(--text-dim);"><strong>Regla de las 4 horas (Art. 161, Código de Trabajo):</strong> si una jornada mixta comprende más de 4 horas nocturnas, la jornada completa se considera nocturna para efectos de su duración — no se promedia entre diurna y nocturna.</p>
+
+          <div class="svg-wrap">
+            <svg viewBox="0 0 660 170" width="100%" height="auto" role="img" aria-label="Línea de tiempo de 24 horas: jornada diurna de 6am a 7pm con límite de 8 horas diarias, jornada nocturna de 7pm a 6am con límite de 7 horas diarias, y la hora extra más allá de esos límites">
+              <line x1="30" y1="90" x2="610" y2="90" stroke="#262B33" stroke-width="1.5"/>
+              <rect x="30" y="70" width="314" height="40" rx="4" fill="rgba(255,176,32,0.18)" stroke="#FFB020" stroke-width="1.4"/>
+              <text x="187" y="58" text-anchor="middle" font-family="Bricolage Grotesque" font-size="14" font-weight="800" fill="#FFB020">DIURNA</text>
+              <text x="187" y="95" text-anchor="middle" font-family="IBM Plex Mono" font-size="10.5" fill="#EDEEF0">8h/día · 44h/semana</text>
+              <rect x="344" y="70" width="266" height="40" rx="4" fill="rgba(90,200,250,0.18)" stroke="#5AC8FA" stroke-width="1.4"/>
+              <text x="477" y="58" text-anchor="middle" font-family="Bricolage Grotesque" font-size="14" font-weight="800" fill="#5AC8FA">NOCTURNA</text>
+              <text x="477" y="95" text-anchor="middle" font-family="IBM Plex Mono" font-size="10.5" fill="#EDEEF0">7h/día · 39h/semana</text>
+              <line x1="30" y1="110" x2="30" y2="118" stroke="#9098A6" stroke-width="1"/>
+              <text x="30" y="132" text-anchor="middle" font-family="IBM Plex Mono" font-size="9.5" fill="#9098A6">6am</text>
+              <line x1="344" y1="110" x2="344" y2="118" stroke="#9098A6" stroke-width="1"/>
+              <text x="344" y="132" text-anchor="middle" font-family="IBM Plex Mono" font-size="9.5" fill="#9098A6">7pm</text>
+              <line x1="610" y1="110" x2="610" y2="118" stroke="#9098A6" stroke-width="1"/>
+              <text x="610" y="132" text-anchor="middle" font-family="IBM Plex Mono" font-size="9.5" fill="#9098A6">6am</text>
+              <rect x="616" y="70" width="30" height="40" rx="3" fill="rgba(255,92,92,0.22)" stroke="#FF5C5C" stroke-width="1.3" stroke-dasharray="3 2"/>
+              <text x="631" y="95" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#FF5C5C">+1h</text>
+              <text x="320" y="155" text-anchor="middle" font-family="IBM Plex Sans" font-size="10.5" fill="#EDEEF0">Cualquier hora más allá del límite de cada jornada es <tspan fill="#FF5C5C" font-weight="700">hora extra (+100% de recargo)</tspan></text>
+            </svg>
+          </div>
+
+          <div class="box legal">
+            <h4><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" style="vertical-align:-3px;margin-right:6px"><path d="M12 3v18M7 21h10M4.5 7h6.2M13.3 7h6.2" stroke-linecap="round"/><path d="M4.5 7 2 12a2.5 2.5 0 0 0 5 0L4.5 7z"/><path d="M19.5 7 17 12a2.5 2.5 0 0 0 5 0L19.5 7z"/></svg>Horas extra — Art. 169, Código de Trabajo</h4>
+            <ul>
+              <li>Todo trabajo en exceso de la jornada ordinaria se remunera con un <strong>recargo del 100%</strong> del salario básico por hora, hasta el límite legal.</li>
+              <li>Las horas extra son <strong>solo de forma ocasional</strong> — no pueden convertirse en la jornada habitual del puesto.</li>
+              <li>Excepción: puede pactarse hora extra <strong>permanente</strong> para compensar las 4 horas del sábado (y no trabajar ese día), o en empresas que operan 24 horas, en la jornada nocturna.</li>
+              <li>Los trabajos que excedan la jornada ordinaria por <strong>fuerza mayor</strong> (incendio, terremoto, etc.) se remuneran solo con salario básico, sin el recargo del 100%.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="block">
+          <h2><span class="tagnum">7</span>Prestaciones laborales: qué son y cuáles existen</h2>
+          <p>Además del salario ordinario, el Código de Trabajo y otras leyes obligan al patrono a reconocer <strong>seis prestaciones</strong> ligadas a la relación laboral. No todas se calculan igual, no todas están gravadas de la misma forma, y no todas dependen de la antigüedad del trabajador — por eso conviene verlas una por una antes de la cédula del Excel (Hoja 7).</p>
+          <div class="grid3">
+            <div class="card"><div class="ic"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#5AC8FA" stroke-width="1.6"><path d="M12 2C7 2 3 8 3 12h18C21 8 17 2 12 2z"/><path d="M12 12v9M12 12 5 20M12 12l7 8"/><path d="M3 21h18" stroke-linecap="round"/></svg></div><h4>Vacaciones</h4><p>15 días remunerados + 30% de recargo, después de 1 año continuo de servicio.</p></div>
+            <div class="card"><div class="ic"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#FFB020" stroke-width="1.6"><rect x="3" y="9" width="18" height="12" rx="1"/><path d="M3 13h18M12 9v12"/><path d="M12 9c-1.8 0-3.2-1.3-3.2-3S9.2 3 11 3c1.5 0 2.7 1.6 3 3M12 9c1.8 0 3.2-1.3 3.2-3S14.8 3 13 3c-1.5 0-2.7 1.6-3 3"/></svg></div><h4>Aguinaldo</h4><p>Días de salario según la antigüedad del trabajador, pagados entre el 12 y el 20 de diciembre.</p></div>
+            <div class="card"><div class="ic"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#5AC8FA" stroke-width="1.5"><path d="M12 3v18M7 21h10M4.5 7h6.2M13.3 7h6.2" stroke-linecap="round"/><path d="M4.5 7 2 12a2.5 2.5 0 0 0 5 0L4.5 7z"/><path d="M19.5 7 17 12a2.5 2.5 0 0 0 5 0L19.5 7z"/></svg></div><h4>Indemnización</h4><p>Compensación cuando el patrono termina el contrato sin causa justificada.</p></div>
+            <div class="card"><div class="ic"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#FF6EC7" stroke-width="1.6"><rect x="4" y="3" width="11" height="18" rx="1"/><circle cx="11.5" cy="12" r=".7" fill="#FF6EC7" stroke="none"/><path d="M15 12h6m0 0-3-3m3 3-3 3"/></svg></div><h4>Renuncia voluntaria</h4><p>Prestación económica para el trabajador que renuncia por su propia decisión, cumpliendo requisitos de ley.</p></div>
+            <div class="card"><div class="ic"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7CB342" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 6v12M15 9.5c0-1.4-1.3-2.5-3-2.5s-3 1-3 2.2c0 3 6 1.6 6 4.6 0 1.3-1.3 2.2-3 2.2s-3-1.1-3-2.5"/></svg></div><h4>Comisiones</h4><p>Parte variable de la remuneración, atada a un resultado (típicamente ventas).</p></div>
+            <div class="card"><div class="ic"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#FFD873" stroke-width="1.6"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6L12 3z" stroke-linejoin="round"/></svg></div><h4>Bonificaciones</h4><p>Incentivo por desempeño o resultado; puede ser periódica u ocasional, con tratamiento fiscal distinto.</p></div>
+          </div>
+
+          <h3 style="font-size:1.1rem; margin:22px 0 10px; font-family:'Bricolage Grotesque',sans-serif;">Vacaciones (Art. 177 y 179, Código de Trabajo)</h3>
+          <p>Después de un año de trabajo continuo en la misma empresa, el trabajador tiene derecho a <strong>15 días de vacaciones remuneradas</strong>, pagadas con el salario ordinario de ese lapso <strong>más un 30% del mismo</strong>. Los años de trabajo continuo se cuentan desde la fecha en que el trabajador comenzó a prestar servicios, y vencen en la misma fecha de cada año posterior. Para tener derecho a gozarlas, el trabajador debe acreditar un mínimo de 200 días trabajados en el año.</p>
+          <ul style="margin:10px 0 0 20px; font-size:0.9rem;">
+            <li>Deben pagarse <strong>inmediatamente antes</strong> de que el trabajador empiece a gozarlas — nunca después.</li>
+            <li>Si el patrono da alojamiento y/o alimentación y estos se interrumpen durante las vacaciones, la remuneración de las vacaciones aumenta un <strong>25% por cada una</strong> de esas prestaciones.</li>
+            <li>Si el contrato termina con responsabilidad para el patrono (o hay despido de hecho sin causa legal) antes de cumplir el año, el trabajador tiene derecho al pago <strong>proporcional</strong> al tiempo trabajado.</li>
+            <li>Las vacaciones se suman al salario del mes en que se pagan, y la retención de <strong>ISR</strong> se calcula sobre ese total combinado, según la escala salarial vigente.</li>
+          </ul>
+
+          <h3 style="font-size:1.1rem; margin:22px 0 10px; font-family:'Bricolage Grotesque',sans-serif;">Aguinaldo — la prima que depende de la antigüedad</h3>
+          <p>A diferencia de las vacaciones, el aguinaldo no es un número fijo: los días de salario que corresponden dependen de cuántos años lleva trabajando la persona <strong>al 12 de diciembre</strong>.</p>
+          <table>
+            <thead><tr><th>Años de servicio</th><th>Salario equivalente</th></tr></thead>
+            <tbody>
+              <tr><td>Menos de 1 año</td><td class="num-cell">Proporcional al tiempo laborado</td></tr>
+              <tr><td>1 año — menos de 3 años</td><td class="num-cell">15 días</td></tr>
+              <tr><td>3 años — menos de 10 años</td><td class="num-cell">19 días</td></tr>
+              <tr><td>10 años o más</td><td class="num-cell">21 días</td></tr>
+            </tbody>
+          </table>
+
+          <div class="svg-wrap">
+            <svg viewBox="0 0 640 210" width="100%" height="auto" role="img" aria-label="Días de aguinaldo según años de servicio: 15, 19 y 21 días según el tramo de antigüedad">
+              <line x1="30" y1="175" x2="610" y2="175" stroke="#262B33" stroke-width="1.5"/>
+              <rect x="50" y="150" width="90" height="25" rx="4" fill="none" stroke="#9098A6" stroke-width="1.4" stroke-dasharray="4 3"/>
+              <text x="95" y="166" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#9098A6">proporcional</text>
+              <text x="95" y="193" text-anchor="middle" font-family="IBM Plex Sans" font-size="10.5" fill="#EDEEF0">Menos de 1 año</text>
+              <rect x="190" y="90" width="90" height="85" rx="4" fill="rgba(90,200,250,0.18)" stroke="#5AC8FA" stroke-width="1.4"/>
+              <text x="235" y="80" text-anchor="middle" font-family="Bricolage Grotesque" font-size="15" font-weight="800" fill="#5AC8FA">15 días</text>
+              <text x="235" y="193" text-anchor="middle" font-family="IBM Plex Sans" font-size="10.5" fill="#EDEEF0">1 a &lt;3 años</text>
+              <rect x="330" y="66" width="90" height="109" rx="4" fill="rgba(255,176,32,0.22)" stroke="#FFB020" stroke-width="1.4"/>
+              <text x="375" y="56" text-anchor="middle" font-family="Bricolage Grotesque" font-size="15" font-weight="800" fill="#FFB020">19 días</text>
+              <text x="375" y="193" text-anchor="middle" font-family="IBM Plex Sans" font-size="10.5" fill="#EDEEF0">3 a &lt;10 años</text>
+              <rect x="470" y="55" width="90" height="120" rx="4" fill="rgba(62,207,142,0.22)" stroke="#3ECF8E" stroke-width="1.4"/>
+              <text x="515" y="45" text-anchor="middle" font-family="Bricolage Grotesque" font-size="15" font-weight="800" fill="#3ECF8E">21 días</text>
+              <text x="515" y="193" text-anchor="middle" font-family="IBM Plex Sans" font-size="10.5" fill="#EDEEF0">10+ años</text>
+            </svg>
+          </div>
+
+          <ul style="margin:10px 0 0 20px; font-size:0.9rem;">
+            <li>Debe pagarse <strong>entre el 12 y el 20 de diciembre</strong> de cada año.</li>
+            <li>Está <strong>exento de ISR hasta 2 salarios mínimos mensuales</strong> del sector comercio y servicios; el excedente sí se retiene, deduciendo esos 2 salarios mínimos.</li>
+            <li>Se <strong>pierde por completo</strong> si el trabajador tuvo, en cada uno de 2 meses (consecutivos o no) del período 12/dic anterior — 11/dic actual, más de 2 faltas de asistencia injustificadas (aunque sea medio día).</li>
+            <li>Si el contrato termina con responsabilidad para el patrono antes del 12 de diciembre, corresponde el pago <strong>proporcional</strong>.</li>
+          </ul>
+
+          <h3 style="font-size:1.1rem; margin:22px 0 10px; font-family:'Bricolage Grotesque',sans-serif;">Indemnizaciones — cuándo y cuánto paga el patrono</h3>
+          <p>El Código de Trabajo distingue <strong>varias formas</strong> en que puede terminar la relación laboral, y solo algunas generan derecho a indemnización. Los artículos 49, 50 y 53 enumeran las causales de terminación sin responsabilidad para ninguna parte, sin responsabilidad para el empleador, y con responsabilidad para el patrono, respectivamente.</p>
+
+          <div class="svg-wrap">
+            <svg viewBox="0 0 680 190" width="100%" height="auto" role="img" aria-label="Comparación de las cuatro formas de terminación del contrato que dan derecho a indemnización: despido de hecho, despido indirecto, despido incausado con tope del Art. 58, y despido ante tempus del Art. 59">
+              <rect x="10" y="30" width="150" height="120" rx="6" fill="rgba(90,200,250,0.12)" stroke="#5AC8FA" stroke-width="1.4"/>
+              <text x="85" y="55" text-anchor="middle" font-family="Bricolage Grotesque" font-size="13" font-weight="800" fill="#5AC8FA">DE HECHO</text>
+              <text x="85" y="90" text-anchor="middle" font-family="IBM Plex Sans" font-size="9.5" fill="#EDEEF0"><tspan x="85" dy="0">Se presume</tspan><tspan x="85" dy="14">sin justa causa</tspan></text>
+              <text x="85" y="130" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#9098A6">Da derecho a</text>
+              <text x="85" y="142" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#9098A6">indemnización</text>
+
+              <rect x="180" y="30" width="150" height="120" rx="6" fill="rgba(255,176,32,0.12)" stroke="#FFB020" stroke-width="1.4"/>
+              <text x="255" y="55" text-anchor="middle" font-family="Bricolage Grotesque" font-size="13" font-weight="800" fill="#FFB020">INDIRECTO</text>
+              <text x="255" y="90" text-anchor="middle" font-family="IBM Plex Sans" font-size="9.5" fill="#EDEEF0"><tspan x="255" dy="0">Malos tratos o</tspan><tspan x="255" dy="14">cambio de condiciones</tspan></text>
+              <text x="255" y="130" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#9098A6">Caduca en</text>
+              <text x="255" y="142" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#9098A6">30 días</text>
+
+              <rect x="350" y="30" width="150" height="120" rx="6" fill="rgba(255,92,92,0.12)" stroke="#FF5C5C" stroke-width="1.4"/>
+              <text x="425" y="50" text-anchor="middle" font-family="Bricolage Grotesque" font-size="13" font-weight="800" fill="#FF5C5C">INCAUSADO</text>
+              <text x="425" y="63" text-anchor="middle" font-family="IBM Plex Mono" font-size="8.5" fill="#FF5C5C">Art. 58 CT</text>
+              <text x="425" y="90" text-anchor="middle" font-family="IBM Plex Sans" font-size="9.5" fill="#EDEEF0"><tspan x="425" dy="0">30 días de salario</tspan><tspan x="425" dy="14">por año de servicio</tspan></text>
+              <text x="425" y="130" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#9098A6">Tope: 4× salario</text>
+              <text x="425" y="142" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#9098A6">mínimo diario</text>
+
+              <rect x="520" y="30" width="150" height="120" rx="6" fill="rgba(255,110,199,0.12)" stroke="#FF6EC7" stroke-width="1.4"/>
+              <text x="595" y="50" text-anchor="middle" font-family="Bricolage Grotesque" font-size="13" font-weight="800" fill="#FF6EC7">ANTE TEMPUS</text>
+              <text x="595" y="63" text-anchor="middle" font-family="IBM Plex Mono" font-size="8.5" fill="#FF6EC7">Art. 59 CT</text>
+              <text x="595" y="90" text-anchor="middle" font-family="IBM Plex Sans" font-size="9.5" fill="#EDEEF0"><tspan x="595" dy="0">Contrato a plazo,</tspan><tspan x="595" dy="14">despedido antes de vencer</tspan></text>
+              <text x="595" y="130" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#9098A6">Salario del tiempo</text>
+              <text x="595" y="142" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#9098A6">que faltaba</text>
+
+              <text x="340" y="175" text-anchor="middle" font-family="IBM Plex Sans" font-size="9.5" fill="#9098A6">Las cuatro dan derecho a indemnización, pero el monto y el tope legal se calculan distinto en cada una.</text>
+            </svg>
+          </div>
+
+          <div class="grid3">
+            <div class="card">
+              <h4>Despido de hecho</h4>
+              <p>Debe comunicarse al trabajador. Se presume legalmente <strong>sin justa causa</strong>, salvo prueba en contrario. Da derecho a indemnización.</p>
+            </div>
+            <div class="card">
+              <h4>Despido indirecto (encubierto)</h4>
+              <p>El patrono reduce el salario, traslada a un puesto menor, cambia el tipo de trabajo, engaña sobre las condiciones pactadas, o incurre en malos tratos — la causa caduca 30 días después de ocurrida.</p>
+            </div>
+            <div class="card">
+              <h4>Despido incausado <span class="mono" style="font-size:0.7em;">Art. 58 CT</span></h4>
+              <p>Contrato por tiempo indefinido, sin causa justificada: <strong>30 días de salario básico por año</strong> de servicio (proporcional por fracción), mínimo 15 días.</p>
+            </div>
+            <div class="card">
+              <h4>Despido <em>ante tempus</em> <span class="mono" style="font-size:0.7em;">Art. 59 CT</span></h4>
+              <p>Contrato a plazo, despedido antes de vencer: indemnización = salario del tiempo que faltaba para el vencimiento, sin exceder lo que correspondería a un contrato indefinido.</p>
+            </div>
+          </div>
+          <div class="box legal">
+            <h4><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" style="vertical-align:-3px;margin-right:6px"><path d="M12 3v18M7 21h10M4.5 7h6.2M13.3 7h6.2" stroke-linecap="round"/><path d="M4.5 7 2 12a2.5 2.5 0 0 0 5 0L4.5 7z"/><path d="M19.5 7 17 12a2.5 2.5 0 0 0 5 0L19.5 7z"/></svg>Topes que no se pueden pasar por alto</h4>
+            <ul>
+              <li><strong>Art. 58, Código de Trabajo</strong> — para el cálculo de la indemnización por despido incausado, ningún salario puede considerarse superior a <strong>4 veces el salario mínimo diario legal vigente</strong>.</li>
+              <li><strong>Art. 4, Ley del ISR</strong> — las indemnizaciones por despido (y las bonificaciones por retiro voluntario) <strong>no están gravadas</strong> con ISR siempre que no excedan de 30 días de salario básico por año de servicio, y que ningún salario usado en el cálculo supere el promedio de lo devengado en los últimos 12 meses (siempre que esos salarios hayan sido sujetos de retención).</li>
+            </ul>
+          </div>
+
+          <h3 style="font-size:1.1rem; margin:22px 0 10px; font-family:'Bricolage Grotesque',sans-serif;">Renuncia voluntaria — cuando el trabajador decide irse</h3>
+          <p>La <strong>Ley Reguladora de la Prestación Económica por Renuncia Voluntaria</strong> reconoce una compensación al trabajador que decide terminar la relación laboral por su propia voluntad, siempre que cumpla los requisitos de la ley — aplica al sector privado y a instituciones autónomas con recursos propios cuyas relaciones laborales se rigen por el Código de Trabajo.</p>
+          <table>
+            <thead><tr><th>Requisito</th><th>Detalle</th></tr></thead>
+            <tbody>
+              <tr><td>Antigüedad mínima</td><td>2 años continuos y efectivos con el mismo empleador</td></tr>
+              <tr><td>Preaviso por escrito</td><td>30 días (directores, gerentes, administradores, jefaturas, especializados) · 15 días (otros niveles)</td></tr>
+              <tr><td>Monto de la prestación</td><td class="num-cell">15 días de salario básico por año de servicio</td></tr>
+              <tr><td>Tope de salario para el cálculo</td><td class="num-cell">2 veces el salario mínimo diario legal vigente del sector</td></tr>
+              <tr><td>Plazo de pago</td><td class="num-cell">15 días después de la renuncia</td></tr>
+              <tr><td>Tratamiento fiscal</td><td>Exenta de ISR</td></tr>
+            </tbody>
+          </table>
+          <p style="font-size:0.85rem; color:var(--text-dim);">El preaviso <strong>no sustituye</strong> la renuncia — ambos deben presentarse. Si hay multiplicidad de renuncias (3% de la planilla ISSS en un mes, o 10% en un año), el empleador puede diferir el pago hasta 12 meses en cuotas mensuales, previa resolución de la Dirección General de Trabajo. La liquidación final también debe incluir salarios y comisiones pendientes, horas extra acumuladas, aguinaldo proporcional, vacaciones no gozadas y cualquier otra prestación pendiente de forma proporcional.</p>
+
+          <h3 style="font-size:1.1rem; margin:22px 0 10px; font-family:'Bricolage Grotesque',sans-serif;">Comisiones y bonificaciones</h3>
+          <div class="grid3">
+            <div class="card">
+              <h4>Comisión</h4>
+              <p>Tarifa pagada a cambio de un servicio, típicamente una venta — monto fijo o porcentaje de los ingresos generados. Es parte de la remuneración: <strong>sujeta a ISSS, AFP e ISR</strong>. Se contabiliza como gasto (gasto de venta si está asociada a una venta).</p>
+            </div>
+            <div class="card">
+              <h4>Bonificación por desempeño</h4>
+              <p>Se entrega una o dos veces al año por resultados de la empresa o del empleado. Generalmente es <strong>parte del salario</strong> y sigue el mismo tratamiento.</p>
+            </div>
+            <div class="card">
+              <h4>Bonificación ocasional</h4>
+              <p>Pago único (ej. por productividad o fin de un proyecto). <strong>No se incluye</strong> en el salario ni en la base de retención de ISSS, AFP ni ISR.</p>
+            </div>
+          </div>
+
+          <div class="box error">
+            <h4><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="vertical-align:-3px;margin-right:6px"><path d="M12 3.5 21.5 20h-19L12 3.5z" stroke-linejoin="round"/><path d="M12 9.5v5" stroke-linecap="round"/><circle cx="12" cy="17.2" r=".9" fill="currentColor" stroke="none"/></svg>Errores comunes con las prestaciones</h4>
+            <ul>
+              <li>Pensar que el aguinaldo <strong>siempre</strong> paga ISR — solo el exceso sobre 2 salarios mínimos mensuales lo hace.</li>
+              <li>Confundir la <strong>indemnización por despido</strong> (el patrono termina la relación) con la <strong>renuncia voluntaria</strong> (el trabajador decide irse) — tienen leyes, montos y topes distintos.</li>
+              <li>Olvidar que las vacaciones llevan <strong>+30%</strong> de recargo, no solo el salario ordinario de los 15 días.</li>
+              <li>Aplicar los días de aguinaldo por antigüedad usando la fecha de <strong>pago del aguinaldo</strong> en vez de la fecha de corte legal (12 de diciembre).</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="block">
+          <h2><span class="tagnum">8</span>Salario mínimo vigente — referencia para los topes de las prestaciones</h2>
+          <p>Varios topes de esta unidad (indemnización por despido incausado: 4 veces el salario mínimo diario; renuncia voluntaria: 2 veces el salario mínimo diario) dependen del <strong>salario mínimo vigente por sector</strong>, no de una sola cifra nacional. Esta tabla es la que corresponde a la fecha del material de la profesora — como el salario mínimo se actualiza por decreto, nunca debe darse por hecho que la cifra de un trimestre anterior sigue vigente.</p>
+          <table>
+            <thead><tr><th>Sector económico</th><th>Salario mensual vigente</th></tr></thead>
+            <tbody>
+              <tr><td>Industria</td><td class="num-cell">$408.80</td></tr>
+              <tr><td>Comercio y servicios</td><td class="num-cell">$408.80</td></tr>
+              <tr><td>Maquila textil y confección</td><td class="num-cell">$402.32</td></tr>
+              <tr><td>Agrícola — recolección de caña de azúcar</td><td class="num-cell">$305.23</td></tr>
+              <tr><td>Agrícola — beneficio de café</td><td class="num-cell">$305.23</td></tr>
+              <tr><td>Agrícola — recolección de café</td><td class="num-cell">$272.53</td></tr>
+              <tr><td>Agrícola — sector agropecuario, pesca y otras actividades</td><td class="num-cell">$272.53</td></tr>
+            </tbody>
+          </table>
+
+          <div class="svg-wrap">
+            <svg viewBox="0 0 640 235" width="100%" height="auto" role="img" aria-label="Comparación del salario mínimo mensual vigente por sector: Industria y Comercio $408.80, Maquila $402.32, Agrícola caña y beneficio de café $305.23, Agrícola recolección de café y agropecuario $272.53">
+              <line x1="30" y1="175" x2="610" y2="175" stroke="#262B33" stroke-width="1.5"/>
+              <rect x="50" y="35" width="90" height="140" rx="4" fill="rgba(124,179,66,0.2)" stroke="#7CB342" stroke-width="1.4"/>
+              <text x="95" y="25" text-anchor="middle" font-family="Bricolage Grotesque" font-size="14" font-weight="800" fill="#7CB342">$408.80</text>
+              <text x="95" y="193" text-anchor="middle" font-family="IBM Plex Sans" font-size="10" fill="#EDEEF0">Industria /</text>
+              <text x="95" y="207" text-anchor="middle" font-family="IBM Plex Sans" font-size="10" fill="#EDEEF0">Comercio y servicios</text>
+              <rect x="190" y="37" width="90" height="138" rx="4" fill="rgba(255,176,32,0.2)" stroke="#FFB020" stroke-width="1.4"/>
+              <text x="235" y="27" text-anchor="middle" font-family="Bricolage Grotesque" font-size="14" font-weight="800" fill="#FFB020">$402.32</text>
+              <text x="235" y="193" text-anchor="middle" font-family="IBM Plex Sans" font-size="10" fill="#EDEEF0">Maquila textil</text>
+              <text x="235" y="207" text-anchor="middle" font-family="IBM Plex Sans" font-size="10" fill="#EDEEF0">y confección</text>
+              <rect x="330" y="70" width="90" height="105" rx="4" fill="rgba(90,200,250,0.2)" stroke="#5AC8FA" stroke-width="1.4"/>
+              <text x="375" y="60" text-anchor="middle" font-family="Bricolage Grotesque" font-size="14" font-weight="800" fill="#5AC8FA">$305.23</text>
+              <text x="375" y="193" text-anchor="middle" font-family="IBM Plex Sans" font-size="10" fill="#EDEEF0">Agrícola — caña /</text>
+              <text x="375" y="207" text-anchor="middle" font-family="IBM Plex Sans" font-size="10" fill="#EDEEF0">beneficio de café</text>
+              <rect x="470" y="82" width="90" height="93" rx="4" fill="rgba(255,110,199,0.2)" stroke="#FF6EC7" stroke-width="1.4"/>
+              <text x="515" y="72" text-anchor="middle" font-family="Bricolage Grotesque" font-size="14" font-weight="800" fill="#FF6EC7">$272.53</text>
+              <text x="515" y="193" text-anchor="middle" font-family="IBM Plex Sans" font-size="10" fill="#EDEEF0">Agrícola — recolección</text>
+              <text x="515" y="207" text-anchor="middle" font-family="IBM Plex Sans" font-size="10" fill="#EDEEF0">de café / agropecuario</text>
+            </svg>
+          </div>
+          <p style="font-size:0.82rem; color:var(--text-dim);">Vigente desde el 1 de junio de 2025 (incremento del 12% sobre la tarifa anterior). Fuente: Ministerio de Trabajo y Previsión Social, agosto 2025 — tomada del material de la profesora Caballero, no de memoria.</p>
+        </section>
+
+        <section class="block">
+          <h2><span class="tagnum">9</span>Síntesis: ¿qué le pasa a cada concepto salarial?</h2>
+          <p>Esta tabla conecta todo lo visto en el panel: para cada concepto de la planilla, indica si está <strong>gravado o exento</strong> frente a ISSS, AFP e ISR. Es la tabla que conviene repasar justo antes del Control o el Parcial.</p>
+          <table>
+            <thead><tr><th>Concepto</th><th>Tratamiento frente a ISSS, AFP e ISR</th></tr></thead>
+            <tbody>
+              <tr><td>ISSS (base máx. $1,000)</td><td>Renta no gravada</td></tr>
+              <tr><td>AFP (sin límite máximo)</td><td>Renta no gravada</td></tr>
+              <tr><td>Retención de ISR</td><td>Pago anticipado del ISR</td></tr>
+              <tr><td>Vacaciones (15 días + 30%)</td><td>Gravadas: retención de ISSS, AFP, y el neto es gravado con ISR</td></tr>
+              <tr><td>Aguinaldo</td><td>No sujeto a ISSS ni AFP; el exceso sobre 2 salarios mínimos es gravado con ISR</td></tr>
+              <tr><td>Indemnización por despido</td><td>No sujeta a ISSS, AFP, ni ISR (dentro de los topes de ley)</td></tr>
+              <tr><td>Subsidio por maternidad</td><td>Gravado: renta, ISSS y AFP</td></tr>
+            </tbody>
+          </table>
+        </section>
+
         <div class="box legal">
-          <h4>⚖️ Marco Legal</h4>
+          <h4><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" style="vertical-align:-3px;margin-right:6px"><path d="M12 3v18M7 21h10M4.5 7h6.2M13.3 7h6.2" stroke-linecap="round"/><path d="M4.5 7 2 12a2.5 2.5 0 0 0 5 0L4.5 7z"/><path d="M19.5 7 17 12a2.5 2.5 0 0 0 5 0L19.5 7z"/></svg>Marco Legal</h4>
           <ul>
             <li><strong>Art. 177 y 179, Código de Trabajo</strong> — vacaciones (15 días + 30%) y cómputo del año de servicio.</li>
+            <li><strong>Art. 161, Código de Trabajo</strong> — jornadas diurna y nocturna, límites diarios y semanales.</li>
             <li><strong>Art. 169, Código de Trabajo</strong> — recargo del 100% por horas extra.</li>
+            <li><strong>Art. 49, 50 y 53, Código de Trabajo</strong> — causales de terminación del contrato de trabajo.</li>
+            <li><strong>Art. 58 y 59, Código de Trabajo</strong> — indemnización por despido incausado y por despido <em>ante tempus</em>.</li>
+            <li><strong>Ley Reguladora de la Prestación Económica por Renuncia Voluntaria</strong> — requisitos, monto (15 días/año) y tope (2 salarios mínimos diarios) de la prestación.</li>
+            <li><strong>Art. 4, Ley del ISR</strong> — exención de ISR para indemnizaciones por despido y bonificaciones por retiro voluntario, dentro de los topes de ley.</li>
             <li><strong>Art. 29 num. 7 y Art. 33, Ley del ISR</strong> — deducción de $1,600 incorporada en las tablas de retención de personas naturales asalariadas.</li>
             <li><strong>Ley del Seguro Social</strong> — tasas de cotización ISSS y tope de base de $1,000.</li>
             <li><strong>Ley Integral del Sistema de Pensiones</strong> — tasas de cotización AFP, sin tope.</li>
@@ -734,7 +1001,7 @@ section.block > h2 .tagnum{
         </div>
 
         <div class="box eval">
-          <h4>🎯 Cobertura en evaluaciones</h4>
+          <h4><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" style="vertical-align:-3px;margin-right:6px"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".6" fill="currentColor"/></svg>Cobertura en evaluaciones</h4>
           <p>Esta unidad se evalúa en el <strong>Parcial 1</strong> (semana 6). No tiene Control ni Caso propio en su semana (el Caso 1 corresponde a la Unidad 2, y se entrega el sábado 6 de septiembre). Aun así, sus conceptos —remuneración gravada, tope de ISSS, recálculo de ISR— reaparecen en la Unidad 3 y en los Controles 1 y 2.</p>
         </div>
 
@@ -750,6 +1017,13 @@ section.block > h2 .tagnum{
             <dt>Pasivo corriente</dt><dd>Obligación que la empresa espera liquidar dentro de su ciclo normal de operación, típicamente en menos de 12 meses.</dd>
             <dt>Tasa marginal progresiva</dt><dd>Esquema en el que la tasa más alta de un impuesto se aplica solo al exceso de ingreso que cae dentro de ese tramo, nunca al ingreso total.</dd>
             <dt>Cuota fija</dt><dd>Atajo aritmético que resume el impuesto ya generado por los tramos anteriores, para no tener que sumarlo tramo por tramo en cada cálculo.</dd>
+            <dt>Jornada diurna / nocturna</dt><dd>Diurna: 6:00 a.m.–7:00 p.m. Nocturna: 7:00 p.m.–6:00 a.m. Una jornada con más de 4 horas nocturnas se considera nocturna completa (Art. 161, Código de Trabajo).</dd>
+            <dt>Hora extra</dt><dd>Trabajo en exceso de la jornada ordinaria, remunerado con recargo del 100% del salario básico por hora; debe ser solo ocasional (Art. 169, Código de Trabajo).</dd>
+            <dt>Despido de hecho</dt><dd>Terminación del contrato por decisión del patrono, comunicada al trabajador; se presume legalmente sin justa causa.</dd>
+            <dt>Despido incausado</dt><dd>Despido de un trabajador con contrato indefinido, sin causa justificada; genera indemnización de 30 días de salario básico por año de servicio, con tope de 4 salarios mínimos diarios (Art. 58, Código de Trabajo).</dd>
+            <dt>Renuncia voluntaria</dt><dd>Terminación de la relación laboral por decisión del trabajador; da derecho a una prestación económica de 15 días de salario básico por año de servicio si cumple los requisitos de ley (antigüedad mínima, preaviso).</dd>
+            <dt>Comisión</dt><dd>Parte variable de la remuneración atada a un resultado, típicamente ventas; sujeta a ISSS, AFP e ISR igual que el salario.</dd>
+            <dt>Bonificación</dt><dd>Incentivo por desempeño; si es periódica se trata como parte del salario, si es ocasional no se incluye en la base de retención de ISSS, AFP ni ISR.</dd>
           </dl>
         </div>
       </section>
@@ -914,7 +1188,7 @@ section.block > h2 .tagnum{
 </div>
 
           <div class="box">
-            <h4>📚 Profundización teórica — por qué son tres partidas y no una sola</h4>
+            <h4><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="vertical-align:-3px;margin-right:6px"><path d="M12 6c-1.5-1.2-4-2-7-2v14c3 0 5.5.8 7 2 1.5-1.2 4-2 7-2V4c-3 0-5.5.8-7 2z"/><path d="M12 6v14"/></svg>Profundización teórica — por qué son tres partidas y no una sola</h4>
             <p>Cada partida del libro diario corresponde a un <strong>hecho económico distinto</strong>, aunque todos ocurran el mismo día de cierre: (1) se <em>devenga</em> el gasto y nacen los pasivos frente al empleado y frente al Estado; (2) nace un <em>segundo</em> gasto —el costo patronal— que es independiente del salario del trabajador; (3) se <em>liquida en efectivo</em> solo la porción que le corresponde al empleado, mientras las retenciones y aportes siguen como pasivo hasta que se enteran a ISSS, AFP e INCAF en fechas posteriores. Separarlas en partidas distintas es lo que permite que el Balance General muestre, en cualquier momento entre el cierre y el pago a las instituciones, exactamente cuánto se le debe a cada una.</p>
           </div>
         </section>
@@ -1013,7 +1287,7 @@ section.block > h2 .tagnum{
         </div>
 
         <div class="box legal">
-          <h4>⚖️ Marco Legal aplicado en este ejercicio</h4>
+          <h4><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" style="vertical-align:-3px;margin-right:6px"><path d="M12 3v18M7 21h10M4.5 7h6.2M13.3 7h6.2" stroke-linecap="round"/><path d="M4.5 7 2 12a2.5 2.5 0 0 0 5 0L4.5 7z"/><path d="M19.5 7 17 12a2.5 2.5 0 0 0 5 0L19.5 7z"/></svg>Marco Legal aplicado en este ejercicio</h4>
           <ul>
             <li><strong>Ley del Seguro Social</strong> — tope de base de $1,000 para la cotización del ISSS (empleado 3%, patronal 7.5%).</li>
             <li><strong>Ley Integral del Sistema de Pensiones</strong> — cotización de AFP sin tope (empleado 7.25%, patronal 8.75%).</li>
@@ -1023,7 +1297,7 @@ section.block > h2 .tagnum{
         </div>
 
         <div class="box error">
-          <h4>⚠️ Errores más comunes en esta unidad</h4>
+          <h4><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="vertical-align:-3px;margin-right:6px"><path d="M12 3.5 21.5 20h-19L12 3.5z" stroke-linejoin="round"/><path d="M12 9.5v5" stroke-linecap="round"/><circle cx="12" cy="17.2" r=".9" fill="currentColor" stroke="none"/></svg>Errores más comunes en esta unidad</h4>
           <ul>
             <li>Aplicar el 3% y el 7.5% de ISSS sobre el salario completo de Juan ($2,500) en vez de sobre el tope de $1,000.</li>
             <li>Confundir remuneración gravada con salario bruto — olvidar restar ISSS y AFP antes de aplicar la tabla de ISR.</li>
@@ -1057,7 +1331,7 @@ section.block > h2 .tagnum{
               <rect x="0" y="0" width="640" height="220" fill="#14171C" stroke="#262B33"/>
               <rect x="0" y="0" width="640" height="26" fill="#1C2027"/>
               <rect x="0" y="24" width="640" height="2" fill="#FFB020"/>
-              <text x="10" y="18" font-family="IBM Plex Mono" font-size="11" fill="#FFB020" font-weight="700">🧮 CALCULO_PLANILLAS — HOJA 3</text>
+              <g transform="translate(8,6)"><rect x="0" y="0" width="13" height="13" rx="2" fill="none" stroke="#FFB020" stroke-width="1.3"/><line x1="2.2" y1="3.5" x2="10.8" y2="3.5" stroke="#FFB020" stroke-width="1.3"/><circle cx="3.5" cy="7.5" r=".9" fill="#FFB020"/><circle cx="6.5" cy="7.5" r=".9" fill="#FFB020"/><circle cx="9.5" cy="7.5" r=".9" fill="#FFB020"/><circle cx="3.5" cy="10.3" r=".9" fill="#FFB020"/><circle cx="6.5" cy="10.3" r=".9" fill="#FFB020"/><circle cx="9.5" cy="10.3" r=".9" fill="#FFB020"/></g><text x="26" y="18" font-family="IBM Plex Mono" font-size="11" fill="#FFB020" font-weight="700">CALCULO_PLANILLAS — HOJA 3</text>
               <!-- header row -->
               <rect x="0" y="26" width="640" height="24" fill="#1C2027"/>
               <text x="10" y="42" font-family="IBM Plex Mono" font-size="9.5" fill="#9098A6">EMPLEADO</text>
@@ -1117,7 +1391,7 @@ section.block > h2 .tagnum{
         </section>
 
         <div class="box ok">
-          <h4>✅ Código de Honor</h4>
+          <h4><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="vertical-align:-3px;margin-right:6px"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg>Código de Honor</h4>
           <p>"Por mi honor y ante mis compañeros, me comprometo a que esta actividad académica refleje mi verdadero nivel de conocimientos, evitando realizar cualquier forma de deshonestidad académica (por ejemplo, copiar o plagiar)."</p>
         </div>
 
@@ -1144,11 +1418,11 @@ section.block > h2 .tagnum{
                 <circle class="bgc" cx="46" cy="46" r="40" fill="none" stroke-width="8"/>
                 <circle id="scoreCircle" class="fgc" cx="46" cy="46" r="40" fill="none" stroke-width="8" stroke-dasharray="251.2" stroke-dashoffset="251.2"/>
               </svg>
-              <div class="score-txt"><span id="scoreTxt">0/10</span></div>
+              <div class="score-txt"><span id="scoreTxt">0/13</span></div>
             </div>
             <div>
               <div id="levelBadge" class="level-badge amarillo">Sin empezar</div>
-              <p style="font-size:0.82rem; color:var(--text-dim); margin-top:6px;">3 fáciles · 4 medias · 3 difíciles — retroalimentación inmediata en cada pregunta.</p>
+              <p style="font-size:0.82rem; color:var(--text-dim); margin-top:6px;">4 fáciles · 5 medias · 4 difíciles — retroalimentación inmediata en cada pregunta.</p>
             </div>
           </div>
           <div id="quizList"></div>
@@ -1386,7 +1660,10 @@ const QUESTIONS = [
   {d:'media', q:'¿El INCAF (1%) se descuenta al empleado o lo paga la empresa?', opts:['Se descuenta al empleado','Lo paga solo la empresa (aporte patronal)','Se divide 50/50','Depende del salario'], correct:1, exp:'El INCAF es exclusivamente un aporte patronal del 1% — no existe una versión retenida al empleado.'},
   {d:'dificil', q:'Un empleado tiene remuneración gravada mensual de $2,288.75. Usando la tabla de retención mensual (Tramo IV: exceso de $2,038.10, 30%, cuota fija $288.57), ¿cuál es su ISR?', opts:['$363.77','$288.57','$75.20','$686.63'], correct:0, exp:'(2,288.75 − 2,038.10) × 30% + 288.57 = 250.65 × 0.30 + 288.57 = 75.20 + 288.57 = $363.77.'},
   {d:'dificil', q:'Para el recálculo de ISR de junio, ¿qué remuneraciones se acumulan y qué se resta al final?', opts:['Se acumulan enero-diciembre y no se resta nada','Se acumulan enero-junio y se resta lo ya retenido de enero a la 1ª quincena de junio','Se acumula solo el mes de junio','Se acumulan enero-junio y se resta el salario mínimo'], correct:1, exp:'El primer recálculo acumula las remuneraciones gravadas de enero a junio; al resultado de la tabla de recálculo se le resta la suma de lo ya retenido en enero–mayo (más la 1ª quincena de junio).'},
-  {d:'dificil', q:'Si el resultado de un recálculo de ISR (tabla menos retenciones previas) es negativo, ¿qué se hace?', opts:['Se retiene el valor absoluto','No se retiene nada ese mes','Se retiene la mitad','Se acumula para diciembre'], correct:1, exp:'Si el resultado de la resta es negativo, no se retiene ningún valor en el mes de junio o diciembre — solo se retiene cuando el resultado es positivo.'}
+  {d:'dificil', q:'Si el resultado de un recálculo de ISR (tabla menos retenciones previas) es negativo, ¿qué se hace?', opts:['Se retiene el valor absoluto','No se retiene nada ese mes','Se retiene la mitad','Se acumula para diciembre'], correct:1, exp:'Si el resultado de la resta es negativo, no se retiene ningún valor en el mes de junio o diciembre — solo se retiene cuando el resultado es positivo.'},
+  {d:'facil', q:'Un trabajador tiene 5 años de servicio al 12 de diciembre. ¿Cuántos días de aguinaldo le corresponden?', opts:['15 días','19 días','21 días','Proporcional'], correct:1, exp:'De 3 años a menos de 10 años de servicio corresponden 19 días de salario.'},
+  {d:'media', q:'¿Hasta qué monto está exento de ISR el aguinaldo?', opts:['No tiene exención, siempre se retiene','Hasta 1 salario mínimo mensual','Hasta 2 salarios mínimos mensuales del sector comercio y servicios','Está totalmente exento sin importar el monto'], correct:2, exp:'El aguinaldo está exento de ISR hasta un monto no mayor a 2 salarios mínimos mensuales del sector comercio y servicios; el excedente sí se retiene.'},
+  {d:'dificil', q:'Un trabajador con contrato indefinido es despedido sin causa justificada tras 6 años de servicio. Según el Art. 58 del Código de Trabajo, ¿cómo se calcula su indemnización?', opts:['15 días de salario básico por año, sin tope','30 días de salario básico por año (proporcional por fracción), con el salario topado a 4 veces el salario mínimo diario','Un mes de salario por cada año, sin tope','30 días de salario básico por año, con tope de 2 salarios mínimos diarios'], correct:1, exp:'El despido incausado indemniza con 30 días de salario básico por año de servicio (y proporcional por fracción de año), pero para el cálculo ningún salario puede considerarse superior a 4 veces el salario mínimo diario legal vigente. El tope de 2 salarios mínimos diarios aplica a la renuncia voluntaria, no al despido.'}
 ];
 
 let current = 0, correctCount = 0;
@@ -1415,13 +1692,13 @@ function renderQuiz(){
         if(chosen === item.correct){
           btn.classList.add('correct');
           fb.className = 'q-feedback show ok';
-          fb.textContent = '✅ Correcto — ' + item.exp;
+          fb.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg>Correcto — ' + item.exp;
           correctCount++;
         } else {
           btn.classList.add('incorrect');
           buttons[item.correct].classList.add('correct');
           fb.className = 'q-feedback show bad';
-          fb.textContent = '❌ Incorrecto — ' + item.exp;
+          fb.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg>Incorrecto — ' + item.exp;
         }
         updateScore();
       });
@@ -1430,17 +1707,18 @@ function renderQuiz(){
 }
 
 function updateScore(){
+  const total = QUESTIONS.length;
   const totalAnswered = [...document.querySelectorAll('.q-item')].filter(d=>d.querySelector('.q-opt:disabled')).length;
-  document.getElementById('scoreTxt').textContent = correctCount + '/10';
-  const pct = correctCount/10;
+  document.getElementById('scoreTxt').textContent = correctCount + '/' + total;
+  const pct = correctCount/total;
   const circumference = 251.2;
   document.getElementById('scoreCircle').style.strokeDashoffset = circumference - (circumference*pct);
   const badge = document.getElementById('levelBadge');
-  if(totalAnswered < 10){
-    badge.textContent = `En progreso (${totalAnswered}/10 respondidas)`;
+  if(totalAnswered < total){
+    badge.textContent = `En progreso (${totalAnswered}/${total} respondidas)`;
     badge.className = 'level-badge amarillo';
   } else if(pct >= 0.8){
-    badge.textContent = 'Nivel alto ✔';
+    badge.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="vertical-align:-2px;margin-right:4px"><path d="M5 13l4 4L19 7"/></svg>Nivel alto';
     badge.className = 'level-badge verde';
   } else if(pct >= 0.5){
     badge.textContent = 'Nivel medio';
