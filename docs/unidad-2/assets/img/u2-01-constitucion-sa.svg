@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" width="100%" height="auto" role="img" aria-label="Constitución de la Sociedad Anónima en El Salvador: requisitos legales de accionistas, capital mínimo e inscripción en el Registro de Comercio.">
+  <!-- Fondo estructurado estilo Fintech Oscuro -->
+  <rect width="760" height="300" rx="10" fill="#14171C" stroke="#262B33" stroke-width="1.5"/>
+
+  <!-- Encabezado de la ilustración (Badge + Título) -->
+  <g transform="translate(28, 22)">
+    <rect width="180" height="20" rx="3" fill="#FFB020" fill-opacity="0.12"/>
+    <text x="8" y="14" font-family="IBM Plex Mono" font-size="8.5" font-weight="700" fill="#FFD873" letter-spacing="0.5">MOMENTO CERO LEGAL</text>
+    <text x="0" y="38" font-family="Bricolage Grotesque" font-size="15" font-weight="700" fill="#EDEEF0">Constitución de la Sociedad Anónima</text>
+  </g>
+
+  <!-- Alerta / Regla Normativa Superior Derecha -->
+  <g transform="translate(435, 20)">
+    <rect width="295" height="42" rx="6" fill="#1C2027" stroke="#5AC8FA" stroke-width="1"/>
+    <circle cx="18" cy="21" r="7" fill="#5AC8FA" fill-opacity="0.2"/>
+    <path d="M18 17 L18 21 M18 24 L18 25" stroke="#5AC8FA" stroke-width="1.5" stroke-linecap="round"/>
+    <text x="32" y="18" font-family="IBM Plex Sans" font-size="8" font-weight="700" fill="#5AC8FA">CÓDIGO DE COMERCIO (ART. 192):</text>
+    <text x="32" y="30" font-family="IBM Plex Sans" font-size="7.5" fill="#EDEEF0">Mínimo 2 accionistas · Capital mínimo <tspan fill="#FFB020" font-weight="700">$2,000.00</tspan></text>
+  </g>
+
+  <!-- Línea de base guía -->
+  <line x1="28" y1="245" x2="732" y2="245" stroke="#262B33" stroke-width="1.2"/>
+
+  <!-- ================= PASO 1: ESCRITURA ANTE NOTARIO ================= -->
+  <g transform="translate(38, 80)">
+    <!-- Tarjeta del Paso 1 -->
+    <rect width="205" height="150" rx="6" fill="#1C2027" stroke="#5AC8FA" stroke-width="1.2"/>
+    <rect x="10" y="10" width="185" height="22" rx="3" fill="#5AC8FA" fill-opacity="0.12"/>
+    <text x="16" y="24" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#5AC8FA">01 · ESCRITURA PÚBLICA</text>
+    
+    <!-- Contenido clave -->
+    <text x="16" y="48" font-family="Bricolage Grotesque" font-size="14" font-weight="800" fill="#EDEEF0">Mínimo 2 Socios</text>
+    <text x="16" y="62" font-family="IBM Plex Mono" font-size="7.5" fill="#9098A6">Firma ante Notario salvadoreño</text>
+
+    <!-- Siluetas humanas outline (Dos socios y notario) -->
+    <g transform="translate(20, 75)">
+      <!-- Notario al centro -->
+      <circle cx="35" cy="8" r="5" fill="none" stroke="#5AC8FA" stroke-width="1.4"/>
+      <line x1="35" y1="13" x2="35" y2="28" stroke="#5AC8FA" stroke-width="1.4"/>
+      <line x1="35" y1="18" x2="25" y2="23" stroke="#5AC8FA" stroke-width="1.4"/>
+      <line x1="35" y1="18" x2="45" y2="23" stroke="#5AC8FA" stroke-width="1.4"/>
+      <line x1="35" y1="28" x2="30" y2="40" stroke="#5AC8FA" stroke-width="1.4"/>
+      <line x1="35" y1="28" x2="40" y2="40" stroke="#5AC8FA" stroke-width="1.4"/>
+
+      <!-- Socio 1 -->
+      <circle cx="10" cy="12" r="4.5" fill="none" stroke="#EDEEF0" stroke-width="1.3"/>
+      <line x1="10" y1="16.5" x2="10" y2="28" stroke="#EDEEF0" stroke-width="1.3"/>
+      <line x1="10" y1="20" x2="20" y2="24" stroke="#EDEEF0" stroke-width="1.3"/>
+      <line x1="10" y1="28" x2="6" y2="38" stroke="#EDEEF0" stroke-width="1.3"/>
+      <line x1="10" y1="28" x2="14" y2="38" stroke="#EDEEF0" stroke-width="1.3"/>
+
+      <!-- Socio 2 -->
+      <circle cx="60" cy="12" r="4.5" fill="none" stroke="#EDEEF0" stroke-width="1.3"/>
+      <line x1="60" y1="16.5" x2="60" y2="28" stroke="#EDEEF0" stroke-width="1.3"/>
+      <line x1="60" y1="20" x2="50" y2="24" stroke="#EDEEF0" stroke-width="1.3"/>
+      <line x1="60" y1="28" x2="56" y2="38" stroke="#EDEEF0" stroke-width="1.3"/>
+      <line x1="60" y1="28" x2="64" y2="38" stroke="#EDEEF0" stroke-width="1.3"/>
+    </g>
+
+    <!-- Subtítulo inferior de la tarjeta -->
+    <rect x="10" y="122" width="185" height="18" rx="2" fill="#14171C"/>
+    <text x="102" y="134" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" fill="#5AC8FA">Protocolo Notarial oficial</text>
+  </g>
+
+  <!-- Flecha conectora 1 -> 2 -->
+  <g transform="translate(250, 150)">
+    <line x1="0" y1="0" x2="20" y2="0" stroke="#FFB020" stroke-width="2" stroke-dasharray="3 3"/>
+    <polygon points="20,-4 26,0 20,4" fill="#FFB020"/>
+  </g>
+
+  <!-- ================= PASO 2: INSCRIPCIÓN Y DESEMBOLSO MÍNIMO ================= -->
+  <g transform="translate(278, 80)">
+    <!-- Tarjeta del Paso 2 -->
+    <rect width="205" height="150" rx="6" fill="#1C2027" stroke="#FFB020" stroke-width="1.2"/>
+    <rect x="10" y="10" width="185" height="22" rx="3" fill="#FFB020" fill-opacity="0.12"/>
+    <text x="16" y="24" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#FFD873">02 · INSCRIPCIÓN REGISTRO</text>
+    
+    <!-- Contenido clave -->
+    <text x="16" y="48" font-family="Bricolage Grotesque" font-size="14" font-weight="800" fill="#FFB020">5% Pagado Mínimo</text>
+    <text x="16" y="62" font-family="IBM Plex Mono" font-size="7.5" fill="#9098A6">Desembolso en efectivo en Banco</text>
+
+    <!-- Ilustración de cheque / depósito de $100 sobre $2,000 -->
+    <g transform="translate(20, 75)">
+      <rect width="165" height="38" rx="3" fill="#14171C" stroke="#FFB020" stroke-width="0.8"/>
+      <text x="12" y="16" font-family="IBM Plex Sans" font-size="7" fill="#9098A6">Capital Social Mínimo:</text>
+      <text x="155" y="16" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" font-weight="700" fill="#EDEEF0">$2,000.00</text>
+      <line x1="10" y1="21" x2="155" y2="21" stroke="#262B33" stroke-width="0.8"/>
+      <text x="12" y="31" font-family="IBM Plex Sans" font-size="7" font-weight="700" fill="#FFB020">5% a la Inscripción:</text>
+      <text x="155" y="31" text-anchor="end" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#3ECF8E">$100.00 mín.</text>
+    </g>
+
+    <!-- Subtítulo inferior -->
+    <rect x="10" y="122" width="185" height="18" rx="2" fill="#14171C"/>
+    <text x="102" y="134" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" fill="#FFD873">Registro de Comercio (CNR)</text>
+  </g>
+
+  <!-- Flecha conectora 2 -> 3 -->
+  <g transform="translate(490, 150)">
+    <line x1="0" y1="0" x2="20" y2="0" stroke="#FFB020" stroke-width="2" stroke-dasharray="3 3"/>
+    <polygon points="20,-4 26,0 20,4" fill="#FFB020"/>
+  </g>
+
+  <!-- ================= PASO 3: SOCIEDAD OPERANDO Y PAGO DEL RESTO ================= -->
+  <g transform="translate(518, 80)">
+    <!-- Tarjeta del Paso 3 -->
+    <rect width="205" height="150" rx="6" fill="#1C2027" stroke="#3ECF8E" stroke-width="1.2"/>
+    <rect x="10" y="10" width="185" height="22" rx="3" fill="#3ECF8E" fill-opacity="0.12"/>
+    <text x="16" y="24" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#3ECF8E">03 · SOCIEDAD OPERANDO</text>
+    
+    <!-- Contenido clave -->
+    <text x="16" y="48" font-family="Bricolage Grotesque" font-size="14" font-weight="800" fill="#3ECF8E">Hasta 1 Año Plazo</text>
+    <text x="16" y="62" font-family="IBM Plex Mono" font-size="7.5" fill="#9098A6">Para liquidar el 95% insoluto</text>
+
+    <!-- Stick figure operando con éxito -->
+    <g transform="translate(65, 75)">
+      <!-- Stick figure celebrando -->
+      <circle cx="35" cy="8" r="5" fill="none" stroke="#3ECF8E" stroke-width="1.4"/>
+      <line x1="35" y1="13" x2="35" y2="28" stroke="#3ECF8E" stroke-width="1.4"/>
+      <!-- Brazos arriba -->
+      <line x1="35" y1="18" x2="22" y2="10" stroke="#3ECF8E" stroke-width="1.4"/>
+      <line x1="35" y1="18" x2="48" y2="10" stroke="#3ECF8E" stroke-width="1.4"/>
+      <line x1="35" y1="28" x2="28" y2="40" stroke="#3ECF8E" stroke-width="1.4"/>
+      <line x1="35" y1="28" x2="42" y2="40" stroke="#3ECF8E" stroke-width="1.4"/>
+    </g>
+
+    <!-- Subtítulo inferior -->
+    <rect x="10" y="122" width="185" height="18" rx="2" fill="#14171C"/>
+    <text x="102" y="134" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" fill="#3ECF8E">Personalidad Jurídica Plena</text>
+  </g>
+
+  <!-- Etiquetas de pie de página con referencias de ley -->
+  <text x="140" y="265" text-anchor="middle" font-family="IBM Plex Mono" font-size="7.5" fill="#5AC8FA">Paso 1: Firma Notarial</text>
+  <text x="140" y="278" text-anchor="middle" font-family="IBM Plex Mono" font-size="6.5" fill="#9098A6">Art. 192 Código de Comercio</text>
+
+  <text x="380" y="265" text-anchor="middle" font-family="IBM Plex Mono" font-size="7.5" fill="#FFB020">Paso 2: 5% a la Inscripción</text>
+  <text x="380" y="278" text-anchor="middle" font-family="IBM Plex Mono" font-size="6.5" fill="#9098A6">Boleta bancaria de depósito</text>
+
+  <text x="620" y="265" text-anchor="middle" font-family="IBM Plex Mono" font-size="7.5" fill="#3ECF8E">Paso 3: Plazo de 1 Año</text>
+  <text x="620" y="278" text-anchor="middle" font-family="IBM Plex Mono" font-size="6.5" fill="#9098A6">Capital Social 100% Pagado</text>
+</svg>

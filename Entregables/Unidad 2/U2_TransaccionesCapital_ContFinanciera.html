@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unidad 2 — Transacciones de Capital · Contabilidad Financiera</title>
+<link rel="icon" type="image/png" href="../favicon-v8.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B0D10; --bg-elev:#14171C; --bg-elev2:#1C2027;
+  --border:#262B33;
+  --text:#EDEEF0; --text-dim:#9098A6;
+  --accent:#FFB020; --accent-2:#FFD873; --accent-dim:rgba(255,176,32,.12);
+  --success:#3ECF8E; --danger:#FF5C5C; --info:#5AC8FA;
+  --patrimonio:#FF6EC7;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:'IBM Plex Sans',system-ui,sans-serif;
+  font-weight:400; line-height:1.55;
+  background-image:radial-gradient(circle, rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size:22px 22px;
+}
+h1,h2,h3,h4{font-family:'Bricolage Grotesque',system-ui,sans-serif; margin:0 0 .5em; letter-spacing:-.01em;}
+em{color:var(--accent-2); font-style:italic;}
+.num,.mono,table td.num,.money{font-family:'IBM Plex Mono',monospace; font-variant-numeric:tabular-nums;}
+a{color:var(--accent-2);}
+img{max-width:100%;}
+
+/* ===== Layout ===== */
+.app{display:flex; min-height:100vh;}
+.sidebar{
+  width:210px; flex-shrink:0; position:sticky; top:0; height:100vh;
+  background:linear-gradient(180deg,#0d1733 0%,#0B0D10 0%),linear-gradient(180deg,#0d1733,#1a2650);
+  border-right:1px solid var(--border);
+  display:flex; flex-direction:column; padding:22px 0; overflow:hidden; z-index:10;
+}
+.sidebar-top{padding:0 14px 14px;}
+.nav-back-btn{
+  display:flex; align-items:center; gap:8px;
+  padding:7px 10px;
+  color:var(--text-dim); text-decoration:none;
+  font-family:'IBM Plex Mono',monospace; font-size:0.72rem; letter-spacing:0.04em; text-transform:uppercase; font-weight:600;
+  background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:6px;
+  transition:all 0.2s var(--ease); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.nav-back-btn svg{color:var(--accent); transition:transform 0.2s var(--ease); flex-shrink:0;}
+.nav-back-btn:hover{background:var(--bg-elev2); color:var(--text); border-color:var(--accent);}
+.nav-back-btn:hover svg{transform:translateX(-2px);}
+.brand{padding:0 20px 20px; border-bottom:1px solid rgba(255,255,255,.08); margin-bottom:14px;}
+.brand-eyebrow{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.12em; color:var(--accent); text-transform:uppercase;}
+.brand-name{font-family:'Bricolage Grotesque',sans-serif; font-size:17px; font-weight:700; color:var(--text); margin-top:4px;}
+.tabs{display:flex; flex-direction:column; gap:2px; padding:0 10px;}
+.tab{
+  position:relative; display:flex; align-items:center; gap:12px;
+  padding:12px 12px; border-radius:10px; cursor:pointer; overflow:hidden;
+  color:var(--text-dim); border:1px solid transparent; background:transparent;
+  transition:background .15s var(--ease), color .15s var(--ease), border-color .15s var(--ease);
+  min-height:44px;
+}
+.tab .ghost{
+  position:absolute; right:6px; bottom:-10px; font-family:'Bricolage Grotesque',sans-serif;
+  font-size:46px; font-weight:800; color:rgba(255,255,255,.045); line-height:1; pointer-events:none;
+}
+.tab .ic{width:20px; height:20px; flex-shrink:0; position:relative; z-index:1;}
+.tab .ic svg{width:100%; height:100%; stroke:currentColor; fill:none; stroke-width:1.7;}
+.tab .label{position:relative; z-index:1; font-size:13.5px; font-weight:500;}
+.tab:hover{color:var(--text); background:rgba(255,255,255,.04);}
+.tab:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+.tab.active{
+  color:var(--text); border-left:3px solid var(--accent);
+  background:linear-gradient(90deg, rgba(255,176,32,.14), rgba(255,176,32,.03));
+}
+.tab.active .badge{display:inline-block;}
+.sidebar-foot{margin-top:auto; padding:14px 20px 0; border-top:1px solid rgba(255,255,255,.08); font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--text-dim); letter-spacing:.04em;}
+
+.main{flex:1; min-width:0;}
+.hero{
+  position:relative; overflow:hidden; padding:52px 48px 40px;
+  background:linear-gradient(135deg,#0d1733,#1e2d5a 55%,#2a3f7a);
+  border-bottom:3px solid var(--accent);
+}
+.hero::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background-image:
+    repeating-linear-gradient(115deg, rgba(255,255,255,.035) 0 1px, transparent 1px 34px);
+}
+.hero-top{display:flex; align-items:center; gap:12px; margin-bottom:14px; flex-wrap:wrap; position:relative; z-index:1;}
+.hero-back-link{
+  display:inline-flex; align-items:center; gap:6px;
+  font-family:'IBM Plex Mono',monospace; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; font-weight:600;
+  color:var(--text-dim); text-decoration:none;
+  padding:4px 10px; border-radius:4px; border:1px solid rgba(255,255,255,0.15); background:rgba(0,0,0,0.25);
+  transition:all 0.2s var(--ease);
+}
+.hero-back-link svg{color:var(--accent); transition:transform 0.2s var(--ease); flex-shrink:0;}
+.hero-back-link:hover{color:var(--text); border-color:var(--accent); background:rgba(0,0,0,0.45);}
+.hero-back-link:hover svg{transform:translateX(-2px);}
+.hero-arc{position:absolute; right:-60px; top:-60px; width:340px; height:340px; opacity:.5;}
+.hero-eyebrow{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.16em; color:var(--accent-2); text-transform:uppercase; border-top:1px solid rgba(255,176,32,.5); border-bottom:1px solid rgba(255,176,32,.5); display:inline-block; padding:6px 0; margin-bottom:18px;}
+.hero h1{font-size:clamp(28px,4vw,44px); color:#fff; position:relative; z-index:1;}
+.hero p.sub{color:rgba(237,238,240,.75); font-size:15px; max-width:60ch; position:relative; z-index:1;}
+.chips{display:flex; gap:10px; flex-wrap:wrap; margin-top:20px; position:relative; z-index:1;}
+.chip{
+  display:inline-flex; align-items:center; gap:7px; padding:7px 14px; border-radius:999px;
+  border:1px solid rgba(255,255,255,.28); font-size:12px; font-weight:500; color:#fff;
+  background:rgba(255,255,255,.04);
+}
+.chip svg{width:13px; height:13px; stroke:currentColor; fill:none; stroke-width:2;}
+.chip.warn{border-color:rgba(255,92,92,.55); color:#ffb4b4;}
+.chip.ok{border-color:rgba(62,207,142,.55); color:#a9f2d2;}
+
+.content{padding:40px 48px 90px; max-width:1180px;}
+.panel{display:none; animation:fadeIn .2s var(--ease);}
+.panel.active{display:block;}
+@keyframes fadeIn{from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:translateY(0);}}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important;}
+}
+
+section.block{margin-bottom:36px;}
+.section-title{display:flex; align-items:center; gap:10px; font-size:20px; margin-bottom:16px;}
+.section-title .num-tag{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--accent); border:1px solid var(--border); border-radius:6px; padding:2px 8px;}
+
+.cards3{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px;}
+.card{
+  background:var(--bg-elev); border:1px solid var(--border); border-radius:12px; padding:18px;
+  transition:transform .15s var(--ease), border-color .15s var(--ease);
+}
+.card:hover{transform:translateY(-2px); border-color:rgba(255,176,32,.35);}
+.card .ic{width:34px; height:34px; border-radius:9px; background:var(--accent-dim); display:flex; align-items:center; justify-content:center; margin-bottom:12px;}
+.card .ic svg{width:18px; height:18px; stroke:var(--accent); fill:none; stroke-width:1.8;}
+.card h4{font-size:15px; margin-bottom:6px;}
+.card p{font-size:13.5px; color:var(--text-dim); margin:0;}
+
+table{width:100%; border-collapse:collapse; font-size:13.5px; margin:14px 0;}
+thead tr{background:linear-gradient(90deg,#1e2d5a,#3d5491);}
+th{color:#fff; text-align:left; padding:10px 12px; font-weight:600; font-size:12.5px;}
+td{padding:10px 12px; border-bottom:1px solid var(--border); vertical-align:top;}
+tbody tr:nth-child(odd){background:rgba(255,255,255,.015);}
+.tbl-wrap{overflow-x:auto; border-radius:10px; border:1px solid var(--border);}
+.tbl-wrap table{margin:0;}
+
+.badge{display:inline-flex; align-items:center; gap:5px; font-size:11px; font-weight:600; padding:3px 9px; border-radius:6px; white-space:nowrap;}
+.badge.activo{color:var(--info); background:rgba(90,200,250,.12);}
+.badge.pasivo{color:var(--accent); background:rgba(255,176,32,.12);}
+.badge.patrimonio{color:var(--patrimonio); background:rgba(255,110,199,.12);}
+.badge.ingreso{color:var(--success); background:rgba(62,207,142,.12);}
+.badge.gasto{color:var(--danger); background:rgba(255,92,92,.12);}
+
+.box{border-radius:12px; padding:18px 20px; margin:18px 0; border:1px solid; position:relative;}
+.box h4{display:flex; align-items:center; gap:9px; font-size:14.5px; margin-bottom:10px;}
+.box h4 svg{width:17px; height:17px; stroke-width:1.8; fill:none;}
+.box.legal{background:rgba(90,200,250,.05); border-color:rgba(90,200,250,.35);}
+.box.legal h4{color:var(--info);} .box.legal h4 svg{stroke:var(--info);}
+.box.eval{background:rgba(255,176,32,.05); border-color:rgba(255,176,32,.35);}
+.box.eval h4{color:var(--accent);} .box.eval h4 svg{stroke:var(--accent);}
+.box.error{background:rgba(255,92,92,.05); border-color:rgba(255,92,92,.35);}
+.box.error h4{color:var(--danger);} .box.error h4 svg{stroke:var(--danger);}
+.box.ok{background:rgba(62,207,142,.05); border-color:rgba(62,207,142,.35);}
+.box.ok h4{color:var(--success);} .box.ok h4 svg{stroke:var(--success);}
+.box p, .box li{font-size:13.5px; color:var(--text); margin:6px 0;}
+.box ul{margin:6px 0; padding-left:20px;}
+
+.glossary{background:var(--bg-elev2); border:1px solid var(--border); border-radius:12px; padding:18px 20px; margin-top:24px;}
+.glossary h4{font-size:14px; color:var(--text-dim); text-transform:uppercase; letter-spacing:.08em; margin-bottom:12px;}
+.gloss-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:10px 20px;}
+.gloss-grid dt{font-weight:600; font-size:13px; color:var(--accent-2);}
+.gloss-grid dd{margin:2px 0 0; font-size:12.5px; color:var(--text-dim);}
+
+.steps{counter-reset:step; margin:20px 0;}
+.step{display:grid; grid-template-columns:40px 1fr; gap:16px; position:relative; padding-bottom:22px;}
+.step:not(:last-child)::before{content:""; position:absolute; left:19px; top:40px; bottom:0; width:2px; background:linear-gradient(var(--accent),var(--border));}
+.step-num{
+  counter-increment:step; width:40px; height:40px; border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),#c97c00); color:#0B0D10; font-family:'IBM Plex Mono',monospace;
+  font-weight:700; display:flex; align-items:center; justify-content:center; font-size:15px; flex-shrink:0;
+}
+.step-num::before{content:counter(step);}
+.step-body h5{font-size:14.5px; margin:0 0 4px; color:var(--text);}
+.step-body .why{font-size:13px; color:var(--text-dim); margin:4px 0;}
+.step-body .legalref{font-size:12px; color:var(--info); margin:6px 0;}
+.step-body .impact{display:flex; gap:6px; margin-top:8px; flex-wrap:wrap;}
+
+.journal{width:100%; border-collapse:collapse; font-family:'IBM Plex Mono',monospace; font-size:12.5px; margin:10px 0; border:1px solid var(--border); border-radius:8px; overflow:hidden;}
+.journal th{background:var(--bg-elev2); color:var(--text-dim); font-size:11px; text-transform:uppercase; letter-spacing:.05em; padding:8px 10px; text-align:left; font-weight:600;}
+.journal td{padding:7px 10px; border-bottom:1px solid var(--border);}
+.journal td.debe, .journal td.haber{text-align:right; width:110px;}
+.journal tr.concept td{color:var(--text-dim); font-style:italic; font-family:'IBM Plex Sans',sans-serif; font-size:12px; padding-top:2px;}
+.journal .indent{padding-left:22px;}
+
+.dl-btn, .reveal-btn{
+  display:inline-flex; align-items:center; gap:9px; padding:12px 20px; border-radius:10px;
+  background:var(--accent); color:#0B0D10; font-weight:600; font-size:14px; border:none; cursor:pointer;
+  transition:transform .15s var(--ease), background .15s var(--ease); text-decoration:none; min-height:44px;
+}
+.dl-btn:hover, .reveal-btn:hover{background:var(--accent-2); transform:translateY(-1px);}
+.dl-btn:focus-visible, .reveal-btn:focus-visible{outline:2px solid #fff; outline-offset:2px;}
+.dl-btn svg, .reveal-btn svg{width:17px; height:17px; stroke:currentColor; fill:none; stroke-width:2;}
+
+.svg-wrap{background:var(--bg-elev); border-radius:10px; padding:18px; border:1px solid var(--border); margin:18px 0;}
+.img-request{border:1px dashed var(--accent); border-radius:10px; padding:20px 22px; margin:22px 0; background:repeating-linear-gradient(135deg, rgba(255,176,32,.05) 0 10px, transparent 10px 22px), var(--bg-elev); display:flex; gap:16px; align-items:flex-start;}
+.img-request .ic{width:38px; height:38px; flex-shrink:0; color:var(--accent);}
+.img-request .ic svg{width:100%; height:100%; stroke:currentColor; fill:none; stroke-width:1.6;}
+.img-request .meta{flex:1; min-width:0;}
+.img-request .tag{font-family:'IBM Plex Mono',monospace; font-size:.68rem; color:var(--accent); text-transform:uppercase; letter-spacing:.05em; border:1px solid var(--accent); padding:2px 9px; border-radius:4px; display:inline-block; margin-bottom:8px; font-weight:600;}
+.img-request h5{font-size:.95rem; margin-bottom:5px; font-family:'IBM Plex Sans',sans-serif; font-weight:700; color:var(--text);}
+.img-request p{font-size:.83rem; color:var(--text-dim); margin:0;}
+.img-request .file{font-family:'IBM Plex Mono',monospace; font-size:.78rem; color:var(--accent-2); margin-top:6px; display:block;}
+
+.xl-preview{border:1px solid var(--border); border-radius:12px; overflow:hidden; margin:18px 0;}
+.xl-tabs{display:flex; background:var(--bg-elev2); border-bottom:1px solid var(--border); overflow-x:auto;}
+.xl-tabs div{padding:9px 14px; font-size:11.5px; color:var(--text-dim); font-family:'IBM Plex Mono',monospace; border-right:1px solid var(--border); white-space:nowrap;}
+.xl-tabs div.on{color:var(--accent); background:var(--bg-elev); border-bottom:2px solid var(--accent);}
+
+.q-card{background:var(--bg-elev); border:1px solid var(--border); border-radius:12px; padding:20px; margin-bottom:16px;}
+.q-card .q-meta{display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;}
+.q-diff{font-size:10.5px; font-family:'IBM Plex Mono',monospace; padding:2px 8px; border-radius:5px; text-transform:uppercase; letter-spacing:.05em;}
+.q-diff.facil{color:var(--success); background:rgba(62,207,142,.12);}
+.q-diff.media{color:var(--accent); background:rgba(255,176,32,.12);}
+.q-diff.dificil{color:var(--danger); background:rgba(255,92,92,.12);}
+.q-text{font-size:14.5px; margin-bottom:14px;}
+.q-opts{display:flex; flex-direction:column; gap:8px;}
+.q-opt{
+  text-align:left; padding:12px 14px; border-radius:9px; border:1px solid var(--border); background:var(--bg-elev2);
+  color:var(--text); cursor:pointer; font-size:13.5px; font-family:inherit; transition:border-color .15s var(--ease), background .15s var(--ease); min-height:44px;
+}
+.q-opt:hover:not(:disabled){border-color:var(--accent);}
+.q-opt:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+.q-opt:disabled{cursor:default;}
+.q-opt.correct{border-color:var(--success); background:rgba(62,207,142,.12); color:#c7f7e2;}
+.q-opt.incorrect{border-color:var(--danger); background:rgba(255,92,92,.12); color:#ffd6d6;}
+.q-feedback{margin-top:12px; padding:12px 14px; border-radius:9px; border:1px solid; font-size:13px; display:none;}
+.q-feedback.show{display:block;}
+.q-feedback.ok{border-color:rgba(62,207,142,.35); background:rgba(62,207,142,.05); color:var(--text);}
+.q-feedback.bad{border-color:rgba(255,92,92,.35); background:rgba(255,92,92,.05); color:var(--text);}
+
+.score-wrap{display:flex; align-items:center; gap:22px; background:var(--bg-elev); border:1px solid var(--border); border-radius:14px; padding:22px; margin-bottom:26px; flex-wrap:wrap;}
+.score-ring{position:relative; width:96px; height:96px; flex-shrink:0;}
+.score-ring svg{transform:rotate(-90deg); width:96px; height:96px;}
+.score-ring circle{fill:none; stroke-width:8;}
+.score-ring .bgc{stroke:var(--border);}
+.score-ring .fgc{stroke:var(--accent); stroke-linecap:round; transition:stroke-dashoffset .5s var(--ease);}
+.score-num{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:18px;}
+.score-info{flex:1; min-width:200px;}
+.level-badge{display:inline-block; padding:4px 12px; border-radius:6px; font-size:12px; font-weight:600; margin-top:6px;}
+.level-badge.verde{background:rgba(62,207,142,.15); color:var(--success);}
+.level-badge.amarillo{background:rgba(255,176,32,.15); color:var(--accent);}
+.level-badge.rojo{background:rgba(255,92,92,.15); color:var(--danger);}
+
+footer.done{display:none;}
+
+@media (max-width:860px){
+  .app{flex-direction:column;}
+  .sidebar{position:relative; width:100%; height:auto; flex-direction:row; align-items:center; overflow-x:auto; padding:12px; gap:8px;}
+  .sidebar-top{padding:0; flex-shrink:0;}
+  .nav-back-btn{margin:0; padding:7px 10px; flex-shrink:0;}
+  .brand{display:none;}
+  .tabs{flex-direction:row;}
+  .tab .ghost{display:none;}
+  .content{padding:28px 20px 60px;}
+  .hero{padding:32px 22px;}
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+<nav class="sidebar" aria-label="Navegación de paneles">
+  <div class="sidebar-top">
+    <a href="../index.html" class="nav-back-btn" title="Volver al menú principal">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      <span class="btn-lbl">Principal</span>
+    </a>
+  </div>
+  <div class="brand">
+    <div class="brand-eyebrow">Cont. Financiera · Sec. 2</div>
+    <div class="brand-name">Unidad 02</div>
+  </div>
+  <div class="tabs" role="tablist" aria-orientation="vertical">
+    <div class="tab active" role="tab" tabindex="0" aria-selected="true" aria-controls="panel-1" id="tab-1" data-panel="1">
+      <span class="ghost">01</span>
+      <span class="ic"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg></span>
+      <span class="label">Resumen Visual</span>
+    </div>
+    <div class="tab" role="tab" tabindex="0" aria-selected="false" aria-controls="panel-2" id="tab-2" data-panel="2">
+      <span class="ghost">02</span>
+      <span class="ic"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+      <span class="label">Ejercicio Resuelto</span>
+    </div>
+    <div class="tab" role="tab" tabindex="0" aria-selected="false" aria-controls="panel-3" id="tab-3" data-panel="3">
+      <span class="ghost">03</span>
+      <span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span>
+      <span class="label">Guía Excel</span>
+    </div>
+    <div class="tab" role="tab" tabindex="0" aria-selected="false" aria-controls="panel-4" id="tab-4" data-panel="4">
+      <span class="ghost">04</span>
+      <span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.7-2.2 2-2.2 3.6"/><circle cx="12" cy="16.5" r=".4" fill="currentColor"/></svg></span>
+      <span class="label">Quiz de Práctica</span>
+    </div>
+    <div class="tab" role="tab" tabindex="0" aria-selected="false" aria-controls="panel-5" id="tab-5" data-panel="5">
+      <span class="ghost">05</span>
+      <span class="ic"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></span>
+      <span class="label">Ejercicio Variante</span>
+    </div>
+  </div>
+  <div class="sidebar-foot">ESEN · T3/2026<br>Prof. Antonia Caballero</div>
+</nav>
+
+<main class="main">
+  <header class="hero">
+    <svg class="hero-arc" viewBox="0 0 300 300" aria-hidden="true">
+      <circle cx="150" cy="150" r="120" fill="none" stroke="#FFB020" stroke-opacity=".25" stroke-width="1.5"/>
+      <circle cx="150" cy="150" r="90" fill="none" stroke="#FFB020" stroke-opacity=".18" stroke-width="1.5"/>
+      <path d="M150 30 A120 120 0 0 1 262 150" fill="none" stroke="#FFD873" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+        <div class="hero-top">
+      <a href="../index.html" class="hero-back-link" title="Volver al menú principal">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        <span>Menú principal</span>
+      </a>
+      <div class="hero-eyebrow">ESEN · Contabilidad Financiera · Sección 2 · Trimestre 3/2026</div>
+    </div>
+    <h1>Unidad 02 — Transacciones de <em>Capital</em></h1>
+    <p class="sub">Sociedades Anónimas, acciones comunes y preferentes, dividendos, acciones de tesorería y su reflejo en el Patrimonio del Balance General.</p>
+    <div class="chips">
+      <span class="chip warn"><svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01M10.3 3.86l-8.2 14.2A1.5 1.5 0 0 0 3.4 20.4h17.2a1.5 1.5 0 0 0 1.3-2.34l-8.2-14.2a1.5 1.5 0 0 0-2.4 0z"/></svg>Caso 1 · sáb 6 sept — es de Planillas, no de esta unidad</span>
+      <span class="chip ok"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Sin Control esta semana</span>
+      <span class="chip"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Control 1 (ISR) — jueves 10 sept</span>
+    </div>
+  </header>
+
+  <div class="content">
+
+  <!-- ============ PANEL 1 ============ -->
+  <section class="panel active" id="panel-1" role="tabpanel" aria-labelledby="tab-1">
+
+    <section class="block">
+      <div class="section-title"><span class="num-tag">01</span><h2>El ciclo de una transacción de capital</h2></div>
+      <p style="color:var(--text-dim); max-width:70ch;"><strong>Definición simple:</strong> una transacción de capital es cualquier movimiento de dinero entre la empresa y sus dueños (los accionistas) — nunca entre la empresa y un cliente o un proveedor. Por eso jamás genera una venta, un gasto ni una utilidad: cambia directamente el Patrimonio.</p>
+      <p style="color:var(--text-dim); max-width:70ch; margin-top:8px;"><strong>Ejemplo salvadoreño:</strong> cuando <em>XYZ, S.A. de C.V.</em> emite acciones nuevas y recibe $1,260,000 en efectivo de sus accionistas, ese dinero no es una venta — es capital que los dueños aportan a cambio de un título de propiedad. Cuando meses después esa misma empresa declara un dividendo, tampoco es un gasto — es la devolución de una parte de las utilidades que ya eran de los accionistas.</p>
+      <p style="color:var(--text-dim); max-width:70ch; margin-top:8px;"><strong>Concepto formal:</strong> desde que se constituye una Sociedad Anónima hasta que reparte utilidades, el capital pasa por cinco momentos. Cada uno afecta una sección distinta del Patrimonio, pero ninguno pasa por el Estado de Resultados.</p>
+      <svg viewBox="0 0 1080 190" role="img" aria-label="Diagrama de flujo: formación de la sociedad, emisión de acciones, capital contable, operación del capital (dividendos, tesorería, split) y balance general" style="width:100%; height:auto; margin-top:8px;">
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0L10 5L0 10z" fill="#FFB020"/>
+          </marker>
+        </defs>
+        <g font-family="IBM Plex Sans" font-size="12.5">
+          <!-- nodes -->
+          <g>
+            <rect x="10" y="55" width="180" height="70" rx="10" fill="#1C2027" stroke="#5AC8FA" stroke-opacity=".4"/>
+            <text x="100" y="82" fill="#EDEEF0" text-anchor="middle" font-weight="600">Formación de la</text>
+            <text x="100" y="99" fill="#EDEEF0" text-anchor="middle" font-weight="600">Sociedad Anónima</text>
+            <text x="100" y="116" fill="#9098A6" text-anchor="middle" font-size="10.5">capital mín. $2,000</text>
+          </g>
+          <line x1="192" y1="90" x2="220" y2="90" stroke="#FFB020" stroke-width="2" marker-end="url(#arrow)"/>
+          <g>
+            <rect x="222" y="40" width="190" height="100" rx="10" fill="#1C2027" stroke="#FF6EC7" stroke-opacity=".4"/>
+            <text x="317" y="65" fill="#EDEEF0" text-anchor="middle" font-weight="600">Emisión de</text>
+            <text x="317" y="82" fill="#EDEEF0" text-anchor="middle" font-weight="600">acciones</text>
+            <text x="317" y="102" fill="#9098A6" text-anchor="middle" font-size="10.5">comunes</text>
+            <text x="317" y="117" fill="#9098A6" text-anchor="middle" font-size="10.5">preferentes</text>
+            <text x="317" y="132" fill="#9098A6" text-anchor="middle" font-size="10.5">valor nominal + prima</text>
+          </g>
+          <line x1="414" y1="90" x2="442" y2="90" stroke="#FFB020" stroke-width="2" marker-end="url(#arrow)"/>
+          <g>
+            <rect x="444" y="55" width="190" height="70" rx="10" fill="#1C2027" stroke="#FF6EC7" stroke-opacity=".4"/>
+            <text x="539" y="82" fill="#EDEEF0" text-anchor="middle" font-weight="600">Capital Contable</text>
+            <text x="539" y="99" fill="#9098A6" text-anchor="middle" font-size="10.5">contribuido + ganado</text>
+            <text x="539" y="114" fill="#9098A6" text-anchor="middle" font-size="10.5">= Patrimonio</text>
+          </g>
+          <line x1="636" y1="90" x2="664" y2="90" stroke="#FFB020" stroke-width="2" marker-end="url(#arrow)"/>
+          <g>
+            <rect x="666" y="20" width="220" height="140" rx="10" fill="#1C2027" stroke="#FFB020" stroke-opacity=".4"/>
+            <text x="776" y="42" fill="#EDEEF0" text-anchor="middle" font-weight="600">Operación del capital</text>
+            <text x="776" y="65" fill="#9098A6" text-anchor="middle" font-size="10.5">Dividendos (efectivo / acciones)</text>
+            <text x="776" y="82" fill="#9098A6" text-anchor="middle" font-size="10.5">Acciones de tesorería</text>
+            <text x="776" y="99" fill="#9098A6" text-anchor="middle" font-size="10.5">Split de acciones</text>
+            <text x="776" y="116" fill="#9098A6" text-anchor="middle" font-size="10.5">Retiro de acciones</text>
+            <text x="776" y="140" fill="#5AC8FA" text-anchor="middle" font-size="10.5">ISR 5% sobre dividendos</text>
+          </g>
+          <line x1="888" y1="90" x2="916" y2="90" stroke="#FFB020" stroke-width="2" marker-end="url(#arrow)"/>
+          <g>
+            <rect x="918" y="55" width="152" height="70" rx="10" fill="#1C2027" stroke="#5AC8FA" stroke-opacity=".4"/>
+            <text x="994" y="82" fill="#EDEEF0" text-anchor="middle" font-weight="600">Balance General</text>
+            <text x="994" y="99" fill="#9098A6" text-anchor="middle" font-size="10.5">Sección Patrimonio</text>
+          </g>
+        </g>
+      </svg>
+
+      <div class="box eval">
+        <h4><svg viewBox="0 0 24 24"><path d="M12 6c-1.5-1.2-4-2-7-2v14c3 0 5.5.8 7 2 1.5-1.2 4-2 7-2V4c-3 0-5.5.8-7 2z"/><path d="M12 6v14"/></svg>Profundización teórica — ¿por qué el capital nunca pasa por el Estado de Resultados?</h4>
+        <p>La ecuación contable fundamental es <span class="mono">Activo = Pasivo + Patrimonio</span>. El Patrimonio crece de solo dos formas: (1) los dueños aportan más capital, o (2) la empresa genera utilidades que decide no repartir (utilidades retenidas). Una transacción de capital siempre es la primera vía — un movimiento directo entre la empresa y sus propios dueños — por eso se contabiliza directo en una cuenta de Patrimonio, sin pasar nunca por Ingresos ni Gastos.</p>
+        <p style="margin-top:8px;">Esto conecta con la <strong>Unidad 1 (Planillas)</strong>: el gasto de sueldos sí reduce el Patrimonio, pero lo hace <em>indirectamente</em>, vía el resultado del período (Ingresos − Gastos = Utilidad, que se acumula en Utilidades Retenidas). Una emisión de acciones, en cambio, aumenta el Patrimonio <em>directamente</em> — nunca pasa por una cuenta de Ingreso. Confundir estas dos rutas es el error conceptual más común de esta unidad.</p>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="section-title"><span class="num-tag">02</span><h2>Formación de la Sociedad Anónima</h2></div>
+      <p style="color:var(--text-dim); max-width:70ch;">Antes de que exista una acción para emitir, tiene que existir la sociedad. El Código de Comercio de El Salvador fija cuatro requisitos mínimos para constituir una Sociedad Anónima — y de ahí nace el primer momento de capital contribuido.</p>
+      <svg viewBox="0 0 1040 150" role="img" aria-label="Línea de tiempo de constitución de una Sociedad Anónima: mínimo 2 accionistas y capital social de 2000 dólares, 5 por ciento pagado a la inscripción, resto pagado dentro del año siguiente, sociedad operando" style="width:100%; height:auto; margin-top:10px;">
+        <defs>
+          <marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0L10 5L0 10z" fill="#5AC8FA"/>
+          </marker>
+        </defs>
+        <line x1="40" y1="75" x2="1000" y2="75" stroke="#262B33" stroke-width="2"/>
+        <g font-family="IBM Plex Sans" font-size="12">
+          <circle cx="70" cy="75" r="8" fill="#5AC8FA"/>
+          <text x="70" y="48" text-anchor="middle" fill="#EDEEF0" font-weight="600">Constitución</text>
+          <text x="70" y="100" text-anchor="middle" fill="#9098A6" font-size="10.5">mín. 2 accionistas</text>
+          <text x="70" y="116" text-anchor="middle" fill="#9098A6" font-size="10.5">capital social mín. $2,000</text>
+
+          <circle cx="360" cy="75" r="8" fill="#FFB020"/>
+          <text x="360" y="48" text-anchor="middle" fill="#EDEEF0" font-weight="600">Inscripción</text>
+          <text x="360" y="100" text-anchor="middle" fill="#9098A6" font-size="10.5">se paga mínimo el 5%</text>
+          <text x="360" y="116" text-anchor="middle" fill="#9098A6" font-size="10.5">del capital social</text>
+
+          <circle cx="650" cy="75" r="8" fill="#FFB020"/>
+          <text x="650" y="48" text-anchor="middle" fill="#EDEEF0" font-weight="600">Hasta 1 año después</text>
+          <text x="650" y="100" text-anchor="middle" fill="#9098A6" font-size="10.5">se paga el 95% restante</text>
+          <text x="650" y="116" text-anchor="middle" fill="#9098A6" font-size="10.5">del capital suscrito</text>
+
+          <circle cx="950" cy="75" r="8" fill="#3ECF8E"/>
+          <text x="950" y="48" text-anchor="middle" fill="#EDEEF0" font-weight="600">Sociedad operando</text>
+          <text x="950" y="100" text-anchor="middle" fill="#9098A6" font-size="10.5">acciones nominativas,</text>
+          <text x="950" y="116" text-anchor="middle" fill="#9098A6" font-size="10.5">VN mín. $1 o múltiplos</text>
+        </g>
+        <line x1="78" y1="75" x2="352" y2="75" stroke="#5AC8FA" stroke-width="2" marker-end="url(#arrow2)"/>
+        <line x1="368" y1="75" x2="642" y2="75" stroke="#FFB020" stroke-width="2" marker-end="url(#arrow2)"/>
+        <line x1="658" y1="75" x2="942" y2="75" stroke="#FFB020" stroke-width="2" marker-end="url(#arrow2)"/>
+      </svg>
+      <p style="color:var(--text-dim); font-size:13px; margin-top:10px;">Ninguna acción puede venderse por debajo de su valor nominal, y todas deben ser <strong>nominativas</strong> (a nombre de una persona identificada, nunca "al portador") — así el Registro de Comercio siempre sabe quién es dueño de qué.</p>
+
+      <div class="svg-wrap">
+        <img src="assets/img/u2-01-constitucion-sa.svg" alt="Constitución de la Sociedad Anónima en El Salvador: requisitos legales de accionistas, capital mínimo e inscripción" style="width:100%; height:auto; display:block;" loading="lazy">
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="section-title"><span class="num-tag">03</span><h2>Tres conceptos clave</h2></div>
+      <div class="cards3">
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <h4>Capital contable = contribuido + ganado</h4>
+          <p>El <strong>capital contribuido</strong> son los aportes de los socios (capital social + prima en venta de acciones + donaciones). El <strong>capital ganado</strong> son las utilidades retenidas (o pérdidas acumuladas) generadas por la operación.</p>
+        </div>
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h4>Comunes vs. preferentes</h4>
+          <p>Las <strong>comunes</strong> dan voto pleno y dividendo variable. Las <strong>preferentes</strong> tienen dividendo fijo (mín. 6% del valor nominal) con prelación de pago, pero voto limitado — solo en juntas extraordinarias, salvo que se les adeuden dividendos por más de 3 ejercicios.</p>
+        </div>
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6"/><rect x="12" y="8" width="3" height="10"/><rect x="17" y="5" width="3" height="13"/></svg></div>
+          <h4>Cuatro valores de una acción</h4>
+          <p><strong>Nominal</strong> (valor de emisión), <strong>de mercado</strong> (precio de compraventa), <strong>de liquidación</strong> (garantizado a preferentes si se liquida la empresa) y <strong>en libros</strong> (capital contable ÷ acciones en circulación).</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="section-title"><span class="num-tag">04</span><h2>Comunes y preferentes lado a lado</h2></div>
+      <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Característica</th><th>Acciones comunes</th><th>Acciones preferentes</th></tr></thead>
+        <tbody>
+          <tr><td>Cuenta contable</td><td><span class="badge patrimonio">Patrimonio</span> Capital común</td><td><span class="badge patrimonio">Patrimonio</span> Capital preferente</td></tr>
+          <tr><td>Voto</td><td>Pleno, en toda junta</td><td>Limitado (solo extraordinarias), salvo atraso &gt; 3 ejercicios</td></tr>
+          <tr><td>Dividendo</td><td>Variable, en dólares por acción</td><td>Fijo, mín. 6% del valor nominal, con prelación</td></tr>
+          <tr><td>En liquidación</td><td>Reciben el remanente</td><td>Se reembolsan primero</td></tr>
+          <tr><td>Ejemplo (guía, Ejercicio 1)</td><td>XYZ, S.A. de C.V. — 10,000 acc., VN $100, VM $120</td><td>XYZ, S.A. de C.V. — 1,000 acc., VN $50, VM $60, dividendo 7%</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p style="color:var(--text-dim); font-size:13px; margin-top:10px;"><strong>¿Por qué existe una clase de acción "preferente" si vota menos?</strong> Es un intercambio: el inversionista renuncia a influir en las decisiones de la empresa a cambio de cobrar primero y de forma predecible. Por eso a las preferentes también se les llama <em>capital híbrido</em> — se parecen a una acción (son Patrimonio, no Pasivo) pero se comportan como una deuda de tasa fija en el momento de cobrar.</p>
+      <svg viewBox="0 0 700 160" role="img" aria-label="Diagrama de prelación de pago: primero se paga a las acciones preferentes su dividendo fijo o su valor de liquidación, y solo el remanente pasa a las acciones comunes" style="width:100%; height:auto; margin-top:10px;">
+        <defs>
+          <marker id="arrowPink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0 0L10 5L0 10z" fill="#FF6EC7"/>
+          </marker>
+        </defs>
+        <g font-family="IBM Plex Sans" font-size="12.5">
+          <rect x="20" y="20" width="300" height="50" rx="8" fill="rgba(255,110,199,.12)" stroke="#FF6EC7" stroke-width="1.4"/>
+          <text x="170" y="41" text-anchor="middle" fill="#EDEEF0" font-weight="600">1° Acciones preferentes</text>
+          <text x="170" y="58" text-anchor="middle" fill="#9098A6" font-size="10.5">dividendo fijo (mín. 6% VN) o valor de liquidación</text>
+          <path d="M170 70v16" stroke="#FF6EC7" stroke-width="2" marker-end="url(#arrowPink)"/>
+          <rect x="20" y="98" width="660" height="50" rx="8" fill="rgba(90,200,250,.10)" stroke="#5AC8FA" stroke-width="1.4"/>
+          <text x="350" y="119" text-anchor="middle" fill="#EDEEF0" font-weight="600">2° Acciones comunes</text>
+          <text x="350" y="136" text-anchor="middle" fill="#9098A6" font-size="10.5">reciben todo el remanente — dividendo variable, sin techo ni piso</text>
+        </g>
+      </svg>
+
+      <div class="svg-wrap">
+        <img src="assets/img/u2-02-fila-prelacion.svg" alt="La Fila de Prelación de Pago: orden de distribución entre acciones preferentes y comunes" style="width:100%; height:auto; display:block;" loading="lazy">
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="section-title"><span class="num-tag">05</span><h2>Los cuatro valores de una acción</h2></div>
+      <p style="color:var(--text-dim); max-width:70ch;">La palabra "valor" cambia de significado según quién la use — el Registro de Comercio, la bolsa, o el propio Balance General. Distinguir los cuatro evita el error más común del Ejercicio 2 (valor en libros).</p>
+      <svg viewBox="0 0 980 175" role="img" aria-label="Comparación de los cuatro valores de una acción: valor nominal fijado en la escritura, valor en libros calculado del capital contable, valor de mercado fijado por oferta y demanda, y valor de liquidación garantizado a las preferentes" style="width:100%; height:auto; margin-top:8px;">
+        <g font-family="IBM Plex Sans" font-size="12">
+          <rect x="10" y="15" width="220" height="145" rx="10" fill="#1C2027" stroke="#5AC8FA" stroke-opacity=".45"/>
+          <text x="120" y="42" text-anchor="middle" fill="#5AC8FA" font-weight="700">Valor nominal</text>
+          <text x="120" y="70" text-anchor="middle" fill="#EDEEF0" font-size="11">Fijado en la escritura</text>
+          <text x="120" y="86" text-anchor="middle" fill="#EDEEF0" font-size="11">de constitución.</text>
+          <text x="120" y="110" text-anchor="middle" fill="#9098A6" font-size="10.5">No cambia con el tiempo</text>
+          <text x="120" y="126" text-anchor="middle" fill="#9098A6" font-size="10.5">ni con el desempeño.</text>
+          <text x="120" y="146" text-anchor="middle" fill="#FFD873" font-size="10">→ base del capital social</text>
+
+          <rect x="255" y="15" width="220" height="145" rx="10" fill="#1C2027" stroke="#FFB020" stroke-opacity=".45"/>
+          <text x="365" y="42" text-anchor="middle" fill="#FFB020" font-weight="700">Valor en libros</text>
+          <text x="365" y="70" text-anchor="middle" fill="#EDEEF0" font-size="11">Capital contable ÷</text>
+          <text x="365" y="86" text-anchor="middle" fill="#EDEEF0" font-size="11">acciones en circulación.</text>
+          <text x="365" y="110" text-anchor="middle" fill="#9098A6" font-size="10.5">Sube o baja con las</text>
+          <text x="365" y="126" text-anchor="middle" fill="#9098A6" font-size="10.5">utilidades retenidas.</text>
+          <text x="365" y="146" text-anchor="middle" fill="#FFD873" font-size="10">→ "foto" contable actual</text>
+
+          <rect x="500" y="15" width="220" height="145" rx="10" fill="#1C2027" stroke="#3ECF8E" stroke-opacity=".45"/>
+          <text x="610" y="42" text-anchor="middle" fill="#3ECF8E" font-weight="700">Valor de mercado</text>
+          <text x="610" y="70" text-anchor="middle" fill="#EDEEF0" font-size="11">Precio de compraventa</text>
+          <text x="610" y="86" text-anchor="middle" fill="#EDEEF0" font-size="11">entre inversionistas.</text>
+          <text x="610" y="110" text-anchor="middle" fill="#9098A6" font-size="10.5">Fijado por oferta y</text>
+          <text x="610" y="126" text-anchor="middle" fill="#9098A6" font-size="10.5">demanda, cambia a diario.</text>
+          <text x="610" y="146" text-anchor="middle" fill="#FFD873" font-size="10">→ genera la prima al emitir</text>
+
+          <rect x="745" y="15" width="225" height="145" rx="10" fill="#1C2027" stroke="#FF6EC7" stroke-opacity=".45"/>
+          <text x="857" y="42" text-anchor="middle" fill="#FF6EC7" font-weight="700">Valor de liquidación</text>
+          <text x="857" y="70" text-anchor="middle" fill="#EDEEF0" font-size="11">Monto garantizado a las</text>
+          <text x="857" y="86" text-anchor="middle" fill="#EDEEF0" font-size="11">preferentes si se disuelve.</text>
+          <text x="857" y="110" text-anchor="middle" fill="#9098A6" font-size="10.5">Se define en la escritura,</text>
+          <text x="857" y="126" text-anchor="middle" fill="#9098A6" font-size="10.5">solo aplica a preferentes.</text>
+          <text x="857" y="146" text-anchor="middle" fill="#FFD873" font-size="10">→ piso de protección</text>
+        </g>
+      </svg>
+    </section>
+
+    <section class="block">
+      <div class="section-title"><span class="num-tag">06</span><h2>Panorama: tres momentos en la vida del capital</h2></div>
+      <p style="color:var(--text-dim); max-width:70ch;">No todas las transacciones de capital se registran igual. Agruparlas por momento ayuda a recordar qué cuenta se mueve en cada una.</p>
+      <div class="cards3">
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></div>
+          <h4>1. Emisión (entra capital)</h4>
+          <p>Activo ↑ (Efectivo) y Patrimonio ↑ (Capital social + Prima). Es la única transacción de capital que trae dinero nuevo a la empresa.</p>
+        </div>
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
+          <h4>2. Operación (mueve el capital)</h4>
+          <p>Dividendos: nace un Pasivo temporal entre la declaración y el pago. Tesorería: contra-cuenta de Patrimonio. Split: ningún asiento — solo cambia la cantidad y el VN de las acciones.</p>
+        </div>
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+          <h4>3. Reporte (sale al Balance)</h4>
+          <p>Todo termina en la sección de Patrimonio del Balance General: capital contribuido, capital ganado y, si aplica, la resta de las acciones de tesorería.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="box legal">
+      <h4><svg viewBox="0 0 24 24"><path d="M12 3v18M5 8l-3 6a4 4 0 0 0 8 0zM19 8l-3 6a4 4 0 0 0 8 0zM5 8h14M5 8L3 3M19 8l2-5"/></svg>Marco Legal</h4>
+      <p><strong>Código de Comercio de El Salvador</strong> (normativa societaria): la Sociedad Anónima requiere un capital social mínimo de <span class="money">USD $2,000</span>, con al menos el 5% pagado al momento de la inscripción y el resto dentro del año siguiente; mínimo 2 accionistas, sin máximo. Las acciones deben ser nominativas, de valor nominal mínimo de $1 o múltiplos enteros de uno, y no pueden venderse por debajo de su valor nominal.</p>
+      <p><strong>Ley del Impuesto sobre la Renta</strong>: los dividendos pagados a personas naturales están gravados con una retención del <span class="money">5%</span>, que debe retener quien paga el dividendo; si no se retiene, el contribuyente debe liquidar el impuesto por separado de sus otras rentas.</p>
+      <p style="color:var(--text-dim); font-size:12px;">El PDF de la profesora no especifica números de artículo del Código de Comercio para esta unidad — se cita en términos generales, tal como indican las reglas de precisión legal del curso.</p>
+    </div>
+
+    <div class="box eval">
+      <h4><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg>Cobertura en evaluaciones</h4>
+      <ul>
+        <li>Esta semana <strong>no hay Control</strong> — el Control 1 es hasta el jueves 10 de septiembre y cubre Impuesto sobre la Renta (Unidad 3).</li>
+        <li>El <strong>Caso 1</strong> (entrega sábado 6 de septiembre) es en realidad un caso de <strong>Planillas</strong> (Unidad 1) — no evalúa Transacciones de Capital. Si necesitas repasar planillas, aguinaldo o liquidaciones, revisa el material de la Unidad 1.</li>
+        <li>Transacciones de Capital sí entra en el <strong>Parcial 1</strong> (semana 6).</li>
+      </ul>
+    </div>
+
+    <div class="glossary">
+      <h4>Glosario</h4>
+      <dl class="gloss-grid">
+        <div><dt>Capital contribuido</dt><dd>Aportes de los socios: capital social + prima en venta de acciones + donaciones.</dd></div>
+        <div><dt>Capital ganado</dt><dd>Utilidades retenidas (o pérdidas acumuladas) generadas por la operación, no aportadas por los socios.</dd></div>
+        <div><dt>Prelación de pago</dt><dd>Orden en que se paga a cada clase de acción; las preferentes cobran antes que las comunes.</dd></div>
+        <div><dt>Capital social</dt><dd>Valor nominal total de las acciones emitidas y suscritas por los socios.</dd></div>
+        <div><dt>Prima en venta de acciones</dt><dd>Monto pagado por arriba del valor nominal («capital pagado en exceso del valor nominal»).</dd></div>
+        <div><dt>Capital contable</dt><dd>Derecho de los propietarios sobre los activos netos; capital contribuido + capital ganado.</dd></div>
+        <div><dt>Acción común</dt><dd>Título que da voto pleno y dividendo variable.</dd></div>
+        <div><dt>Acción preferente</dt><dd>Título con dividendo fijo y prelación de pago, voto limitado.</dd></div>
+        <div><dt>Valor nominal</dt><dd>Valor de la acción al momento de emitirse.</dd></div>
+        <div><dt>Valor de mercado</dt><dd>Precio al que se compra o vende una acción.</dd></div>
+        <div><dt>Valor de liquidación</dt><dd>Monto garantizado a las acciones preferentes si la empresa se liquida.</dd></div>
+        <div><dt>Valor en libros</dt><dd>Capital contable atribuido a una clase de acciones ÷ acciones en circulación de esa clase.</dd></div>
+        <div><dt>Dividendo</dt><dd>Distribución de utilidades retenidas a los accionistas, generalmente en efectivo.</dd></div>
+        <div><dt>Acciones de tesorería</dt><dd>Acciones propias readquiridas por la empresa; contra-cuenta de Patrimonio con saldo deudor.</dd></div>
+        <div><dt>Split de acciones</dt><dd>Reduce el valor nominal y aumenta proporcionalmente la cantidad de acciones; no genera asiento contable.</dd></div>
+        <div><dt>Capital variable (C.V.)</dt><dd>Régimen que permite aumentar o disminuir el capital sin escritura pública, solo con registro en el libro correspondiente.</dd></div>
+      </dl>
+    </div>
+
+  </section>
+
+  <!-- ============ PANEL 2 ============ -->
+  <section class="panel" id="panel-2" role="tabpanel" aria-labelledby="tab-2">
+
+    <section class="block">
+      <div class="section-title"><span class="num-tag">Ejercicio 1</span><h2>Emisión de acciones — XYZ, S.A. de C.V.</h2></div>
+      <p style="color:var(--text-dim);">Ejercicio exacto de la guía de la profesora (<em>Ejercicios clase acciones.pdf</em>). El 1 de enero de 2024, XYZ, S.A. de C.V. emite 10,000 acciones comunes (VN $100, VM $120) y 1,000 acciones preferentes (VN $50, VM $60, dividendo 7%), pagadas totalmente en efectivo. Antes de la emisión, XYZ ya tenía 12,000 acciones comunes (VN $100 = $1,200,000) y utilidades retenidas de $200,000.</p>
+
+      <div class="svg-wrap">
+        <img src="assets/img/u2-03-oficina-xyz.svg" alt="Emisión de acciones de XYZ, S.A. de C.V.: valor nominal, prima y partida contable balanceada" style="width:100%; height:auto; display:block;" loading="lazy">
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h5>a) Capital social de la emisión, a valor nominal</h5>
+            <p class="why">Cada clase de acción aporta dos componentes: el <strong>valor nominal</strong> (capital social) y la <strong>prima</strong> (diferencia contra el valor de mercado). Se calculan por separado.</p>
+            <div class="tbl-wrap"><table>
+              <tbody>
+                <tr><td>Capital preferente: 1,000 acc. × $50 VN</td><td class="num money">$50,000</td></tr>
+                <tr><td>Prima preferente: 1,000 acc. × ($60 − $50)</td><td class="num money">$10,000</td></tr>
+                <tr><td>Capital común: 10,000 acc. × $100 VN</td><td class="num money">$1,000,000</td></tr>
+                <tr><td>Prima común: 10,000 acc. × ($120 − $100)</td><td class="num money">$200,000</td></tr>
+                <tr style="font-weight:600;"><td>Total capital social emitido (= efectivo recibido)</td><td class="num money">$1,260,000</td></tr>
+              </tbody>
+            </table></div>
+            <div class="impact"><span class="badge activo">Activo ↑ Efectivo</span><span class="badge patrimonio">Patrimonio ↑ Capital social</span></div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h5>b) Partida de diario — 1 de enero de 2024</h5>
+            <p class="why">Se abona cada cuenta de capital por separado — nunca se mezcla el valor nominal con la prima en una sola cuenta, porque el Balance General las reporta como líneas distintas.</p>
+            <table class="journal">
+              <thead><tr><th>Fecha</th><th>Cuenta</th><th>Debe</th><th>Haber</th></tr></thead>
+              <tbody>
+                <tr><td>01-ene-24</td><td>Efectivo</td><td class="num debe">1,260,000</td><td class="num haber"></td></tr>
+                <tr><td></td><td class="indent">Capital preferente</td><td class="num debe"></td><td class="num haber">50,000</td></tr>
+                <tr><td></td><td class="indent">Capital pagado en exceso del valor nominal: preferente</td><td class="num debe"></td><td class="num haber">10,000</td></tr>
+                <tr><td></td><td class="indent">Capital común</td><td class="num debe"></td><td class="num haber">1,000,000</td></tr>
+                <tr><td></td><td class="indent">Capital pagado en exceso del valor nominal: común</td><td class="num debe"></td><td class="num haber">200,000</td></tr>
+                <tr class="concept"><td></td><td colspan="3">Emisión de acciones preferentes y comunes con prima, pagada en efectivo</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h5>c) Patrimonio después de la emisión</h5>
+            <p class="why">El capital común existente (12,000 acc.) se suma a las 10,000 acciones nuevas: 22,000 acciones comunes en total a valor nominal. Las utilidades retenidas no cambian — una emisión de acciones nunca las afecta.</p>
+            <div class="tbl-wrap"><table>
+              <thead><tr><th colspan="2">XYZ, S.A. de C.V. — Capital contable de los accionistas — al 31 de enero de 2024</th></tr></thead>
+              <tbody>
+                <tr><td>Capital preferente: valor nominal $50; 1,000 acciones</td><td class="num money">$50,000</td></tr>
+                <tr><td>Capital pagado en exceso del valor nominal: preferente</td><td class="num money">$10,000</td></tr>
+                <tr><td>Capital común: valor nominal $100; 22,000 acciones emitidas</td><td class="num money">$2,200,000</td></tr>
+                <tr><td>Capital pagado en exceso del valor nominal: común</td><td class="num money">$200,000</td></tr>
+                <tr><td>Capital social pagado (subtotal)</td><td class="num money">$2,460,000</td></tr>
+                <tr><td>Utilidades retenidas</td><td class="num money">$200,000</td></tr>
+                <tr style="font-weight:600;"><td>Patrimonio o Capital Contable total</td><td class="num money">$2,660,000</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="box error">
+        <h4><svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01M10.3 3.86l-8.2 14.2A1.5 1.5 0 0 0 3.4 20.4h17.2a1.5 1.5 0 0 0 1.3-2.34l-8.2-14.2a1.5 1.5 0 0 0-2.4 0z"/></svg>Errores comunes</h4>
+        <ul>
+          <li>Registrar el efectivo recibido directamente en la cuenta de Capital, sin separar el valor nominal de la prima — la prima siempre va en su propia cuenta («capital pagado en exceso del valor nominal»).</li>
+          <li>Calcular el dividendo preferente sobre el <strong>valor de mercado</strong> en vez del <strong>valor nominal</strong> — el 6-7% siempre se aplica sobre el valor nominal.</li>
+          <li>Sumar las acciones nuevas y existentes sin fijarse si tienen el mismo valor nominal — aquí las 12,000 previas y las 10,000 nuevas comparten VN $100, por eso se suman en una sola línea.</li>
+          <li>Olvidar que la prima <strong>no es utilidad</strong> — nunca pasa por la cuenta de resultados, va directo a una cuenta de Patrimonio.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="section-title"><span class="num-tag">Ejemplo</span><h2>Valor en libros por acción — ABC, S.A. de C.V.</h2></div>
+      <p style="color:var(--text-dim);">Ejemplo de la diapositiva 24 de la profesora: calcular el valor en libros por acción preferente y por acción común de ABC, S.A. de C.V., considerando 1 año de dividendos preferentes atrasados.</p>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th colspan="2">ABC, S.A. de C.V. — Capital contable al 1 de diciembre</th></tr></thead>
+        <tbody>
+          <tr><td>Capital preferente: VN $50; 1,000 acciones</td><td class="num money">$50,000</td></tr>
+          <tr><td>Capital común: VN $1; 1,000,000 acciones</td><td class="num money">$1,000,000</td></tr>
+          <tr><td>Prima común</td><td class="num money">$19,000,000</td></tr>
+          <tr><td>Utilidades retenidas</td><td class="num money">$9,000,000</td></tr>
+          <tr style="font-weight:600;"><td>Patrimonio o Capital Contable total</td><td class="num money">$29,050,000</td></tr>
+        </tbody>
+      </table></div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h5>Valor en libros atribuido a preferentes</h5>
+            <p class="why">= capital preferente + dividendos atrasados. Un año atrasado: $50,000 × 6% = $3,000.</p>
+            <p class="num money">$50,000 + $3,000 = $53,000 → $53,000 ÷ 1,000 acciones = <strong>$53.00 por acción preferente</strong></p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h5>Valor en libros atribuido a comunes</h5>
+            <p class="why">Los accionistas comunes reciben lo que queda del Patrimonio después de apartar lo de las preferentes.</p>
+            <p class="num money">$29,050,000 − $53,000 = $28,997,000 → ÷ 1,000,000 acciones = <strong>$28.997 por acción común</strong></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="section-title"><span class="num-tag">Ejercicio 2</span><h2>Acciones de tesorería — ABC, S.A. de C.V.</h2></div>
+      <p style="color:var(--text-dim);">Ejercicio exacto de la guía: ABC compra, y luego revende, sus propias acciones.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h5>A) 31 de marzo — compra de 1,000 acciones de tesorería a $5</h5>
+            <p class="why">Las acciones de tesorería se registran <strong>al costo</strong>, nunca a su valor nominal — es una cuenta contraria de Patrimonio, con saldo deudor.</p>
+            <table class="journal">
+              <thead><tr><th>Fecha</th><th>Cuenta</th><th>Debe</th><th>Haber</th></tr></thead>
+              <tbody>
+                <tr><td>31-mar</td><td>Acciones de tesorería (1,000 × $5)</td><td class="num debe">5,000</td><td class="num haber"></td></tr>
+                <tr><td></td><td class="indent">Efectivo</td><td class="num debe"></td><td class="num haber">5,000</td></tr>
+                <tr class="concept"><td></td><td colspan="3">Compra de acciones de tesorería</td></tr>
+              </tbody>
+            </table>
+            <div class="impact"><span class="badge activo">Activo ↓ Efectivo</span><span class="badge patrimonio">Patrimonio ↓ (contra-cuenta)</span></div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h5>B) 2 de abril — vende 200 acciones a $6 (arriba del costo de $5)</h5>
+            <p class="why">La diferencia a favor ($1 × 200 = $200) no es utilidad — nunca pasa por resultados. Va a una cuenta de Patrimonio: «Capital pagado proveniente de transacciones con acciones de tesorería».</p>
+            <table class="journal">
+              <thead><tr><th>Fecha</th><th>Cuenta</th><th>Debe</th><th>Haber</th></tr></thead>
+              <tbody>
+                <tr><td>02-abr</td><td>Efectivo (200 × $6)</td><td class="num debe">1,200</td><td class="num haber"></td></tr>
+                <tr><td></td><td class="indent">Acciones de tesorería (200 × $5)</td><td class="num debe"></td><td class="num haber">1,000</td></tr>
+                <tr><td></td><td class="indent">Capital pagado — transacciones con tesorería</td><td class="num debe"></td><td class="num haber">200</td></tr>
+                <tr class="concept"><td></td><td colspan="3">Venta de acciones de tesorería arriba del costo</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h5>C) 3 de abril — vende 400 acciones a $4.40 (bajo el costo de $5)</h5>
+            <p class="why">La pérdida total es de $0.60 × 400 = $240. Primero se agota el saldo disponible de «Capital pagado — transacciones con tesorería» que dejó la venta anterior ($200); el resto ($40) se carga contra Utilidades Retenidas — nunca contra gastos del período.</p>
+            <table class="journal">
+              <thead><tr><th>Fecha</th><th>Cuenta</th><th>Debe</th><th>Haber</th></tr></thead>
+              <tbody>
+                <tr><td>03-abr</td><td>Efectivo (400 × $4.40)</td><td class="num debe">1,760</td><td class="num haber"></td></tr>
+                <tr><td></td><td>Capital pagado — transacciones con tesorería (agotado)</td><td class="num debe">200</td><td class="num haber"></td></tr>
+                <tr><td></td><td>Utilidades retenidas (déficit remanente)</td><td class="num debe">40</td><td class="num haber"></td></tr>
+                <tr><td></td><td class="indent">Acciones de tesorería (400 × $5)</td><td class="num debe"></td><td class="num haber">2,000</td></tr>
+                <tr class="concept"><td></td><td colspan="3">Venta de acciones de tesorería bajo el costo</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h5>D) Patrimonio y acciones de tesorería remanentes</h5>
+            <p class="why">De las 1,000 acciones compradas, se vendieron 200 + 400 = 600; quedan <strong>400 acciones en tesorería</strong> (a su costo de $5 = $2,000), que se restan al final del Patrimonio. Las cifras de capital preferente/común de esta tabla provienen de la hoja de solución de la profesora (<em>Ejercicios Acc Tesoreria.xlsx</em>) — no aparecen en el enunciado del PDF, por eso se citan aparte.</p>
+            <div class="tbl-wrap"><table>
+              <thead><tr><th colspan="2">ABC, S.A. de C.V. — Capital contable (cifras de la hoja de solución de la profesora)</th></tr></thead>
+              <tbody>
+                <tr><td>Capital preferente, 6%, VN $50; 2,000 acciones</td><td class="num money">$100,000</td></tr>
+                <tr><td>Prima preferente</td><td class="num money">$5,000</td></tr>
+                <tr><td>Capital común, VN $0.50; 6,300,000 acciones</td><td class="num money">$3,150,000</td></tr>
+                <tr><td>Prima común</td><td class="num money">$23,900,000</td></tr>
+                <tr><td>Capital pagado total</td><td class="num money">$27,155,000</td></tr>
+                <tr><td>Utilidades retenidas (neto del déficit de $40 en la venta bajo costo)</td><td class="num money">se reduce en $40</td></tr>
+                <tr><td>(−) Acciones de tesorería, al costo (400 × $5)</td><td class="num money">($2,000)</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="section-title"><span class="num-tag">Ejercicio 3</span><h2>Declaración y pago de dividendo preferente — DEF, S.A. de C.V.</h2></div>
+      <p style="color:var(--text-dim);">Ejercicio de la diapositiva 31 de la guía de la profesora. DEF, S.A. de C.V. tiene 2,000 acciones preferentes en circulación, valor nominal $50, dividendo preferente del 6%. La Junta declara el dividendo el 1 de mayo y lo paga el 30 de mayo, con la retención de ISR del 5% que exige el marco legal de esta unidad.</p>
+
+      <svg viewBox="0 0 760 130" role="img" aria-label="Línea de tiempo del dividendo: fecha de declaración donde nace el pasivo, y fecha de pago donde se liquida el pasivo y se retiene el ISR" style="width:100%; height:auto; margin:10px 0;">
+        <line x1="40" y1="65" x2="720" y2="65" stroke="#262B33" stroke-width="2"/>
+        <g font-family="IBM Plex Sans" font-size="12">
+          <circle cx="120" cy="65" r="8" fill="#FFB020"/>
+          <text x="120" y="40" text-anchor="middle" fill="#EDEEF0" font-weight="600">1-may · Declaración</text>
+          <text x="120" y="90" text-anchor="middle" fill="#9098A6" font-size="10.5">Nace el pasivo:</text>
+          <text x="120" y="106" text-anchor="middle" fill="#9098A6" font-size="10.5">Utilidades retenidas → Dividendos por pagar</text>
+
+          <circle cx="640" cy="65" r="8" fill="#3ECF8E"/>
+          <text x="640" y="40" text-anchor="middle" fill="#EDEEF0" font-weight="600">30-may · Pago</text>
+          <text x="640" y="90" text-anchor="middle" fill="#9098A6" font-size="10.5">Se liquida el pasivo:</text>
+          <text x="640" y="106" text-anchor="middle" fill="#9098A6" font-size="10.5">se retiene 5% de ISR, sale el efectivo neto</text>
+        </g>
+      </svg>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h5>a) Dividendo total declarado</h5>
+            <p class="why">El dividendo preferente se calcula siempre sobre el <strong>valor nominal</strong>, nunca sobre el valor de mercado — es la misma regla que en el Ejercicio 1.</p>
+            <p class="num money">2,000 acciones × $50 VN × 6% = <strong>$6,000</strong></p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h5>b) Partida de declaración — 1 de mayo</h5>
+            <p class="why">En la fecha de <strong>declaración</strong> nace la obligación legal de pagar — aquí, y solo aquí, se reconoce el pasivo, aunque el efectivo todavía no salga.</p>
+            <table class="journal">
+              <thead><tr><th>Fecha</th><th>Cuenta</th><th>Debe</th><th>Haber</th></tr></thead>
+              <tbody>
+                <tr><td>01-may</td><td>Utilidades retenidas</td><td class="num debe">6,000</td><td class="num haber"></td></tr>
+                <tr><td></td><td class="indent">Dividendos por pagar</td><td class="num debe"></td><td class="num haber">6,000</td></tr>
+                <tr class="concept"><td></td><td colspan="3">Declaración de dividendo preferente en efectivo</td></tr>
+              </tbody>
+            </table>
+            <div class="impact"><span class="badge patrimonio">Patrimonio ↓ Utilidades retenidas</span><span class="badge pasivo">Pasivo ↑ Dividendos por pagar</span></div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h5>c) Partida de pago — 30 de mayo</h5>
+            <p class="why">Al pagar, se retiene el 5% de ISR (Ley del Impuesto sobre la Renta) — ese monto no sale de la empresa hacia el accionista, sino que se convierte en un nuevo pasivo a favor del Ministerio de Hacienda.</p>
+            <table class="journal">
+              <thead><tr><th>Fecha</th><th>Cuenta</th><th>Debe</th><th>Haber</th></tr></thead>
+              <tbody>
+                <tr><td>30-may</td><td>Dividendos por pagar</td><td class="num debe">6,000</td><td class="num haber"></td></tr>
+                <tr><td></td><td class="indent">Retenciones por pagar ISR (5%)</td><td class="num debe"></td><td class="num haber">300</td></tr>
+                <tr><td></td><td class="indent">Efectivo</td><td class="num debe"></td><td class="num haber">5,700</td></tr>
+                <tr class="concept"><td></td><td colspan="3">Pago del dividendo preferente, neto de la retención de ISR</td></tr>
+              </tbody>
+            </table>
+            <div class="impact"><span class="badge pasivo">Pasivo ↓ Dividendos por pagar</span><span class="badge pasivo">Pasivo ↑ Retención ISR</span><span class="badge activo">Activo ↓ Efectivo</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="box error">
+        <h4><svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01M10.3 3.86l-8.2 14.2A1.5 1.5 0 0 0 3.4 20.4h17.2a1.5 1.5 0 0 0 1.3-2.34l-8.2-14.2a1.5 1.5 0 0 0-2.4 0z"/></svg>Errores comunes</h4>
+        <ul>
+          <li>Reconocer el pasivo en la fecha de <strong>pago</strong> en vez de la fecha de <strong>declaración</strong> — el pasivo nace cuando la Junta lo declara, no cuando sale el efectivo.</li>
+          <li>Olvidar la retención de ISR del 5% y pagar los $6,000 completos al accionista.</li>
+          <li>Cargar el dividendo contra una cuenta de gasto — un dividendo nunca es gasto, siempre se carga contra Utilidades retenidas.</li>
+          <li>Calcular el 6% sobre el capital pagado total (VN + prima) en vez de sobre el valor nominal únicamente.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="glossary">
+      <h4>Glosario</h4>
+      <dl class="gloss-grid">
+        <div><dt>Capital pagado en exceso del valor nominal</dt><dd>También llamado prima; monto pagado por arriba del valor nominal de la acción.</dd></div>
+        <div><dt>Acciones en circulación</dt><dd>Acciones emitidas menos acciones en tesorería; solo ellas tienen voto y dividendo.</dd></div>
+        <div><dt>Capital pagado — transacciones con tesorería</dt><dd>Cuenta de Patrimonio que absorbe la ganancia (o parte de la pérdida) al revender acciones de tesorería.</dd></div>
+        <div><dt>Dividendos atrasados</dt><dd>Dividendos preferentes no declarados en ejercicios anteriores; no son un pasivo hasta que la Junta los declara.</dd></div>
+        <div><dt>Costo (acciones de tesorería)</dt><dd>Precio al que la empresa recompró sus propias acciones; base de registro contable.</dd></div>
+        <div><dt>Fecha de declaración</dt><dd>Momento en que la Junta aprueba el dividendo y nace el pasivo "Dividendos por pagar".</dd></div>
+        <div><dt>Fecha de pago</dt><dd>Momento en que se liquida el pasivo del dividendo, reteniendo el ISR correspondiente.</dd></div>
+        <div><dt>Retenciones por pagar ISR</dt><dd>Pasivo a favor del Ministerio de Hacienda por el 5% retenido sobre el dividendo pagado.</dd></div>
+      </dl>
+    </div>
+
+  </section>
+
+  <!-- ============ PANEL 3 ============ -->
+  <section class="panel" id="panel-3" role="tabpanel" aria-labelledby="tab-3">
+
+    <a class="dl-btn" href="U2_TransaccionesCapital_ContFinanciera.xlsx" download>
+      <svg viewBox="0 0 24 24"><path d="M12 3v13M6 11l6 6 6-6"/><path d="M4 20h16"/></svg>
+      Descargar U2_TransaccionesCapital_ContFinanciera.xlsx
+    </a>
+
+    <section class="block" style="margin-top:24px;">
+      <div class="section-title"><span class="num-tag">Vista previa</span><h2>Las 8 hojas del libro</h2></div>
+      <div class="xl-preview">
+        <div class="xl-tabs">
+          <div class="on">1 Inicio</div><div>2 Marco Normativo</div><div>3 Cálculo Emisión</div><div>4 Cálculo Práctica</div><div>5 Asientos Resueltos</div><div>6 Asientos Práctica</div><div>7 Producto Final</div><div>8 Producto Final Práct.</div>
+        </div>
+        <svg viewBox="0 0 900 300" role="img" aria-label="Vista previa simulada de la hoja 7, Producto Final: sección de Patrimonio del Balance General con columnas de concepto y monto" style="width:100%; height:auto; display:block; background:#14171C;">
+          <g font-family="IBM Plex Mono" font-size="11">
+            <rect x="0" y="0" width="900" height="34" fill="#1e2d5a"/>
+            <text x="16" y="22" fill="#fff">A</text><text x="620" y="22" fill="#fff">Producto Final — Sección de Patrimonio</text>
+            <rect x="0" y="34" width="900" height="26" fill="#1C2027"/>
+            <text x="16" y="52" fill="#9098A6">Concepto</text><text x="760" y="52" fill="#9098A6">Monto</text>
+            <g fill="#EDEEF0">
+              <text x="16" y="80">Capital preferente: valor nominal</text><text x="820" y="80" text-anchor="end" fill="#0000ff">$50,000</text>
+              <text x="16" y="102">Capital pagado en exceso: preferente</text><text x="820" y="102" text-anchor="end">$10,000</text>
+              <text x="16" y="124">Capital común: valor nominal</text><text x="820" y="124" text-anchor="end" fill="#0000ff">$1,000,000</text>
+              <text x="16" y="146">Capital pagado en exceso: común</text><text x="820" y="146" text-anchor="end">$200,000</text>
+              <text x="16" y="168" font-weight="700">Capital social pagado (subtotal)</text><text x="820" y="168" text-anchor="end" font-weight="700">$1,260,000</text>
+              <text x="16" y="190">Utilidades retenidas</text><text x="820" y="190" text-anchor="end" fill="#0000ff">$200,000</text>
+              <text x="16" y="212">(−) Acciones de tesorería, al costo</text><text x="820" y="212" text-anchor="end" fill="#FF5C5C">($2,000)</text>
+              <text x="16" y="240" font-weight="700" fill="#FFD873">Patrimonio o Capital Contable total</text><text x="820" y="240" text-anchor="end" font-weight="700" fill="#FFD873">$1,458,000</text>
+            </g>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="section-title"><span class="num-tag">Fórmulas</span><h2>Cómo se enlazan las hojas</h2></div>
+      <p style="color:var(--text-dim); max-width:70ch;">El archivo nunca repite un número escrito a mano — cada hoja resuelta jala sus cifras de la hoja anterior con una fórmula. Si cambias el valor de mercado en la Hoja 3, el asiento de la Hoja 5 y el Balance de la Hoja 7 se recalculan solos.</p>
+      <svg viewBox="0 0 900 130" role="img" aria-label="Cadena de fórmulas entre hojas: Hoja 3 Cálculo Emisión alimenta con referencias cruzadas a la Hoja 5 Asientos Resueltos, que a su vez alimenta a la Hoja 7 Producto Final" style="width:100%; height:auto; margin-top:8px;">
+        <defs>
+          <marker id="arrow3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0L10 5L0 10z" fill="#FFB020"/>
+          </marker>
+        </defs>
+        <g font-family="IBM Plex Sans" font-size="12">
+          <rect x="10" y="30" width="230" height="70" rx="10" fill="#1C2027" stroke="#5AC8FA" stroke-opacity=".45"/>
+          <text x="125" y="58" text-anchor="middle" fill="#EDEEF0" font-weight="600">Hoja 3</text>
+          <text x="125" y="76" text-anchor="middle" fill="#9098A6" font-size="10.5">Cálculo Emisión</text>
+          <text x="125" y="92" text-anchor="middle" fill="#9098A6" font-size="9.5" font-family="IBM Plex Mono">celdas F6, G6, F7, G7...</text>
+
+          <line x1="244" y1="65" x2="322" y2="65" stroke="#FFB020" stroke-width="2" marker-end="url(#arrow3)"/>
+          <text x="283" y="20" text-anchor="middle" fill="#FFB020" font-size="9" font-family="IBM Plex Mono">=Hoja3!F6</text>
+
+          <rect x="326" y="30" width="230" height="70" rx="10" fill="#1C2027" stroke="#FFB020" stroke-opacity=".45"/>
+          <text x="441" y="58" text-anchor="middle" fill="#EDEEF0" font-weight="600">Hoja 5</text>
+          <text x="441" y="76" text-anchor="middle" fill="#9098A6" font-size="10.5">Asientos Resueltos</text>
+          <text x="441" y="92" text-anchor="middle" fill="#9098A6" font-size="9.5" font-family="IBM Plex Mono">Debe / Haber de cada cuenta</text>
+
+          <line x1="560" y1="65" x2="638" y2="65" stroke="#FFB020" stroke-width="2" marker-end="url(#arrow3)"/>
+          <text x="599" y="20" text-anchor="middle" fill="#FFB020" font-size="9" font-family="IBM Plex Mono">=Hoja3!F6</text>
+
+          <rect x="642" y="30" width="230" height="70" rx="10" fill="#1C2027" stroke="#3ECF8E" stroke-opacity=".45"/>
+          <text x="757" y="58" text-anchor="middle" fill="#EDEEF0" font-weight="600">Hoja 7</text>
+          <text x="757" y="76" text-anchor="middle" fill="#9098A6" font-size="10.5">Producto Final</text>
+          <text x="757" y="92" text-anchor="middle" fill="#9098A6" font-size="9.5" font-family="IBM Plex Mono">Sección de Patrimonio</text>
+        </g>
+      </svg>
+      <p style="color:var(--text-dim); font-size:13px; margin-top:8px;">Por eso las instrucciones del curso prohíben pegar valores calculados a mano en el Excel: si el número está "quemado" (hardcodeado), la cadena se rompe y ya no se puede auditar de dónde salió cada cifra.</p>
+    </section>
+
+    <section class="block">
+      <div class="section-title"><span class="num-tag">Paso a paso</span><h2>Cómo usar el archivo</h2></div>
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><h5>Empieza en la Hoja 1 — Inicio</h5><p class="why">Escribe tu nombre completo, carnet y fecha de entrega. Lee el código de honor antes de continuar.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h5>Revisa la Hoja 2 — Marco Normativo</h5><p class="why">Las cifras oficiales (capital mínimo, % de dividendo preferente, % de ISR sobre dividendos) ya están ahí, tomadas del PDF de la clase — no las cambies.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h5>Estudia la Hoja 3 — Cálculo Emisión (resuelta)</h5><p class="why">Reproduce el Ejercicio 1 de la guía con fórmulas encadenadas: cambia el valor nominal o de mercado en las celdas azules y observa cómo se recalcula todo.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h5>Practica en la Hoja 4 — Cálculo Práctica</h5><p class="why">Mismas columnas, celdas en rosa para completar tú. Usa las fórmulas de la Hoja 3 como referencia, no las copies literalmente.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h5>Sigue el libro diario en las Hojas 5-6</h5><p class="why">Cada partida en la Hoja 5 está enlazada por fórmula a la Hoja 3 — si cambias un dato de entrada, el asiento se actualiza solo.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h5>Compara tu resultado con la Hoja 7 — Producto Final</h5><p class="why">Es la sección de Patrimonio del Balance General ya armada; practica el mismo formato en la Hoja 8 con tus propios números.</p></div></div>
+      </div>
+    </section>
+
+    <div class="box ok">
+      <h4><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Código de Honor</h4>
+      <p>«Por mi honor y ante mis compañeros, me comprometo a que esta actividad académica refleje mi verdadero nivel de conocimientos, evitando realizar cualquier forma de deshonestidad académica (por ejemplo, copiar o plagiar).»</p>
+    </div>
+
+    <div class="glossary">
+      <h4>Glosario de funciones de Excel usadas</h4>
+      <dl class="gloss-grid">
+        <div><dt>=SUMA()</dt><dd>Suma un rango de celdas — usada para totalizar capital social y Patrimonio.</dd></div>
+        <div><dt>=SI()</dt><dd>Evalúa una condición — usada para decidir si el dividendo total alcanza a cubrir a las preferentes antes de repartir a comunes.</dd></div>
+        <div><dt>=SUMAR.SI()</dt><dd>Suma condicionalmente — usada para acumular dividendos preferentes atrasados por año.</dd></div>
+        <div><dt>Paneles inmovilizados</dt><dd>La fila de encabezados queda fija al desplazarte por cada hoja.</dd></div>
+      </dl>
+    </div>
+
+  </section>
+
+  <!-- ============ PANEL 4 ============ -->
+  <section class="panel" id="panel-4" role="tabpanel" aria-labelledby="tab-4">
+    <div class="score-wrap">
+      <div class="score-ring">
+        <svg viewBox="0 0 96 96"><circle class="bgc" cx="48" cy="48" r="40"/><circle class="fgc" id="scoreCircle" cx="48" cy="48" r="40" stroke-dasharray="251.2" stroke-dashoffset="251.2"/></svg>
+        <div class="score-num" id="scoreNum">0/14</div>
+      </div>
+      <div class="score-info">
+        <div style="font-size:14px; color:var(--text-dim);">Tu progreso en el quiz de práctica</div>
+        <div class="level-badge amarillo" id="levelBadge">Sin empezar</div>
+      </div>
+    </div>
+    <div id="quizContainer"></div>
+  </section>
+
+  <!-- ============ PANEL 5 ============ -->
+  <section class="panel" id="panel-5" role="tabpanel" aria-labelledby="tab-5">
+    <section class="block">
+      <div class="section-title"><span class="num-tag">Variante</span><h2>Textiles Izalco, S.A. de C.V.</h2></div>
+      <p style="color:var(--text-dim); max-width:70ch;">Empresa textil salvadoreña (sector maquila, Sonsonate). El 1 de marzo de 2026 realiza una emisión de acciones pagada totalmente en efectivo. Antes de la emisión tenía 8,000 acciones comunes (VN $20 = $160,000) y utilidades retenidas de $95,000.</p>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>Tipo de acción</th><th>Cantidad</th><th>Valor nominal</th><th>Valor de mercado</th><th>Dividendo preferente</th></tr></thead>
+        <tbody>
+          <tr><td>Comunes</td><td class="num">6,000</td><td class="num money">$20</td><td class="num money">$28</td><td>—</td></tr>
+          <tr><td>Preferentes</td><td class="num">800</td><td class="num money">$25</td><td class="num money">$30</td><td class="num">6.5%</td></tr>
+        </tbody>
+      </table></div>
+      <svg viewBox="0 0 700 150" role="img" aria-label="Diagrama resumen de la emisión de Textiles Izalco: capital preferente y su prima, capital común y su prima, sumando el total de efectivo recibido" style="width:100%; height:auto; margin:10px 0;">
+        <defs>
+          <marker id="arrow4" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0 0L10 5L0 10z" fill="#FFB020"/>
+          </marker>
+        </defs>
+        <g font-family="IBM Plex Sans" font-size="12">
+          <rect x="10" y="15" width="150" height="110" rx="8" fill="rgba(255,110,199,.10)" stroke="#FF6EC7" stroke-width="1.3"/>
+          <text x="85" y="38" text-anchor="middle" fill="#FF6EC7" font-weight="700" font-size="11">Preferentes</text>
+          <text x="85" y="58" text-anchor="middle" fill="#EDEEF0" font-size="10.5">800 acc. × $25 VN</text>
+          <text x="85" y="76" text-anchor="middle" fill="#EDEEF0" font-size="10.5">$20,000 capital</text>
+          <text x="85" y="94" text-anchor="middle" fill="#9098A6" font-size="10">+ $4,000 prima</text>
+          <text x="85" y="112" text-anchor="middle" fill="#FFD873" font-size="10.5" font-weight="600">6.5% dividendo</text>
+
+          <rect x="175" y="15" width="150" height="110" rx="8" fill="rgba(90,200,250,.10)" stroke="#5AC8FA" stroke-width="1.3"/>
+          <text x="250" y="38" text-anchor="middle" fill="#5AC8FA" font-weight="700" font-size="11">Comunes</text>
+          <text x="250" y="58" text-anchor="middle" fill="#EDEEF0" font-size="10.5">6,000 acc. × $20 VN</text>
+          <text x="250" y="76" text-anchor="middle" fill="#EDEEF0" font-size="10.5">$120,000 capital</text>
+          <text x="250" y="94" text-anchor="middle" fill="#9098A6" font-size="10">+ $48,000 prima</text>
+          <text x="250" y="112" text-anchor="middle" fill="#9098A6" font-size="10">dividendo variable</text>
+
+          <line x1="330" y1="70" x2="360" y2="70" stroke="#FFB020" stroke-width="2" marker-end="url(#arrow4)"/>
+
+          <rect x="372" y="30" width="200" height="80" rx="8" fill="#1C2027" stroke="#FFB020" stroke-width="1.4"/>
+          <text x="472" y="55" text-anchor="middle" fill="#FFB020" font-weight="700" font-size="12">Total emitido</text>
+          <text x="472" y="78" text-anchor="middle" fill="#EDEEF0" font-size="14" font-weight="700" font-family="IBM Plex Mono">$192,000</text>
+          <text x="472" y="96" text-anchor="middle" fill="#9098A6" font-size="9.5">= efectivo recibido</text>
+        </g>
+      </svg>
+
+      <p style="font-size:13.5px; color:var(--text-dim);">a) Calcula el capital social de la emisión a valor nominal y la prima de cada clase. b) Realiza la partida de diario. c) Presenta el Patrimonio después de la emisión. d) El 15 de junio, Textiles Izalco compra 500 acciones propias de tesorería a $27 cada una — registra el asiento. e) El 1 de agosto, la Junta declara el dividendo preferente anual (sobre las 800 acciones, 6.5% del valor nominal) y lo paga el 20 de agosto reteniendo el ISR del 5% — registra ambas partidas.</p>
+
+      <div class="svg-wrap">
+        <img src="assets/img/u2-04-textiles-izalco.svg" alt="Operaciones de capital en Textiles Izalco: emisión textil, acciones de tesorería y dividendo con retención" style="width:100%; height:auto; display:block;" loading="lazy">
+      </div>
+
+      <button class="reveal-btn" id="revealBtn" aria-expanded="false" aria-controls="solutionBox">
+        <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        Mostrar solución
+      </button>
+
+      <div id="solutionBox" hidden style="margin-top:20px;">
+        <div class="tbl-wrap"><table>
+          <thead><tr><th colspan="2">a) Capital social a valor nominal</th></tr></thead>
+          <tbody>
+            <tr><td>Capital preferente: 800 × $25</td><td class="num money">$20,000</td></tr>
+            <tr><td>Prima preferente: 800 × ($30 − $25)</td><td class="num money">$4,000</td></tr>
+            <tr><td>Capital común: 6,000 × $20</td><td class="num money">$120,000</td></tr>
+            <tr><td>Prima común: 6,000 × ($28 − $20)</td><td class="num money">$48,000</td></tr>
+            <tr style="font-weight:600;"><td>Total emitido (= efectivo recibido)</td><td class="num money">$192,000</td></tr>
+          </tbody>
+        </table></div>
+
+        <table class="journal" style="margin-top:14px;">
+          <thead><tr><th colspan="4">b) Partida de diario — 1 de marzo de 2026</th></tr></thead>
+          <tbody>
+            <tr><td>01-mar-26</td><td>Efectivo</td><td class="num debe">192,000</td><td class="num haber"></td></tr>
+            <tr><td></td><td class="indent">Capital preferente</td><td class="num debe"></td><td class="num haber">20,000</td></tr>
+            <tr><td></td><td class="indent">Capital pagado en exceso: preferente</td><td class="num debe"></td><td class="num haber">4,000</td></tr>
+            <tr><td></td><td class="indent">Capital común</td><td class="num debe"></td><td class="num haber">120,000</td></tr>
+            <tr><td></td><td class="indent">Capital pagado en exceso: común</td><td class="num debe"></td><td class="num haber">48,000</td></tr>
+            <tr class="concept"><td></td><td colspan="3">Emisión de acciones preferentes y comunes con prima</td></tr>
+          </tbody>
+        </table>
+
+        <div class="tbl-wrap" style="margin-top:14px;"><table>
+          <thead><tr><th colspan="2">c) Patrimonio después de la emisión</th></tr></thead>
+          <tbody>
+            <tr><td>Capital preferente: VN $25; 800 acciones</td><td class="num money">$20,000</td></tr>
+            <tr><td>Capital pagado en exceso: preferente</td><td class="num money">$4,000</td></tr>
+            <tr><td>Capital común: VN $20; 14,000 acciones (8,000 previas + 6,000 nuevas)</td><td class="num money">$280,000</td></tr>
+            <tr><td>Capital pagado en exceso: común</td><td class="num money">$48,000</td></tr>
+            <tr><td>Capital social pagado (subtotal)</td><td class="num money">$352,000</td></tr>
+            <tr><td>Utilidades retenidas</td><td class="num money">$95,000</td></tr>
+            <tr style="font-weight:600;"><td>Patrimonio o Capital Contable total</td><td class="num money">$447,000</td></tr>
+          </tbody>
+        </table></div>
+
+        <table class="journal" style="margin-top:14px;">
+          <thead><tr><th colspan="4">d) Compra de acciones de tesorería — 15 de junio de 2026</th></tr></thead>
+          <tbody>
+            <tr><td>15-jun-26</td><td>Acciones de tesorería (500 × $27)</td><td class="num debe">13,500</td><td class="num haber"></td></tr>
+            <tr><td></td><td class="indent">Efectivo</td><td class="num debe"></td><td class="num haber">13,500</td></tr>
+            <tr class="concept"><td></td><td colspan="3">Compra de acciones propias, registradas al costo</td></tr>
+          </tbody>
+        </table>
+
+        <div class="tbl-wrap" style="margin-top:14px;"><table>
+          <thead><tr><th colspan="2">e) Dividendo preferente — cálculo</th></tr></thead>
+          <tbody>
+            <tr><td>800 acciones × $25 VN × 6.5%</td><td class="num money">$1,300</td></tr>
+          </tbody>
+        </table></div>
+        <table class="journal" style="margin-top:8px;">
+          <thead><tr><th colspan="4">e) Declaración — 1 de agosto de 2026</th></tr></thead>
+          <tbody>
+            <tr><td>01-ago-26</td><td>Utilidades retenidas</td><td class="num debe">1,300</td><td class="num haber"></td></tr>
+            <tr><td></td><td class="indent">Dividendos por pagar</td><td class="num debe"></td><td class="num haber">1,300</td></tr>
+            <tr class="concept"><td></td><td colspan="3">Declaración de dividendo preferente en efectivo</td></tr>
+          </tbody>
+        </table>
+        <table class="journal" style="margin-top:8px;">
+          <thead><tr><th colspan="4">e) Pago — 20 de agosto de 2026</th></tr></thead>
+          <tbody>
+            <tr><td>20-ago-26</td><td>Dividendos por pagar</td><td class="num debe">1,300</td><td class="num haber"></td></tr>
+            <tr><td></td><td class="indent">Retenciones por pagar ISR (5%)</td><td class="num debe"></td><td class="num haber">65</td></tr>
+            <tr><td></td><td class="indent">Efectivo</td><td class="num debe"></td><td class="num haber">1,235</td></tr>
+            <tr class="concept"><td></td><td colspan="3">Pago del dividendo preferente, neto de ISR</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="glossary">
+      <h4>Glosario</h4>
+      <dl class="gloss-grid">
+        <div><dt>Sector maquila</dt><dd>Industria de ensamblaje/confección para exportación, relevante en la economía salvadoreña.</dd></div>
+        <div><dt>Emisión pagada en efectivo</dt><dd>Toda la contraprestación de las acciones se recibe en dinero, sin activos ni servicios de por medio.</dd></div>
+        <div><dt>Capital preferente</dt><dd>Registra el valor nominal de las acciones preferentes emitidas.</dd></div>
+        <div><dt>Registro al costo</dt><dd>Las acciones de tesorería siempre se contabilizan al precio pagado por recomprarlas, no a su valor nominal.</dd></div>
+        <div><dt>Dividendo preferente</dt><dd>Distribución fija, calculada como % del valor nominal, con prelación de pago sobre las comunes.</dd></div>
+        <div><dt>Declaración vs. pago</dt><dd>Dos fechas distintas: el pasivo nace al declararse; se liquida y se retiene el ISR al pagarse.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  </div>
+</main>
+</div>
+
+<script>
+// ---- Tabs ----
+const tabs = document.querySelectorAll('.tab');
+const panels = document.querySelectorAll('.panel');
+function activate(id){
+  tabs.forEach(t=>{
+    const on = t.dataset.panel === id;
+    t.classList.toggle('active', on);
+    t.setAttribute('aria-selected', on ? 'true':'false');
+  });
+  panels.forEach(p=>p.classList.toggle('active', p.id === 'panel-'+id));
+}
+tabs.forEach(t=>{
+  t.addEventListener('click', ()=>activate(t.dataset.panel));
+  t.addEventListener('keydown', (e)=>{
+    if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); activate(t.dataset.panel); }
+  });
+});
+
+// ---- Reveal solution ----
+const revealBtn = document.getElementById('revealBtn');
+const solutionBox = document.getElementById('solutionBox');
+revealBtn.addEventListener('click', ()=>{
+  const hidden = solutionBox.hidden;
+  solutionBox.hidden = !hidden;
+  revealBtn.setAttribute('aria-expanded', hidden ? 'true':'false');
+  revealBtn.querySelector('svg').style.display = hidden ? 'none':'inline';
+  revealBtn.lastChild.textContent = hidden ? ' Ocultar solución' : ' Mostrar solución';
+});
+
+// ---- Quiz ----
+const QUESTIONS = [
+  {d:'facil', q:'¿Qué representa el valor nominal de una acción?', opts:['El precio al que se compra o vende en el mercado','El valor asignado a la acción cuando se emite','El monto que recibirán los accionistas al liquidarse la empresa','La utilidad neta dividida entre las acciones'], correct:1, exp:'El valor nominal es el valor de la acción al momento de su emisión — distinto del valor de mercado, que cambia con la oferta y demanda.'},
+  {d:'facil', q:'¿Qué tipo de saldo tiene la cuenta "Acciones de tesorería"?', opts:['Acreedor, como el resto de cuentas de Patrimonio','Deudor, porque es una contra-cuenta de Patrimonio','No tiene saldo, es una cuenta de orden','Depende de si se compraron arriba o bajo el valor nominal'], correct:1, exp:'Las acciones de tesorería tienen saldo deudor porque son una contra-cuenta de Patrimonio — reducen el capital contable total.'},
+  {d:'facil', q:'Según el marco legal, ¿cuál es el capital social mínimo para constituir una Sociedad Anónima en El Salvador?', opts:['$500','$1,000','$2,000','$5,000'], correct:2, exp:'El capital social mínimo es de USD $2,000, con al menos el 5% pagado al momento de la inscripción.'},
+  {d:'media', q:'XYZ, S.A. de C.V. emite 1,000 acciones preferentes con valor nominal de $50 y valor de mercado de $60. ¿Cuánto es la prima total?', opts:['$50,000','$60,000','$10,000','$110,000'], correct:2, exp:'Prima = (Valor de mercado − Valor nominal) × cantidad = ($60 − $50) × 1,000 = $10,000.'},
+  {d:'media', q:'Una empresa vende 400 acciones de tesorería (costo $5) a $4.40 cada una. Si ya no queda saldo en "Capital pagado — transacciones con tesorería", ¿contra qué cuenta se carga la diferencia?', opts:['Gasto del período','Utilidades retenidas','Capital social','Efectivo'], correct:1, exp:'Cuando se agota el capital pagado por transacciones de tesorería, el faltante se carga contra Utilidades Retenidas — nunca contra una cuenta de gasto.'},
+  {d:'media', q:'¿Cuál es la retención de ISR sobre dividendos pagados, según el marco legal de esta unidad?', opts:['3%','5%','7%','10%'], correct:1, exp:'La Ley del ISR establece una retención del 5% sobre los dividendos pagados.'},
+  {d:'media', q:'Una empresa declara un dividendo en acciones (stock dividend). ¿Qué efecto tiene sobre el Patrimonio total?', opts:['Lo aumenta','Lo disminuye','No cambia el Patrimonio total, solo mueve saldos entre sus cuentas','Depende del precio de mercado de la acción'], correct:2, exp:'El dividendo en acciones transfiere utilidades retenidas a capital pagado, pero no cambia activos, pasivos ni el Patrimonio total.'},
+  {d:'dificil', q:'ABC, S.A. de C.V. tiene 1,000 acciones preferentes (VN $50, dividendo 6%) con 1 año de dividendos atrasados, y un Patrimonio total de $29,050,000 (de los cuales $50,000 son capital preferente a VN). ¿Cuál es el valor en libros por acción preferente?', opts:['$50.00','$53.00','$56.00','$29,050.00'], correct:1, exp:'Valor en libros preferente = (capital preferente + dividendos atrasados) ÷ acciones = ($50,000 + $50,000×6%) ÷ 1,000 = $53,000 ÷ 1,000 = $53.00.'},
+  {d:'dificil', q:'Una empresa tiene 2,000 acciones preferentes (VN $50, dividendo 6% = $6,000 anuales) y declara un dividendo total de $44,000 en un año sin atrasos. ¿Cuánto reciben en total las 100,000 acciones comunes?', opts:['$44,000','$38,000','$32,000','$6,000'], correct:1, exp:'Primero se cubre el dividendo preferente ($6,000); el remanente para comunes es $44,000 − $6,000 = $38,000 (equivalente a $0.38 por acción común).'},
+  {d:'dificil', q:'Una sociedad decide un split de acciones 5 por 1. ¿Qué asiento contable se registra?', opts:['Se debita Capital común y se acredita Utilidades retenidas','Se debita Utilidades retenidas y se acredita Capital común','No se registra ningún asiento; solo cambia el valor nominal y la cantidad de acciones en las notas','Se registra como un dividendo en acciones a valor de mercado'], correct:2, exp:'El split de acciones no genera ningún asiento contable ni cambia saldos del Balance General — solo se desglosan los nuevos detalles (cantidad y valor nominal) en las notas a los estados financieros.'},
+  {d:'facil', q:'Según el Código de Comercio, ¿qué porcentaje mínimo del capital social debe pagarse al momento de inscribir una Sociedad Anónima?', opts:['100%','50%','25%','5%'], correct:3, exp:'Se debe pagar al menos el 5% del capital social al momento de la inscripción; el resto dentro del año siguiente.'},
+  {d:'media', q:'DEF, S.A. de C.V. declara el 1 de mayo un dividendo preferente de $6,000 y lo paga el 30 de mayo. ¿En qué fecha se reconoce el pasivo "Dividendos por pagar"?', opts:['El 1 de mayo, fecha de declaración','El 30 de mayo, fecha de pago','En ninguna, los dividendos no son un pasivo','El 31 de diciembre, cierre del ejercicio'], correct:0, exp:'El pasivo nace en la fecha de declaración, cuando la Junta aprueba el dividendo — no cuando se paga el efectivo.'},
+  {d:'media', q:'Sobre el pago de un dividendo preferente de $6,000 se retiene 5% de ISR. ¿Cuál es el efectivo neto que recibe el accionista?', opts:['$6,000','$5,700','$5,400','$300'], correct:1, exp:'$6,000 − (5% × $6,000) = $6,000 − $300 = $5,700 netos; los $300 se registran como Retenciones por pagar ISR.'},
+  {d:'dificil', q:'¿Cuál de las siguientes afirmaciones describe mejor el "valor en libros" de una acción?', opts:['Es el mismo valor en toda la vida de la acción, fijado en la escritura','Es el precio al que se negocia hoy en el mercado','Es el capital contable atribuido a esa clase de acción, dividido entre las acciones en circulación de esa clase','Es el monto garantizado a las preferentes si la empresa se liquida'], correct:2, exp:'El valor en libros es una fotografía contable: capital contable atribuido ÷ acciones en circulación de esa clase — cambia cada vez que cambian las utilidades retenidas.'}
+];
+
+let answered = 0, correctCount = 0;
+const quizContainer = document.getElementById('quizContainer');
+QUESTIONS.forEach((item, idx)=>{
+  const card = document.createElement('div');
+  card.className = 'q-card';
+  card.innerHTML = `
+    <div class="q-meta"><span class="q-diff ${item.d}">${item.d}</span><span style="font-size:11px; color:var(--text-dim);">Pregunta ${idx+1} de ${QUESTIONS.length}</span></div>
+    <div class="q-text">${item.q}</div>
+    <div class="q-opts"></div>
+    <div class="q-feedback"></div>
+  `;
+  const optsWrap = card.querySelector('.q-opts');
+  item.opts.forEach((opt, oi)=>{
+    const btn = document.createElement('button');
+    btn.className = 'q-opt';
+    btn.type = 'button';
+    btn.textContent = opt;
+    btn.addEventListener('click', ()=>{
+      const buttons = optsWrap.querySelectorAll('.q-opt');
+      if(buttons[0].disabled) return;
+      buttons.forEach((b,bi)=>{
+        b.disabled = true;
+        if(bi === item.correct) b.classList.add('correct');
+        else if(bi === oi) b.classList.add('incorrect');
+      });
+      const fb = card.querySelector('.q-feedback');
+      const isCorrect = oi === item.correct;
+      fb.classList.add('show', isCorrect ? 'ok' : 'bad');
+      const icon = isCorrect
+        ? '<svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:var(--success);fill:none;stroke-width:2.4;vertical-align:-2px;margin-right:5px;"><path d="M5 13l4 4L19 7"/></svg>'
+        : '<svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:var(--danger);fill:none;stroke-width:2.4;vertical-align:-2px;margin-right:5px;"><path d="M18 6L6 18M6 6l12 12"/></svg>';
+      fb.innerHTML = icon + '<strong>' + (isCorrect ? 'Correcto' : 'Incorrecto') + '</strong> — ' + item.exp;
+      answered++;
+      if(isCorrect) correctCount++;
+      updateScore();
+    });
+    optsWrap.appendChild(btn);
+  });
+  quizContainer.appendChild(card);
+});
+
+function updateScore(){
+  document.getElementById('scoreNum').textContent = correctCount + '/' + QUESTIONS.length;
+  const pct = correctCount / QUESTIONS.length;
+  const circumference = 251.2;
+  document.getElementById('scoreCircle').style.strokeDashoffset = circumference - (pct * circumference * (answered/QUESTIONS.length));
+  const badge = document.getElementById('levelBadge');
+  const ratio = answered ? correctCount/answered : 0;
+  if(answered < QUESTIONS.length){
+    badge.textContent = 'En progreso — ' + answered + '/' + QUESTIONS.length + ' respondidas';
+    badge.className = 'level-badge amarillo';
+  } else if(ratio >= 0.8){
+    badge.textContent = 'Nivel alto — listo para el Parcial';
+    badge.className = 'level-badge verde';
+  } else if(ratio >= 0.5){
+    badge.textContent = 'Nivel medio — repasa los errores comunes';
+    badge.className = 'level-badge amarillo';
+  } else {
+    badge.textContent = 'Nivel bajo — repasa el Panel 2 antes de seguir';
+    badge.className = 'level-badge rojo';
+  }
+}
+</script>
+</body>
+</html>

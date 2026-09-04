@@ -23,7 +23,20 @@ Estas ya están detalladas en [[Reglas de Precisión Legal y Pedagógica]]; se r
 
 ## 🔴 Lo que falla con frecuencia (patrones a corregir)
 
-*Aún no hay suficientes entregas para identificar un patrón. Esta sección se llena a medida que [[Bitácora General]] acumule entradas con el mismo tipo de "⚠️ Qué falló".*
+- **Comparar contra la unidad anterior antes de dar por completo un HTML.** En Unidad 2 (2026-09-04) el
+  HTML se entregó con menos de la mitad de secciones/SVG/cards que Unidad 1, sin que se detectara antes
+  de entregar — el estudiante tuvo que señalarlo. Antes de cerrar cualquier entregable HTML nuevo,
+  contar sus secciones (`<h2>`), SVG y cards contra los de la unidad más reciente ya entregada; si la
+  diferencia es grande y no se explica por menos material fuente en el PDF de esa unidad, enriquecer
+  antes de entregar.
+- **No olvidar el protocolo de delegación de ilustraciones (Antigravity/Codex).** Establecido desde
+  Unidad 1 en `00 Curso/Sistema de Diseño HTML.md`. En Unidad 2 (2026-09-04) Claude construyó todos los
+  SVG nuevos directo en el HTML sin clasificarlos primero — el estudiante tuvo que recordarlo
+  explícitamente ("Los pedidos de SVGs deben de ser a Antigravity, recuerda eso"). Regla: todo SVG que
+  sea un diagrama de datos (flujo, comparación, línea de tiempo con cifras) se construye directo; todo
+  SVG que sea una escena editorial o metáfora conceptual (anclar en un lugar/personas concretas, o
+  ilustrar una idea abstracta de forma memorable) se deja como tarjeta `.img-request` + brief en
+  `Pedidos de Imagen - Unidad [N].md`, nunca se construye directo aunque sea rápido hacerlo.
 
 ## 📌 Preferencias del estudiante sobre el material
 

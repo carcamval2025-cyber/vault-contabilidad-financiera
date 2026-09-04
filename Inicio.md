@@ -36,7 +36,7 @@ Vault de conocimiento persistente para el curso con la Profesora **Antonia Cabal
 | Unidad | Estado | Última actualización |
 |---|---|---|
 | 1. Pasivo Corriente: Planillas | 🟢 Entregables generados | 2026-08-26 — HTML y Excel generados y verificados (ver [[Unidad 1 - Pasivo Corriente (Planillas)]]) |
-| 2. Transacciones de Capital | ⚪ Pendiente | — |
+| 2. Transacciones de Capital | 🟢 Entregables generados | 2026-09-04 — HTML y Excel generados y verificados; Caso 1 identificado como fuera de tema (es de Planillas) (ver [[Unidad 2 - Transacciones de Capital]]) |
 | 3. Impuesto sobre la Renta | ⚪ Pendiente | — |
 | 4. Conciliación Bancaria | ⚪ Pendiente | — |
 | 5. Estado de Flujo de Efectivo | ⚪ Pendiente | — |

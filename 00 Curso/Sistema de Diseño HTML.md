@@ -85,7 +85,7 @@ Fuente: biblioteca personal del estudiante en `~/Documents/claude-skills` (skill
 - ❌ "Ghost-card": `border:1px solid` + `box-shadow` difuso de ≥16px en el mismo elemento, como decoración.
 - ❌ `border-radius` ≥ 24-32px en cards/inputs (tope real: 10-16px; pill/circular solo en badges, chips o step-circles).
 - ❌ Eyebrow tag idéntico repetido arriba de cada sección (aceptable UNA vez en el hero, no como plantilla por sección).
-- ❌ Emojis como ícono funcional de un control interactivo (los emojis de las cajas ⚖️/🎯/⚠️/✅ son etiquetas de contenido exigidas por las instrucciones del curso, no íconos de botón — eso sí está permitido).
+- ❌ Emoji en cualquier parte del HTML, incluidas las cajas ⚖️/🎯/⚠️/✅. **Regla fija desde Unidad 2 (confirmada explícitamente por el estudiante, 2026-09-04): cero emoji en todo el documento, sin excepción.** Las cajas especiales llevan en su lugar un ícono SVG outline de línea (mismo tratamiento que los íconos de sidebar) como "leading icon" del `<h4>`; el color y fondo de la caja (ámbar/rojo/verde/azul según el tipo) siguen distinguiéndola visualmente. Esto reemplaza la excepción documentada como "corrección puntual de Unidad 1": ya no es puntual, es la regla para Unidad 2 en adelante.
 
 **Accesibilidad y motion (`ui-ux-pro-max` + `impeccable`) — no negociable:**
 - Contraste texto normal ≥ 4.5:1, texto grande ≥ 3:1 — verificar con la paleta de arriba, no asumir.

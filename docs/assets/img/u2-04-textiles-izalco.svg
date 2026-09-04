@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" width="100%" height="auto" role="img" aria-label="Operaciones de capital en Textiles Izalco: emisión de acciones, compra de acciones de tesorería y pago de dividendo con retención de ISR.">
+  <!-- Fondo estructurado estilo Fintech Oscuro -->
+  <rect width="760" height="300" rx="10" fill="#14171C" stroke="#262B33" stroke-width="1.5"/>
+
+  <!-- Encabezado de la ilustración (Badge + Título) -->
+  <g transform="translate(28, 22)">
+    <rect width="180" height="20" rx="3" fill="#FFB020" fill-opacity="0.12"/>
+    <text x="8" y="14" font-family="IBM Plex Mono" font-size="8.5" font-weight="700" fill="#FFD873" letter-spacing="0.5">EJERCICIO VARIANTE</text>
+    <text x="0" y="38" font-family="Bricolage Grotesque" font-size="15" font-weight="700" fill="#EDEEF0">Emisión, Tesorería y Dividendo — Textiles Izalco</text>
+  </g>
+
+  <!-- Alerta / Regla Pedagógica Superior Derecha -->
+  <g transform="translate(450, 20)">
+    <rect width="280" height="42" rx="6" fill="#1C2027" stroke="#3ECF8E" stroke-width="1"/>
+    <circle cx="18" cy="21" r="7" fill="#3ECF8E" fill-opacity="0.2"/>
+    <text x="18" y="25" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" font-weight="700" fill="#3ECF8E">$</text>
+    <text x="32" y="18" font-family="IBM Plex Sans" font-size="8" font-weight="700" fill="#3ECF8E">PLANTA TEXTIL SONSONATE:</text>
+    <text x="32" y="30" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#EDEEF0">$192,000.00 <tspan fill="#3ECF8E" font-size="7">(Capital emitido)</tspan></text>
+  </g>
+
+  <!-- Línea de base guía -->
+  <line x1="28" y1="245" x2="732" y2="245" stroke="#262B33" stroke-width="1.2"/>
+
+  <!-- ================= ETAPA 1: EMISIÓN DE ACCIONES (CAPITAL SOCIAL) ================= -->
+  <g transform="translate(38, 80)">
+    <rect width="205" height="150" rx="6" fill="#1C2027" stroke="#3ECF8E" stroke-width="1.2"/>
+    <rect x="10" y="10" width="185" height="22" rx="3" fill="#3ECF8E" fill-opacity="0.12"/>
+    <text x="16" y="24" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#3ECF8E">01 · EMISIÓN (EFECTIVO)</text>
+
+    <!-- Cifras -->
+    <text x="16" y="48" font-family="Bricolage Grotesque" font-size="15" font-weight="800" fill="#3ECF8E">+$192,000</text>
+    <text x="16" y="60" font-family="IBM Plex Mono" font-size="7" fill="#9098A6">6,000 Comunes + 800 Preferentes</text>
+
+    <!-- Desglose -->
+    <g transform="translate(10, 70)">
+      <rect width="185" height="46" rx="3" fill="#14171C" stroke="#262B33" stroke-width="0.8"/>
+      <text x="8" y="15" font-family="IBM Plex Sans" font-size="7" fill="#5AC8FA">6,000 Comunes ($20 VN + $8 P):</text>
+      <text x="177" y="15" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" font-weight="700" fill="#EDEEF0">$168,000</text>
+      <line x1="8" y1="22" x2="177" y2="22" stroke="#262B33" stroke-width="0.6"/>
+      <text x="8" y="34" font-family="IBM Plex Sans" font-size="7" fill="#FF6EC7">800 Pref. ($25 VN + $5 P):</text>
+      <text x="177" y="34" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" font-weight="700" fill="#EDEEF0">$24,000</text>
+    </g>
+
+    <!-- Subtítulo inferior -->
+    <rect x="10" y="122" width="185" height="18" rx="2" fill="#14171C"/>
+    <text x="102" y="134" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" fill="#3ECF8E">Entrada neta a Banco</text>
+  </g>
+
+  <!-- Flecha conectora 1 -> 2 -->
+  <g transform="translate(250, 150)">
+    <line x1="0" y1="0" x2="20" y2="0" stroke="#FFB020" stroke-width="2" stroke-dasharray="3 3"/>
+    <polygon points="20,-4 26,0 20,4" fill="#FFB020"/>
+  </g>
+
+  <!-- ================= ETAPA 2: ACCIONES DE TESORERÍA (15 JUNIO) ================= -->
+  <g transform="translate(278, 80)">
+    <rect width="205" height="150" rx="6" fill="#1C2027" stroke="#FF5C5C" stroke-width="1.2"/>
+    <rect x="10" y="10" width="185" height="22" rx="3" fill="#FF5C5C" fill-opacity="0.15"/>
+    <text x="16" y="24" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#FF5C5C">02 · ACCIONES DE TESORERÍA</text>
+
+    <!-- Cifras -->
+    <text x="16" y="48" font-family="Bricolage Grotesque" font-size="15" font-weight="800" fill="#FF5C5C">-$13,500</text>
+    <text x="16" y="60" font-family="IBM Plex Mono" font-size="7" fill="#9098A6">15 Junio · 500 acc. propias a $27</text>
+
+    <!-- Desglose contable -->
+    <g transform="translate(10, 70)">
+      <rect width="185" height="46" rx="3" fill="#14171C" stroke="#262B33" stroke-width="0.8"/>
+      <text x="8" y="15" font-family="IBM Plex Sans" font-size="7" fill="#FF5C5C">Naturaleza de la Cuenta:</text>
+      <text x="177" y="15" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" font-weight="700" fill="#FF5C5C">Contra-cuenta</text>
+      <line x1="8" y1="22" x2="177" y2="22" stroke="#262B33" stroke-width="0.6"/>
+      <text x="8" y="34" font-family="IBM Plex Sans" font-size="7" fill="#9098A6">Efecto en Patrimonio:</text>
+      <text x="177" y="34" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" font-weight="700" fill="#FFB020">Resta (-$13.5k)</text>
+    </g>
+
+    <!-- Subtítulo inferior -->
+    <rect x="10" y="122" width="185" height="18" rx="2" fill="#14171C"/>
+    <text x="102" y="134" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" fill="#FF5C5C">Saldo Deudor en Patrimonio</text>
+  </g>
+
+  <!-- Flecha conectora 2 -> 3 -->
+  <g transform="translate(490, 150)">
+    <line x1="0" y1="0" x2="20" y2="0" stroke="#FFB020" stroke-width="2" stroke-dasharray="3 3"/>
+    <polygon points="20,-4 26,0 20,4" fill="#FFB020"/>
+  </g>
+
+  <!-- ================= ETAPA 3: DIVIDENDO PREFERENTE (AGOSTO) ================= -->
+  <g transform="translate(518, 80)">
+    <rect width="205" height="150" rx="6" fill="#1C2027" stroke="#FF6EC7" stroke-width="1.2"/>
+    <rect x="10" y="10" width="185" height="22" rx="3" fill="#FF6EC7" fill-opacity="0.15"/>
+    <text x="16" y="24" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#FF6EC7">03 · DIVIDENDO Y RETENCIÓN</text>
+
+    <!-- Cifras -->
+    <text x="16" y="48" font-family="Bricolage Grotesque" font-size="15" font-weight="800" fill="#FF6EC7">$1,300 Total</text>
+    <text x="16" y="60" font-family="IBM Plex Mono" font-size="7" fill="#9098A6">800 acc. × $25 VN × 6.5%</text>
+
+    <!-- Desglose de retención y neto -->
+    <g transform="translate(10, 70)">
+      <rect width="185" height="46" rx="3" fill="#14171C" stroke="#262B33" stroke-width="0.8"/>
+      <text x="8" y="15" font-family="IBM Plex Sans" font-size="7" fill="#FF5C5C">Retención ISR 5%:</text>
+      <text x="177" y="15" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" font-weight="700" fill="#FF5C5C">-$65.00</text>
+      <line x1="8" y1="22" x2="177" y2="22" stroke="#262B33" stroke-width="0.6"/>
+      <text x="8" y="34" font-family="IBM Plex Sans" font-size="7" fill="#3ECF8E">Dividendo Líquido Pagado:</text>
+      <text x="177" y="34" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" font-weight="700" fill="#3ECF8E">$1,235.00</text>
+    </g>
+
+    <!-- Subtítulo inferior -->
+    <rect x="10" y="122" width="185" height="18" rx="2" fill="#14171C"/>
+    <text x="102" y="134" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" fill="#FF6EC7">1 Ago Declara · 20 Ago Paga</text>
+  </g>
+
+  <!-- Etiquetas de pie de página -->
+  <text x="140" y="265" text-anchor="middle" font-family="IBM Plex Mono" font-size="7.5" fill="#3ECF8E">Paso 1: Emisión en Efectivo</text>
+  <text x="140" y="278" text-anchor="middle" font-family="IBM Plex Mono" font-size="6.5" fill="#9098A6">Capital Social $140k + Prima $52k</text>
+
+  <text x="380" y="265" text-anchor="middle" font-family="IBM Plex Mono" font-size="7.5" fill="#FF5C5C">Paso 2: Acciones Propias</text>
+  <text x="380" y="278" text-anchor="middle" font-family="IBM Plex Mono" font-size="6.5" fill="#9098A6">Se registran al costo de adquisición</text>
+
+  <text x="620" y="265" text-anchor="middle" font-family="IBM Plex Mono" font-size="7.5" fill="#FF6EC7">Paso 3: Retención Legal 5%</text>
+  <text x="620" y="278" text-anchor="middle" font-family="IBM Plex Mono" font-size="6.5" fill="#9098A6">Ley de Impuesto sobre la Renta</text>
+</svg>

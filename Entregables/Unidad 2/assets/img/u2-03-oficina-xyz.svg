@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" width="100%" height="auto" role="img" aria-label="Emisión de acciones de XYZ, S.A. de C.V.: cálculo de valor nominal, prima en acciones y partida contable balanceada.">
+  <!-- Fondo estructurado estilo Fintech Oscuro -->
+  <rect width="760" height="300" rx="10" fill="#14171C" stroke="#262B33" stroke-width="1.5"/>
+
+  <!-- Encabezado de la ilustración (Badge + Título) -->
+  <g transform="translate(28, 22)">
+    <rect width="180" height="20" rx="3" fill="#FFB020" fill-opacity="0.12"/>
+    <text x="8" y="14" font-family="IBM Plex Mono" font-size="8.5" font-weight="700" fill="#FFD873" letter-spacing="0.5">EJERCICIO 1 · CLASE</text>
+    <text x="0" y="38" font-family="Bricolage Grotesque" font-size="15" font-weight="700" fill="#EDEEF0">Emisión de Acciones — XYZ, S.A. de C.V.</text>
+  </g>
+
+  <!-- Alerta / Resultado Total Superior Derecha -->
+  <g transform="translate(450, 20)">
+    <rect width="280" height="42" rx="6" fill="#1C2027" stroke="#3ECF8E" stroke-width="1"/>
+    <circle cx="18" cy="21" r="7" fill="#3ECF8E" fill-opacity="0.2"/>
+    <text x="18" y="25" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" font-weight="700" fill="#3ECF8E">$</text>
+    <text x="32" y="18" font-family="IBM Plex Sans" font-size="8" font-weight="700" fill="#3ECF8E">EFECTIVO RECIBIDO EN BANCO:</text>
+    <text x="32" y="30" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#EDEEF0">$1,260,000.00 <tspan fill="#3ECF8E" font-size="7">(100% Pagado)</tspan></text>
+  </g>
+
+  <!-- Línea de base guía -->
+  <line x1="28" y1="245" x2="732" y2="245" stroke="#262B33" stroke-width="1.2"/>
+
+  <!-- ================= TARJETA 1: ACCIONES COMUNES ================= -->
+  <g transform="translate(38, 80)">
+    <rect width="205" height="150" rx="6" fill="#1C2027" stroke="#5AC8FA" stroke-width="1.2"/>
+    <rect x="10" y="10" width="185" height="22" rx="3" fill="#5AC8FA" fill-opacity="0.12"/>
+    <text x="16" y="24" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#5AC8FA">10,000 ACCIONES COMUNES</text>
+
+    <!-- Cifras clave -->
+    <text x="16" y="48" font-family="Bricolage Grotesque" font-size="15" font-weight="800" fill="#5AC8FA">$1,200,000</text>
+    <text x="16" y="60" font-family="IBM Plex Mono" font-size="7" fill="#9098A6">VN: $100 · VM: $120 ($20 prima/acc)</text>
+
+    <!-- Ficha de desglose -->
+    <g transform="translate(10, 70)">
+      <rect width="185" height="46" rx="3" fill="#14171C" stroke="#262B33" stroke-width="0.8"/>
+      <text x="8" y="15" font-family="IBM Plex Sans" font-size="7" fill="#9098A6">Capital Social (VN):</text>
+      <text x="177" y="15" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" font-weight="700" fill="#EDEEF0">$1,000,000</text>
+      <line x1="8" y1="22" x2="177" y2="22" stroke="#262B33" stroke-width="0.6"/>
+      <text x="8" y="34" font-family="IBM Plex Sans" font-size="7" fill="#9098A6">Prima en Emisión:</text>
+      <text x="177" y="34" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" font-weight="700" fill="#FFB020">+$200,000</text>
+    </g>
+
+    <!-- Subtítulo inferior -->
+    <rect x="10" y="122" width="185" height="18" rx="2" fill="#14171C"/>
+    <text x="102" y="134" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" fill="#5AC8FA">Total Común: $1.20M</text>
+  </g>
+
+  <!-- Signo Más conector -->
+  <g transform="translate(254, 150)">
+    <circle cx="0" cy="0" r="10" fill="#1C2027" stroke="#FFB020" stroke-width="1"/>
+    <text x="0" y="4" text-anchor="middle" font-family="IBM Plex Mono" font-size="12" font-weight="700" fill="#FFB020">+</text>
+  </g>
+
+  <!-- ================= TARJETA 2: ACCIONES PREFERENTES ================= -->
+  <g transform="translate(274, 80)">
+    <rect width="205" height="150" rx="6" fill="#1C2027" stroke="#FF6EC7" stroke-width="1.2"/>
+    <rect x="10" y="10" width="185" height="22" rx="3" fill="#FF6EC7" fill-opacity="0.15"/>
+    <text x="16" y="24" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#FF6EC7">1,000 ACC. PREFERENTES</text>
+
+    <!-- Cifras clave -->
+    <text x="16" y="48" font-family="Bricolage Grotesque" font-size="15" font-weight="800" fill="#FF6EC7">$60,000</text>
+    <text x="16" y="60" font-family="IBM Plex Mono" font-size="7" fill="#9098A6">VN: $50 · VM: $60 (7% dividendo)</text>
+
+    <!-- Ficha de desglose -->
+    <g transform="translate(10, 70)">
+      <rect width="185" height="46" rx="3" fill="#14171C" stroke="#262B33" stroke-width="0.8"/>
+      <text x="8" y="15" font-family="IBM Plex Sans" font-size="7" fill="#9098A6">Capital Social (VN):</text>
+      <text x="177" y="15" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" font-weight="700" fill="#EDEEF0">$50,000</text>
+      <line x1="8" y1="22" x2="177" y2="22" stroke="#262B33" stroke-width="0.6"/>
+      <text x="8" y="34" font-family="IBM Plex Sans" font-size="7" fill="#9098A6">Prima en Emisión:</text>
+      <text x="177" y="34" text-anchor="end" font-family="IBM Plex Mono" font-size="7.5" font-weight="700" fill="#FFB020">+$10,000</text>
+    </g>
+
+    <!-- Subtítulo inferior -->
+    <rect x="10" y="122" width="185" height="18" rx="2" fill="#14171C"/>
+    <text x="102" y="134" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" fill="#FF6EC7">Total Preferente: $60K</text>
+  </g>
+
+  <!-- Signo Igual conector -->
+  <g transform="translate(490, 150)">
+    <circle cx="0" cy="0" r="10" fill="#1C2027" stroke="#3ECF8E" stroke-width="1"/>
+    <text x="0" y="4" text-anchor="middle" font-family="IBM Plex Mono" font-size="12" font-weight="700" fill="#3ECF8E">=</text>
+  </g>
+
+  <!-- ================= TARJETA 3: PARTIDA DE DIARIO CONSOLIDADA ================= -->
+  <g transform="translate(510, 80)">
+    <rect width="215" height="150" rx="6" fill="#1C2027" stroke="#3ECF8E" stroke-width="1.4"/>
+    <rect x="10" y="10" width="195" height="22" rx="3" fill="#3ECF8E" fill-opacity="0.12"/>
+    <text x="16" y="24" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#3ECF8E">PARTIDA DE DIARIO (1 ENE)</text>
+
+    <!-- Contenido del asiento en libro diario -->
+    <g transform="translate(10, 40)">
+      <rect width="195" height="76" rx="3" fill="#14171C" stroke="#262B33" stroke-width="0.8"/>
+      
+      <text x="8" y="14" font-family="IBM Plex Sans" font-size="6.5" font-weight="700" fill="#3ECF8E">DEBE: Efectivo en Banco</text>
+      <text x="187" y="14" text-anchor="end" font-family="IBM Plex Mono" font-size="7" font-weight="700" fill="#3ECF8E">$1,260,000</text>
+      
+      <line x1="8" y1="20" x2="187" y2="20" stroke="#262B33" stroke-width="0.8"/>
+      
+      <text x="16" y="32" font-family="IBM Plex Sans" font-size="6.5" fill="#9098A6">HABER: Cap. Social Común</text>
+      <text x="187" y="32" text-anchor="end" font-family="IBM Plex Mono" font-size="7" fill="#EDEEF0">$1,000,000</text>
+      
+      <text x="16" y="44" font-family="IBM Plex Sans" font-size="6.5" fill="#9098A6">HABER: Prima Acc. Comunes</text>
+      <text x="187" y="44" text-anchor="end" font-family="IBM Plex Mono" font-size="7" fill="#FFB020">$200,000</text>
+
+      <text x="16" y="56" font-family="IBM Plex Sans" font-size="6.5" fill="#9098A6">HABER: Cap. Social Pref.</text>
+      <text x="187" y="56" text-anchor="end" font-family="IBM Plex Mono" font-size="7" fill="#EDEEF0">$50,000</text>
+
+      <text x="16" y="68" font-family="IBM Plex Sans" font-size="6.5" fill="#9098A6">HABER: Prima Acc. Pref.</text>
+      <text x="187" y="68" text-anchor="end" font-family="IBM Plex Mono" font-size="7" fill="#FFB020">$10,000</text>
+    </g>
+
+    <!-- Subtítulo inferior -->
+    <rect x="10" y="122" width="195" height="18" rx="2" fill="#14171C"/>
+    <text x="107" y="134" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" font-weight="700" fill="#3ECF8E">CUADRE: $1,260,000 = $1,260,000</text>
+  </g>
+
+  <!-- Etiquetas de pie de página -->
+  <text x="140" y="265" text-anchor="middle" font-family="IBM Plex Mono" font-size="7.5" fill="#5AC8FA">Capital Social: $1,000,000</text>
+  <text x="140" y="278" text-anchor="middle" font-family="IBM Plex Mono" font-size="6.5" fill="#9098A6">10,000 acc. comunes a VN</text>
+
+  <text x="376" y="265" text-anchor="middle" font-family="IBM Plex Mono" font-size="7.5" fill="#FF6EC7">Capital Social: $50,000</text>
+  <text x="376" y="278" text-anchor="middle" font-family="IBM Plex Mono" font-size="6.5" fill="#9098A6">1,000 acc. preferentes a VN</text>
+
+  <text x="617" y="265" text-anchor="middle" font-family="IBM Plex Mono" font-size="7.5" fill="#3ECF8E">Activo ↑ = Patrimonio ↑</text>
+  <text x="617" y="278" text-anchor="middle" font-family="IBM Plex Mono" font-size="6.5" fill="#9098A6">Ecuación contable balanceada</text>
+</svg>

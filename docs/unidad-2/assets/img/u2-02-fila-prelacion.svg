@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" width="100%" height="auto" role="img" aria-label="Fila de prelación de pago donde los accionistas preferentes cobran primero y los comunes esperan atrás para recibir el remanente.">
+  <!-- Fondo estructurado estilo Fintech Oscuro -->
+  <rect width="760" height="300" rx="10" fill="#14171C" stroke="#262B33" stroke-width="1.5"/>
+
+  <!-- Encabezado de la ilustración (Badge + Título) -->
+  <g transform="translate(28, 22)">
+    <rect width="180" height="20" rx="3" fill="#FFB020" fill-opacity="0.12"/>
+    <text x="8" y="14" font-family="IBM Plex Mono" font-size="8.5" font-weight="700" fill="#FFD873" letter-spacing="0.5">METÁFORA DE PRELACIÓN</text>
+    <text x="0" y="38" font-family="Bricolage Grotesque" font-size="15" font-weight="700" fill="#EDEEF0">La Fila de Prelación de Pago</text>
+  </g>
+
+  <!-- Alerta / Regla Pedagógica Superior Derecha -->
+  <g transform="translate(435, 20)">
+    <rect width="295" height="42" rx="6" fill="#1C2027" stroke="#FF6EC7" stroke-width="1"/>
+    <circle cx="18" cy="21" r="7" fill="#FF6EC7" fill-opacity="0.2"/>
+    <path d="M18 17 L18 21 M18 24 L18 25" stroke="#FF6EC7" stroke-width="1.5" stroke-linecap="round"/>
+    <text x="32" y="18" font-family="IBM Plex Sans" font-size="8" font-weight="700" fill="#FF6EC7">ORDEN DE COBRO GARANTIZADO:</text>
+    <text x="32" y="30" font-family="IBM Plex Sans" font-size="7.5" fill="#EDEEF0">Las preferentes cobran primero; las comunes <tspan fill="#FFB020" font-weight="700">solo el remanente</tspan>.</text>
+  </g>
+
+  <!-- Línea de base de la fila -->
+  <line x1="28" y1="245" x2="732" y2="245" stroke="#262B33" stroke-width="1.2"/>
+
+  <!-- ================= LADO IZQUIERDO: VENTANILLA DE DISTRIBUCIÓN ================= -->
+  <g transform="translate(38, 80)">
+    <rect width="150" height="150" rx="6" fill="#1C2027" stroke="#3ECF8E" stroke-width="1.2"/>
+    <rect x="10" y="10" width="130" height="22" rx="3" fill="#3ECF8E" fill-opacity="0.12"/>
+    <text x="16" y="24" font-family="IBM Plex Mono" font-size="7.5" font-weight="700" fill="#3ECF8E">VENTANILLA DE PAGO</text>
+
+    <!-- Ventana con mostrador -->
+    <rect x="15" y="42" width="120" height="60" rx="4" fill="#14171C" stroke="#262B33" stroke-width="1"/>
+    <!-- Cajero adentro -->
+    <circle cx="75" cy="62" r="7" fill="none" stroke="#9098A6" stroke-width="1.3"/>
+    <path d="M63 82 L67 74 L83 74 L87 82" fill="none" stroke="#9098A6" stroke-width="1.3"/>
+
+    <!-- Bandeja de entrega de efectivo / dividendos -->
+    <rect x="35" y="112" width="80" height="18" rx="3" fill="#3ECF8E" fill-opacity="0.15" stroke="#3ECF8E" stroke-width="1"/>
+    <text x="75" y="124" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" font-weight="700" fill="#3ECF8E">$$$ REPARTO</text>
+  </g>
+
+  <!-- ================= PASO 1: ACCIONISTAS PREFERENTES (PRIMEROS EN LA FILA) ================= -->
+  <g transform="translate(210, 80)">
+    <!-- Tarjeta Preferentes -->
+    <rect width="240" height="150" rx="6" fill="#1C2027" stroke="#FF6EC7" stroke-width="1.4"/>
+    <rect x="10" y="10" width="220" height="22" rx="3" fill="#FF6EC7" fill-opacity="0.15"/>
+    <text x="16" y="24" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#FF6EC7">1° EN LA FILA · PREFERENTES</text>
+
+    <text x="16" y="52" font-family="Bricolage Grotesque" font-size="20" font-weight="800" fill="#FF6EC7">Cobro Fijo</text>
+    <text x="16" y="68" font-family="IBM Plex Mono" font-size="7.5" fill="#FFD873">Dividendo % fijado en estatutos</text>
+    
+    <!-- Stick figure cobrando en ventanilla con mano extendida -->
+    <g transform="translate(25, 80)">
+      <circle cx="20" cy="10" r="6" fill="none" stroke="#FF6EC7" stroke-width="1.6"/>
+      <line x1="20" y1="16" x2="20" y2="34" stroke="#FF6EC7" stroke-width="1.6"/>
+      <!-- Brazo estirado hacia la ventanilla -->
+      <line x1="20" y1="20" x2="-8" y2="28" stroke="#FF6EC7" stroke-width="2" stroke-linecap="round"/>
+      <line x1="20" y1="20" x2="30" y2="30" stroke="#FF6EC7" stroke-width="1.6"/>
+      <line x1="20" y1="34" x2="14" y2="48" stroke="#FF6EC7" stroke-width="1.6"/>
+      <line x1="20" y1="34" x2="26" y2="48" stroke="#FF6EC7" stroke-width="1.6"/>
+    </g>
+
+    <g transform="translate(85, 84)">
+      <rect width="140" height="36" rx="3" fill="#14171C" stroke="#262B33" stroke-width="0.8"/>
+      <text x="8" y="15" font-family="IBM Plex Sans" font-size="6.5" fill="#9098A6">Liquidación:</text>
+      <text x="132" y="15" text-anchor="end" font-family="IBM Plex Mono" font-size="7" font-weight="700" fill="#EDEEF0">Valor Garantizado</text>
+      <line x1="8" y1="20" x2="132" y2="20" stroke="#262B33" stroke-width="0.6"/>
+      <text x="8" y="30" font-family="IBM Plex Sans" font-size="6.5" fill="#9098A6">Voz y Voto:</text>
+      <text x="132" y="30" text-anchor="end" font-family="IBM Plex Mono" font-size="7" font-weight="700" fill="#FF5C5C">Sin voto general</text>
+    </g>
+
+    <!-- Subtítulo inferior -->
+    <rect x="10" y="124" width="220" height="18" rx="2" fill="#14171C"/>
+    <text x="120" y="136" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" fill="#FF6EC7">Cobra el 100% de lo pactado antes que nadie</text>
+  </g>
+
+  <!-- Puntos suspensivos / conector de fila -->
+  <g transform="translate(460, 150)">
+    <circle cx="6" cy="0" r="2" fill="#9098A6"/>
+    <circle cx="15" cy="0" r="2" fill="#9098A6"/>
+    <circle cx="24" cy="0" r="2" fill="#9098A6"/>
+  </g>
+
+  <!-- ================= PASO 2: ACCIONISTAS COMUNES (ESPERANDO EL REMANENTE) ================= -->
+  <g transform="translate(495, 80)">
+    <!-- Tarjeta Comunes -->
+    <rect width="235" height="150" rx="6" fill="#1C2027" stroke="#5AC8FA" stroke-width="1.2"/>
+    <rect x="10" y="10" width="215" height="22" rx="3" fill="#5AC8FA" fill-opacity="0.12"/>
+    <text x="16" y="24" font-family="IBM Plex Mono" font-size="8" font-weight="700" fill="#5AC8FA">2° EN LA FILA · COMUNES</text>
+
+    <text x="16" y="52" font-family="Bricolage Grotesque" font-size="20" font-weight="800" fill="#5AC8FA">Remanente</text>
+    <text x="16" y="68" font-family="IBM Plex Mono" font-size="7.5" fill="#9098A6">Solo si queda utilidad residual</text>
+
+    <!-- Dos stick figures esperando en fila -->
+    <g transform="translate(25, 80)">
+      <!-- Figura 1 -->
+      <circle cx="16" cy="10" r="5.5" fill="none" stroke="#5AC8FA" stroke-width="1.5"/>
+      <line x1="16" y1="15.5" x2="16" y2="33" stroke="#5AC8FA" stroke-width="1.5"/>
+      <line x1="16" y1="20" x2="8" y2="28" stroke="#5AC8FA" stroke-width="1.5"/>
+      <line x1="16" y1="20" x2="24" y2="28" stroke="#5AC8FA" stroke-width="1.5"/>
+      <line x1="16" y1="33" x2="11" y2="47" stroke="#5AC8FA" stroke-width="1.5"/>
+      <line x1="16" y1="33" x2="21" y2="47" stroke="#5AC8FA" stroke-width="1.5"/>
+
+      <!-- Figura 2 -->
+      <circle cx="45" cy="10" r="5.5" fill="none" stroke="#EDEEF0" stroke-width="1.3"/>
+      <line x1="45" y1="15.5" x2="45" y2="33" stroke="#EDEEF0" stroke-width="1.3"/>
+      <line x1="45" y1="20" x2="38" y2="28" stroke="#EDEEF0" stroke-width="1.3"/>
+      <line x1="45" y1="20" x2="52" y2="28" stroke="#EDEEF0" stroke-width="1.3"/>
+      <line x1="45" y1="33" x2="40" y2="47" stroke="#EDEEF0" stroke-width="1.3"/>
+      <line x1="45" y1="33" x2="50" y2="47" stroke="#EDEEF0" stroke-width="1.3"/>
+    </g>
+
+    <g transform="translate(85, 84)">
+      <rect width="135" height="36" rx="3" fill="#14171C" stroke="#262B33" stroke-width="0.8"/>
+      <text x="8" y="15" font-family="IBM Plex Sans" font-size="6.5" fill="#9098A6">Riesgo:</text>
+      <text x="127" y="15" text-anchor="end" font-family="IBM Plex Mono" font-size="7" font-weight="700" fill="#FF5C5C">Asume pérdidas</text>
+      <line x1="8" y1="20" x2="127" y2="20" stroke="#262B33" stroke-width="0.6"/>
+      <text x="8" y="30" font-family="IBM Plex Sans" font-size="6.5" fill="#9098A6">Voz y Voto:</text>
+      <text x="127" y="30" text-anchor="end" font-family="IBM Plex Mono" font-size="7" font-weight="700" fill="#3ECF8E">Control total de S.A.</text>
+    </g>
+
+    <!-- Subtítulo inferior -->
+    <rect x="10" y="124" width="215" height="18" rx="2" fill="#14171C"/>
+    <text x="117" y="136" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" fill="#5AC8FA">Pueden ganar mucho si hay éxito, o $0 si no alcanza</text>
+  </g>
+
+  <!-- Etiquetas de pie de página -->
+  <text x="113" y="265" text-anchor="middle" font-family="IBM Plex Mono" font-size="7.5" fill="#3ECF8E">Caja Registradora</text>
+  <text x="113" y="278" text-anchor="middle" font-family="IBM Plex Mono" font-size="6.5" fill="#9098A6">Utilidades a Repartir</text>
+
+  <text x="330" y="265" text-anchor="middle" font-family="IBM Plex Mono" font-size="7.5" fill="#FF6EC7">1° Turno Prioritario</text>
+  <text x="330" y="278" text-anchor="middle" font-family="IBM Plex Mono" font-size="6.5" fill="#9098A6">Preferentes cobran cuota fija</text>
+
+  <text x="612" y="265" text-anchor="middle" font-family="IBM Plex Mono" font-size="7.5" fill="#5AC8FA">2° Turno Remanente</text>
+  <text x="612" y="278" text-anchor="middle" font-family="IBM Plex Mono" font-size="6.5" fill="#9098A6">Comunes reciben el residuo</text>
+</svg>
