@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulacro de Control — Unidad 2: Transacciones de Capital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1e2d5a; --navy2:#2C3E6B; --navy3:#3d5491;
+  --rose:#E8A0B4; --rose2:#d4718e; --rose3:#f5c8d6;
+  --green:#7CB342; --green2:#5a8a2e;
+  --bg:#F0F4FA; --white:#ffffff;
+  --text:#1A1A2E; --muted:#5a6480;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+body{font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text); line-height:1.6;}
+h1,h2,h3,h4{font-family:'Playfair Display',serif; font-weight:600; color:var(--navy);}
+em{font-family:'Playfair Display',serif; font-style:italic; color:var(--rose2);}
+.hero{position:relative; overflow:hidden; padding:50px 6vw 56px; background:linear-gradient(135deg,#0d1733,#1e2d5a,#2a3f7a); color:#fff;}
+.hero svg.deco{position:absolute; inset:0; width:100%; height:100%; opacity:.5;}
+.hero-content{position:relative; z-index:1; max-width:760px; margin:0 auto;}
+.eyebrow{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--rose3); font-weight:600; margin-bottom:14px;}
+.hero h1{font-size:34px; color:#fff; line-height:1.2;}
+.hero p.lead{color:#c9d2ea; margin-top:12px; font-size:15px; max-width:60ch;}
+.chips{display:flex; gap:10px; flex-wrap:wrap; margin-top:20px;}
+.chip{font-size:12.5px; padding:6px 13px; border-radius:20px; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.18); color:#fff;}
+.chip.rose{background:rgba(232,160,180,.22); border-color:rgba(232,160,180,.4); color:var(--rose3);}
+.chip.green{background:rgba(124,179,66,.22); border-color:rgba(124,179,66,.4); color:#c9e6a8;}
+.wrap{max-width:760px; margin:0 auto; padding:36px 6vw 70px;}
+.card-block{background:var(--white); border:1px solid rgba(44,62,107,.09); border-radius:12px; padding:24px 26px; box-shadow:0 2px 14px rgba(30,45,90,.07); margin-bottom:22px;}
+.box{border-radius:10px; padding:16px 20px; font-size:13.5px;}
+.box.eval{background:#FFF8E1; border:1px solid #F9A825; color:#5d4037;}
+.box.ok{background:#E8F5E9; border:1px solid #7CB342; color:#1b5e20;}
+.box.error{background:#FDECEA; border:1px solid #E53935; color:#7b1b1b;}
+.box.legal{background:#EAF0FA; border:1px solid #2C3E6B; color:#1e2d5a;}
+.honor{font-style:italic; font-family:'Playfair Display',serif; font-size:14.5px; line-height:1.55;}
+.field{margin-top:16px;}
+.field label{display:block; font-size:12.5px; color:var(--muted); margin-bottom:4px;}
+.field input{width:100%; padding:9px 12px; border:1px solid rgba(44,62,107,.2); border-radius:7px; font-family:'DM Sans',sans-serif; font-size:14px;}
+.btn{display:inline-flex; align-items:center; gap:8px; background:linear-gradient(90deg,var(--navy),var(--navy3)); color:#fff; border:none; padding:12px 26px; border-radius:8px; font-family:'DM Sans',sans-serif; font-weight:600; font-size:14.5px; cursor:pointer; transition:.15s;}
+.btn:hover{transform:translateY(-1px); box-shadow:0 4px 14px rgba(30,45,90,.25);}
+.btn:disabled{opacity:.45; cursor:not-allowed; transform:none; box-shadow:none;}
+.btn.rose{background:linear-gradient(90deg,var(--rose2),var(--rose));}
+#screen-quiz{display:none;}
+#screen-results{display:none;}
+.timerbar{display:flex; justify-content:space-between; align-items:center; background:var(--white); border-radius:10px; padding:12px 18px; margin-bottom:20px; border:1px solid rgba(44,62,107,.09); font-size:13.5px; color:var(--muted); position:sticky; top:12px; z-index:5; box-shadow:0 2px 12px rgba(30,45,90,.07);}
+.timerbar .t{font-family:'DM Sans',monospace; font-weight:600; color:var(--navy);}
+.progress-mini{font-family:'DM Sans',monospace; color:var(--navy2);}
+.q{background:var(--white); border:1px solid rgba(44,62,107,.09); border-radius:12px; padding:22px 24px; margin-bottom:16px; box-shadow:0 2px 12px rgba(30,45,90,.06);}
+.q .qnum{font-family:'DM Sans',monospace; font-size:12px; color:var(--rose2); font-weight:600; background:var(--rose3); display:inline-block; padding:2px 10px; border-radius:6px; margin-bottom:10px;}
+.q h3{font-size:15.5px; font-family:'DM Sans',sans-serif; font-weight:500; color:var(--text); line-height:1.5;}
+.opts{margin-top:14px; display:flex; flex-direction:column; gap:9px;}
+.opt{display:flex; align-items:flex-start; gap:10px; border:1px solid rgba(44,62,107,.15); border-radius:8px; padding:10px 14px; cursor:pointer; font-size:13.5px; transition:.12s;}
+.opt:hover{border-color:var(--navy3); background:rgba(61,84,145,.04);}
+.opt.selected{border-color:var(--navy); background:rgba(30,45,90,.07); font-weight:500;}
+.opt input{margin-top:2px;}
+.submit-zone{text-align:center; margin-top:26px;}
+.unanswered-note{color:var(--rose2); font-size:12.5px; margin-top:8px;}
+/* results */
+.score-wrap{display:flex; align-items:center; gap:26px; flex-wrap:wrap;}
+.score-circle{position:relative; width:130px; height:130px; flex-shrink:0;}
+.score-circle svg{transform:rotate(-90deg);}
+.score-circle .num{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:26px; font-weight:700; color:var(--navy);}
+.score-detail p{color:var(--muted); font-size:14px; margin-top:4px;}
+.review-q{background:var(--white); border:1px solid rgba(44,62,107,.09); border-radius:12px; padding:20px 22px; margin-bottom:14px;}
+.review-q .rq-head{display:flex; align-items:center; gap:10px; margin-bottom:8px;}
+.tagresult{font-size:11.5px; padding:3px 10px; border-radius:12px; font-weight:600;}
+.tagresult.correct{background:#E8F5E9; color:#1b5e20;}
+.tagresult.incorrect{background:#FDECEA; color:#7b1b1b;}
+.review-q .opt-line{font-size:13px; padding:6px 10px; border-radius:6px; margin-top:4px;}
+.opt-line.correct-ans{background:#E8F5E9; color:#1b5e20; font-weight:600;}
+.opt-line.wrong-given{background:#FDECEA; color:#7b1b1b; text-decoration:line-through;}
+.explain{font-size:13px; color:var(--muted); margin-top:10px; border-top:1px dashed rgba(44,62,107,.15); padding-top:10px;}
+.footer-note{color:var(--muted); font-size:12.5px; text-align:center; padding:10px 6vw 50px;}
+@keyframes fadeIn{from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:translateY(0);}}
+.card-block, .q, .review-q{animation:fadeIn .2s ease;}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <svg class="deco" viewBox="0 0 900 340" preserveAspectRatio="xMidYMid slice">
+    <g stroke="#E8A0B4" stroke-opacity=".25" stroke-width="1.4">
+      <line x1="600" y1="-40" x2="940" y2="280"/>
+      <line x1="660" y1="-40" x2="1000" y2="280"/>
+      <line x1="720" y1="-40" x2="1060" y2="280"/>
+      <line x1="780" y1="-40" x2="1120" y2="280"/>
+    </g>
+    <circle cx="790" cy="80" r="110" fill="none" stroke="#E8A0B4" stroke-opacity=".18" stroke-width="1.2"/>
+    <circle cx="790" cy="80" r="74" fill="none" stroke="#E8A0B4" stroke-opacity=".22" stroke-width="1.2"/>
+    <circle cx="790" cy="80" r="40" fill="none" stroke="#E8A0B4" stroke-opacity=".28" stroke-width="1.2"/>
+    <text x="790" y="88" text-anchor="middle" font-family="Playfair Display, serif" font-style="italic" font-size="30" fill="#ffffff" fill-opacity=".14">$</text>
+  </svg>
+  <div class="hero-content">
+    <div class="eyebrow">ESEN · Contabilidad Financiera · Sección 2 · Trimestre 3/2026</div>
+    <h1>Simulacro de Control · <em>Transacciones de Capital</em></h1>
+    <p class="lead">Modo examen: responde las 15 preguntas primero, sin retroalimentación por pregunta. Al final se revisa todo junto — igual que en el control real de mañana.</p>
+    <div class="chips">
+      <span class="chip rose">15 preguntas</span>
+      <span class="chip">20 minutos recomendados</span>
+      <span class="chip green">Opción múltiple · Solo Unidad 2</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- START SCREEN -->
+  <div id="screen-start">
+    <div class="card-block">
+      <h2 style="font-size:19px; margin-bottom:14px;">Código de Honor</h2>
+      <p class="honor">"Por mi honor y ante mis compañeros, me comprometo a que esta actividad académica refleje mi verdadero nivel de conocimientos, evitando realizar cualquier forma de deshonestidad académica (por ejemplo, copiar o plagiar)."</p>
+      <div class="box eval" style="margin-top:18px;">
+        <strong>Instrucciones:</strong> este simulacro funciona como el control real — no verás si acertaste hasta enviar todas tus respuestas. Tómate 20 minutos, sin material de apoyo, y responde de corrido. Cubre únicamente lo visto en Unidad 2: sociedades de capital, acciones comunes y preferentes, emisión, dividendos, split, tesorería y retiro de acciones.
+      </div>
+      <div class="field">
+        <label for="nameInput">Nombre del estudiante (opcional)</label>
+        <input type="text" id="nameInput" placeholder="Carlos Navas">
+      </div>
+      <div style="margin-top:22px; text-align:center;">
+        <button class="btn" onclick="startQuiz()">Comenzar simulacro →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUIZ SCREEN -->
+  <div id="screen-quiz">
+    <div class="timerbar">
+      <span>⏱ Tiempo recomendado: <span class="t" id="timerDisplay">20:00</span></span>
+      <span class="progress-mini" id="progressMini">0 / 15 respondidas</span>
+    </div>
+    <div id="questionsContainer"></div>
+    <div class="submit-zone">
+      <button class="btn rose" id="submitBtn" onclick="submitQuiz()">Enviar respuestas</button>
+      <p class="unanswered-note" id="unansweredNote"></p>
+    </div>
+  </div>
+
+  <!-- RESULTS SCREEN -->
+  <div id="screen-results">
+    <div class="card-block">
+      <h2 style="font-size:19px; margin-bottom:16px;">Resultados</h2>
+      <div class="score-wrap">
+        <div class="score-circle">
+          <svg width="130" height="130" viewBox="0 0 130 130">
+            <circle cx="65" cy="65" r="56" fill="none" stroke="#EAF0FA" stroke-width="12"/>
+            <circle id="scoreArc" cx="65" cy="65" r="56" fill="none" stroke="#7CB342" stroke-width="12" stroke-linecap="round" stroke-dasharray="352" stroke-dashoffset="352" style="transition:stroke-dashoffset 1s ease;"/>
+          </svg>
+          <div class="num" id="scoreNum">0%</div>
+        </div>
+        <div class="score-detail">
+          <p id="scoreText">— de 15 correctas</p>
+          <p id="scoreMsg"></p>
+        </div>
+      </div>
+    </div>
+    <h3 style="font-size:17px; margin:22px 0 12px;">Revisión pregunta por pregunta</h3>
+    <div id="reviewContainer"></div>
+  </div>
+
+  <p class="footer-note">Contabilidad Financiera · Sección 2 · Trimestre 3/2026 · Simulacro de práctica — no sustituye el control oficial de la Profesora Antonia Caballero de Siman.</p>
+</div>
+
+<script>
+const QUESTIONS = [
+{
+  q: "¿Cuál de las siguientes describe mejor una transacción de capital?",
+  opts: [
+    "Un movimiento de dinero entre la empresa y un cliente por la venta de un producto",
+    "Un movimiento de dinero entre la empresa y sus accionistas, que nunca pasa por el Estado de Resultados",
+    "Un gasto operativo que reduce las utilidades del período",
+    "Un préstamo bancario que la empresa debe pagar con intereses"
+  ],
+  correct: 1,
+  explain: "Una transacción de capital es un movimiento entre la empresa y sus dueños; cambia directamente el Patrimonio y jamás genera un ingreso, un gasto o una utilidad."
+},
+{
+  q: "Según el Código de Comercio de El Salvador, ¿cuál es el capital social mínimo para constituir una Sociedad Anónima?",
+  opts: ["$500", "$1,000", "$2,000", "$5,000"],
+  correct: 2,
+  explain: "El capital social mínimo de una S.A. es $2,000, con al menos el 5% pagado al momento de la inscripción y el resto dentro del año siguiente."
+},
+{
+  q: "¿Cuántos accionistas se requieren, como mínimo, para constituir una Sociedad Anónima en El Salvador?",
+  opts: ["1", "2", "3", "5"],
+  correct: 1,
+  explain: "El Código de Comercio exige un mínimo de 2 accionistas para constituir una S.A., sin límite máximo."
+},
+{
+  q: "¿Cuál de las siguientes afirmaciones sobre el valor nominal de una acción es correcta?",
+  opts: [
+    "Puede ser cualquier monto, incluso menor a $1, si los socios lo acuerdan",
+    "Es obligatorio que sea de al menos $1 o múltiplos enteros de uno, y no puede venderse por debajo de ese valor",
+    "Cambia automáticamente cada año según la inflación",
+    "Solo aplica a las acciones preferentes, no a las comunes"
+  ],
+  correct: 1,
+  explain: "El valor nominal mínimo es $1 (o múltiplos enteros de uno) y la ley prohíbe emitir o vender una acción por debajo de su valor nominal."
+},
+{
+  q: "¿Por qué las acciones de una Sociedad Anónima en El Salvador deben ser nominativas?",
+  opts: [
+    "Porque así lo exige la bolsa de valores internacional",
+    "Para que el Registro de Comercio siempre sepa quién es el dueño de cada acción",
+    "Porque las acciones al portador pagan menos impuestos",
+    "No existe tal requisito; las acciones pueden ser al portador libremente"
+  ],
+  correct: 1,
+  explain: "La ley exige acciones nominativas (a nombre de una persona identificada, nunca 'al portador') para que siempre se sepa quién es el propietario."
+},
+{
+  q: "¿Cuál es la diferencia principal entre una acción común y una acción preferente?",
+  opts: [
+    "Las preferentes siempre valen más en el mercado que las comunes",
+    "Las comunes dan voto pleno y dividendo variable; las preferentes tienen dividendo fijo con prelación pero voto limitado",
+    "Las preferentes son deuda de la empresa, no forman parte del Patrimonio",
+    "No hay diferencia contable entre ambas, solo cambia el nombre"
+  ],
+  correct: 1,
+  explain: "Las comunes votan en toda junta y su dividendo es variable; las preferentes tienen un dividendo fijo con prelación de pago, pero su voto es limitado (solo juntas extraordinarias, salvo atraso prolongado)."
+},
+{
+  q: "El dividendo mínimo de una acción preferente (6%) se calcula sobre:",
+  opts: ["El valor de mercado de la acción", "El valor nominal de la acción", "El valor en libros de la acción", "El valor de liquidación de la acción"],
+  correct: 1,
+  explain: "El dividendo preferente se calcula siempre sobre el valor nominal, nunca sobre el valor de mercado — confundir esto es uno de los errores más comunes de la unidad."
+},
+{
+  q: "¿Bajo qué condición una acción preferente adquiere voto pleno?",
+  opts: [
+    "Nunca lo adquiere, sin importar la situación",
+    "Automáticamente después de 1 ejercicio sin dividendo",
+    "Cuando el dividendo preferente no se reparte por más de 3 ejercicios (no necesariamente consecutivos)",
+    "Solo si el accionista posee más del 50% de las acciones preferentes"
+  ],
+  correct: 2,
+  explain: "Si el dividendo preferente queda sin repartir por más de 3 ejercicios (no necesariamente consecutivos), esas acciones ganan voto pleno hasta que se cubra el adeudo."
+},
+{
+  q: "El valor en libros de una clase de acciones se calcula como:",
+  opts: [
+    "Valor nominal × cantidad de acciones emitidas",
+    "Capital contable atribuido a esa clase ÷ acciones en circulación de esa clase",
+    "Precio de mercado del día ÷ valor nominal",
+    "Utilidades retenidas del año ÷ número de accionistas"
+  ],
+  correct: 1,
+  explain: "El valor en libros es el capital contable atribuido a una clase de acciones, dividido entre las acciones en circulación de esa misma clase."
+},
+{
+  q: "¿Cuál de los siguientes forma parte del capital contribuido (no del capital ganado)?",
+  opts: ["Utilidades retenidas del ejercicio", "Prima en venta de acciones", "Pérdidas acumuladas", "Reserva legal generada por utilidades"],
+  correct: 1,
+  explain: "El capital contribuido son los aportes directos de los socios: capital social + prima en venta de acciones + donaciones. Las utilidades retenidas y la reserva legal forman parte del capital ganado."
+},
+{
+  q: "Al emitir acciones con prima (valor de mercado mayor al valor nominal), la diferencia se registra en:",
+  opts: [
+    "Una cuenta de Ingresos, porque representa una ganancia para la empresa",
+    "Una cuenta de Patrimonio: 'Capital pagado en exceso del valor nominal'",
+    "Una cuenta de Pasivo, como una obligación con los accionistas",
+    "No se registra; solo se contabiliza el valor nominal"
+  ],
+  correct: 1,
+  explain: "La prima nunca es ingreso ni utilidad; se registra directo en una cuenta de Patrimonio llamada 'Capital pagado en exceso del valor nominal'."
+},
+{
+  q: "En un dividendo en efectivo, ¿en qué momento nace el pasivo 'Dividendos por pagar'?",
+  opts: [
+    "En la fecha en que se paga el efectivo al accionista",
+    "En la fecha en que la Junta declara el dividendo",
+    "En la fecha de cierre del ejercicio fiscal",
+    "El pasivo nunca se reconoce; se carga directo a Efectivo"
+  ],
+  correct: 1,
+  explain: "El pasivo nace en la fecha de declaración, cuando la Junta aprueba el dividendo — no cuando se paga el efectivo."
+},
+{
+  q: "Según la Ley del Impuesto sobre la Renta, ¿qué porcentaje de retención aplica sobre los dividendos pagados?",
+  opts: ["1%", "3%", "5%", "10%"],
+  correct: 2,
+  explain: "Los dividendos pagados a personas naturales llevan una retención de ISR del 5%, a cargo de quien paga el dividendo."
+},
+{
+  q: "Un dividendo en acciones se valúa a:",
+  opts: [
+    "Valor nominal de las acciones nuevas",
+    "Valor de mercado de las acciones al momento de la declaración",
+    "Valor de liquidación de las acciones preferentes",
+    "Costo histórico del capital social original"
+  ],
+  correct: 1,
+  explain: "El dividendo en acciones se valúa al valor de mercado, no al valor nominal; esto lo distingue claramente del split de acciones."
+},
+{
+  q: "¿Qué efecto tiene un split de acciones (por ejemplo, 5×1) sobre los registros contables de la empresa?",
+  opts: [
+    "Genera una partida cargando Utilidades retenidas, igual que un dividendo en acciones",
+    "No genera ninguna partida contable; solo cambia la cantidad de acciones y el valor nominal en proporción inversa",
+    "Aumenta el capital contable total de la empresa",
+    "Se registra como una emisión nueva de acciones a valor de mercado"
+  ],
+  correct: 1,
+  explain: "El split multiplica la cantidad de acciones y divide el valor nominal en la misma proporción; el capital común (cantidad × VN) no cambia, así que no se registra ninguna partida — solo un cuadro comparativo y una nota."
+}
+];
+
+let answers = new Array(QUESTIONS.length).fill(null);
+let timerInterval = null;
+let secondsLeft = 20*60;
+
+function startQuiz(){
+  document.getElementById('screen-start').style.display='none';
+  document.getElementById('screen-quiz').style.display='block';
+  renderQuestions();
+  startTimer();
+}
+
+function renderQuestions(){
+  const c = document.getElementById('questionsContainer');
+  c.innerHTML = '';
+  QUESTIONS.forEach((item, qi) => {
+    const div = document.createElement('div');
+    div.className = 'q';
+    div.innerHTML = `<span class="qnum">Pregunta ${qi+1} de ${QUESTIONS.length}</span><h3>${item.q}</h3>
+      <div class="opts">
+        ${item.opts.map((o,oi)=>`
+          <label class="opt" id="opt-${qi}-${oi}" onclick="selectAnswer(${qi},${oi})">
+            <input type="radio" name="q${qi}" style="pointer-events:none;">
+            <span>${String.fromCharCode(65+oi)}. ${o}</span>
+          </label>`).join('')}
+      </div>`;
+    c.appendChild(div);
+  });
+}
+
+function selectAnswer(qi, oi){
+  answers[qi] = oi;
+  QUESTIONS[qi].opts.forEach((_, i)=>{
+    document.getElementById(`opt-${qi}-${i}`).classList.toggle('selected', i===oi);
+  });
+  const answered = answers.filter(a=>a!==null).length;
+  document.getElementById('progressMini').textContent = `${answered} / ${QUESTIONS.length} respondidas`;
+}
+
+function startTimer(){
+  updateTimerDisplay();
+  timerInterval = setInterval(()=>{
+    secondsLeft--;
+    if(secondsLeft<=0){ clearInterval(timerInterval); secondsLeft=0; }
+    updateTimerDisplay();
+  },1000);
+}
+function updateTimerDisplay(){
+  const m = Math.floor(secondsLeft/60).toString().padStart(2,'0');
+  const s = (secondsLeft%60).toString().padStart(2,'0');
+  document.getElementById('timerDisplay').textContent = `${m}:${s}`;
+}
+
+function submitQuiz(){
+  const unanswered = answers.map((a,i)=>a===null?i+1:null).filter(x=>x!==null);
+  if(unanswered.length>0){
+    document.getElementById('unansweredNote').textContent = `Te faltan ${unanswered.length} pregunta(s) por responder (${unanswered.join(', ')}). En el control real tendrías que decidir igual — puedes enviar así o completar primero.`;
+    if(!confirm('Tienes preguntas sin responder. ¿Enviar de todas formas?')) return;
+  }
+  clearInterval(timerInterval);
+  showResults();
+}
+
+function showResults(){
+  document.getElementById('screen-quiz').style.display='none';
+  document.getElementById('screen-results').style.display='block';
+  let correctCount = 0;
+  QUESTIONS.forEach((item,qi)=>{ if(answers[qi]===item.correct) correctCount++; });
+  const pct = Math.round((correctCount/QUESTIONS.length)*100);
+  document.getElementById('scoreNum').textContent = pct+'%';
+  document.getElementById('scoreText').textContent = `${correctCount} de ${QUESTIONS.length} correctas`;
+  const circumference = 352;
+  const offset = circumference - (pct/100)*circumference;
+  document.getElementById('scoreArc').style.strokeDashoffset = offset;
+  const arc = document.getElementById('scoreArc');
+  arc.style.stroke = pct>=80 ? '#7CB342' : (pct>=60 ? '#F9A825' : '#E53935');
+  const msgEl = document.getElementById('scoreMsg');
+  if(pct>=80) msgEl.innerHTML = '<span style="color:#1b5e20;">Buen dominio de la Unidad 2 — repasa solo lo que falló abajo.</span>';
+  else if(pct>=60) msgEl.innerHTML = '<span style="color:#5d4037;">Vas bien, pero repasa con cuidado las secciones falladas antes del control.</span>';
+  else msgEl.innerHTML = '<span style="color:#7b1b1b;">Conviene repasar la guía de teoría completa antes del control de mañana.</span>';
+
+  const rc = document.getElementById('reviewContainer');
+  rc.innerHTML = '';
+  QUESTIONS.forEach((item, qi)=>{
+    const given = answers[qi];
+    const isCorrect = given === item.correct;
+    const div = document.createElement('div');
+    div.className = 'review-q';
+    let optsHtml = item.opts.map((o,oi)=>{
+      let cls = '';
+      if(oi === item.correct) cls = 'correct-ans';
+      else if(oi === given) cls = 'wrong-given';
+      return `<div class="opt-line ${cls}">${String.fromCharCode(65+oi)}. ${o}</div>`;
+    }).join('');
+    div.innerHTML = `
+      <div class="rq-head">
+        <span class="qnum">Pregunta ${qi+1}</span>
+        <span class="tagresult ${isCorrect?'correct':'incorrect'}">${isCorrect ? 'Correcta' : (given===null ? 'Sin responder' : 'Incorrecta')}</span>
+      </div>
+      <h3 style="font-size:14.5px; font-weight:500;">${item.q}</h3>
+      <div style="margin-top:8px;">${optsHtml}</div>
+      <div class="explain">${item.explain}</div>
+    `;
+    rc.appendChild(div);
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unidad 2 · Teoría — Transacciones de Capital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1e2d5a; --navy2:#2C3E6B; --navy3:#3d5491;
+  --rose:#E8A0B4; --rose2:#d4718e; --rose3:#f5c8d6;
+  --green:#7CB342; --green2:#5a8a2e;
+  --bg:#F0F4FA; --white:#ffffff;
+  --text:#1A1A2E; --muted:#5a6480;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+body{
+  font-family:'DM Sans',sans-serif; font-weight:400;
+  background:var(--bg); color:var(--text); line-height:1.6;
+}
+h1,h2,h3,h4{font-family:'Playfair Display',serif; font-weight:600; color:var(--navy);}
+em{font-family:'Playfair Display',serif; font-style:italic; color:var(--rose2);}
+a{color:var(--navy3);}
+.layout{display:flex; min-height:100vh;}
+/* Sidebar */
+.sidebar{
+  width:230px; flex-shrink:0; position:sticky; top:0; height:100vh; overflow-y:auto;
+  background:linear-gradient(180deg,#0d1733,#1a2650); padding:22px 0;
+}
+.sidebar .brand{color:var(--rose3); font-family:'Playfair Display',serif; font-size:14px; padding:0 20px 18px; opacity:.85; border-bottom:1px solid rgba(255,255,255,.08); margin-bottom:10px;}
+.sidebar nav a{
+  display:flex; align-items:center; gap:10px; text-decoration:none; color:#c9d2ea;
+  padding:10px 20px; font-size:13px; border-left:3px solid transparent; transition:.15s;
+}
+.sidebar nav a .n{font-family:'DM Sans',monospace; font-size:11px; color:var(--rose3); opacity:.7; width:16px;}
+.sidebar nav a:hover, .sidebar nav a.active{
+  border-left-color:var(--rose); background:linear-gradient(90deg, rgba(232,160,180,.14), transparent); color:#fff;
+}
+main{flex:1; min-width:0;}
+/* Hero */
+.hero{
+  position:relative; overflow:hidden; padding:56px 48px 64px;
+  background:linear-gradient(135deg,#0d1733,#1e2d5a,#2a3f7a); color:#fff;
+}
+.hero svg.deco{position:absolute; inset:0; width:100%; height:100%; opacity:.55;}
+.hero-content{position:relative; z-index:1; max-width:760px;}
+.eyebrow{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--rose3); font-weight:600; margin-bottom:14px;}
+.hero h1{font-size:38px; color:#fff; line-height:1.2;}
+.hero p.lead{color:#c9d2ea; margin-top:14px; font-size:15.5px; max-width:60ch;}
+.chips{display:flex; gap:10px; flex-wrap:wrap; margin-top:22px;}
+.chip{font-size:12.5px; padding:6px 13px; border-radius:20px; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.18); color:#fff;}
+.chip.rose{background:rgba(232,160,180,.22); border-color:rgba(232,160,180,.4); color:var(--rose3);}
+.chip.green{background:rgba(124,179,66,.22); border-color:rgba(124,179,66,.4); color:#c9e6a8;}
+/* Content */
+.content{padding:40px 48px 80px; max-width:960px;}
+.section{margin-bottom:46px; scroll-margin-top:24px;}
+.section-title{display:flex; align-items:baseline; gap:12px; margin-bottom:14px;}
+.num-tag{font-family:'DM Sans',monospace; font-size:13px; color:var(--rose2); font-weight:600; background:var(--rose3); padding:2px 9px; border-radius:6px;}
+.section-title h2{font-size:23px;}
+p.body-text{color:var(--text); max-width:72ch; margin-bottom:10px; font-size:15px;}
+p.body-text strong{color:var(--navy2);}
+.cards3{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:14px; margin-top:14px;}
+.card{
+  background:var(--white); border:1px solid rgba(44,62,107,.09); border-radius:10px; padding:16px 18px;
+  box-shadow:0 2px 12px rgba(30,45,90,.07); transition:.15s;
+}
+.card:hover{transform:translateY(-2px);}
+.card h4{font-size:14.5px; margin-bottom:6px; color:var(--navy2);}
+.card p{font-size:13px; color:var(--muted);}
+table{width:100%; border-collapse:collapse; margin-top:10px; font-size:13.5px;}
+thead tr{background:linear-gradient(90deg,#1e2d5a,#3d5491);}
+thead th{color:#fff; text-align:left; padding:9px 12px; font-weight:500;}
+tbody td{padding:8px 12px; border-bottom:1px solid rgba(44,62,107,.08);}
+tbody tr:nth-child(odd){background:rgba(30,45,90,.025);}
+.money{font-family:'DM Sans',monospace; font-weight:500; color:var(--navy);}
+.badge{display:inline-block; font-size:11px; padding:2px 9px; border-radius:12px; font-weight:500;}
+.badge.activo{background:rgba(30,45,90,.1); color:#2C3E6B;}
+.badge.pasivo{background:rgba(90,138,46,.15); color:#5a8a2e;}
+.badge.patrimonio{background:rgba(212,113,142,.18); color:#9c3a5a;}
+.box{border-radius:10px; padding:16px 20px; margin-top:16px; font-size:13.5px;}
+.box h4{display:flex; align-items:center; gap:8px; font-size:14px; margin-bottom:8px; font-family:'DM Sans',sans-serif; font-weight:600;}
+.box.legal{background:#EAF0FA; border:1px solid #2C3E6B; color:#1e2d5a;}
+.box.error{background:#FDECEA; border:1px solid #E53935; color:#7b1b1b;}
+.box.ok{background:#E8F5E9; border:1px solid #7CB342; color:#1b5e20;}
+.box.eval{background:#FFF8E1; border:1px solid #F9A825; color:#5d4037;}
+.box ul{padding-left:18px; margin-top:4px;}
+.box li{margin-bottom:5px;}
+.glossary{background:var(--white); border:1px solid rgba(44,62,107,.09); border-radius:10px; padding:20px 22px; margin-top:16px;}
+.glossary h4{font-family:'Playfair Display',serif; color:var(--navy); margin-bottom:10px;}
+.gloss-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:10px 22px;}
+.gloss-grid dt{font-weight:600; color:var(--navy2); font-size:13px;}
+.gloss-grid dd{color:var(--muted); font-size:12.5px; margin-top:2px;}
+.divider{height:1px; background:linear-gradient(90deg, rgba(44,62,107,.15), transparent); margin:40px 0;}
+.footer-note{color:var(--muted); font-size:12.5px; text-align:center; padding:30px 48px 50px;}
+@media(max-width:800px){
+  .layout{flex-direction:column;}
+  .sidebar{position:relative; width:100%; height:auto; padding:14px 0;}
+  .hero,.content{padding-left:22px; padding-right:22px;}
+}
+</style>
+</head>
+<body>
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="brand">Contabilidad Financiera<br>Sección 2 · Unidad 2</div>
+    <nav>
+      <a href="#s1"><span class="n">01</span>El ciclo del capital</a>
+      <a href="#s2"><span class="n">02</span>Formación de la S.A.</a>
+      <a href="#s3"><span class="n">03</span>Capital contable</a>
+      <a href="#s4"><span class="n">04</span>Comunes vs. preferentes</a>
+      <a href="#s5"><span class="n">05</span>Cuatro valores de la acción</a>
+      <a href="#s6"><span class="n">06</span>Emisión de acciones</a>
+      <a href="#s7"><span class="n">07</span>Dividendos en efectivo</a>
+      <a href="#s8"><span class="n">08</span>Dividendos en acciones</a>
+      <a href="#s9"><span class="n">09</span>Split de acciones</a>
+      <a href="#s10"><span class="n">10</span>Acciones de tesorería</a>
+      <a href="#s11"><span class="n">11</span>Retiro de acciones</a>
+      <a href="#s12"><span class="n">12</span>Marco legal</a>
+      <a href="#s13"><span class="n">13</span>Errores frecuentes</a>
+      <a href="#s14"><span class="n">14</span>Glosario</a>
+    </nav>
+  </aside>
+
+  <main>
+    <header class="hero">
+      <svg class="deco" viewBox="0 0 900 400" preserveAspectRatio="xMidYMid slice">
+        <g stroke="#E8A0B4" stroke-opacity=".25" stroke-width="1.4">
+          <line x1="600" y1="-40" x2="940" y2="300"/>
+          <line x1="660" y1="-40" x2="1000" y2="300"/>
+          <line x1="720" y1="-40" x2="1060" y2="300"/>
+          <line x1="780" y1="-40" x2="1120" y2="300"/>
+        </g>
+        <circle cx="790" cy="90" r="120" fill="none" stroke="#E8A0B4" stroke-opacity=".18" stroke-width="1.2"/>
+        <circle cx="790" cy="90" r="80" fill="none" stroke="#E8A0B4" stroke-opacity=".22" stroke-width="1.2"/>
+        <circle cx="790" cy="90" r="44" fill="none" stroke="#E8A0B4" stroke-opacity=".28" stroke-width="1.2"/>
+        <text x="790" y="98" text-anchor="middle" font-family="Playfair Display, serif" font-style="italic" font-size="34" fill="#ffffff" fill-opacity=".14">S.A.</text>
+      </svg>
+      <div class="hero-content">
+        <div class="eyebrow">ESEN · Contabilidad Financiera · Sección 2 · Trimestre 3/2026</div>
+        <h1>Unidad 2 · <em>Transacciones de Capital</em></h1>
+        <p class="lead">Guía de teoría para leer y entender antes del control de mañana. Sigue el orden del índice: cada tema construye sobre el anterior, desde la constitución de la sociedad hasta el retiro de acciones.</p>
+        <div class="chips">
+          <span class="chip rose">Repaso teórico — para leer</span>
+          <span class="chip">Control: miércoles 23 de septiembre</span>
+          <span class="chip green">Cubre solo Unidad 2</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="content">
+
+      <section class="section" id="s1">
+        <div class="section-title"><span class="num-tag">01</span><h2>El ciclo de una transacción de capital</h2></div>
+        <p class="body-text"><strong>Definición simple:</strong> una transacción de capital es cualquier movimiento de dinero entre la empresa y sus dueños (los accionistas) — nunca entre la empresa y un cliente o un proveedor. Por eso jamás genera una venta, un gasto ni una utilidad: cambia directamente el Patrimonio.</p>
+        <p class="body-text"><strong>Ejemplo salvadoreño:</strong> cuando XYZ, S.A. de C.V. emite acciones nuevas y recibe efectivo de sus accionistas, ese dinero no es una venta — es capital que los dueños aportan a cambio de un título de propiedad. Cuando meses después esa misma empresa declara un dividendo, tampoco es un gasto — es la devolución de una parte de las utilidades que ya eran de los accionistas.</p>
+        <p class="body-text"><strong>Concepto formal:</strong> desde que se constituye una Sociedad Anónima hasta que reparte utilidades, el capital pasa por tres momentos: (1) <em>emisión</em> — entra capital nuevo; (2) <em>operación</em> — dividendos, tesorería, split; (3) <em>reporte</em> — todo termina en la sección de Patrimonio del Balance General. Ninguno pasa por el Estado de Resultados.</p>
+        <div class="box eval">
+          <h4>¿Por qué el capital nunca pasa por el Estado de Resultados?</h4>
+          <p>La ecuación contable fundamental es <strong>Activo = Pasivo + Patrimonio</strong>. El Patrimonio crece de solo dos formas: (1) los dueños aportan más capital, o (2) la empresa genera utilidades que decide no repartir (utilidades retenidas). Una transacción de capital siempre es la primera vía — un movimiento directo entre la empresa y sus propios dueños — por eso se contabiliza directo en una cuenta de Patrimonio, sin pasar nunca por Ingresos ni Gastos. Esto contrasta con la Unidad 1 (Planillas): el gasto de sueldos sí reduce el Patrimonio, pero indirectamente, vía el resultado del período. Confundir estas dos rutas es el error conceptual más común de esta unidad.</p>
+        </div>
+      </section>
+
+      <section class="section" id="s2">
+        <div class="section-title"><span class="num-tag">02</span><h2>Formación de la Sociedad Anónima</h2></div>
+        <p class="body-text">Antes de que exista una acción para emitir, tiene que existir la sociedad. En El Salvador, la principal sociedad de capitales es la <strong>Sociedad Anónima</strong> (también existe la Sociedad en Comandita por Acciones, menos común). El Código de Comercio fija los requisitos mínimos de constitución:</p>
+        <div class="cards3">
+          <div class="card"><h4>Accionistas</h4><p>Mínimo <strong>2 accionistas</strong>, sin límite máximo.</p></div>
+          <div class="card"><h4>Capital social mínimo</h4><p><span class="money">$2,000</span>, con al menos el <strong>5%</strong> pagado al momento de la inscripción.</p></div>
+          <div class="card"><h4>Resto del capital</h4><p>El <strong>95%</strong> restante debe pagarse dentro del <strong>año siguiente</strong> a la inscripción.</p></div>
+        </div>
+        <p class="body-text" style="margin-top:14px;">Las acciones deben ser <strong>nominativas</strong> (a nombre de una persona identificada, nunca "al portador"), de valor nominal mínimo de <strong>$1</strong> o múltiplos enteros de uno, e <strong>indivisibles</strong>. Está prohibido emitir o vender una acción por debajo de su valor nominal. Muchas sociedades salvadoreñas operan además bajo el régimen de <strong>capital variable (C.V.)</strong>, que permite aumentar o disminuir el capital social sin necesidad de una escritura pública, solo con registro en el libro correspondiente — por eso el nombre completo suele verse como "XYZ, S.A. de C.V."</p>
+      </section>
+
+      <section class="section" id="s3">
+        <div class="section-title"><span class="num-tag">03</span><h2>Capital contable: contribuido + ganado</h2></div>
+        <p class="body-text">El <strong>capital contable</strong> (también llamado Patrimonio o Capital Contable de los Accionistas) es el derecho de los propietarios sobre los activos netos de la empresa. Se compone de dos bloques con orígenes muy distintos:</p>
+        <table>
+          <thead><tr><th>Bloque</th><th>Qué incluye</th><th>De dónde viene</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Capital contribuido</strong></td><td>Capital social (a valor nominal) + prima en venta de acciones + donaciones</td><td>Aportes directos de los socios</td></tr>
+            <tr><td><strong>Capital ganado</strong></td><td>Utilidades retenidas (o pérdidas acumuladas)</td><td>Resultado de la operación de la empresa, no repartido</td></tr>
+          </tbody>
+        </table>
+        <p class="body-text" style="margin-top:12px;">Distinguir estos dos bloques es clave porque varias operaciones de esta unidad <em>trasladan</em> saldo de uno al otro sin cambiar el capital contable total — por ejemplo, un dividendo en acciones mueve utilidades retenidas (ganado) hacia capital pagado (contribuido).</p>
+      </section>
+
+      <section class="section" id="s4">
+        <div class="section-title"><span class="num-tag">04</span><h2>Acciones comunes vs. preferentes</h2></div>
+        <table>
+          <thead><tr><th>Característica</th><th>Acciones comunes</th><th>Acciones preferentes</th></tr></thead>
+          <tbody>
+            <tr><td>Cuenta contable</td><td><span class="badge patrimonio">Patrimonio</span> Capital común</td><td><span class="badge patrimonio">Patrimonio</span> Capital preferente</td></tr>
+            <tr><td>Voto</td><td>Pleno, en toda junta</td><td>Limitado (solo extraordinarias), salvo atraso &gt; 3 ejercicios</td></tr>
+            <tr><td>Dividendo</td><td>Variable, en dólares por acción</td><td>Fijo, mínimo 6% del valor nominal, con prelación</td></tr>
+            <tr><td>En liquidación</td><td>Reciben el remanente</td><td>Se reembolsan primero</td></tr>
+          </tbody>
+        </table>
+        <p class="body-text" style="margin-top:12px;"><strong>¿Por qué existe una clase de acción "preferente" si vota menos?</strong> Es un intercambio: el inversionista renuncia a influir en las decisiones de la empresa a cambio de cobrar primero y de forma predecible. Por eso a las preferentes también se les llama <em>capital híbrido</em> — se parecen a una acción (son Patrimonio, no Pasivo) pero se comportan como una deuda de tasa fija al momento de cobrar.</p>
+        <div class="box legal">
+          <h4>Prelación de pago</h4>
+          <p>1° se paga a las acciones <strong>preferentes</strong> su dividendo fijo (mínimo 6% del valor nominal) o su valor de liquidación. 2° el <strong>remanente</strong> completo pasa a las acciones comunes, sin techo ni piso.</p>
+        </div>
+        <div class="box eval">
+          <h4>Cuándo las preferentes ganan voto pleno</h4>
+          <p>Si la empresa no reparte dividendo preferente por <strong>más de 3 ejercicios</strong> (no necesariamente consecutivos), esas acciones adquieren voto pleno hasta que se cubra el adeudo acumulado.</p>
+        </div>
+      </section>
+
+      <section class="section" id="s5">
+        <div class="section-title"><span class="num-tag">05</span><h2>Los cuatro valores de una acción</h2></div>
+        <p class="body-text">La palabra "valor" cambia de significado según quién la use — el Registro de Comercio, la bolsa, o el propio Balance General. Distinguir los cuatro evita el error más común de los ejercicios de valor en libros.</p>
+        <div class="cards3">
+          <div class="card"><h4>Valor nominal</h4><p>Fijado en la escritura de constitución. No cambia con el tiempo ni con el desempeño. → base del capital social.</p></div>
+          <div class="card"><h4>Valor en libros</h4><p>Capital contable ÷ acciones en circulación. Sube o baja con las utilidades retenidas. → "foto" contable actual.</p></div>
+          <div class="card"><h4>Valor de mercado</h4><p>Precio de compraventa entre inversionistas, fijado por oferta y demanda. → genera la prima al emitir.</p></div>
+          <div class="card"><h4>Valor de liquidación</h4><p>Monto garantizado a las preferentes si se disuelve la empresa. Se define en la escritura. → piso de protección.</p></div>
+        </div>
+        <p class="body-text" style="margin-top:14px;"><strong>Ejemplo (valor en libros con dividendos atrasados):</strong> ABC, S.A. de C.V. tiene capital contable de $29,050,000, con 1,000 acciones preferentes (VN $50, dividendo 6%) y 1 año de dividendos atrasados. Valor en libros preferente = ($50,000 capital + $3,000 de un año atrasado) ÷ 1,000 acciones = <strong>$53.00</strong>. El remanente ($29,050,000 − $53,000 = $28,997,000) se divide entre las acciones comunes en circulación.</p>
+      </section>
+
+      <section class="section" id="s6">
+        <div class="section-title"><span class="num-tag">06</span><h2>Emisión de acciones (valor nominal + prima)</h2></div>
+        <p class="body-text">Cada emisión de acciones (en efectivo, a cambio de activos distintos de efectivo, o por servicios) se divide siempre en dos componentes que se registran en cuentas separadas: el <strong>valor nominal</strong> (a la cuenta de Capital de esa clase) y la <strong>prima</strong> — la diferencia contra el valor de mercado (a "Capital pagado en exceso del valor nominal").</p>
+        <p class="body-text"><strong>Ejemplo (XYZ, S.A. de C.V.):</strong> emite 10,000 acciones comunes (VN $100, VM $120) y 1,000 preferentes (VN $50, VM $60), pagadas en efectivo.</p>
+        <table>
+          <tbody>
+            <tr><td>Capital preferente: 1,000 acc. × $50 VN</td><td class="money">$50,000</td></tr>
+            <tr><td>Prima preferente: 1,000 acc. × ($60 − $50)</td><td class="money">$10,000</td></tr>
+            <tr><td>Capital común: 10,000 acc. × $100 VN</td><td class="money">$1,000,000</td></tr>
+            <tr><td>Prima común: 10,000 acc. × ($120 − $100)</td><td class="money">$200,000</td></tr>
+            <tr style="font-weight:600;"><td>Total capital social emitido (= efectivo recibido)</td><td class="money">$1,260,000</td></tr>
+          </tbody>
+        </table>
+        <div class="box error">
+          <h4>Error común</h4>
+          <p>Registrar el efectivo recibido directamente en la cuenta de Capital, sin separar el valor nominal de la prima. La prima <strong>nunca es utilidad</strong> — jamás pasa por resultados, va directo a una cuenta de Patrimonio.</p>
+        </div>
+      </section>
+
+      <section class="section" id="s7">
+        <div class="section-title"><span class="num-tag">07</span><h2>Dividendos en efectivo</h2></div>
+        <p class="body-text">Un dividendo en efectivo tiene dos fechas clave y cada una registra algo distinto:</p>
+        <table>
+          <thead><tr><th>Momento</th><th>Qué pasa</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Fecha de declaración</strong></td><td>Nace la obligación legal de pagar. Se carga Utilidades retenidas y se abona Dividendos por pagar (Pasivo).</td></tr>
+            <tr><td><strong>Fecha de pago</strong></td><td>Se liquida el pasivo. Se retiene el <strong>5% de ISR</strong> (Ley del Impuesto sobre la Renta) — ese monto se convierte en un nuevo pasivo a favor del Ministerio de Hacienda, y el efectivo neto sale hacia el accionista.</td></tr>
+          </tbody>
+        </table>
+        <p class="body-text" style="margin-top:12px;"><strong>Ejemplo:</strong> DEF, S.A. de C.V. tiene 2,000 acciones preferentes, VN $50, dividendo 6%. Dividendo total = 2,000 × $50 × 6% = <strong>$6,000</strong>. Al pagar: retención ISR = $6,000 × 5% = $300; efectivo neto al accionista = <strong>$5,700</strong>.</p>
+        <div class="box error">
+          <h4>Errores comunes</h4>
+          <ul>
+            <li>Reconocer el pasivo en la fecha de <strong>pago</strong> en vez de la fecha de <strong>declaración</strong>.</li>
+            <li>Olvidar la retención de ISR del 5% y pagar el monto completo al accionista.</li>
+            <li>Cargar el dividendo contra una cuenta de gasto — nunca es gasto, siempre contra Utilidades retenidas.</li>
+            <li>Calcular el 6% sobre el capital pagado total (VN + prima) en vez de sobre el valor nominal únicamente.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="s8">
+        <div class="section-title"><span class="num-tag">08</span><h2>Dividendos en acciones</h2></div>
+        <p class="body-text">En vez de repartir efectivo, la empresa distribuye <strong>acciones nuevas</strong> a sus propios accionistas, en proporción a lo que ya tienen. Se valúa a <strong>valor de mercado</strong> (no al valor nominal), y se registra en tres partidas: declaración, carga a utilidades retenidas, y distribución.</p>
+        <p class="body-text"><strong>Efecto clave:</strong> un dividendo en acciones <em>traslada</em> saldo de capital ganado (utilidades retenidas) hacia capital contribuido (capital pagado) — pero el <strong>Patrimonio total no cambia</strong>, porque no sale ni entra efectivo. Tampoco cambia el porcentaje de participación de cada accionista, ya que todos reciben acciones nuevas en la misma proporción.</p>
+        <div class="box eval">
+          <h4>Punto que suele confundirse en el control</h4>
+          <p>Un dividendo en acciones <strong>no</strong> es lo mismo que un split, aunque ambos entregan más acciones al accionista sin efectivo. El dividendo en acciones sí genera partidas contables (mueve utilidades retenidas) y sí requiere valuar a mercado; el split no genera ninguna partida.</p>
+        </div>
+      </section>
+
+      <section class="section" id="s9">
+        <div class="section-title"><span class="num-tag">09</span><h2>Split de acciones</h2></div>
+        <p class="body-text">Un split (por ejemplo, 5×1) <strong>multiplica la cantidad</strong> de acciones en circulación y <strong>divide el valor nominal</strong> en la misma proporción. El capital común total (cantidad × valor nominal) permanece exactamente igual — por eso <strong>no se registra ninguna partida contable</strong>. Solo se entrega un cuadro comparativo y una nota a los estados financieros.</p>
+        <table>
+          <thead><tr><th>Concepto</th><th>Antes del split</th><th>Después de un split 5×1</th></tr></thead>
+          <tbody>
+            <tr><td>Cantidad de acciones</td><td>110,700</td><td>553,500</td></tr>
+            <tr><td>Valor nominal</td><td>$20</td><td>$4</td></tr>
+            <tr><td>Capital común (cantidad × VN)</td><td>$2,214,000</td><td>$2,214,000 (no cambia)</td></tr>
+            <tr><td>Valor de mercado esperado</td><td>$40</td><td>≈$8 (baja proporcionalmente)</td></tr>
+          </tbody>
+        </table>
+        <div class="box error">
+          <h4>Errores comunes</h4>
+          <ul>
+            <li>Registrar el split como si fuera un dividendo en acciones (cargando Utilidades retenidas). El split no mueve ninguna cuenta.</li>
+            <li>Aplicar el split a todas las clases de acciones cuando el enunciado especifica solo una clase (por ejemplo, "split de las comunes" no afecta a las preferentes).</li>
+            <li>Seguir usando el valor nominal anterior en operaciones posteriores al split.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="s10">
+        <div class="section-title"><span class="num-tag">10</span><h2>Acciones de tesorería</h2></div>
+        <p class="body-text">Son acciones propias que la empresa readquiere de sus accionistas. Se registran <strong>al costo</strong> (nunca al valor nominal) en una cuenta contraria de Patrimonio, con saldo deudor.</p>
+        <p class="body-text"><strong>Ejemplo:</strong> ABC compra 1,000 acciones de tesorería a $5. Luego vende 200 a $6 (arriba del costo) y 400 a $4.40 (bajo el costo).</p>
+        <table>
+          <thead><tr><th>Operación</th><th>Tratamiento</th></tr></thead>
+          <tbody>
+            <tr><td>Venta <strong>arriba</strong> del costo</td><td>La diferencia a favor (200 × $1 = $200) <strong>no es utilidad</strong> — va a "Capital pagado — transacciones con tesorería" (Patrimonio).</td></tr>
+            <tr><td>Venta <strong>bajo</strong> el costo</td><td>La pérdida (400 × $0.60 = $240) primero agota el saldo disponible de esa misma cuenta ($200); el remanente ($40) se carga contra Utilidades retenidas — <strong>nunca contra gastos del período</strong>.</td></tr>
+          </tbody>
+        </table>
+        <p class="body-text" style="margin-top:10px;">De las 1,000 compradas, quedan 400 en tesorería (al costo, $2,000), que se restan al final de la sección de Patrimonio.</p>
+      </section>
+
+      <section class="section" id="s11">
+        <div class="section-title"><span class="num-tag">11</span><h2>Retiro de acciones</h2></div>
+        <p class="body-text">Retirar acciones significa cancelarlas definitivamente (a diferencia de la tesorería, que las mantiene disponibles para revender). Se elimina el capital social y la prima originales de esa emisión; la diferencia contra lo pagado para recomprarlas se ajusta contra "Capital pagado en exceso del valor nominal" si hay saldo disponible, y el remanente contra Utilidades retenidas — igual que en la venta de tesorería bajo el costo. Nunca se reconoce como una ganancia o pérdida del período.</p>
+      </section>
+
+      <div class="divider"></div>
+
+      <section class="section" id="s12">
+        <div class="section-title"><span class="num-tag">12</span><h2>Marco legal — resumen consolidado</h2></div>
+        <div class="box legal">
+          <h4>Código de Comercio de El Salvador (normativa societaria)</h4>
+          <p>La Sociedad Anónima requiere un capital social mínimo de <span class="money">$2,000</span>, con al menos el 5% pagado al momento de la inscripción y el resto dentro del año siguiente; mínimo 2 accionistas, sin máximo. Las acciones deben ser nominativas e indivisibles, de valor nominal mínimo de <span class="money">$1</span> o múltiplos enteros de uno, y no pueden venderse por debajo de su valor nominal. Las acciones preferentes reciben un dividendo no menor al <strong>6%</strong> de su valor nominal, con prelación de pago sobre las comunes.</p>
+        </div>
+        <div class="box legal">
+          <h4>Ley del Impuesto sobre la Renta</h4>
+          <p>Los dividendos pagados a personas naturales están gravados con una retención del <span class="money">5%</span>, que debe retener quien paga el dividendo; si no se retiene, el contribuyente debe liquidar el impuesto por separado de sus otras rentas.</p>
+        </div>
+        <p class="body-text" style="font-size:12.5px; color:var(--muted); margin-top:8px;">El material de la profesora no especifica números de artículo del Código de Comercio para esta unidad — se cita en términos generales, siguiendo las reglas de precisión legal del curso.</p>
+      </section>
+
+      <section class="section" id="s13">
+        <div class="section-title"><span class="num-tag">13</span><h2>Errores frecuentes — repaso rápido</h2></div>
+        <div class="box error">
+          <ul>
+            <li>Mezclar valor nominal y prima en una sola cuenta al emitir acciones.</li>
+            <li>Calcular el dividendo preferente sobre el valor de mercado en vez del valor nominal.</li>
+            <li>Reconocer el pasivo del dividendo en la fecha de pago en vez de la de declaración.</li>
+            <li>Olvidar la retención de ISR del 5% sobre dividendos.</li>
+            <li>Confundir un dividendo en acciones (sí genera partidas, se valúa a mercado) con un split (nunca genera partidas).</li>
+            <li>Registrar una ganancia o pérdida en resultados al revender acciones de tesorería — siempre va contra Patrimonio.</li>
+            <li>Aplicar un split a una clase de acciones que el enunciado no incluye.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="s14">
+        <div class="section-title"><span class="num-tag">14</span><h2>Glosario</h2></div>
+        <div class="glossary">
+          <dl class="gloss-grid">
+            <div><dt>Capital contribuido</dt><dd>Aportes de los socios: capital social + prima en venta de acciones + donaciones.</dd></div>
+            <div><dt>Capital ganado</dt><dd>Utilidades retenidas (o pérdidas acumuladas) generadas por la operación, no aportadas por los socios.</dd></div>
+            <div><dt>Capital social</dt><dd>Valor nominal total de las acciones emitidas y suscritas por los socios.</dd></div>
+            <div><dt>Prima en venta de acciones</dt><dd>Monto pagado por arriba del valor nominal ("capital pagado en exceso del valor nominal").</dd></div>
+            <div><dt>Capital contable</dt><dd>Derecho de los propietarios sobre los activos netos; capital contribuido + capital ganado.</dd></div>
+            <div><dt>Acción común</dt><dd>Título que da voto pleno y dividendo variable.</dd></div>
+            <div><dt>Acción preferente</dt><dd>Título con dividendo fijo y prelación de pago, voto limitado.</dd></div>
+            <div><dt>Valor nominal</dt><dd>Valor de la acción al momento de emitirse.</dd></div>
+            <div><dt>Valor de mercado</dt><dd>Precio al que se compra o vende una acción.</dd></div>
+            <div><dt>Valor de liquidación</dt><dd>Monto garantizado a las acciones preferentes si la empresa se liquida.</dd></div>
+            <div><dt>Valor en libros</dt><dd>Capital contable atribuido a una clase de acciones ÷ acciones en circulación de esa clase.</dd></div>
+            <div><dt>Prelación de pago</dt><dd>Orden en que se paga a cada clase de acción; las preferentes cobran antes que las comunes.</dd></div>
+            <div><dt>Dividendo</dt><dd>Distribución de utilidades retenidas a los accionistas.</dd></div>
+            <div><dt>Dividendos atrasados</dt><dd>Dividendos preferentes no declarados en ejercicios anteriores; no son un pasivo hasta que la Junta los declara.</dd></div>
+            <div><dt>Acciones de tesorería</dt><dd>Acciones propias readquiridas por la empresa; contra-cuenta de Patrimonio con saldo deudor.</dd></div>
+            <div><dt>Split de acciones</dt><dd>Multiplica la cantidad y divide el valor nominal en la misma proporción; sin asiento contable.</dd></div>
+            <div><dt>Retiro de acciones</dt><dd>Cancelación definitiva de acciones readquiridas; elimina su capital social y prima originales.</dd></div>
+            <div><dt>Capital variable (C.V.)</dt><dd>Régimen que permite aumentar o disminuir el capital sin escritura pública, solo con registro en el libro correspondiente.</dd></div>
+            <div><dt>Acciones en circulación</dt><dd>Acciones emitidas menos acciones en tesorería; solo ellas tienen voto y dividendo.</dd></div>
+          </dl>
+        </div>
+      </section>
+
+    </div>
+
+    <p class="footer-note">Contabilidad Financiera · Sección 2 · Trimestre 3/2026 · Guía de teoría de repaso — no sustituye el material oficial de la Profesora Antonia Caballero de Siman.</p>
+  </main>
+</div>
+
+<script>
+// Simple scroll-spy for the sidebar
+const links = document.querySelectorAll('.sidebar nav a');
+const sections = Array.from(links).map(l => document.querySelector(l.getAttribute('href')));
+window.addEventListener('scroll', () => {
+  let idx = 0;
+  sections.forEach((sec, i) => {
+    if (sec && sec.getBoundingClientRect().top - 80 <= 0) idx = i;
+  });
+  links.forEach(l => l.classList.remove('active'));
+  if (links[idx]) links[idx].classList.add('active');
+}, {passive:true});
+</script>
+</body>
+</html>
